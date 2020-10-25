@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: Text(
                   widget.title,
                   style: TextStyle(
@@ -50,28 +50,73 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 30, 20, 52),
-                    child: FloatingActionButton.extended(
-                      onPressed: () {},
-                      label: Text("Sign Up"),
+                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
+                    width: 200,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Username",
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: TextField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Password",
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(20, 30, 0, 52),
+                    padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
                     child: FloatingActionButton.extended(
                       onPressed: () {},
-                      label: Text("Login"),
+                      label: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    color: Color.fromARGB(255, 224, 224, 224),
+                    width: 3,
+                    height: 100,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+                    child: FloatingActionButton.extended(
+                      onPressed: () {},
+                      label: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-              Divider(
-                thickness: 3,
-                indent: 30,
-                endIndent: 30,
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                child: Divider(
+                  thickness: 3,
+                  indent: 30,
+                  endIndent: 30,
+                ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(50, 52, 50, 52),
+                padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
                 child:
                     Text("A breif description about CLup will go here, along "
                         "with why CLup was developed."),

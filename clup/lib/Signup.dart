@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Second extends StatelessWidget{
+class Signup extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("This is the second page")),
+      appBar: AppBar(title: Text("This is the signup page")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            child: Text("You made it to the second page!")
+            child: Text("EDITABLE TEXT FROM GOES HERE"),
           )
         ],
       )

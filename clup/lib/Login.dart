@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Third extends StatelessWidget{
+class Login extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("This is the third page")),
+      appBar: AppBar(title: Text("This is the profile page")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            child: Text("You made it to the third page!")
+            child: Text("PROFILE INFORMATION HERE"),
           )
         ],
       )

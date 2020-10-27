@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Second.dart';
-import 'Third.dart';
+import 'Login.dart';
+import 'Signup.dart';
 
 class Clup extends StatelessWidget {
   final List<int> screens = [2, 3];
@@ -35,14 +35,14 @@ class Clup extends StatelessWidget {
     switch(screenNum) {
       case 2: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Second(),
+          builder: (context) => Login(),
           )
         );
       }
       break;
       case 3: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Third(),
+          builder: (context) => Signup(),
           )
         );
       }

@@ -134,13 +134,12 @@ class _HomePageState extends State<HomePage> {
       content: new Text("HIIIIIIIIIIII"),
     ));
     */
-    /*
     Fluttertoast.showToast(
         msg: username,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
     );
-    */
+    /*
     switch(option){
       case 1: {
         return Navigator.push(context, MaterialPageRoute(
@@ -157,5 +156,6 @@ class _HomePageState extends State<HomePage> {
       break;
       return null;
     }
+    */
   }
 }

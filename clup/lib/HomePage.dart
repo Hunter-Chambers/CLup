@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
 import 'Login.dart';
 import 'Signup.dart';
 
@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String username = "";
+  String password = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +59,7 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                           child: TextField(
                             obscureText: true,
+                            onSubmitted: (String input) => _setPassword(input),
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Password",
@@ -71,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
-                      onPressed: () => _onButtonPressed(context, 1, username),
+                      onPressed: () => _onButtonPressed(context, 2),
                       label: Text(
                         "Login",
                         style: TextStyle(
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "SignupBtn",
-                      onPressed: () => _onButtonPressed(context, 2, username),
+                      onPressed: () => _onButtonPressed(context, 1),
                       label: Text(
                         "Sign Up",
                         style: TextStyle(
@@ -125,37 +127,50 @@ class _HomePageState extends State<HomePage> {
     username = input;
   }
 
-  _onButtonPressed(BuildContext context, int option, input){
+  _setPassword(String input){
+    password = input;
+  }
+  _onButtonPressed(BuildContext context, int option){
     String checkUsername = 'username';
     String checkPassword = 'password';
 
-    /*
-    Scaffold.of(context).showSnackBar(new SnackBar(
-      content: new Text("HIIIIIIIIIIII"),
-    ));
-    */
-    Fluttertoast.showToast(
-        msg: username,
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-    );
-    /*
+    if (option != 1 && username != checkUsername){
+      option = 3;
+    }
+    else if (option != 1 && password != checkPassword){
+      option = 4;
+    }
     switch(option){
       case 1: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Login(),
+          builder: (context) => Signup(),
           )
         );
       }
       break;
       case 2: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Signup(),
+          builder: (context) => Login(),
         ));
+      }
+      break;
+      case 3: {
+        Fluttertoast.showToast(
+          msg: 'Username did not match any users.',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+        );
+      }
+      break;
+      case 4: {
+        Fluttertoast.showToast(
+          msg: 'Password was incorrect.',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+        );
       }
       break;
       return null;
     }
-    */
   }
 }

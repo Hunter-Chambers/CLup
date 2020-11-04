@@ -119,15 +119,22 @@ class _HomePageState extends State<HomePage> {
                         "with why CLup was developed."),
               ),
               Container(
-                child: Checkbox(
+                padding: EdgeInsets.fromLTRB(280,0,300,0),
+                child: CheckboxListTile(
+                  title: new Text(
+                    'Store',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   value: checkBoxValue,
                   onChanged: (bool value) {
                     setState( () {
                       checkBoxValue = value;
                     });
                   },
-                )
-              )
+                ),
+              ),
             ],
           ),
         ),

@@ -1,9 +1,5 @@
 //import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'Edit.dart';
-import 'Favorite.dart';
-import 'Schedule.dart';
-import 'QR.dart';
 
 class StoreLogin extends StatelessWidget{
   @override
@@ -50,36 +46,4 @@ class StoreLogin extends StatelessWidget{
       ),
     );
   }
-_onButtonPressed(BuildContext context, int option){
-
-   switch(option){
-      case 1: {
-        return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Edit(),
-          )
-        );
-      }
-      break;
-      case 2: {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Favorite(),
-        ));
-      }
-      break;
-      case 3: {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Schedule(),
-        ));
-      }
-      break;
-      case 4: {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => QR(),
-        ));
-      }
-      break;
-     return null;
-    }
-  }
-
 }

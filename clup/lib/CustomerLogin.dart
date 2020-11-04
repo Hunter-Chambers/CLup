@@ -5,7 +5,7 @@ import 'Favorite.dart';
 import 'Schedule.dart';
 import 'QR.dart';
 
-class Login extends StatelessWidget{
+class CustomerLogin extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class Login extends StatelessWidget{
                 alignment: Alignment.center,
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: Text(
-                  'Login Page',
+                  'Customer Login Page',
                   style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
@@ -45,6 +45,7 @@ class Login extends StatelessWidget{
                 )
               ),
               Container(
+                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "EditBtn",
                   onPressed: () => _onButtonPressed(context, 1),
@@ -57,6 +58,7 @@ class Login extends StatelessWidget{
                 ),
               ),
               Container(
+                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "FavoriteBtn",
                   onPressed: () => _onButtonPressed(context, 2),
@@ -69,6 +71,7 @@ class Login extends StatelessWidget{
                 ),
               ),
               Container(
+                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "ScheduleBtn",
                   onPressed: () => _onButtonPressed(context, 3),
@@ -81,6 +84,7 @@ class Login extends StatelessWidget{
                 ),
               ),
               Container(
+                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "QRBtn",
                   onPressed: () => _onButtonPressed(context, 4),

@@ -1,8 +1,10 @@
 import 'package:clup/StoreSignup.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'Login.dart';
+import 'CustomerLogin.dart';
 import 'CustomerSignup.dart';
+import 'StoreLogin.dart';
+import 'StoreSignup.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -172,7 +174,7 @@ class _HomePageState extends State<HomePage> {
         break;
         case 2: {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context) => Login(),
+            builder: (context) => CustomerLogin(),
           ));
         }
         break;
@@ -196,9 +198,17 @@ class _HomePageState extends State<HomePage> {
       }
     }
     else {
-      Navigator.push(context, MaterialPageRoute(
-        builder: (context) => StoreSignup(),
-      ));
+      if ( option == 1 ) {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => StoreSignup(),
+        ));
+      }
+      else {
+        Navigator.push(context, MaterialPageRoute(
+          builder: (context) => StoreLogin(),
+        ));
+
+      }
     }
   }
 }

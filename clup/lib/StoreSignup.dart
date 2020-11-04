@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Login.dart';
+import 'StoreLogin.dart';
 
 class StoreSignup extends StatelessWidget {
   @override
@@ -83,7 +83,7 @@ class StoreSignup extends StatelessWidget {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Login(),
+                builder: (context) => StoreLogin(),
               ));
         }
     }

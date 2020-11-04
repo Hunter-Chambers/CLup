@@ -1,6 +1,6 @@
 //import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'Edit.dart';
+import 'CustomerEdit.dart';
 import 'Favorite.dart';
 import 'Schedule.dart';
 import 'QR.dart';
@@ -10,6 +10,7 @@ class CustomerLogin extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
+      appBar: AppBar(title: Text("To Previous Page")),
       body: Center(
         child: Container(
           color: Colors.white,
@@ -45,7 +46,7 @@ class CustomerLogin extends StatelessWidget{
                 )
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
+                padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "EditBtn",
                   onPressed: () => _onButtonPressed(context, 1),
@@ -58,7 +59,7 @@ class CustomerLogin extends StatelessWidget{
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
+                padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "FavoriteBtn",
                   onPressed: () => _onButtonPressed(context, 2),
@@ -71,7 +72,7 @@ class CustomerLogin extends StatelessWidget{
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
+                padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "ScheduleBtn",
                   onPressed: () => _onButtonPressed(context, 3),
@@ -84,7 +85,7 @@ class CustomerLogin extends StatelessWidget{
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(150, 0, 150, 0),
+                padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "QRBtn",
                   onPressed: () => _onButtonPressed(context, 4),
@@ -107,7 +108,7 @@ _onButtonPressed(BuildContext context, int option){
    switch(option){
       case 1: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Edit(),
+          builder: (context) => CustomerEdit(),
           )
         );
       }

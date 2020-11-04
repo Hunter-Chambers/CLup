@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'Login.dart';
 
-class Signup extends StatelessWidget {
+class StoreSignup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
-      appBar: AppBar(title: Text("This is the signup page")),
+      appBar: AppBar(title: Text("This is the Store signup page")),
       body: Center(
         child: Container(
           color: Colors.white,
@@ -38,7 +38,7 @@ class Signup extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Email *",
+                    labelText: "Store Hours *",
                   ),
                 ),
               ),
@@ -47,7 +47,7 @@ class Signup extends StatelessWidget {
                 child: TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Phone Number *",
+                    labelText: "Store Capacity *",
                   ),
                 ),
               ),

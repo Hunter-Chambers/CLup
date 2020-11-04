@@ -1,7 +1,8 @@
+import 'package:clup/StoreSignup.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'Login.dart';
-import 'Signup.dart';
+import 'CustomerSignup.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool checkBoxValue = false;
   String username = "";
   String password = "";
   @override
@@ -116,6 +118,16 @@ class _HomePageState extends State<HomePage> {
                     Text("A breif description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
+              Container(
+                child: Checkbox(
+                  value: checkBoxValue,
+                  onChanged: (bool value) {
+                    setState( () {
+                      checkBoxValue = value;
+                    });
+                  },
+                )
+              )
             ],
           ),
         ),
@@ -134,43 +146,52 @@ class _HomePageState extends State<HomePage> {
     String checkUsername = 'username';
     String checkPassword = 'password';
 
-    if (option != 1 && username != checkUsername){
-      option = 3;
+    if ( checkBoxValue == false ){
+      
+
+      if (option != 1 && username != checkUsername){
+        option = 3;
+      }
+      else if (option != 1 && password != checkPassword){
+        option = 4;
+      }
+      switch(option){
+        case 1: {
+          return Navigator.push(context, MaterialPageRoute(
+            builder: (context) => CustomerSignup(),
+            )
+          );
+        }
+        break;
+        case 2: {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => Login(),
+          ));
+        }
+        break;
+        case 3: {
+          Fluttertoast.showToast(
+            msg: 'Username did not match any users.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+          );
+        }
+        break;
+        case 4: {
+          Fluttertoast.showToast(
+            msg: 'Password was incorrect.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+          );
+        }
+        break;
+        return null;
+      }
     }
-    else if (option != 1 && password != checkPassword){
-      option = 4;
-    }
-    switch(option){
-      case 1: {
-        return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Signup(),
-          )
-        );
-      }
-      break;
-      case 2: {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Login(),
-        ));
-      }
-      break;
-      case 3: {
-        Fluttertoast.showToast(
-          msg: 'Username did not match any users.',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-        );
-      }
-      break;
-      case 4: {
-        Fluttertoast.showToast(
-          msg: 'Password was incorrect.',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-        );
-      }
-      break;
-      return null;
+    else {
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) => StoreSignup(),
+      ));
     }
   }
 }

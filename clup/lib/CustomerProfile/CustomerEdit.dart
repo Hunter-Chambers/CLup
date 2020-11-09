@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'CustomerLogin.dart';
+import 'CustomerProfileController.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomerEdit extends StatelessWidget {
+  final TextEditingController emailCont = CustomerProfileController("Email").getController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
-      appBar: AppBar(title: Text("This is the Customer edit page")),
+      appBar: AppBar(title: Text("To Previous Page")),
       body: Center(
         child: Container(
           color: Colors.white,
@@ -36,12 +39,19 @@ class CustomerEdit extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: emailCont,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Email *",
                   ),
                 ),
               ),
+
+             // _displayTextField("Username *"),
+             // _displayTextField("Password *"),
+             // _displayTextField("Email *"),
+             // _displayTextField("Phone Number *"),
+              /*
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
@@ -51,6 +61,7 @@ class CustomerEdit extends StatelessWidget {
                   ),
                 ),
               ),
+              */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -74,9 +85,34 @@ class CustomerEdit extends StatelessWidget {
         ),
       ),
     );
+
+
   }
 
+/*
+Container _displayTextField(String text){
+  return (
+    Container(
+      margin: EdgeInsets.only(bottom: 20),
+      child: TextFormField(
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: field,
+        ),
+      ),
+    )
+  );
+}
+*/
+
   _onButtonPressed(BuildContext context, int option) {
+    Fluttertoast.showToast(
+      msg: emailCont.text,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+    );
+
+    /*
     switch (option) {
       case 1:
         {
@@ -87,5 +123,6 @@ class CustomerEdit extends StatelessWidget {
               ));
         }
     }
+    */
   }
 }

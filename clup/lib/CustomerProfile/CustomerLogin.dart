@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
 import 'Favorite.dart';
-import 'Schedule.dart';
+import '../Schedule.dart';
 import 'QR.dart';
 
 class CustomerLogin extends StatelessWidget{

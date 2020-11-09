@@ -1,10 +1,10 @@
-import 'package:clup/StoreSignup.dart';
+import 'package:clup/StoreProfile/StoreSignup.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'CustomerLogin.dart';
-import 'CustomerSignup.dart';
-import 'StoreLogin.dart';
-import 'StoreSignup.dart';
+import 'CustomerProfile/CustomerLogin.dart';
+import 'CustomerProfile/CustomerSignup.dart';
+import 'StoreProfile/StoreLogin.dart';
+import 'StoreProfile/StoreSignup.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);

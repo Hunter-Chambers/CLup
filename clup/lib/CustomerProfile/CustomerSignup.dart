@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'CustomerLogin.dart';
+import 'CustomerProfileController.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomerSignup extends StatelessWidget {
+
+  // specify fields for text editing controllers
+  final CustomerProfileController customerProfile = CustomerProfileController(["username", "password", "email", "phone"]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +23,7 @@ class CustomerSignup extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("username"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Username *",
@@ -26,6 +33,7 @@ class CustomerSignup extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("password"),
                   obscureText: true,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -36,6 +44,7 @@ class CustomerSignup extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("email"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Email *",
@@ -45,6 +54,7 @@ class CustomerSignup extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("phone"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Phone Number *",
@@ -83,7 +93,7 @@ class CustomerSignup extends StatelessWidget {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CustomerLogin(),
+                builder: (context) => CustomerLogin(customerProfile: customerProfile),
               ));
         }
     }

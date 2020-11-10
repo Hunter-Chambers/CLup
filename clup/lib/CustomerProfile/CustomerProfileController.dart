@@ -9,21 +9,28 @@ import 'package:flutter/material.dart';
 
 /// This is the main application widget.
 class CustomerProfileController {
-  TextEditingController myController;
+  Map <String, TextEditingController> fieldsMap;
 
-  CustomerProfileController(String text) {
+  CustomerProfileController(List<String> fields) {
 
-    myController = TextEditingController(text: text);
-    
+    fieldsMap = new Map<String, TextEditingController>();
+
+    for ( String field in fields) {
+
+      fieldsMap[field] = new TextEditingController();
+    }
+
   }
 
-  TextEditingController getController() {
-    return myController;
+  TextEditingController getTextController(String key) {
+    return fieldsMap[key]; 
   }
 
-  void dispose() {
+  /*
+  
     myController.dispose();
   }
+  */
 }
 
  

@@ -1,4 +1,5 @@
 //import 'package:fluttertoast/fluttertoast.dart';
+import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
 import 'Favorite.dart';
@@ -6,6 +7,10 @@ import '../Schedule.dart';
 import 'QR.dart';
 
 class CustomerLogin extends StatelessWidget{
+
+  final CustomerProfileController customerProfile;
+  CustomerLogin({Key key, this.customerProfile}) : super (key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,7 +113,7 @@ _onButtonPressed(BuildContext context, int option){
    switch(option){
       case 1: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => CustomerEdit(),
+          builder: (context) => new CustomerEdit(customerProfile: customerProfile),
           )
         );
       }

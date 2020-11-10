@@ -4,7 +4,12 @@ import 'CustomerProfileController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomerEdit extends StatelessWidget {
-  final TextEditingController emailCont = CustomerProfileController("Email").getController();
+
+  // build text editing controllers for each field
+  final CustomerProfileController customerProfile;
+  CustomerEdit({Key key, this.customerProfile}) : super (key: key);
+  // = CustomerProfileController(["username", "password", "email", "phone"]);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +25,7 @@ class CustomerEdit extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("username"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Username *",
@@ -30,6 +36,7 @@ class CustomerEdit extends StatelessWidget {
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
                   obscureText: true,
+                  controller: customerProfile.getTextController("password"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Password *",
@@ -39,29 +46,23 @@ class CustomerEdit extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
-                  controller: emailCont,
+                  controller: customerProfile.getTextController("email"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Email *",
                   ),
                 ),
               ),
-
-             // _displayTextField("Username *"),
-             // _displayTextField("Password *"),
-             // _displayTextField("Email *"),
-             // _displayTextField("Phone Number *"),
-              /*
               Container(
                 margin: EdgeInsets.only(bottom: 20),
                 child: TextFormField(
+                  controller: customerProfile.getTextController("phone"),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: "Phone Number *",
                   ),
                 ),
               ),
-              */
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -89,40 +90,25 @@ class CustomerEdit extends StatelessWidget {
 
   }
 
-/*
-Container _displayTextField(String text){
-  return (
-    Container(
-      margin: EdgeInsets.only(bottom: 20),
-      child: TextFormField(
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(),
-          labelText: field,
-        ),
-      ),
-    )
-  );
-}
-*/
-
   _onButtonPressed(BuildContext context, int option) {
     Fluttertoast.showToast(
-      msg: emailCont.text,
+      msg: customerProfile.getTextController("username").text + ' ' +
+      customerProfile.getTextController("password").text + ' ' +
+      customerProfile.getTextController("email").text + ' ' + 
+      customerProfile.getTextController("phone").text, 
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
     );
 
-    /*
     switch (option) {
       case 1:
         {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CustomerLogin(),
+                builder: (context) => CustomerLogin(customerProfile: customerProfile),
               ));
         }
     }
-    */
   }
 }

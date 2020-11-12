@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 
-class CustomerProfileController {
+class SearchStoresController {
   Map <String, TextEditingController> fieldsMap;
 
-  CustomerProfileController(List<String> fields) {
+  SearchStoresController(List<String> fields) {
 
     fieldsMap = new Map<String, TextEditingController>();
 
@@ -24,5 +24,3 @@ class CustomerProfileController {
   }
 
 }
-
- 

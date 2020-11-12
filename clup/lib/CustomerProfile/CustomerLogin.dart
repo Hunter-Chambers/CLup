@@ -1,4 +1,6 @@
 //import 'package:fluttertoast/fluttertoast.dart';
+import 'package:clup/SearchStoresView.dart';
+
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
@@ -120,7 +122,7 @@ _onButtonPressed(BuildContext context, int option){
       break;
       case 2: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Favorite(),
+          builder: (context) => SearchStoresView(),
         ));
       }
       break;

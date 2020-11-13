@@ -1,10 +1,9 @@
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'package:clup/SearchStoresView.dart';
-
+//import 'package:clup/SearchStoresView_Backup.dart';
+import 'package:clup/StoreSearch/StatesView.dart';
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
-import 'Favorite.dart';
 import '../Schedule.dart';
 import 'QR.dart';
 
@@ -122,7 +121,7 @@ _onButtonPressed(BuildContext context, int option){
       break;
       case 2: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => SearchStoresView(),
+          builder: (context) => StatesView(),
         ));
       }
       break;

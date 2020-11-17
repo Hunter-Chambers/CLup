@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-
-
 class SearchStoresController {
   Map <String, List<String>> dropDownMenus = new Map<String, List<String>>();
   String label;
@@ -39,6 +36,23 @@ class SearchStoresController {
 
   String getSelection(String dropDown){
     return( selections[dropDown] );
+  }
+
+  whichState() {
+    String key = getSelection('State');
+
+    switch (key) {
+      case 'Oklahoma': {
+        dropDownMenus['Cities'] = ['Norman', 'Stillwater', 'OK City'];
+      }
+      break;
+      case 'New Mexico': {
+        dropDownMenus['Cities'] = ['Albuquergue', 'Santa Fe', 'Angel Fire'];
+      }
+      break;
+    }
+    return null;
+
   }
 
 }

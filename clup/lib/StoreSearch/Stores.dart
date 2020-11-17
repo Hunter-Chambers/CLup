@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
@@ -85,12 +84,6 @@ class StoresView extends StatelessWidget {
     );
   }
   _onButtonPressed(BuildContext context, int option){
-    Fluttertoast.showToast(
-      msg: menuItems.getSelection(_label) + ' '+ menuItems.getSelection('States'),
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-    );
-
     return Navigator.push(context, MaterialPageRoute(
       builder: (context) => AddressesView(controller: menuItems,),
       )

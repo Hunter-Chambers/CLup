@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
@@ -133,7 +132,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          menuItems.setSelection(label, dropdownValue);
+          menuItems.setSelection('State', dropdownValue);
+          menuItems.whichState();
         });
       },
       items: _displayMenu(),

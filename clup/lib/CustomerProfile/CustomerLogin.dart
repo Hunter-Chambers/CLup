@@ -38,9 +38,12 @@ class CustomerLogin extends StatelessWidget{
               Container(
                 alignment: Alignment.center,
                 child: Text(
-                  'Customer Name Here\n' +
-                  'Customer Email Here\n' + 
-                  'Customer Phone Number Here\n',
+                  'Username: ' + 
+                  customerProfile.getTextController('username').text + '\n' + 
+                  'Email: ' +
+                  customerProfile.getTextController('email').text + '\n' + 
+                  'Phone Number: ' +
+                  customerProfile.getTextController('phone').text + '\n',
                 )
               ),
               Container(

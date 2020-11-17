@@ -11,6 +11,7 @@ class StatesView extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('To Login Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: Center(
         child: Container(
@@ -83,12 +84,6 @@ class StatesView extends StatelessWidget {
     );
   }
   _onButtonPressed(BuildContext context, int option){
-    Fluttertoast.showToast(
-      msg: menuItems.getSelection(_label),
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-    );
-
     return Navigator.push(context, MaterialPageRoute(
       builder: (context) => CitiesView(controller: menuItems,),
       )

@@ -12,6 +12,7 @@ class CitiesView extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('To Select a State Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: Center(
         child: Container(

@@ -36,7 +36,7 @@ class StoresView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                     width: 200,
                     child: Column(
                       children: <Widget>[
@@ -48,7 +48,7 @@ class StoresView extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "StoresBtn",
                       onPressed: () => _onButtonPressed(context, 2),

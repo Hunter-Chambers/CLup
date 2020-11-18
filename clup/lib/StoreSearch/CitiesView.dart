@@ -1,4 +1,4 @@
-import 'package:clup/StoreSearch/Stores.dart';
+import 'package:clup/StoreSearch/StoresView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';

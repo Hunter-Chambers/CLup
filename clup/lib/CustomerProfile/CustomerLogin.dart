@@ -4,7 +4,7 @@ import 'package:clup/StoreSearch/StatesView.dart';
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
-import '../Schedule.dart';
+import '../Schedule/ScheduleVisit.dart';
 import 'QR.dart';
 
 class CustomerLogin extends StatelessWidget{
@@ -130,7 +130,7 @@ _onButtonPressed(BuildContext context, int option){
       break;
       case 3: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => Schedule(),
+          builder: (context) => ScheduleVisit(),
         ));
       }
       break;

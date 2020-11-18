@@ -16,9 +16,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool checkBoxValue = false;
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  final signupBtnText = Text("Sign Up",
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ));
+
   String username = "";
   String password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: TextField(
-                            onSubmitted: (String input) => _setUsername(input),
+                            controller: usernameController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Username",
@@ -63,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                           child: TextField(
                             obscureText: true,
-                            onSubmitted: (String input) => _setPassword(input),
+                            controller: passwordController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Password",
@@ -77,11 +86,16 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
-                      onPressed: () => _onButtonPressed(context, 2),
+                      onPressed: () {
+                        _setUsername(usernameController.text);
+                        _setPassword(passwordController.text);
+                        _onButtonPressed(context, 3);
+                      },
                       label: Text(
                         "Login",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+                          fontSize: 16.7,
                         ),
                       ),
                     ),
@@ -92,15 +106,45 @@ class _HomePageState extends State<HomePage> {
                     height: 100,
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
-                    child: FloatingActionButton.extended(
-                      heroTag: "SignupBtn",
-                      onPressed: () => _onButtonPressed(context, 1),
-                      label: Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                    padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                    margin: EdgeInsets.only(left: 45),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                      color: Color.fromARGB(255, 33, 150, 243),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 0.5,
+                          blurRadius: 5,
+                          offset: Offset(5, 5),
                         ),
+                      ],
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton(
+                        underline: null,
+                        iconSize: 0.0,
+                        value: signupBtnText,
+                        onChanged: (Text value) {
+                          setState(() {
+                            if (value.data == "Customer") {
+                              _onButtonPressed(context, 1);
+                            } else if (value.data == "Store") {
+                              _onButtonPressed(context, 2);
+                            }
+                          });
+                        },
+                        isExpanded: false,
+                        items: <Text>[
+                          signupBtnText,
+                          Text("Customer"),
+                          Text("Store"),
+                        ].map<DropdownMenuItem<Text>>((Text value) {
+                          return DropdownMenuItem<Text>(
+                            value: value,
+                            child: value,
+                          );
+                        }).toList(),
                       ),
                     ),
                   ),
@@ -120,23 +164,6 @@ class _HomePageState extends State<HomePage> {
                     Text("A breif description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
-              Container(
-                padding: EdgeInsets.fromLTRB(280,0,300,0),
-                child: CheckboxListTile(
-                  title: new Text(
-                    'Store',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  value: checkBoxValue,
-                  onChanged: (bool value) {
-                    setState( () {
-                      checkBoxValue = value;
-                    });
-                  },
-                ),
-              ),
             ],
           ),
         ),
@@ -144,71 +171,71 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _setUsername(String input){
+  _setUsername(String input) {
     username = input;
   }
 
-  _setPassword(String input){
+  _setPassword(String input) {
     password = input;
   }
-  _onButtonPressed(BuildContext context, int option){
-    String checkUsername = 'username';
-    String checkPassword = 'password';
 
-    if ( checkBoxValue == false ){
-      
+  _onButtonPressed(BuildContext context, int option) {
+    String customerUsername = 'customer';
+    String customerPassword = 'password';
 
-      if (option != 1 && username != checkUsername){
-        option = 3;
-      }
-      else if (option != 1 && password != checkPassword){
-        option = 4;
-      }
-      switch(option){
-        case 1: {
-          return Navigator.push(context, MaterialPageRoute(
-            builder: (context) => CustomerSignup(),
-            )
-          );
+    String storeUsername = 'store';
+    String storePassword = 'password';
+
+    switch (option) {
+      case 1:
+        {
+          return Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => CustomerSignup(),
+              ));
         }
         break;
-        case 2: {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => CustomerLogin(),
-          ));
+      case 2:
+        {
+          return Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => StoreSignup(),
+              ));
         }
         break;
-        case 3: {
-          Fluttertoast.showToast(
-            msg: 'Username did not match any users.',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-          );
-        }
-        break;
-        case 4: {
-          Fluttertoast.showToast(
-            msg: 'Password was incorrect.',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-          );
+      case 3:
+        {
+          if (username != customerUsername && username != storeUsername) {
+            Fluttertoast.showToast(
+              msg: 'Username did not match any users.',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+            );
+          } else if (password != customerPassword &&
+              password != storePassword) {
+            Fluttertoast.showToast(
+              msg: 'Password was incorrect.',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+            );
+          } else if (username == customerUsername) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CustomerLogin(),
+                ));
+          } else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => StoreLogin(),
+                ));
+          }
         }
         break;
         return null;
-      }
-    }
-    else {
-      if ( option == 1 ) {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StoreSignup(),
-        ));
-      }
-      else {
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StoreLogin(),
-        ));
-
-      }
     }
   }
 }

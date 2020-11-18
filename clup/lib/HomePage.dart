@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                     height: 100,
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                    padding: EdgeInsets.fromLTRB(20, 0, 13, 0),
                     margin: EdgeInsets.only(left: 45),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
@@ -123,7 +123,11 @@ class _HomePageState extends State<HomePage> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
                         underline: null,
-                        iconSize: 0.0,
+                        icon: Icon(
+                          Icons.arrow_right,
+                          color: Colors.white,
+                        ),
+                        //iconSize: 0.0,
                         value: signupBtnText,
                         onChanged: (Text value) {
                           setState(() {

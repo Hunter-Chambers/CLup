@@ -52,21 +52,39 @@ class AddressesView extends StatelessWidget {
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
-                    child: FloatingActionButton.extended(
-                      heroTag: "AddressBtn",
-                      onPressed: () => _onButtonPressed(context, 2),
-                      label: Text(
-                        "Select",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                    child: Builder(
+                      builder: (context) =>
+                        Center(
+                          child: FloatingActionButton.extended(
+                            heroTag: 'AddressBtn',
+                            onPressed: () => _onButtonPressed(context, 1),
+                            label: Text(
+                              "Add",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              )
+                            )
+                          ),
+                        )
                     ),
                   ),
                   Container(
                     color: Color.fromARGB(255, 224, 224, 224),
                     width: 3,
                     height: 100,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: 'RetLogBtn',
+                      onPressed: () => _onButtonPressed(context, 2),
+                      label: Text(
+                        "To Login Page",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )
+                      ),
+                    )
                   ),
                 ],
               ),
@@ -78,11 +96,6 @@ class AddressesView extends StatelessWidget {
                   endIndent: 30,
                 ),
               ),
-              /*
-              Container(
-                padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
-              ),
-              */
             ],
           ),
         ),
@@ -91,34 +104,33 @@ class AddressesView extends StatelessWidget {
   }
   _onButtonPressed(BuildContext context, int option){
 
-    String storeSelection = menuItems.getSelection('State') + ' ' + 
-    menuItems.getSelection('City') + ' ' + 
-    menuItems.getSelection('Store') + ' ' + 
-    menuItems.getSelection('Address');
+    switch (option) {
+      case 1: {
+        String storeSelection = menuItems.getSelection('Store') + ', ' + 
+        menuItems.getSelection('Address') + ', ' + 
+        menuItems.getSelection('City') + ', ' + 
+        menuItems.getSelection('State');
 
-    customerProfile.addFavoriteStore(storeSelection);
-    /*
-    String msg = storeSelection + ' was added to Favorites';
+        customerProfile.addFavoriteStore(storeSelection);
+        String msg = storeSelection + ' was added to Favorites';
 
     
-    final snackBar = SnackBar(content: Text(msg));
+        final snackBar = SnackBar(content: Text(msg));
 
-    Scaffold.of(context).showSnackBar(snackBar);
-    */
+        Scaffold.of(context).showSnackBar(snackBar);
+      }
+      break;
+      case 2: {
+        return Navigator.push(context, MaterialPageRoute(
+          builder: (context) => CustomerLogin(customerController: customerProfile,),
+          )
+        );
+      }
+      break;
+    }
 
-    Fluttertoast.showToast(
-      msg: storeSelection + ' was added to Favorites',
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM_LEFT,
-      fontSize: 17,
+    return null;
 
-    );
-
-
-    return Navigator.push(context, MaterialPageRoute(
-      builder: (context) => CustomerLogin(customerController: customerProfile,),
-      )
-    );
   }
 }
   

@@ -137,7 +137,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         setState(() {
           dropdownValue = newValue;
           menuItems.setSelection('State', dropdownValue);
-          menuItems.whichState();
+          //menuItems.whichState();
         });
       },
       items: _displayMenu(),

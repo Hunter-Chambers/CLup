@@ -2,7 +2,7 @@ import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 
 class AddressesView extends StatelessWidget {

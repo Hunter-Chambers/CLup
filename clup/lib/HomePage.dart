@@ -1,4 +1,5 @@
 import 'package:clup/StoreProfile/StoreSignup.dart';
+import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'CustomerProfile/CustomerLogin.dart';
@@ -16,29 +17,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final usernameController = TextEditingController();
-  final passwordController = TextEditingController();
+  // controllers to get text from username and password fields
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
-  final signupBtnText = Text("Sign Up",
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ));
+  // text to appear in the sign up button
+  BoxShadow signupShadow = BoxShadow(
+    color: Colors.grey.withOpacity(0.5),
+    spreadRadius: 0.5,
+    blurRadius: 5,
+    offset: Offset(5, 5),
+  );
 
+  // holds user's username and password
   String username = "";
   String password = "";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // background for whole page
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
+
       body: Center(
+        // center white box
         child: Container(
           color: Colors.white,
           height: 500,
           width: 700,
+
+          // putting the items in a listview allows for resizing
+          // the window without receiving any errors
           child: ListView(
             children: <Widget>[
+              // the title of the page
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
@@ -50,29 +62,35 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+
+              // holds our text fields and buttons
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // holds the text fields in a column
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
                     width: 200,
                     child: Column(
                       children: <Widget>[
+                        // username field
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: TextField(
-                            controller: usernameController,
+                            controller: _usernameController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Username",
                             ),
                           ),
                         ),
+
+                        // password field
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                           child: TextField(
                             obscureText: true,
-                            controller: passwordController,
+                            controller: _passwordController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
                               labelText: "Password",
@@ -82,13 +100,15 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+
+                  // Login button
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
                       onPressed: () {
-                        _setUsername(usernameController.text);
-                        _setPassword(passwordController.text);
+                        _setUsername(_usernameController.text);
+                        _setPassword(_passwordController.text);
                         _onButtonPressed(context, 3);
                       },
                       label: Text(
@@ -100,60 +120,101 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+
+                  // vertical divider
                   Container(
                     color: Color.fromARGB(255, 224, 224, 224),
                     width: 3,
                     height: 100,
                   ),
+
+                  // holds the sign-up button
                   Container(
-                    padding: EdgeInsets.fromLTRB(20, 0, 13, 0),
                     margin: EdgeInsets.only(left: 45),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
                       color: Color.fromARGB(255, 33, 150, 243),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 0.5,
-                          blurRadius: 5,
-                          offset: Offset(5, 5),
-                        ),
-                      ],
+                      boxShadow: [signupShadow],
                     ),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton(
-                        underline: null,
-                        icon: Icon(
-                          Icons.arrow_right,
-                          color: Colors.white,
+
+                    // hide the tooltip that comes
+                    // with the popup menu button
+                    child: TooltipTheme(
+                      data: TooltipThemeData(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
                         ),
-                        //iconSize: 0.0,
-                        value: signupBtnText,
-                        onChanged: (Text value) {
-                          setState(() {
-                            if (value.data == "Customer") {
-                              _onButtonPressed(context, 1);
-                            } else if (value.data == "Store") {
-                              _onButtonPressed(context, 2);
-                            }
-                          });
-                        },
-                        isExpanded: false,
-                        items: <Text>[
-                          signupBtnText,
-                          Text("Customer"),
-                          Text("Store"),
-                        ].map<DropdownMenuItem<Text>>((Text value) {
-                          return DropdownMenuItem<Text>(
-                            value: value,
-                            child: value,
-                          );
-                        }).toList(),
+                      ),
+
+                      // update the shadow when the
+                      // mouse is over the button
+                      child: MouseRegion(
+                        onHover: (e) => _updateShadow(1),
+                        onExit: (e) => _updateShadow(0),
+
+                        // the actual signup button
+                        child: PopupMenuButton(
+                          tooltip: '',
+
+                          // holds the signup text and icon
+                          // that appear on the signup button
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              // signup text
+                              Container(
+                                padding: EdgeInsets.fromLTRB(20, 12, 10, 12),
+                                child: Text(
+                                  "Sign Up",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: 16.7,
+                                  ),
+                                ),
+                              ),
+
+                              // icon
+                              Container(
+                                padding: EdgeInsets.only(right: 12),
+                                child: Icon(
+                                  Icons.arrow_right,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          // what happens when an item is selected
+                          onSelected: (String value) {
+                            setState(() {
+                              if (value == "Customer") {
+                                _onButtonPressed(context, 1);
+                              } else {
+                                _onButtonPressed(context, 2);
+                              }
+                            });
+                          },
+
+                          // list of items
+                          itemBuilder: (context) => <PopupMenuEntry<String>>[
+                            PopupMenuItem<String>(
+                              value: "Customer",
+                              child: Text("Customer"),
+                            ),
+                            PopupMenuItem<String>(
+                              value: "Store",
+                              child: Text("Store"),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
+
+              // horizontal divider
               Container(
                 padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
                 child: Divider(
@@ -162,10 +223,12 @@ class _HomePageState extends State<HomePage> {
                   endIndent: 30,
                 ),
               ),
+
+              // description text
               Container(
                 padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
                 child:
-                    Text("A breif description about CLup will go here, along "
+                    Text("A brief description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
             ],
@@ -173,6 +236,30 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  // method for dynamically updating the signup
+  // button's shadow when the mouse is over it
+  _updateShadow(option) {
+    if (option == 1) {
+      setState(() {
+        signupShadow = BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 3,
+          blurRadius: 10,
+          offset: Offset(5, 5),
+        );
+      });
+    } else {
+      setState(() {
+        signupShadow = BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 0.5,
+          blurRadius: 5,
+          offset: Offset(5, 5),
+        );
+      });
+    }
   }
 
   _setUsername(String input) {

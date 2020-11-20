@@ -1,14 +1,17 @@
-
+import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
+import '../CustomerProfile/CustomerProfileController.dart';
 
 class AddressesView extends StatelessWidget {
   static const String _title = 'Select an Address';
   static const String _label = 'Addresses';
   SearchStoresController menuItems;
-  AddressesView({Key key, SearchStoresController controller}) : this.menuItems = controller, super(key: key);
+  CustomerProfileController customerProfile;
+  AddressesView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
+      : this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,27 +46,45 @@ class AddressesView extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           alignment: Alignment.center,
-                          child: MyStatefulWidget(controller: menuItems, label: _label)),
+                          child: MyStatefulWidget(searchController: menuItems, customerController: customerProfile, label: _label)),
                       ],
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
-                    child: FloatingActionButton.extended(
-                      heroTag: "AddressBtn",
-                      onPressed: () => _onButtonPressed(context, 2),
-                      label: Text(
-                        "Select",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                    child: Builder(
+                      builder: (context) =>
+                        Center(
+                          child: FloatingActionButton.extended(
+                            heroTag: 'AddressBtn',
+                            onPressed: () => _onButtonPressed(context, 1),
+                            label: Text(
+                              "Add",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              )
+                            )
+                          ),
+                        )
                     ),
                   ),
                   Container(
                     color: Color.fromARGB(255, 224, 224, 224),
                     width: 3,
                     height: 100,
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: 'RetLogBtn',
+                      onPressed: () => _onButtonPressed(context, 2),
+                      label: Text(
+                        "To Login Page",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        )
+                      ),
+                    )
                   ),
                 ],
               ),
@@ -75,9 +96,6 @@ class AddressesView extends StatelessWidget {
                   endIndent: 30,
                 ),
               ),
-              Container(
-                padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
-              ),
             ],
           ),
         ),
@@ -85,39 +103,59 @@ class AddressesView extends StatelessWidget {
     );
   }
   _onButtonPressed(BuildContext context, int option){
-    Fluttertoast.showToast(
-      msg: menuItems.getSelection(_label) + ' '+ menuItems.getSelection('States'),
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-    );
 
-    /*
-    return Navigator.push(context, MaterialPageRoute(
-      builder: (context) => (),
-      )
-    );
-    */
+    switch (option) {
+      case 1: {
+        String storeSelection = menuItems.getSelection('Store') + ', ' + 
+        menuItems.getSelection('Address') + ', ' + 
+        menuItems.getSelection('City') + ', ' + 
+        menuItems.getSelection('State');
+
+        customerProfile.addFavoriteStore(storeSelection);
+        String msg = storeSelection + ' was added to Favorites';
+
+    
+        final snackBar = SnackBar(content: Text(msg));
+
+        Scaffold.of(context).showSnackBar(snackBar);
+      }
+      break;
+      case 2: {
+        return Navigator.push(context, MaterialPageRoute(
+          builder: (context) => CustomerLogin(customerController: customerProfile,),
+          )
+        );
+      }
+      break;
+    }
+
+    return null;
+
   }
 }
   
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
   SearchStoresController menuItems;
+  CustomerProfileController customerProfile;
   List<String> dropDownList;
   String label;
-  MyStatefulWidget({Key key, this.label, SearchStoresController controller}) :this.menuItems = controller, super(key: key);
+  MyStatefulWidget({Key key, this.label, SearchStoresController searchController, CustomerProfileController customerController}) 
+      :this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
   @override
   _MyStatefulWidgetState createState() {
     menuItems.setLabel( label );
-    return _MyStatefulWidgetState(controller: menuItems, label: label);
+    return _MyStatefulWidgetState(searchController: menuItems, customerConrtoller: customerProfile, label: label);
   }
 }
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   SearchStoresController menuItems;
+  CustomerProfileController customerProfile;
   String label;
-  _MyStatefulWidgetState({SearchStoresController controller, String label}) : this.menuItems = controller, this.label = label;
+  _MyStatefulWidgetState({SearchStoresController searchController, String label, CustomerProfileController customerConrtoller}) 
+      : this.menuItems = searchController, this.customerProfile = customerConrtoller, this.label = label;
   String dropdownValue; 
   
 
@@ -137,7 +175,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          menuItems.setSelection(label, dropdownValue);
+          menuItems.setSelection('Address', dropdownValue);
         });
       },
       items: _displayMenu(),

@@ -1,22 +1,27 @@
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import '../StoreSearch/StatesView.dart';
 import 'StoreScheduleView.dart';
+import '../CustomerProfile/CustomerProfileController.dart';
 
 class ScheduleVisit extends StatelessWidget{
-    final List<String> entries = <String>['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+  CustomerProfileController customerProfile;
+  ScheduleVisit({Key key, CustomerProfileController controller}) : this.customerProfile = controller, super(key: key);
+    List<String> entries; 
     final List<int> colorCodes = <int>[600, 500, 100];
     final _scrollController = ScrollController();
     StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
   @override
   Widget build(BuildContext context) {
-    storeSchedule.getTextController('Store').text = 'initialValue';
+    entries = customerProfile.favoriteStores;
+    storeSchedule.getTextController('Store').text = 'Choose a Store to the Left';
     return Scaffold(
+      backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Profile Page")),
       body: Column(children: [
         Container(
-          padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
+          //padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
           child: 
             Text(
               'Choose from Favorite Stores',
@@ -46,7 +51,8 @@ class ScheduleVisit extends StatelessWidget{
                   ),
               )
             ),
-            Container(
+            Expanded( child: Container(
+              // Need both height and width or it won't render correctly
               height: 200,
               width: 200,
               padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
@@ -59,23 +65,27 @@ class ScheduleVisit extends StatelessWidget{
                   itemCount: entries.length,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      tileColor: Color.fromARGB(100, 0, 0, 500),
-                      title: Text('Store Name: ${entries[index]}'),
+                      tileColor: Colors.white,
+                      title: Text(
+                        '${entries[index]}',
+                        textAlign: TextAlign.center,
+                        ),
                       onTap: () => _onTapped(entries[index]),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) => const Divider(),
                 )
               )
-            ),
+            ) ),
             Column(
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                   // Have to define this field or it throws a render error
                   width: 500,
-                  color: Color.fromARGB(100, 1000, 0, 0),
+                  color: Colors.white,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     readOnly: true,
                     controller: storeSchedule.getTextController('Store'),
                     ),
@@ -144,7 +154,7 @@ class ScheduleVisit extends StatelessWidget{
       break;
       case 2: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StoreScheduleView(controller: storeSchedule),
+          builder: (context) => StoreScheduleView(scheduleController: storeSchedule),
           )
         );
       }

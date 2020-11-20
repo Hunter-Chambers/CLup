@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'CustomerLogin.dart';
 import 'CustomerProfileController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomerSignup extends StatelessWidget {
 

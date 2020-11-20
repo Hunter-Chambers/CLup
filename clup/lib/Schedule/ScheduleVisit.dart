@@ -1,6 +1,6 @@
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import '../StoreSearch/StatesView.dart';
 import 'StoreScheduleView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
@@ -8,7 +8,7 @@ import '../CustomerProfile/CustomerProfileController.dart';
 class ScheduleVisit extends StatelessWidget{
   CustomerProfileController customerProfile;
   ScheduleVisit({Key key, CustomerProfileController controller}) : this.customerProfile = controller, super(key: key);
-    List<String> entries; //<String>['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+    List<String> entries; 
     final List<int> colorCodes = <int>[600, 500, 100];
     final _scrollController = ScrollController();
     StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
@@ -154,7 +154,7 @@ class ScheduleVisit extends StatelessWidget{
       break;
       case 2: {
         return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StoreScheduleView(controller: storeSchedule),
+          builder: (context) => StoreScheduleView(scheduleController: storeSchedule),
           )
         );
       }

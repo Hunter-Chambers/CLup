@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class CustomerProfileController {
   Map <String, TextEditingController> fieldsMap;
   List <String> favoriteStores;
+  String infoQR;
 
   CustomerProfileController(List<String> fields) {
 
@@ -30,6 +31,10 @@ class CustomerProfileController {
     fieldsMap[key].dispose();
   }
 
+  addQRinfo(String moreInfo){
+
+    infoQR += moreInfo;
+  }
 }
 
  

@@ -5,7 +5,6 @@ import 'StoreScheduleController.dart';
 
 class DisplayTimeSlots extends StatelessWidget{
   final _scrollController = ScrollController();
-  int numPerRow;
   StoreScheduleController storeSchedule;
   DisplayTimeSlots({Key key, StoreScheduleController scheduleController,}) 
       : this.storeSchedule = scheduleController,  super(key: key);
@@ -29,19 +28,7 @@ class DisplayTimeSlots extends StatelessWidget{
               itemBuilder: (BuildContext context, int index) => 
                   StatefulListTile(passIndex: index, scheduleController: storeSchedule,),
             )
-            
-            /*new ListView.separated(
-              controller: _scrollController,
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              itemCount: timeSlots.length, 
-              itemBuilder: (BuildContext context, int index) => 
-                  StatefulListTile(passSlots: timeSlots, passIndex: index, scheduleController: storeSchedule,),
-              separatorBuilder: (BuildContext context, int index) 
-                  => const Divider(height: 100, thickness: 1, color: Colors.black),
-              )
-              */
-      );
+    );
   }
 }
 
@@ -109,6 +96,7 @@ class DisplayTimeSlots extends StatelessWidget{
       toastLength: Toast.LENGTH_SHORT,
       );
   }
+
 
   String _displayTime() {
     String time = storeSchedule.timeSlots[index];

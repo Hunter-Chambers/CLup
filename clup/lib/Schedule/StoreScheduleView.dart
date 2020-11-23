@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'DisplayTimeSlots.dart';
 
 class StoreScheduleView extends StatelessWidget {
@@ -29,24 +29,8 @@ class StoreScheduleView extends StatelessWidget {
           ),
 
           DisplayTimeSlots(scheduleController: storeSchedule,),
-          /*
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(0,4), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(4,8), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(8,12), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(12,16), scheduleController: storeSchedule,),
 
-          Container(
-            child: Divider(
-            )
-          ),
-
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(0,4), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(4,8), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(8,12), scheduleController: storeSchedule,),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(12,16), scheduleController: storeSchedule,),
-          */
-
-          Container(
+                    Container(
             child: Divider(
             )
           ),
@@ -66,11 +50,6 @@ class StoreScheduleView extends StatelessWidget {
   }
 
   _onButtonPressed() {
-    /*
-    Fluttertoast.showToast(
-      msg: 'Hello!',
-    );
-    */
     storeSchedule.displaySelectedTimes();
   }
 

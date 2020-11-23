@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'CustomerLogin.dart';
 import 'CustomerProfileController.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
 
 class CustomerSignup extends StatelessWidget {
   // specify fields for text editing controllers
@@ -35,6 +34,7 @@ class CustomerSignup extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    //
                     // username field
                     Container(
                       margin: EdgeInsets.only(bottom: 20),
@@ -51,7 +51,7 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        autovalidateMode: AutovalidateMode.always,
+                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Username *",
@@ -81,7 +81,7 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        autovalidateMode: AutovalidateMode.always,
+                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Password *",
@@ -103,7 +103,7 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        autovalidateMode: AutovalidateMode.always,
+                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Retype Password *",
@@ -122,7 +122,7 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        autovalidateMode: AutovalidateMode.always,
+                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Email *",
@@ -144,7 +144,7 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        autovalidateMode: AutovalidateMode.always,
+                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Phone Number *",

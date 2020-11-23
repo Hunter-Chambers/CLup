@@ -131,6 +131,9 @@ class _HomePageState extends State<HomePage> {
                   // holds the sign-up button
                   Container(
                     margin: EdgeInsets.only(left: 45),
+
+                    // this gives the button the blue, rounded look
+                    // as well as a shadow
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.0),
                       color: Color.fromARGB(255, 33, 150, 243),

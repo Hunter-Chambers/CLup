@@ -7,7 +7,8 @@ import '../CustomerProfile/CustomerProfileController.dart';
 
 class ScheduleVisit extends StatelessWidget{
   CustomerProfileController customerProfile;
-  ScheduleVisit({Key key, CustomerProfileController controller}) : this.customerProfile = controller, super(key: key);
+  ScheduleVisit({Key key, CustomerProfileController customerController, }) 
+      : this.customerProfile = customerController, super(key: key);
     List<String> entries; 
     final List<int> colorCodes = <int>[600, 500, 100];
     final _scrollController = ScrollController();
@@ -19,7 +20,8 @@ class ScheduleVisit extends StatelessWidget{
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Profile Page")),
-      body: Column(children: [
+      body: Column(
+        children: [
         Container(
           //padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
           child: 

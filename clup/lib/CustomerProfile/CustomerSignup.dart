@@ -137,9 +137,7 @@ class CustomerSignup extends StatelessWidget {
                         controller: customerProfile.getTextController("phone"),
                         validator: (String value) {
                           if (!(value.contains(new RegExp(
-                                  r'\([0-9][0-9][0-9]\) [0-9][0-9][0-9]-[0-9][0-9][0-9][0-9]')) ||
-                              value.contains(new RegExp(
-                                  r'[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')))) {
+                              r'^\({0,1}[0-9][0-9][0-9]\){0,1}[ -]{0,1}[0-9][0-9][0-9] {0,1}-{0,1} {0,1}[0-9][0-9][0-9][0-9]$')))) {
                             return "Must contain a valid phone number";
                           }
                           return null;
@@ -190,6 +188,60 @@ class CustomerSignup extends StatelessWidget {
     switch (option) {
       case 1:
         {
+          String phoneInput = customerProfile.getTextController("phone").text;
+          String phone = "";
+          int i = 0;
+
+          if (phoneInput[i] != "(") {
+            phone += "(";
+            phone += phoneInput.substring(i, i + 3);
+            i += 3;
+          } else {
+            phone += phoneInput.substring(i, i + 4);
+            i += 4;
+          }
+
+          if (phoneInput[i] != ")") {
+            phone += ")";
+          } else {
+            phone += phoneInput[i];
+            i += 1;
+          }
+
+          if (phoneInput[i] != " ") {
+            phone += " ";
+            if (phoneInput[i] == "-") {
+              i += 1;
+            }
+            phone += phoneInput.substring(i, i + 3);
+            i += 3;
+          } else {
+            phone += phoneInput.substring(i, i + 4);
+            i += 4;
+          }
+
+          if (phoneInput[i] != " ") {
+            phone += " ";
+          } else {
+            phone += phoneInput[i];
+            i += 1;
+          }
+
+          if (phoneInput[i] != "-") {
+            phone += "-";
+          } else {
+            phone += phoneInput[i];
+            i += 1;
+          }
+
+          if (phoneInput[i] != " ") {
+            phone += " ";
+            phone += phoneInput.substring(i, i + 4);
+          } else {
+            phone += phoneInput.substring(i, i + 5);
+          }
+
+          customerProfile.getTextController("phone").text = phone;
           return Navigator.push(
               context,
               MaterialPageRoute(

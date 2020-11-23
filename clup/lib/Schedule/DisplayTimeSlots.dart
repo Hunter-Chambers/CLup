@@ -1,29 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'StoreScheduleController.dart';
 
 
 class DisplayTimeSlots extends StatelessWidget{
   final _scrollController = ScrollController();
-  List <String> timeSlots;
-  int numPerRow;
-  DisplayTimeSlots({Key key, List<String> timeSlotSlice}) 
-      : this.timeSlots = timeSlotSlice, super(key: key);
+  StoreScheduleController storeSchedule;
+  DisplayTimeSlots({Key key, StoreScheduleController scheduleController,}) 
+      : this.storeSchedule = scheduleController,  super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Container (
             // Need height parameter to render correctly
-            height: 50,
-            child: new ListView.separated(
+            height: 550,
+            width: 900,
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 4,
+                ),
               controller: _scrollController,
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(8),
-              itemCount: timeSlots.length, 
-              itemBuilder: (BuildContext context, int index) => StatefulListTile(passSlots: timeSlots, passIndex: index),
-              separatorBuilder: (BuildContext context, int index) 
-                  => const Divider(height: 100, thickness: 1, color: Colors.black),
-              )
-      );
+              itemCount: storeSchedule.timeSlots.length,
+              itemBuilder: (BuildContext context, int index) => 
+                  StatefulListTile(passIndex: index, scheduleController: storeSchedule,),
+            )
+    );
   }
 }
 
@@ -31,12 +36,12 @@ class DisplayTimeSlots extends StatelessWidget{
 
  class StatefulListTile extends StatefulWidget {
    int index;
-   List<String> timeSlots;
-   StatefulListTile({Key key, int passIndex, List<String> passSlots}) 
-      : this.index = passIndex, this.timeSlots = passSlots, super(key: key);
+   StoreScheduleController storeSchedule;
+   StatefulListTile({Key key, int passIndex, StoreScheduleController scheduleController,}) 
+      : this.index = passIndex, this.storeSchedule = scheduleController, super(key: key);
 
    @override
-   _StatefulListTileState createState() => _StatefulListTileState(passIndex: index, passSlots: timeSlots);
+   _StatefulListTileState createState() => _StatefulListTileState(passIndex: index, scheduleController: storeSchedule,);
  }
 
 
@@ -44,8 +49,9 @@ class DisplayTimeSlots extends StatelessWidget{
 
  class _StatefulListTileState extends State<StatefulListTile> {
    int index;
-   List<String> timeSlots;
-   _StatefulListTileState({int passIndex, List<String> passSlots}) : this.index = passIndex, this.timeSlots = passSlots;
+   StoreScheduleController storeSchedule;
+   _StatefulListTileState({int passIndex, StoreScheduleController scheduleController,}) 
+      : this.index = passIndex, this.storeSchedule = scheduleController;
    bool _isSelected = false; 
 
    void updateSelection(){
@@ -53,21 +59,19 @@ class DisplayTimeSlots extends StatelessWidget{
    }
    @override
    Widget build(BuildContext context) {
+     String time = storeSchedule.timeSlots[index];
      return Container (
-              alignment: Alignment.center,
               decoration: new BoxDecoration(
               border: Border.all(color: Colors.black)),
-              // Need height and width parameter to render correctly
-              height: 50,
-              width: 200,
               child: 
                ListTile(
-                   hoverColor: Colors.lightBlueAccent,
+                   //hoverColor: Colors.lightBlueAccent,
                    selectedTileColor: Colors.grey,
-                   //tileColor: Colors.lightBlueAccent,
+                   enabled: storeSchedule.getAvailable(time),
+                   tileColor: Colors.white,
                    selected: _isSelected,
                    title: Text(
-                     timeSlots[index],
+                     _displayTime(),
                      style: TextStyle( 
                        color: Colors.black,
                        fontWeight: FontWeight.bold,
@@ -75,7 +79,7 @@ class DisplayTimeSlots extends StatelessWidget{
                      ),
                      textAlign: TextAlign.center,
                      ),
-                   onTap: () => _onTapped(timeSlots[index]),
+                   onTap: () => _onTapped(time),
                  ),
      );
    }
@@ -83,13 +87,23 @@ class DisplayTimeSlots extends StatelessWidget{
 
 
 
-  _onTapped(String timeSlot){
+  _onTapped(String time){
     updateSelection();
+    storeSchedule.updateSelectedTimes(index, time);
     Fluttertoast.showToast(
-      msg: timeSlot + ' was selected.',
+      msg: time + ' was selected.',
       gravity: ToastGravity.BOTTOM,
       toastLength: Toast.LENGTH_SHORT,
       );
+  }
+
+
+  String _displayTime() {
+    String time = storeSchedule.timeSlots[index];
+    if (storeSchedule.getAvailable(time)) {
+      return time;
+    }
+    return 'Full';
   }
 
  }

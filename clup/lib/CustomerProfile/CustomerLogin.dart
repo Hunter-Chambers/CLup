@@ -10,7 +10,8 @@ import 'QR.dart';
 class CustomerLogin extends StatelessWidget{
 
   final CustomerProfileController customerProfile;
-  CustomerLogin({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super (key: key);
+  CustomerLogin({Key key, CustomerProfileController customerController}) 
+      : this.customerProfile = customerController, super (key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +131,7 @@ _onButtonPressed(BuildContext context, int option){
       break;
       case 3: {
         Navigator.push(context, MaterialPageRoute(
-          builder: (context) => ScheduleVisit(controller: customerProfile,),
+          builder: (context) => ScheduleVisit(customerController: customerProfile,),
         ));
       }
       break;

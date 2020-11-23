@@ -5,34 +5,52 @@ import 'DisplayTimeSlots.dart';
 
 class StoreScheduleView extends StatelessWidget {
   StoreScheduleController storeSchedule;
-  StoreScheduleView({Key key, StoreScheduleController scheduleController}) : this.storeSchedule = scheduleController,  super(key: key);
-  List <String> timeSlots;
+  StoreScheduleView({Key key, StoreScheduleController scheduleController}) 
+      : this.storeSchedule = scheduleController,  super(key: key);
 
   Widget build(BuildContext context) {
-    timeSlots = storeSchedule.timeSlots;
     return Scaffold(
+      backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
       body: Column(
+        textDirection: TextDirection.ltr,
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(0,4)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(4,8)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(8,12)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(12,16)),
           Container(
+            padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+            child: Text(
+              storeSchedule.getTextController('Store').text,
+              style: TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.bold,
+              ) ,
+            )
+          ),
+
+          DisplayTimeSlots(scheduleController: storeSchedule,),
+
+                    Container(
             child: Divider(
             )
           ),
 
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(0,4)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(4,8)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(8,12)),
-          DisplayTimeSlots(timeSlotSlice: timeSlots.sublist(12,16)),
+          Container(
+            child: FloatingActionButton.extended(
+              heroTag: 'SchedTimesBtn',
+              onPressed: () => _onButtonPressed(),
+              label: Text(
+                'Schedule Times',
+              ),
+            )
+          )
         ],
       ),
     );
+  }
+
+  _onButtonPressed() {
+    storeSchedule.displaySelectedTimes();
   }
 
 }

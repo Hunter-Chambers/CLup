@@ -91,7 +91,9 @@ class StoreLogin extends StatelessWidget {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StoreEdit(),
+                builder: (context) => StoreEdit(
+                  storeProfile: storeProfile,
+                ),
               ));
         }
         break;

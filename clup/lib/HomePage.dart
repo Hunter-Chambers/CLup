@@ -1,3 +1,5 @@
+import 'package:clup/CustomerProfile/CustomerProfileController.dart';
+import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:clup/StoreProfile/StoreSignup.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -21,6 +23,25 @@ class _HomePageState extends State<HomePage> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  // holds user's username and password
+  String username = "";
+  String password = "";
+
+  // profile controllers
+  CustomerProfileController customerProfile = CustomerProfileController([
+    "username",
+    "password",
+    "email",
+    "phone",
+  ]);
+  StoreProfileController storeProfile = StoreProfileController([
+    "username",
+    "password",
+    "open_time",
+    "close_time",
+    "capacity",
+  ]);
+
   // text to appear in the sign up button
   BoxShadow signupShadow = BoxShadow(
     color: Colors.grey.withOpacity(0.5),
@@ -28,10 +49,6 @@ class _HomePageState extends State<HomePage> {
     blurRadius: 5,
     offset: Offset(5, 5),
   );
-
-  // holds user's username and password
-  String username = "";
-  String password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -275,10 +292,10 @@ class _HomePageState extends State<HomePage> {
 
   _onButtonPressed(BuildContext context, int option) {
     String customerUsername = 'customer';
-    String customerPassword = 'password';
+    String customerPassword = 'password00';
 
     String storeUsername = 'store';
-    String storePassword = 'password';
+    String storePassword = 'password00';
 
     switch (option) {
       case 1:
@@ -315,16 +332,35 @@ class _HomePageState extends State<HomePage> {
               gravity: ToastGravity.CENTER,
             );
           } else if (username == customerUsername) {
+            customerProfile.getTextController("username").text =
+                _usernameController.text;
+            customerProfile.getTextController("password").text =
+                _passwordController.text;
+            customerProfile.getTextController("email").text =
+                "random@email.com";
+            customerProfile.getTextController("phone").text =
+                "(123) 456 - 7890";
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CustomerLogin(),
+                  builder: (context) => CustomerLogin(
+                    customerController: customerProfile,
+                  ),
                 ));
           } else {
+            storeProfile.getTextController("username").text =
+                _usernameController.text;
+            storeProfile.getTextController("password").text =
+                _passwordController.text;
+            storeProfile.getTextController("open_time").text = "7:00AM";
+            storeProfile.getTextController("close_time").text = "11:00PM";
+            storeProfile.getTextController("capacity").text = "1500";
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => StoreLogin(),
+                  builder: (context) => StoreLogin(
+                    storeController: storeProfile,
+                  ),
                 ));
           }
         }

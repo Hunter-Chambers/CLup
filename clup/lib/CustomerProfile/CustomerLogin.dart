@@ -8,33 +8,19 @@ import 'QR.dart';
 
 class CustomerLogin extends StatefulWidget {
   final CustomerProfileController customerController;
-  final int snackFlag;
-  CustomerLogin({Key key, this.customerController, this.snackFlag = 0})
-      : super(key: key);
+  CustomerLogin({Key key, this.customerController}) : super(key: key);
 
   @override
   _CustomerLoginState createState() => _CustomerLoginState(
         customerController: customerController,
-        snackFlag: snackFlag,
       );
 }
 
 class _CustomerLoginState extends State<CustomerLogin> {
-  final CustomerProfileController customerController;
-  final int snackFlag;
-  _CustomerLoginState({this.customerController, this.snackFlag});
+  CustomerProfileController customerController;
+  _CustomerLoginState({this.customerController});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (snackFlag == 1) {
-      WidgetsBinding.instance
-          .addPostFrameCallback((timeStamp) => _showSnackBar());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,17 +145,21 @@ class _CustomerLoginState extends State<CustomerLogin> {
     );
   }
 
-  _onButtonPressed(BuildContext context, int option) {
+  _onButtonPressed(BuildContext context, int option) async {
     switch (option) {
       case 1:
         {
-          return Navigator.push(
+          customerController = await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => new CustomerEdit(
                   customerProfile: customerController,
                 ),
               ));
+
+          setState(() {
+            _showSnackBar();
+          });
         }
         break;
       case 2:

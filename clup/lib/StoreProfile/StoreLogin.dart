@@ -5,33 +5,19 @@ import 'ScanQR.dart';
 
 class StoreLogin extends StatefulWidget {
   final StoreProfileController storeController;
-  final int snackFlag;
-  StoreLogin({Key key, this.storeController, this.snackFlag = 0})
-      : super(key: key);
+  StoreLogin({Key key, this.storeController}) : super(key: key);
 
   @override
   _StoreLoginState createState() => _StoreLoginState(
         storeController: storeController,
-        snackFlag: snackFlag,
       );
 }
 
 class _StoreLoginState extends State<StoreLogin> {
-  final StoreProfileController storeController;
-  final int snackFlag;
-  _StoreLoginState({this.storeController, this.snackFlag});
+  StoreProfileController storeController;
+  _StoreLoginState({this.storeController});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (snackFlag == 1) {
-      WidgetsBinding.instance
-          .addPostFrameCallback((timeStamp) => _showSnackBar());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,17 +119,21 @@ class _StoreLoginState extends State<StoreLogin> {
     );
   }
 
-  _onButtonPressed(BuildContext context, int option) {
+  _onButtonPressed(BuildContext context, int option) async {
     switch (option) {
       case 1:
         {
-          return Navigator.push(
+          storeController = await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => StoreEdit(
                   storeProfile: storeController,
                 ),
               ));
+
+          setState(() {
+            _showSnackBar();
+          });
         }
         break;
       case 2:

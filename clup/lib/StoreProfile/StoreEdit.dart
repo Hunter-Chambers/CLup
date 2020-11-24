@@ -1,6 +1,6 @@
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
-import 'StoreLogin.dart';
+//import 'StoreLogin.dart';
 
 class StoreEdit extends StatefulWidget {
   final StoreProfileController storeProfile;
@@ -346,6 +346,7 @@ class _StoreEditState extends State<StoreEdit> {
           time += _closeAmPm;
           storeProfile.getTextController("close_time").text = time;
 
+          /*
           return Navigator.push(
               context,
               MaterialPageRoute(
@@ -354,6 +355,8 @@ class _StoreEditState extends State<StoreEdit> {
                   snackFlag: 1,
                 ),
               ));
+          */
+          Navigator.pop(context, storeProfile);
         }
     }
   }

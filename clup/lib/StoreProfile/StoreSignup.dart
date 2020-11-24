@@ -102,9 +102,11 @@ class _StoreSignupState extends State<StoreSignup> {
                       child: TextFormField(
                         obscureText: true,
                         validator: (String value) {
-                          if (!value.contains(storeProfile
-                                  .getTextController("password")
-                                  .text) ||
+                          if (!value.contains(new RegExp(r'^' +
+                                  storeProfile
+                                      .getTextController("password")
+                                      .text +
+                                  r'$')) ||
                               value.length <= 0) {
                             return "Passwords do not match";
                           }

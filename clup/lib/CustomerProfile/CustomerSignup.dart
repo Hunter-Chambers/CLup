@@ -95,9 +95,11 @@ class CustomerSignup extends StatelessWidget {
                       child: TextFormField(
                         obscureText: true,
                         validator: (String value) {
-                          if (!value.contains(customerProfile
-                                  .getTextController("password")
-                                  .text) ||
+                          if (!value.contains(new RegExp(r'^' +
+                                  customerProfile
+                                      .getTextController("password")
+                                      .text +
+                                  r'$')) ||
                               value.length <= 0) {
                             return "Passwords do not match";
                           }

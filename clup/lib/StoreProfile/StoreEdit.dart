@@ -34,14 +34,17 @@ class _StoreEditState extends State<StoreEdit> {
         .text
         .substring(_closeLen - 2);
 
-    storeProfile.getTextController("open_time").text = storeProfile
-        .getTextController("open_time")
-        .text
-        .substring(0, _openLen - 2);
-    storeProfile.getTextController("close_time").text = storeProfile
-        .getTextController("close_time")
-        .text
-        .substring(0, _closeLen - 2);
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      storeProfile.getTextController("open_time").text = storeProfile
+          .getTextController("open_time")
+          .text
+          .substring(0, _openLen - 2);
+      storeProfile.getTextController("close_time").text = storeProfile
+          .getTextController("close_time")
+          .text
+          .substring(0, _closeLen - 2);
+    });
+
     super.initState();
   }
 
@@ -272,9 +275,11 @@ class _StoreEditState extends State<StoreEdit> {
                         child: TextFormField(
                           obscureText: true,
                           validator: (String value) {
-                            if (!value.contains(storeProfile
-                                    .getTextController("password")
-                                    .text) ||
+                            if (!value.contains(new RegExp(r'^' +
+                                    storeProfile
+                                        .getTextController("password")
+                                        .text +
+                                    r'$')) ||
                                 value.length <= 0) {
                               return "Passwords do not match";
                             }

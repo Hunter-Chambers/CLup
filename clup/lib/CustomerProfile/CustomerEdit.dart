@@ -240,8 +240,10 @@ class CustomerEdit extends StatelessWidget {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    CustomerLogin(customerController: customerProfile),
+                builder: (context) => CustomerLogin(
+                  customerController: customerProfile,
+                  snackFlag: 1,
+                ),
               ));
         }
     }

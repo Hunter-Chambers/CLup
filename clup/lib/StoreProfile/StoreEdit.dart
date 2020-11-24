@@ -42,7 +42,7 @@ class _StoreEditState extends State<StoreEdit> {
     storeProfile.getTextController("close_time").text = storeProfile
         .getTextController("close_time")
         .text
-        .substring(0, _openLen - 2);
+        .substring(0, _closeLen - 2);
     super.initState();
   }
 
@@ -349,7 +349,10 @@ class _StoreEditState extends State<StoreEdit> {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StoreLogin(storeController: storeProfile),
+                builder: (context) => StoreLogin(
+                  storeController: storeProfile,
+                  snackFlag: 1,
+                ),
               ));
         }
     }

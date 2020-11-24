@@ -7,6 +7,8 @@ class CustomerSignup extends StatelessWidget {
   final CustomerProfileController customerProfile = CustomerProfileController([
     "username",
     "password",
+    "fname",
+    "lname",
     "email",
     "phone",
   ]);
@@ -51,7 +53,6 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Username *",
@@ -81,7 +82,6 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Password *",
@@ -103,10 +103,45 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Retype Password *",
+                        ),
+                      ),
+                    ),
+
+                    // first name field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        controller: customerProfile.getTextController("fname"),
+                        validator: (String value) {
+                          if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                            return "Must only contain ' - and letters.";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "First Name *",
+                        ),
+                      ),
+                    ),
+
+                    // last name field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        controller: customerProfile.getTextController("lname"),
+                        validator: (String value) {
+                          if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                            return "Must only contain ' - and letters.";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Last Name *",
                         ),
                       ),
                     ),
@@ -122,7 +157,6 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Email *",
@@ -142,7 +176,6 @@ class CustomerSignup extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Phone Number *",

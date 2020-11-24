@@ -31,6 +31,8 @@ class _HomePageState extends State<HomePage> {
   CustomerProfileController customerProfile = CustomerProfileController([
     "username",
     "password",
+    "fname",
+    "lname",
     "email",
     "phone",
   ]);

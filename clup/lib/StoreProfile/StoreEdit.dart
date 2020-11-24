@@ -25,8 +25,6 @@ class _StoreEditState extends State<StoreEdit> {
     final int _closeLen =
         storeProfile.getTextController("close_time").text.length;
 
-    print(storeProfile.getTextController("open_time").text);
-
     _openAmPm = storeProfile
         .getTextController("open_time")
         .text
@@ -73,79 +71,6 @@ class _StoreEditState extends State<StoreEdit> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       //
-                      // username field
-                      Container(
-                        margin: EdgeInsets.only(bottom: 20),
-                        child: TextFormField(
-                          controller:
-                              storeProfile.getTextController("username"),
-                          validator: (String value) {
-                            if (value.length <= 0) {
-                              return "Invalid username";
-                            }
-                            if (value.contains(
-                                new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
-                              return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Username *",
-                          ),
-                        ),
-                      ),
-
-                      // password field
-                      Container(
-                        margin: EdgeInsets.only(bottom: 20),
-                        child: TextFormField(
-                          obscureText: true,
-                          controller:
-                              storeProfile.getTextController("password"),
-                          validator: (String value) {
-                            if (value.length < 10) {
-                              return "Must be at least 10 characters";
-                            }
-                            if (value.contains(
-                                new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
-                              return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
-                            }
-                            if (value.contains(storeProfile
-                                .getTextController("username")
-                                .text)) {
-                              return "Must not contain the username";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Password *",
-                          ),
-                        ),
-                      ),
-
-                      // password check field
-                      Container(
-                        margin: EdgeInsets.only(bottom: 20),
-                        child: TextFormField(
-                          obscureText: true,
-                          validator: (String value) {
-                            if (!value.contains(storeProfile
-                                    .getTextController("password")
-                                    .text) ||
-                                value.length <= 0) {
-                              return "Passwords do not match";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: "Retype Password *",
-                          ),
-                        ),
-                      ),
-
                       // holds the hours information
                       Row(
                         children: <Widget>[
@@ -308,6 +233,56 @@ class _StoreEditState extends State<StoreEdit> {
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Store Capacity *",
+                          ),
+                        ),
+                      ),
+
+                      // password field
+                      Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: TextFormField(
+                          obscureText: true,
+                          controller:
+                              storeProfile.getTextController("password"),
+                          validator: (String value) {
+                            if (value.length < 10) {
+                              return "Must be at least 10 characters";
+                            }
+                            if (value.contains(
+                                new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
+                              return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
+                            }
+                            if (value.contains(storeProfile
+                                .getTextController("username")
+                                .text)) {
+                              return "Must not contain the username";
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Password *",
+                          ),
+                        ),
+                      ),
+
+                      // password check field
+                      Container(
+                        margin: EdgeInsets.only(bottom: 20),
+                        child: TextFormField(
+                          obscureText: true,
+                          validator: (String value) {
+                            if (!value.contains(storeProfile
+                                    .getTextController("password")
+                                    .text) ||
+                                value.length <= 0) {
+                              return "Passwords do not match";
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            border: OutlineInputBorder(),
+                            labelText: "Retype Password *",
                           ),
                         ),
                       ),

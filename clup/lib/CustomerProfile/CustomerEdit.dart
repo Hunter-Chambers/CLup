@@ -29,26 +29,75 @@ class CustomerEdit extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     //
-                    // username field
+                    // first name field
                     Container(
                       margin: EdgeInsets.only(bottom: 20),
                       child: TextFormField(
-                        controller:
-                            customerProfile.getTextController("username"),
+                        controller: customerProfile.getTextController("fname"),
                         validator: (String value) {
-                          if (value.length < 5 || value.length > 15) {
-                            return "Must be 5-15 characters";
-                          }
-                          if (value.contains(
-                              new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
-                            return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
+                          if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                            return "Must only contain ' - and letters.";
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
-                          labelText: "Username *",
+                          labelText: "First Name *",
+                        ),
+                      ),
+                    ),
+
+                    // last name field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        controller: customerProfile.getTextController("lname"),
+                        validator: (String value) {
+                          if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                            return "Must only contain ' - and letters.";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Last Name *",
+                        ),
+                      ),
+                    ),
+
+                    // email field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        controller: customerProfile.getTextController("email"),
+                        validator: (String value) {
+                          if (!value.contains(new RegExp(r'.+@.+\..+'))) {
+                            return "Must be a valid email address";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Email *",
+                        ),
+                      ),
+                    ),
+
+                    // phone field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        controller: customerProfile.getTextController("phone"),
+                        validator: (String value) {
+                          if (!(value.contains(new RegExp(
+                              r'^\({0,1}[0-9][0-9][0-9]\){0,1}[ -]{0,1}[0-9][0-9][0-9] {0,1}-{0,1} {0,1}[0-9][0-9][0-9][0-9]$')))) {
+                            return "Must contain a valid phone number";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Phone Number *",
                         ),
                       ),
                     ),
@@ -75,7 +124,6 @@ class CustomerEdit extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Password *",
@@ -97,49 +145,9 @@ class CustomerEdit extends StatelessWidget {
                           }
                           return null;
                         },
-                        //autovalidateMode: AutovalidateMode.always,
                         decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           labelText: "Retype Password *",
-                        ),
-                      ),
-                    ),
-
-                    // email field
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: TextFormField(
-                        controller: customerProfile.getTextController("email"),
-                        validator: (String value) {
-                          if (!value.contains(new RegExp(r'.+@.+\..+'))) {
-                            return "Must be a valid email address";
-                          }
-                          return null;
-                        },
-                        //autovalidateMode: AutovalidateMode.always,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "Email *",
-                        ),
-                      ),
-                    ),
-
-                    // phone field
-                    Container(
-                      margin: EdgeInsets.only(bottom: 20),
-                      child: TextFormField(
-                        controller: customerProfile.getTextController("phone"),
-                        validator: (String value) {
-                          if (!(value.contains(new RegExp(
-                              r'^\({0,1}[0-9][0-9][0-9]\){0,1}[ -]{0,1}[0-9][0-9][0-9] {0,1}-{0,1} {0,1}[0-9][0-9][0-9][0-9]$')))) {
-                            return "Must contain a valid phone number";
-                          }
-                          return null;
-                        },
-                        //autovalidateMode: AutovalidateMode.always,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "Phone Number *",
                         ),
                       ),
                     ),

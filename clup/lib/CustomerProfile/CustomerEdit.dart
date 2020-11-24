@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'CustomerLogin.dart';
 import 'CustomerProfileController.dart';
 
 class CustomerEdit extends StatelessWidget {
@@ -238,16 +237,6 @@ class CustomerEdit extends StatelessWidget {
 
           customerProfile.getTextController("phone").text = phone;
 
-          /*
-          return Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CustomerLogin(
-                  customerController: customerProfile,
-                  snackFlag: 1,
-                ),
-              ));
-          */
           Navigator.pop(context, customerProfile);
         }
     }

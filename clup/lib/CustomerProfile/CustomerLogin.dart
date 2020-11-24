@@ -126,7 +126,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
   }
 
   _showSnackBar() {
-    _scaffoldKey.currentState?.showSnackBar(
+    _scaffoldKey.currentState.showSnackBar(
       new SnackBar(
         content: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -146,10 +146,11 @@ class _CustomerLoginState extends State<CustomerLogin> {
   }
 
   _onButtonPressed(BuildContext context, int option) async {
+    _scaffoldKey.currentState.removeCurrentSnackBar();
     switch (option) {
       case 1:
         {
-          customerController = await Navigator.push(
+          CustomerProfileController result = await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => new CustomerEdit(
@@ -157,9 +158,12 @@ class _CustomerLoginState extends State<CustomerLogin> {
                 ),
               ));
 
-          setState(() {
-            _showSnackBar();
-          });
+          if (result != null) {
+            customerController = result;
+            setState(() {
+              _showSnackBar();
+            });
+          }
         }
         break;
       case 2:

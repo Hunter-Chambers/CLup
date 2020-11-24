@@ -100,7 +100,7 @@ class _StoreLoginState extends State<StoreLogin> {
   }
 
   _showSnackBar() {
-    _scaffoldKey.currentState?.showSnackBar(
+    _scaffoldKey.currentState.showSnackBar(
       new SnackBar(
         content: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -120,10 +120,11 @@ class _StoreLoginState extends State<StoreLogin> {
   }
 
   _onButtonPressed(BuildContext context, int option) async {
+    _scaffoldKey.currentState.removeCurrentSnackBar();
     switch (option) {
       case 1:
         {
-          storeController = await Navigator.push(
+          StoreProfileController result = await Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => StoreEdit(
@@ -131,9 +132,12 @@ class _StoreLoginState extends State<StoreLogin> {
                 ),
               ));
 
-          setState(() {
-            _showSnackBar();
-          });
+          if (result != null) {
+            storeController = result;
+            setState(() {
+              _showSnackBar();
+            });
+          }
         }
         break;
       case 2:

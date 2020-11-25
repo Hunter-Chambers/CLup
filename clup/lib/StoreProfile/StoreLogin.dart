@@ -17,32 +17,42 @@ class _StoreLoginState extends State<StoreLogin> {
   StoreProfileController storeController;
   _StoreLoginState({this.storeController});
 
+  // call scaffoldKey in order to show snackbar
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+
+      // color for the whole page
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
+
       body: Center(
+        // center white box
         child: Container(
           color: Colors.white,
           height: 500,
           width: 700,
+
+          // holds all the info on the page
           child: ListView(
             children: <Widget>[
+              // page title
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: Text(
-                  'Store Login Page',
+                  'Store Profile Page',
                   style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+
+              // profile info listed
               Container(
                 alignment: Alignment.center,
                 child: Text(
@@ -59,13 +69,18 @@ class _StoreLoginState extends State<StoreLogin> {
                       "\n",
                 ),
               ),
+
+              // horizontal divider
               Container(
-                  alignment: Alignment.center,
-                  child: Divider(
-                    thickness: 3,
-                    indent: 30,
-                    endIndent: 30,
-                  )),
+                alignment: Alignment.center,
+                child: Divider(
+                  thickness: 3,
+                  indent: 30,
+                  endIndent: 30,
+                ),
+              ),
+
+              // edit info button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
                 child: FloatingActionButton.extended(
@@ -79,6 +94,8 @@ class _StoreLoginState extends State<StoreLogin> {
                   ),
                 ),
               ),
+
+              // scan QR code button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
                 child: FloatingActionButton.extended(

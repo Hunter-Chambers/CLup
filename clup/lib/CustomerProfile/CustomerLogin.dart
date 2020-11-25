@@ -20,52 +20,68 @@ class _CustomerLoginState extends State<CustomerLogin> {
   CustomerProfileController customerController;
   _CustomerLoginState({this.customerController});
 
+  // call scaffoldKey in order to show snackbar
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+
+      // color for the whole page
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
+
       body: Center(
+        // center white box
         child: Container(
           color: Colors.white,
           height: 500,
           width: 700,
+
+          // holds all the info on the page
           child: ListView(
             children: <Widget>[
+              // page title
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: Text(
-                  'Customer Login Page',
+                  'Customer Profile Page',
                   style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+
+              // profile info listed
               Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Username: ' +
-                        customerController.getTextController('username').text +
-                        '\n' +
-                        'Email: ' +
-                        customerController.getTextController('email').text +
-                        '\n' +
-                        'Phone Number: ' +
-                        customerController.getTextController('phone').text +
-                        '\n',
-                  )),
+                alignment: Alignment.center,
+                child: Text(
+                  'Username: ' +
+                      customerController.getTextController('username').text +
+                      '\n' +
+                      'Email: ' +
+                      customerController.getTextController('email').text +
+                      '\n' +
+                      'Phone Number: ' +
+                      customerController.getTextController('phone').text +
+                      '\n',
+                ),
+              ),
+
+              // horizontal divider
               Container(
-                  alignment: Alignment.center,
-                  child: Divider(
-                    thickness: 3,
-                    indent: 30,
-                    endIndent: 30,
-                  )),
+                alignment: Alignment.center,
+                child: Divider(
+                  thickness: 3,
+                  indent: 30,
+                  endIndent: 30,
+                ),
+              ),
+
+              // edit info button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
@@ -79,6 +95,8 @@ class _CustomerLoginState extends State<CustomerLogin> {
                   ),
                 ),
               ),
+
+              // favorite a store button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
@@ -92,6 +110,8 @@ class _CustomerLoginState extends State<CustomerLogin> {
                   ),
                 ),
               ),
+
+              // schedule a visit button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(
@@ -105,6 +125,8 @@ class _CustomerLoginState extends State<CustomerLogin> {
                   ),
                 ),
               ),
+
+              // QR code button
               Container(
                 padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
                 child: FloatingActionButton.extended(

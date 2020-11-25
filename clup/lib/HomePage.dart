@@ -42,6 +42,10 @@ class _HomePageState extends State<HomePage> {
     "open_time",
     "close_time",
     "capacity",
+    "address",
+    "city",
+    "state",
+    "zipcode",
   ]);
 
   // text to appear in the sign up button
@@ -357,6 +361,11 @@ class _HomePageState extends State<HomePage> {
             storeProfile.getTextController("open_time").text = "7:00AM";
             storeProfile.getTextController("close_time").text = "11:00PM";
             storeProfile.getTextController("capacity").text = "1500";
+            storeProfile.getTextController("address").text =
+                "1234 Random Street";
+            storeProfile.getTextController("city").text = "Amarillo";
+            storeProfile.getTextController("state").text = "TX";
+            storeProfile.getTextController("zipcode").text = "79124";
             Navigator.push(
                 context,
                 MaterialPageRoute(

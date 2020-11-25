@@ -19,6 +19,7 @@ class _StoreEditState extends State<StoreEdit> {
   String _openAmPm = "";
   String _closeAmPm = "";
 
+  // this method gets called before build
   initState() {
     final int _openLen =
         storeProfile.getTextController("open_time").text.length;
@@ -34,6 +35,7 @@ class _StoreEditState extends State<StoreEdit> {
         .text
         .substring(_closeLen - 2);
 
+    // everything inside of here gets called after build
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       storeProfile.getTextController("open_time").text = storeProfile
           .getTextController("open_time")
@@ -50,6 +52,8 @@ class _StoreEditState extends State<StoreEdit> {
 
   @override
   Widget build(BuildContext context) {
+    // what gets called when the
+    // the back button is used
     return WillPopScope(
       onWillPop: () async {
         _onButtonPressed(context, 2);
@@ -73,7 +77,95 @@ class _StoreEditState extends State<StoreEdit> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      //
+                      // holds the store address info fields
+                      Row(
+                        children: <Widget>[
+                          // store address field
+                          Container(
+                            width: 180,
+                            margin: EdgeInsets.only(right: 25, bottom: 20),
+                            child: TextFormField(
+                              controller:
+                                  storeProfile.getTextController("address"),
+                              validator: (String value) {
+                                if (!value.contains(new RegExp(
+                                    r"^([0-9])+ ([ a-zA-Z0-9'-])+$"))) {
+                                  return "Must be a valid\nstreet address";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "Store Street Address *",
+                              ),
+                            ),
+                          ),
+
+                          // city field
+                          Container(
+                            width: 150,
+                            margin: EdgeInsets.only(right: 25, bottom: 20),
+                            child: TextFormField(
+                              controller:
+                                  storeProfile.getTextController("city"),
+                              validator: (String value) {
+                                if (!value.contains(
+                                    new RegExp(r"^([ a-zA-Z'-])+$"))) {
+                                  return "Must be a valid\ncity name.";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "City *",
+                              ),
+                            ),
+                          ),
+
+                          // state field
+                          Container(
+                            width: 70,
+                            margin: EdgeInsets.only(right: 25, bottom: 20),
+                            child: TextFormField(
+                              controller:
+                                  storeProfile.getTextController("state"),
+                              validator: (String value) {
+                                if (!value.contains(
+                                    new RegExp(r"^([a-zA-Z]){2,2}$"))) {
+                                  return "Must be\nin the\nform XX.";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "State *",
+                              ),
+                            ),
+                          ),
+
+                          // zip field
+                          Container(
+                            width: 100,
+                            margin: EdgeInsets.only(bottom: 20),
+                            child: TextFormField(
+                              controller:
+                                  storeProfile.getTextController("zipcode"),
+                              validator: (String value) {
+                                if (!value
+                                    .contains(new RegExp(r"^([0-9]){5,5}$"))) {
+                                  return "Must be a\nvalid zip code.";
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(),
+                                labelText: "Zip Code *",
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+
                       // holds the hours information
                       Row(
                         children: <Widget>[
@@ -334,6 +426,9 @@ class _StoreEditState extends State<StoreEdit> {
     time = storeProfile.getTextController("close_time").text;
     time += _closeAmPm;
     storeProfile.getTextController("close_time").text = time;
+
+    storeProfile.getTextController("state").text =
+        storeProfile.getTextController("state").text.toUpperCase();
 
     switch (option) {
       case 1:

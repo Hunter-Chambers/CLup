@@ -17,6 +17,10 @@ class _StoreSignupState extends State<StoreSignup> {
     "open_time",
     "close_time",
     "capacity",
+    "address",
+    "city",
+    "state",
+    "zipcode",
   ]);
 
   // helps validate the form
@@ -117,6 +121,112 @@ class _StoreSignupState extends State<StoreSignup> {
                           labelText: "Retype Password *",
                         ),
                       ),
+                    ),
+
+                    // store name field
+                    Container(
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: TextFormField(
+                        //controller:
+                        //storeProfile.getTextController("store_name"),
+                        validator: (String value) {
+                          if (!value
+                              .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
+                            return "Must only contain ' - and letters.";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Store Name *",
+                        ),
+                      ),
+                    ),
+
+                    Row(
+                      children: <Widget>[
+                        // store address field
+                        Container(
+                          width: 180,
+                          margin: EdgeInsets.only(right: 25, bottom: 20),
+                          child: TextFormField(
+                            controller:
+                                storeProfile.getTextController("address"),
+                            validator: (String value) {
+                              if (!value.contains(new RegExp(
+                                  r"^([0-9])+ ([ a-zA-Z0-9'-])+$"))) {
+                                return "Must be a valid\nstreet address";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Store Street Address *",
+                            ),
+                          ),
+                        ),
+
+                        // city field
+                        Container(
+                          width: 150,
+                          margin: EdgeInsets.only(right: 25, bottom: 20),
+                          child: TextFormField(
+                            controller: storeProfile.getTextController("city"),
+                            validator: (String value) {
+                              if (!value
+                                  .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
+                                return "Must be a valid\ncity name.";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "City *",
+                            ),
+                          ),
+                        ),
+
+                        // state field
+                        Container(
+                          width: 70,
+                          margin: EdgeInsets.only(right: 25, bottom: 20),
+                          child: TextFormField(
+                            controller: storeProfile.getTextController("state"),
+                            validator: (String value) {
+                              if (!value
+                                  .contains(new RegExp(r"^([a-zA-Z]){2,2}$"))) {
+                                return "Must be\nin the\nform XX.";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "State *",
+                            ),
+                          ),
+                        ),
+
+                        // zip field
+                        Container(
+                          width: 100,
+                          margin: EdgeInsets.only(bottom: 20),
+                          child: TextFormField(
+                            controller:
+                                storeProfile.getTextController("zipcode"),
+                            validator: (String value) {
+                              if (!value
+                                  .contains(new RegExp(r"^([0-9]){5,5}$"))) {
+                                return "Must be a\nvalid zip code.";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Zip Code *",
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
 
                     // holds the hours information
@@ -326,6 +436,9 @@ class _StoreSignupState extends State<StoreSignup> {
           time = storeProfile.getTextController("close_time").text;
           time += _closeAmPm;
           storeProfile.getTextController("close_time").text = time;
+
+          storeProfile.getTextController("state").text =
+              storeProfile.getTextController("state").text.toUpperCase();
 
           return Navigator.push(
               context,

@@ -136,7 +136,8 @@ class CustomerSignup extends StatelessWidget {
                       child: TextFormField(
                         controller: customerProfile.getTextController("lname"),
                         validator: (String value) {
-                          if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                          if (!value
+                              .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
                             return "Must only contain ' - and letters.";
                           }
                           return null;

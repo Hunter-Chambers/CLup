@@ -147,14 +147,14 @@ class _CustomerLoginState extends State<CustomerLogin> {
     );
   }
 
-  _showSnackBar() {
+  _showSnackBar(String message) {
     _scaffoldKey.currentState.showSnackBar(
       new SnackBar(
         content: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Updated changes successfully.",
+              message,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -183,7 +183,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
           if (result != null) {
             customerController = result;
             setState(() {
-              _showSnackBar();
+              _showSnackBar('Updated changes successfully.');
             });
           }
         }

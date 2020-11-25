@@ -342,6 +342,8 @@ class _HomePageState extends State<HomePage> {
                 _usernameController.text;
             customerProfile.getTextController("password").text =
                 _passwordController.text;
+            customerProfile.getTextController("fname").text = "FirstName";
+            customerProfile.getTextController("lname").text = "LastName";
             customerProfile.getTextController("email").text =
                 "random@email.com";
             customerProfile.getTextController("phone").text =

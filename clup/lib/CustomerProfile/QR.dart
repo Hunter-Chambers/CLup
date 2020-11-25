@@ -1,22 +1,47 @@
+import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 
 class QR extends StatefulWidget {
+  final CustomerProfileController customerProfile;
+  QR({Key key, this.customerProfile}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => QRState();
+  _QRState createState() => _QRState(customerProfile: customerProfile);
 }
 
-class QRState extends State<QR> {
-  GlobalKey globalKey = new GlobalKey();
+class _QRState extends State<QR> {
+  final CustomerProfileController customerProfile;
+  _QRState({this.customerProfile});
 
-  var qrDataArray = [
-    "QR Code 1;Store 1",
-    "QR Code 2;Store 2",
-    "QR Code 3;Store 3"
-  ];
-  var qrIndex = 0;
+  final List<String> dropDownItems = List<String>();
+  String dropDownValue = "";
+  int qrIndex = 0;
+
+  // updates the class variables appropriately
+  // when the page is first loaded
+  @override
+  void initState() {
+    super.initState();
+
+    // adding a visit for testing
+    customerProfile.addvisit('7:30AM - 8:30AM;' +
+        customerProfile.getTextController("username").text +
+        ';' +
+        customerProfile.getTextController("email").text +
+        ';Walmart;1701 N 23rd St;Canyon;TX;79015');
+
+    // fill dropDownItems correctly
+    for (String visit in customerProfile.visits) {
+      List<String> info = visit.split(';');
+      dropDownItems.add(info[0] + "\n" + info[3]);
+    }
+
+    // correctly initialize dropDownValue
+    dropDownValue = dropDownItems[qrIndex];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +53,10 @@ class QRState extends State<QR> {
     );
   }
 
+  // holds everything in the page
   _contentWidget() {
     final bodyHeight = MediaQuery.of(context).size.height -
         MediaQuery.of(context).viewInsets.bottom;
-    final RegExp regex = new RegExp(r".+(?=;)");
-    //print(regex.firstMatch(qrDataArray[1]).group(0));
     return Container(
       color: const Color(0xFFFFFFFF),
       child: Column(
@@ -46,27 +70,27 @@ class QRState extends State<QR> {
             ),
           ),
           DropdownButton(
-            value: regex.stringMatch(qrDataArray[qrIndex]),
+            itemHeight: 75,
+            value: dropDownValue,
             //icon
             onChanged: (String newValue) {
               setState(() {
-                qrIndex =
-                    int.parse(newValue.substring(newValue.length - 1)) - 1;
+                dropDownValue = newValue;
+                qrIndex = dropDownItems.indexOf(newValue);
               });
             }, // onChanged
-            items: qrDataArray.map<DropdownMenuItem<String>>((String value) {
+            items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
-                value: regex.stringMatch(value),
-                child: Text(regex.stringMatch(value)),
+                value: value,
+                child: Text(value),
               );
             }).toList(), // items
           ),
           Expanded(
             child: Center(
               child: RepaintBoundary(
-                key: globalKey,
                 child: QrImage(
-                  data: qrDataArray[qrIndex].split(";")[1],
+                  data: customerProfile.visits[qrIndex],
                   size: 0.5 * bodyHeight,
                   errorStateBuilder: (context, err) {
                     return Container(

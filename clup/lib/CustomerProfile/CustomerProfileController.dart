@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class CustomerProfileController {
   Map<String, TextEditingController> fieldsMap;
   List<String> favoriteStores;
-  String infoQR;
+  List<String> visits;
 
   CustomerProfileController(List<String> fields) {
     fieldsMap = new Map<String, TextEditingController>();
@@ -13,6 +13,9 @@ class CustomerProfileController {
     }
 
     favoriteStores = ['Walmart', 'Albertsons', 'Walgreens'];
+    visits = [
+      'visit_time;customer_username;customer_contact;store_name;address;city;state;zipcode',
+    ];
   }
 
   TextEditingController getTextController(String key) {
@@ -27,7 +30,11 @@ class CustomerProfileController {
     fieldsMap[key].dispose();
   }
 
-  addQRinfo(String moreInfo) {
-    infoQR += moreInfo;
+  addvisit(String visitInfo) {
+    visits.add(visitInfo);
+  }
+
+  removeVisit(int index) {
+    visits.removeAt(index);
   }
 }

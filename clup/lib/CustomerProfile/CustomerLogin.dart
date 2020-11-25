@@ -215,7 +215,9 @@ class _CustomerLoginState extends State<CustomerLogin> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => QR(),
+                builder: (context) => QR(
+                  customerProfile: customerController,
+                ),
               ));
         }
         break;

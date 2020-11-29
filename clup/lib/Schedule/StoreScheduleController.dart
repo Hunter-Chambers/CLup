@@ -53,7 +53,9 @@ class StoreScheduleController {
     fieldsMap[key].dispose();
   }
 
-  updateSelectedTimes(int index, String time){
+  bool updateSelectedTimes(int index, String time){
+
+    bool timesUpdated = true;
 
     // check if adding first time    
     if (selectedTimes.length == 0) {
@@ -62,7 +64,18 @@ class StoreScheduleController {
 
     // remove selected time if already exists
     else if (selectedTimes.containsKey(index)) {
-      selectedTimes.remove(index);
+      if (selectedTimes.keys.last == index)
+        selectedTimes.remove(index);
+      else {
+
+        Fluttertoast.showToast(
+          msg: 'Can only remove last selected time.',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          webPosition: 'center',
+          );
+        timesUpdated = false;
+      }
     }
     
     else {
@@ -82,23 +95,29 @@ class StoreScheduleController {
           msg: 'Please only select consecutive time slots.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
+          webPosition: 'center',
         );
+        timesUpdated = false;
 
       }
+
     }
 
+      return timesUpdated;
   }
 
   displaySelectedTimes() {
     String output = '';
     selectedTimes.forEach( (key, value) {
-      output += value + ' ';
+      output += value + ' | ' ;
     });
 
+   if (output == '') output = 'Please select one or more consecutive times.';
    Fluttertoast.showToast(
      msg: output,
      gravity: ToastGravity.BOTTOM,
      toastLength: Toast.LENGTH_SHORT,
+     webPosition: 'center',
    );
 
   }

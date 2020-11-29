@@ -1,9 +1,10 @@
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../StoreSearch/StatesView.dart';
 import 'StoreScheduleView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
+import 'package:flutter/rendering.dart';
 
 class ScheduleVisit extends StatelessWidget{
   CustomerProfileController customerProfile;
@@ -168,22 +169,36 @@ class ScheduleVisit extends StatelessWidget{
   
   _onButtonPressed(BuildContext context, int option){
 
-    switch(option){
-      case 1: {
-        return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StatesView(),
-          )
-        );
+    if ( storeSchedule.getTextController('Store').text != '') {
+      switch(option){
+        case 1: {
+          return Navigator.push(context, MaterialPageRoute(
+            builder: (context) => StatesView(),
+            )
+          );
+        }
+        break;
+        case 2: {
+          return Navigator.push(context, MaterialPageRoute(
+            builder: (context) => StoreScheduleView(scheduleController: storeSchedule),
+            )
+          );
+        }
+        break;
       }
-      break;
-      case 2: {
-        return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => StoreScheduleView(scheduleController: storeSchedule),
-          )
-        );
-      }
-      break;
+
     }
+
+    else {
+
+      Fluttertoast.showToast(
+        msg: 'Please select a store.',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        webPosition: 'center',
+      );
+    }
+    
     return null;
   } 
 

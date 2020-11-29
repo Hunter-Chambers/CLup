@@ -54,8 +54,10 @@ class DisplayTimeSlots extends StatelessWidget{
       : this.index = passIndex, this.storeSchedule = scheduleController;
    bool _isSelected = false; 
 
-   void updateSelection(){
-     setState(() {_isSelected = !_isSelected;});
+   void updateSelection(String time, bool timesUpdated){
+     setState(() {
+       if (timesUpdated) _isSelected = !_isSelected;
+       });
    }
    @override
    Widget build(BuildContext context) {
@@ -65,10 +67,10 @@ class DisplayTimeSlots extends StatelessWidget{
               border: Border.all(color: Colors.black)),
               child: 
                ListTile(
-                   //hoverColor: Colors.lightBlueAccent,
+                   hoverColor: Colors.lightBlueAccent,
                    selectedTileColor: Colors.grey,
                    enabled: storeSchedule.getAvailable(time),
-                   tileColor: Colors.white,
+                   //tileColor: Colors.white,
                    selected: _isSelected,
                    title: Text(
                      _displayTime(),
@@ -88,13 +90,8 @@ class DisplayTimeSlots extends StatelessWidget{
 
 
   _onTapped(String time){
-    updateSelection();
-    storeSchedule.updateSelectedTimes(index, time);
-    Fluttertoast.showToast(
-      msg: time + ' was selected.',
-      gravity: ToastGravity.BOTTOM,
-      toastLength: Toast.LENGTH_SHORT,
-      );
+    bool timesUpdated = storeSchedule.updateSelectedTimes(index, time);
+    updateSelection(time, timesUpdated);
   }
 
 

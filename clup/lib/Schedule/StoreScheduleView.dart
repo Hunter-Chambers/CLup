@@ -12,40 +12,49 @@ class StoreScheduleView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
-      body: Column(
-        textDirection: TextDirection.ltr,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-            child: Text(
-              storeSchedule.getTextController('Store').text,
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-              ) ,
-            )
-          ),
-
-          DisplayTimeSlots(scheduleController: storeSchedule,),
-
-                    Container(
-            child: Divider(
-            )
-          ),
-
-          Container(
-            child: FloatingActionButton.extended(
-              heroTag: 'SchedTimesBtn',
-              onPressed: () => _onButtonPressed(),
-              label: Text(
-                'Schedule Times',
+      body: Center(
+        child: Container (
+          color: Colors.white,
+          alignment: Alignment.center,
+          height: 800,
+          width: 1000,
+          child: Column(
+            textDirection: TextDirection.ltr,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                child: Text(
+                  storeSchedule.getTextController('Store').text,
+                  style: TextStyle(
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
+                  ) ,
+                )
               ),
-            )
-          )
-        ],
+
+              DisplayTimeSlots(scheduleController: storeSchedule,),
+
+                        Container(
+                child: Divider(
+                )
+              ),
+
+              Container(
+                child: FloatingActionButton.extended(
+                  heroTag: 'SchedTimesBtn',
+                  onPressed: () => _onButtonPressed(),
+                  label: Text(
+                    'Schedule Times',
+                  ),
+                )
+              )
+            ],
+          ),
+        )
       ),
+        
     );
   }
 

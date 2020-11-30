@@ -7,11 +7,11 @@ import '../CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/rendering.dart';
 
 class ScheduleVisit extends StatelessWidget{
-  CustomerProfileController customerProfile;
+  final CustomerProfileController customerProfile;
   ScheduleVisit({Key key, CustomerProfileController customerController, }) 
       : this.customerProfile = customerController, super(key: key);
     final _scrollController = ScrollController();
-    StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
+    final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
   @override
   Widget build(BuildContext context) {
     List<String> entries = customerProfile.favoriteStores;
@@ -74,15 +74,14 @@ class ScheduleVisit extends StatelessWidget{
                             itemCount: entries.length,
                             itemBuilder: (BuildContext context, int index) {
                               return Container (
-                                height: 50,
-                                width: 200,
                                 decoration: BoxDecoration(
                                   border: Border.all(color: Colors.black)),
                                 child: ListTile(
                                 tileColor: Colors.white,
                                 title: Text(
-                                  '${entries[index]}',
+                                  '${entries[index].split(", ").first}',
                                   textAlign: TextAlign.center,
+                                  style: TextStyle(fontWeight: FontWeight.bold)
                                   ),
                                 onTap: () => _onTapped(entries[index]),
                               )
@@ -172,7 +171,7 @@ class ScheduleVisit extends StatelessWidget{
     if ( storeSchedule.getTextController('Store').text != '') {
       switch(option){
         case 1: {
-          return Navigator.push(context, MaterialPageRoute(
+          Navigator.push(context, MaterialPageRoute(
             builder: (context) => StatesView(),
             )
           );
@@ -180,7 +179,7 @@ class ScheduleVisit extends StatelessWidget{
         break;
         case 2: {
           return Navigator.push(context, MaterialPageRoute(
-            builder: (context) => StoreScheduleView(scheduleController: storeSchedule),
+            builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerProfile: customerProfile,),
             )
           );
         }

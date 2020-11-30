@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
+import 'CustomerLogin.dart';
 
 class QR extends StatefulWidget {
   final CustomerProfileController customerProfile;
@@ -27,11 +28,13 @@ class _QRState extends State<QR> {
     super.initState();
 
     // adding a visit for testing
+    /*
     customerProfile.addvisit('7:30AM - 8:30AM;' +
         customerProfile.getTextController("username").text +
         ';' +
         customerProfile.getTextController("email").text +
         ';Walmart;1701 N 23rd St;Canyon;TX;79015');
+        */
 
     // fill dropDownItems correctly
     for (String visit in customerProfile.visits) {
@@ -102,9 +105,25 @@ class _QRState extends State<QR> {
                 ),
               ),
             ),
+          ),
+          FloatingActionButton.extended(
+            heroTag: 'RetLogBtn',
+            onPressed: () => _onButtonPressed(context),
+            label: Text(
+              "To Profile Page",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+              )
+            ),
           )
         ],
       ),
+    );
+  }
+  _onButtonPressed(BuildContext context){
+    Navigator.push(context, MaterialPageRoute(
+      builder: (context) => CustomerLogin(customerController: customerProfile),
+      )
     );
   }
 }

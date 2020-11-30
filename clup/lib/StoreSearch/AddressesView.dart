@@ -8,8 +8,8 @@ import '../CustomerProfile/CustomerProfileController.dart';
 class AddressesView extends StatelessWidget {
   static const String _title = 'Select an Address';
   static const String _label = 'Addresses';
-  SearchStoresController menuItems;
-  CustomerProfileController customerProfile;
+  final SearchStoresController menuItems;
+  final CustomerProfileController customerProfile;
   AddressesView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
       : this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
 
@@ -79,7 +79,7 @@ class AddressesView extends StatelessWidget {
                       heroTag: 'RetLogBtn',
                       onPressed: () => _onButtonPressed(context, 2),
                       label: Text(
-                        "To Login Page",
+                        "To Profile Page",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         )

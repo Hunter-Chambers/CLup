@@ -8,8 +8,8 @@ import '../CustomerProfile/CustomerProfileController.dart';
 class CitiesView extends StatelessWidget {
   static const String _title = 'Select a City';
   static const String _label = 'Cities';
-  SearchStoresController menuItems;
-  CustomerProfileController customerProfile;
+  final SearchStoresController menuItems;
+  final CustomerProfileController customerProfile;
   CitiesView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
     : this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
 

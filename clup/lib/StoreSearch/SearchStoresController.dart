@@ -43,11 +43,11 @@ class SearchStoresController {
 
     switch (key) {
       case 'Oklahoma': {
-        dropDownMenus['Cities'] = ['Norman', 'Stillwater', 'OK City'];
+        dropDownMenus['Cities'] = ['Norman', 'Stillwater', 'Oklahoma City'];
       }
       break;
       case 'New Mexico': {
-        dropDownMenus['Cities'] = ['Albuquergue', 'Santa Fe', 'Angel Fire'];
+        dropDownMenus['Cities'] = ['Albuquerque', 'Santa Fe', 'Angel Fire'];
       }
       break;
     }

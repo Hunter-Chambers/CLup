@@ -153,12 +153,14 @@ class StoreScheduleController {
 
     // remove selected time if already exists
     else if (selectedTimes.containsKey(index)) {
-      if (selectedTimes.keys.last == index)
+      List<int> keys = selectedTimes.keys.toList();
+      keys.sort();
+      if (keys.first == index || keys.last == index)
         selectedTimes.remove(index);
       else {
 
         Fluttertoast.showToast(
-          msg: 'Can only remove last selected time.',
+          msg: 'Selected time slots must be consecutive.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           webPosition: 'center',

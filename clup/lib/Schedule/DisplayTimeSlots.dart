@@ -53,7 +53,7 @@ class DisplayTimeSlots extends StatelessWidget{
    _StatefulListTileState({int passIndex, StoreScheduleController scheduleController,}) 
       : this.index = passIndex, this.storeSchedule = scheduleController;
    bool _isSelected = false; 
-   Color _color = Colors.white;
+   Color _color;
 
    void updateSelection(String time, bool timesUpdated){
      setState(() {
@@ -69,6 +69,7 @@ class DisplayTimeSlots extends StatelessWidget{
               child: 
                ListTile(
                    selectedTileColor: Colors.blue,
+                   hoverColor: Colors.purple,
                    enabled: storeSchedule.getAvailable(time),
                    tileColor: _setColor(),
                    selected: _isSelected,

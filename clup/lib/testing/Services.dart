@@ -3,8 +3,7 @@ import 'package:http/http.dart' as http;
 import 'Employee.dart';
 
 class Services {
-  static const ROOT =
-      "http://10.0.6.1/exports/home/le1010274/CLupDatabase/database.php";
+  static const ROOT = "http://10.0.6.1/[PATH_TO_SCRIPT]/database.php";
   static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   static const _GET_ALL_ACTION = "GET_ALL";
   static const _ADD_REC_ACTION = "ADD_REC";

@@ -9,22 +9,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:clup/main.dart';
+import 'package:clup/HomePage.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(WebApp());
+  testWidgets('Homepage Login Test', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: HomePage(title: "CLup Home Page"),
+      ),
+    );
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    final Finder loginBtnFinder =
+        find.widgetWithText(FloatingActionButton, "Login");
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    final TextField userFieldWidget =
+        tester.firstWidget(find.byKey(Key("userField")));
+    final TextField passFieldWidget =
+        tester.firstWidget(find.byKey(Key("passField")));
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    userFieldWidget.controller.text = "customer";
+    passFieldWidget.controller.text = "password00";
+
+    expect(loginBtnFinder, findsOneWidget);
+    expect(find.text("Customer Profile Page"), findsNothing);
+
+    await tester.tap(loginBtnFinder);
+    await tester.pumpAndSettle();
+
+    expect(find.text("Customer Profile Page"), findsOneWidget);
   });
 }

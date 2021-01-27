@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
                           child: TextField(
+                            key: Key("userField"),
                             controller: _usernameController,
                             decoration: InputDecoration(
                               border: OutlineInputBorder(),
@@ -112,6 +113,7 @@ class _HomePageState extends State<HomePage> {
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                           child: TextField(
+                            key: Key("passField"),
                             obscureText: true,
                             controller: _passwordController,
                             decoration: InputDecoration(

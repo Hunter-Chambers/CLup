@@ -5,17 +5,17 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:clup/HomePage.dart';
+import 'package:clup/StoreProfile/StoreLogin.dart';
+import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:clup/main.dart';
-import 'package:clup/HomePage.dart';
-
 void main() {
-  testWidgets('Homepage Login Test', (WidgetTester tester) async {
+  testWidgets('Successful Customer Login Test', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: HomePage(title: "CLup Home Page"),
+        home: HomePage(key: Key("homePage"), title: "CLup Home Page"),
       ),
     );
 
@@ -31,11 +31,55 @@ void main() {
     passFieldWidget.controller.text = "password00";
 
     expect(loginBtnFinder, findsOneWidget);
-    expect(find.text("Customer Profile Page"), findsNothing);
+    expect(find.byKey(Key("customerLoginPage")), findsNothing);
 
     await tester.tap(loginBtnFinder);
     await tester.pumpAndSettle();
 
-    expect(find.text("Customer Profile Page"), findsOneWidget);
+    expect(find.byKey(Key("customerLoginPage")), findsOneWidget);
+  });
+
+  testWidgets('Failed Login Test', (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: HomePage(
+          key: Key("homePage"),
+          title: "CLup Home Page",
+        ),
+      ),
+    );
+  });
+
+  testWidgets('Sample Test', (WidgetTester tester) async {
+    StoreProfileController temp = StoreProfileController([
+      "username",
+      "password",
+      "open_time",
+      "close_time",
+      "capacity",
+      "address",
+      "city",
+      "state",
+      "zipcode",
+    ]);
+
+    temp.getTextController("username").text = "store";
+    temp.getTextController("password").text = "password00";
+    temp.getTextController("open_time").text = "7:00AM";
+    temp.getTextController("close_time").text = "11:00PM";
+    temp.getTextController("capacity").text = "1500";
+    temp.getTextController("address").text = "1234 Random Street";
+    temp.getTextController("city").text = "Amarillo";
+    temp.getTextController("state").text = "TX";
+    temp.getTextController("zipcode").text = "79124";
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: StoreLogin(
+          key: Key("storeLoginPage"),
+          storeController: temp,
+        ),
+      ),
+    );
   });
 }

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:clup/StoreProfile/StoreSignup.dart';
@@ -8,6 +10,7 @@ import 'CustomerProfile/CustomerLogin.dart';
 import 'CustomerProfile/CustomerSignup.dart';
 import 'StoreProfile/StoreLogin.dart';
 import 'StoreProfile/StoreSignup.dart';
+import 'testing/Services.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -131,10 +134,54 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
-                      onPressed: () {
+                      onPressed: () async {
+                        /*
                         _setUsername(_usernameController.text);
                         _setPassword(_passwordController.text);
                         _onButtonPressed(context, 3);
+                        */
+                        String result = await Services.attemptLogin(
+                            "huntertable",
+                            _usernameController.text,
+                            _passwordController.text);
+                        //print("LOGIN RESULT: " + result);
+
+                        if (result == "failure") {
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text("Login Failed"),
+                              content: Text("The login attempt failed."),
+                            ),
+                          );
+                        } else {
+                          String loginAttempt =
+                              await Services.attemptLoadProfile(
+                                  result, "huntertable");
+
+                          if (loginAttempt == "failure") {
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: Text("Login Failed"),
+                                content: Text("An unexpected error occurred"),
+                              ),
+                            );
+                          } else {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => CustomerLogin(
+                                    key: Key("customerLoginPage"),
+                                    jwt: result,
+                                    payload: json.decode(ascii.decode(
+                                        base64.decode(base64
+                                            .normalize(result.split(".")[1])))),
+                                    customerController: customerProfile,
+                                  ),
+                                ));
+                          }
+                        }
                       },
                       label: Text(
                         "Login",
@@ -259,6 +306,28 @@ class _HomePageState extends State<HomePage> {
                     Text("A brief description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
+              FloatingActionButton.extended(
+                heroTag: "createtabletag",
+                onPressed: () async {
+                  String result = await Services.createTable("huntertable");
+                  //print("CREATE TABLE RESULT: " + result);
+                },
+                label: Text("Create Table"),
+              ),
+              FloatingActionButton.extended(
+                heroTag: "addrectag",
+                onPressed: () async {
+                  if (_usernameController.text == "" ||
+                      _passwordController.text == "") {
+                    //print("ADD RECORD RESULT: failure");
+                  } else {
+                    String result = await Services.addRec("huntertable",
+                        _usernameController.text, _passwordController.text);
+                    print("ADD RECORD RESULT: " + result);
+                  }
+                },
+                label: Text("Add Record"),
+              ),
             ],
           ),
         ),
@@ -354,6 +423,7 @@ class _HomePageState extends State<HomePage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => CustomerLogin(
+                    key: Key("customerLoginPage"),
                     customerController: customerProfile,
                   ),
                 ));

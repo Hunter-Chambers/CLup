@@ -8,6 +8,7 @@ import 'CustomerProfile/CustomerLogin.dart';
 import 'CustomerProfile/CustomerSignup.dart';
 import 'StoreProfile/StoreLogin.dart';
 import 'StoreProfile/StoreSignup.dart';
+import 'testing/Services.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -257,6 +258,19 @@ class _HomePageState extends State<HomePage> {
                     Text("A brief description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
+              FloatingActionButton.extended(
+                heroTag: "TableBtn",
+                onPressed: () {
+                  Services.createTable();
+                },
+                label: Text(
+                  "Create Table",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.7,
+                  )
+                )
+              )
             ],
           ),
         ),

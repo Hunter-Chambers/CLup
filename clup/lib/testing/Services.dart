@@ -4,7 +4,7 @@ import 'Employee.dart';
 import 'dart:html' show window;
 
 class Services {
-  static const ROOT = "http://10.0.6.1/cs4391/hc998658/database.php";
+  static const ROOT = "http://10.0.6.1/cs4391/hc998658/";
   static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   static const _ADD_REC_ACTION = "ADD_REC";
   static const _GET_REC_ACTION = "GET_REC";
@@ -20,30 +20,48 @@ class Services {
       map['action'] = _CREATE_TABLE_ACTION;
       map['table_name'] = tableName;
 
-      final response = await http.post(ROOT, body: map);
+      final response = await http.post(ROOT + "database.php", body: map);
 
-      return response.body;
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
     } catch (e) {
       print(e);
-      return "error";
+      return "failure";
     }
   }
 
   static Future<String> addRec(
-      String tableName, String username, String password) async {
+      String tableName,
+      String username,
+      String password,
+      String fname,
+      String lname,
+      String email,
+      String phone) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ADD_REC_ACTION;
       map['table_name'] = tableName;
       map['username'] = username;
       map['password'] = password;
+      map['fname'] = fname;
+      map['lname'] = lname;
+      map['email'] = email;
+      map['phone'] = phone;
 
-      final response = await http.post(ROOT, body: map);
+      final response = await http.post(ROOT + "database.php", body: map);
 
-      return response.body;
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
     } catch (e) {
       print(e);
-      return "error";
+      return "failure";
     }
   }
 
@@ -53,19 +71,16 @@ class Services {
       map['action'] = _GET_REC_ACTION;
       map['username'] = username;
 
-      final response = await http.post(ROOT, body: map);
+      final response = await http.post(ROOT + "database.php", body: map);
 
-      if (response.statusCode == 200) {
-        if (response.body != "error") {
-          return response.body;
-        }
-        return "failure";
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
       }
 
       return "failure";
     } catch (e) {
       print(e);
-      return "error";
+      return "failure";
     }
   }
 
@@ -78,14 +93,11 @@ class Services {
       map['username'] = username;
       map['password'] = password;
 
-      final response = await http.post(ROOT, body: map);
+      final response = await http.post(ROOT + "tokenization.php", body: map);
 
-      if (response.statusCode == 200) {
-        if (response.body != "error") {
-          window.localStorage["csrf"] = response.body;
-          return response.body;
-        }
-        return "failure";
+      if (response.statusCode == 200 && response.body != "error") {
+        window.localStorage["csrf"] = response.body;
+        return response.body;
       }
 
       return "failure";
@@ -103,7 +115,7 @@ class Services {
       map['csrf'] = csrfToken;
       map['table_name'] = tableName;
 
-      final response = await http.post(ROOT, body: map);
+      final response = await http.post(ROOT + "tokenization.php", body: map);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

@@ -33,7 +33,6 @@ class _HomePageState extends State<HomePage> {
   // profile controllers
   CustomerProfileController customerProfile = CustomerProfileController([
     "username",
-    "password",
     "fname",
     "lname",
     "email",
@@ -135,16 +134,10 @@ class _HomePageState extends State<HomePage> {
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
                       onPressed: () async {
-                        /*
-                        _setUsername(_usernameController.text);
-                        _setPassword(_passwordController.text);
-                        _onButtonPressed(context, 3);
-                        */
                         String result = await Services.attemptLogin(
                             "huntertable",
                             _usernameController.text,
                             _passwordController.text);
-                        //print("LOGIN RESULT: " + result);
 
                         if (result == "failure") {
                           showDialog(
@@ -155,11 +148,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         } else {
-                          String loginAttempt =
-                              await Services.attemptLoadProfile(
-                                  result, "huntertable");
+                          String userRecord = await Services.attemptLoadProfile(
+                              result, "huntertable");
 
-                          if (loginAttempt == "failure") {
+                          if (userRecord == "failure") {
                             showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
@@ -168,6 +160,20 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           } else {
+                            Map<String, dynamic> recordValues =
+                                json.decode(userRecord);
+
+                            customerProfile.getTextController("username").text =
+                                recordValues["username"];
+                            customerProfile.getTextController("fname").text =
+                                recordValues["fname"];
+                            customerProfile.getTextController("lname").text =
+                                recordValues["lname"];
+                            customerProfile.getTextController("email").text =
+                                recordValues["email"];
+                            customerProfile.getTextController("phone").text =
+                                recordValues["phone"];
+
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -310,7 +316,16 @@ class _HomePageState extends State<HomePage> {
                 heroTag: "createtabletag",
                 onPressed: () async {
                   String result = await Services.createTable("huntertable");
-                  //print("CREATE TABLE RESULT: " + result);
+
+                  if (result == "failure") {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text("Table Creation Failed"),
+                        content: Text("Failed to create table."),
+                      ),
+                    );
+                  }
                 },
                 label: Text("Create Table"),
               ),
@@ -319,11 +334,32 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () async {
                   if (_usernameController.text == "" ||
                       _passwordController.text == "") {
-                    //print("ADD RECORD RESULT: failure");
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text("Adding Profile Failed"),
+                        content: Text("Failed to add the profile."),
+                      ),
+                    );
                   } else {
-                    String result = await Services.addRec("huntertable",
-                        _usernameController.text, _passwordController.text);
-                    print("ADD RECORD RESULT: " + result);
+                    String result = await Services.addRec(
+                        "huntertable",
+                        _usernameController.text,
+                        _passwordController.text,
+                        "Hunter",
+                        "Chambers",
+                        "some_email@place.com",
+                        "(333) 333 - 3333");
+
+                    if (result == "failure") {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text("Adding Profile Failed"),
+                          content: Text("Failed to add the profile."),
+                        ),
+                      );
+                    }
                   }
                 },
                 label: Text("Add Record"),

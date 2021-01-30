@@ -41,7 +41,6 @@ class WebApp extends StatelessWidget {
               CustomerProfileController customerProfile =
                   CustomerProfileController([
                 "username",
-                "password",
                 "fname",
                 "lname",
                 "email",
@@ -49,13 +48,15 @@ class WebApp extends StatelessWidget {
               ]);
 
               customerProfile.getTextController("username").text =
-                  payload['username'];
-              customerProfile.getTextController("fname").text = "FirstName";
-              customerProfile.getTextController("lname").text = "LastName";
+                  payload["username"];
+              customerProfile.getTextController("fname").text =
+                  payload["fname"];
+              customerProfile.getTextController("lname").text =
+                  payload["lname"];
               customerProfile.getTextController("email").text =
-                  "random@email.com";
+                  payload["email"];
               customerProfile.getTextController("phone").text =
-                  "(123) 456 - 7890";
+                  payload["phone"];
 
               return CustomerLogin(
                 key: Key("customerLoginPage"),

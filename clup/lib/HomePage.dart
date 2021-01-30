@@ -313,21 +313,7 @@ class _HomePageState extends State<HomePage> {
                         "with why CLup was developed."),
               ),
               FloatingActionButton.extended(
-<<<<<<< HEAD
-                heroTag: "TableBtn",
-                onPressed: () {
-                  Services.createTable();
-                },
-                label: Text(
-                  "Create Table",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.7,
-                  )
-                )
-              )
-=======
-                heroTag: "createtabletag",
+               heroTag: "createtabletag",
                 onPressed: () async {
                   String result = await Services.createTable("huntertable");
 
@@ -378,7 +364,6 @@ class _HomePageState extends State<HomePage> {
                 },
                 label: Text("Add Record"),
               ),
->>>>>>> Hunter
             ],
           ),
         ),

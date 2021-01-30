@@ -50,12 +50,6 @@ void main() {
     );
   });
 
-<<<<<<< HEAD
-    // Verify that our counter starts at 0.
-    expect(find.text('CLup Home Page'), findsOneWidget);
-    /*
-    expect(find.text('1'), findsNothing);
-=======
   testWidgets('Sample Test', (WidgetTester tester) async {
     StoreProfileController temp = StoreProfileController([
       "username",
@@ -68,7 +62,6 @@ void main() {
       "state",
       "zipcode",
     ]);
->>>>>>> Hunter
 
     temp.getTextController("username").text = "store";
     temp.getTextController("password").text = "password00";
@@ -80,12 +73,6 @@ void main() {
     temp.getTextController("state").text = "TX";
     temp.getTextController("zipcode").text = "79124";
 
-<<<<<<< HEAD
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  */
-=======
     await tester.pumpWidget(
       MaterialApp(
         home: StoreLogin(
@@ -94,6 +81,5 @@ void main() {
         ),
       ),
     );
->>>>>>> Hunter
   });
 }

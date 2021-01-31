@@ -33,18 +33,11 @@ class Services {
     }
   }
 
-  static Future<String> addRec(
-      String tableName,
-      String username,
-      String password,
-      String fname,
-      String lname,
-      String email,
-      String phone) async {
+  static Future<String> addRec(String username, String password, String fname,
+      String lname, String email, String phone) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ADD_REC_ACTION;
-      map['table_name'] = tableName;
       map['username'] = username;
       map['password'] = password;
       map['fname'] = fname;
@@ -84,12 +77,10 @@ class Services {
     }
   }
 
-  static Future<String> attemptLogin(
-      String tableName, String username, String password) async {
+  static Future<String> attemptLogin(String username, String password) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOGIN_ACTION;
-      map['table_name'] = tableName;
       map['username'] = username;
       map['password'] = password;
 
@@ -107,12 +98,10 @@ class Services {
     }
   }
 
-  static Future<String> attemptLoadProfile(
-      String csrfToken, String tableName) async {
+  static Future<String> attemptLoadProfile(String csrfToken) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOAD_PROFILE;
-      map['table_name'] = tableName;
 
       var header = Map<String, String>();
       header['csrf'] = csrfToken;

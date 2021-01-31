@@ -1,4 +1,5 @@
 //import 'package:clup/SearchStoresView_Backup.dart';
+
 import 'package:clup/StoreSearch/StatesView.dart';
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
@@ -8,17 +9,25 @@ import 'QR.dart';
 
 class CustomerLogin extends StatefulWidget {
   final CustomerProfileController customerController;
-  CustomerLogin({Key key, this.customerController}) : super(key: key);
+  final String jwt;
+  final Map<String, dynamic> payload;
+
+  CustomerLogin({Key key, this.jwt, this.payload, this.customerController})
+      : super(key: key);
 
   @override
   _CustomerLoginState createState() => _CustomerLoginState(
+        jwt: jwt,
+        payload: payload,
         customerController: customerController,
       );
 }
 
 class _CustomerLoginState extends State<CustomerLogin> {
   CustomerProfileController customerController;
-  _CustomerLoginState({this.customerController});
+  String jwt;
+  Map<String, dynamic> payload;
+  _CustomerLoginState({this.jwt, this.payload, this.customerController});
 
   // call scaffoldKey in order to show snackbar
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

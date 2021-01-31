@@ -112,10 +112,13 @@ class Services {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOAD_PROFILE;
-      map['csrf'] = csrfToken;
       map['table_name'] = tableName;
 
-      final response = await http.post(ROOT + "tokenization.php", body: map);
+      var header = Map<String, String>();
+      header['csrf'] = csrfToken;
+
+      final response = await http.post(ROOT + "tokenization.php",
+          headers: header, body: map);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

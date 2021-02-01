@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
   ]);
   StoreProfileController storeProfile = StoreProfileController([
     "username",
-    "password",
     "open_time",
     "close_time",
     "capacity",
@@ -135,9 +134,9 @@ class _HomePageState extends State<HomePage> {
                       heroTag: "LoginBtn",
                       onPressed: () async {
                         String result = await Services.attemptLogin(
-                            "huntertable",
-                            _usernameController.text,
-                            _passwordController.text);
+                          _usernameController.text,
+                          _passwordController.text,
+                        );
 
                         if (result == "failure") {
                           showDialog(
@@ -148,8 +147,8 @@ class _HomePageState extends State<HomePage> {
                             ),
                           );
                         } else {
-                          String userRecord = await Services.attemptLoadProfile(
-                              result, "huntertable");
+                          String userRecord =
+                              await Services.attemptLoadProfile(result);
 
                           if (userRecord == "failure") {
                             showDialog(
@@ -160,32 +159,67 @@ class _HomePageState extends State<HomePage> {
                               ),
                             );
                           } else {
+                            Map<String, dynamic> payload = json.decode(
+                                ascii.decode(base64.decode(
+                                    base64.normalize(result.split(".")[1]))));
                             Map<String, dynamic> recordValues =
                                 json.decode(userRecord);
 
-                            customerProfile.getTextController("username").text =
-                                recordValues["username"];
-                            customerProfile.getTextController("fname").text =
-                                recordValues["fname"];
-                            customerProfile.getTextController("lname").text =
-                                recordValues["lname"];
-                            customerProfile.getTextController("email").text =
-                                recordValues["email"];
-                            customerProfile.getTextController("phone").text =
-                                recordValues["phone"];
+                            if (payload["accType"] == "customer") {
+                              customerProfile
+                                  .getTextController("username")
+                                  .text = recordValues["username"];
+                              customerProfile.getTextController("fname").text =
+                                  recordValues["fname"];
+                              customerProfile.getTextController("lname").text =
+                                  recordValues["lname"];
+                              customerProfile.getTextController("email").text =
+                                  recordValues["email"];
+                              customerProfile.getTextController("phone").text =
+                                  recordValues["phone"];
 
-                            Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => CustomerLogin(
                                     key: Key("customerLoginPage"),
                                     jwt: result,
-                                    payload: json.decode(ascii.decode(
-                                        base64.decode(base64
-                                            .normalize(result.split(".")[1])))),
+                                    payload: payload,
                                     customerController: customerProfile,
                                   ),
-                                ));
+                                ),
+                              );
+                            } else {
+                              storeProfile.getTextController("username").text =
+                                  recordValues["username"];
+                              storeProfile.getTextController("open_time").text =
+                                  recordValues["open_time"];
+                              storeProfile
+                                  .getTextController("close_time")
+                                  .text = recordValues["close_time"];
+                              storeProfile.getTextController("capacity").text =
+                                  recordValues["capacity"];
+                              storeProfile.getTextController("address").text =
+                                  recordValues["address"];
+                              storeProfile.getTextController("city").text =
+                                  recordValues["city"];
+                              storeProfile.getTextController("state").text =
+                                  recordValues["state"];
+                              storeProfile.getTextController("zipcode").text =
+                                  recordValues["zipcode"];
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => StoreLogin(
+                                    key: Key("storeLoginPage"),
+                                    jwt: result,
+                                    payload: payload,
+                                    storeController: storeProfile,
+                                  ),
+                                ),
+                              );
+                            }
                           }
                         }
                       },
@@ -343,7 +377,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   } else {
                     String result = await Services.addRec(
-                        "huntertable",
                         _usernameController.text,
                         _passwordController.text,
                         "Hunter",

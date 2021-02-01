@@ -5,17 +5,25 @@ import 'ScanQR.dart';
 
 class StoreLogin extends StatefulWidget {
   final StoreProfileController storeController;
-  StoreLogin({Key key, this.storeController}) : super(key: key);
+  final String jwt;
+  final Map<String, dynamic> payload;
+
+  StoreLogin({Key key, this.jwt, this.payload, this.storeController})
+      : super(key: key);
 
   @override
   _StoreLoginState createState() => _StoreLoginState(
+        jwt: jwt,
+        payload: payload,
         storeController: storeController,
       );
 }
 
 class _StoreLoginState extends State<StoreLogin> {
   StoreProfileController storeController;
-  _StoreLoginState({this.storeController});
+  String jwt;
+  Map<String, dynamic> payload;
+  _StoreLoginState({this.jwt, this.payload, this.storeController});
 
   // call scaffoldKey in order to show snackbar
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();

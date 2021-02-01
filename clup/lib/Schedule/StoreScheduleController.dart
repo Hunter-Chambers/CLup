@@ -28,6 +28,14 @@ class StoreScheduleController {
     timeSlots = [];
     timesAvailable = {};
     selectedTimes = {};
+
+    // dispose of all text editing controllers
+    for (String key in fieldsMap.keys) {
+      fieldsMap[key].clear();
+      fieldsMap[key].dispose();
+    }
+
+    fieldsMap = {};
   }
 
   // Albertons
@@ -138,15 +146,14 @@ class StoreScheduleController {
 
   }
   TextEditingController getTextController(String key) {
-    return fieldsMap[key]; 
+    if ( fieldsMap.containsKey(key) ) {
+      return fieldsMap[key]; 
+    }
+    throw Exception("Key not found.");
   }
 
   bool getAvailable(String key) {
       return timesAvailable[key]; 
-  }
-
-  disposeTextController(String key) {
-    fieldsMap[key].dispose();
   }
 
   bool updateSelectedTimes(int index, String time){
@@ -165,13 +172,14 @@ class StoreScheduleController {
       if (keys.first == index || keys.last == index)
         selectedTimes.remove(index);
       else {
-
+        /*
         Fluttertoast.showToast(
           msg: 'Selected time slots must be consecutive.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           webPosition: 'center',
           );
+          */
         timesUpdated = false;
       }
     }
@@ -189,12 +197,14 @@ class StoreScheduleController {
       // time was not consecutive
       else {
         // prompt the user to only select consecutive times
+        /*
         Fluttertoast.showToast(
           msg: 'Please only select consecutive time slots.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           webPosition: 'center',
         );
+        */
         timesUpdated = false;
 
       }

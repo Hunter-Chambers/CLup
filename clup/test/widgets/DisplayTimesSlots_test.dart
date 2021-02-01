@@ -9,6 +9,8 @@ void main() {
   // to skip adding fields, but still initialize time slots
   StoreScheduleController storeSchedule = new StoreScheduleController([]);
 
+  // set the store schedule to sample schedule 'Walmart'
+  // and make sure correct number of tiles generated
   testWidgets('Correct number of tiles for Walmart', (WidgetTester tester) async {
     storeSchedule.setWalmart();
     await tester.pumpWidget( 
@@ -22,6 +24,8 @@ void main() {
   });
 
 
+  // set the store schedule to sample schedule 'Albertsons'
+  // and make sure correct number of tiles generated
   testWidgets('Correct number of tiles for Alberstons', (WidgetTester tester) async {
     storeSchedule.setAlbertsons();
     await tester.pumpWidget( 
@@ -43,24 +47,21 @@ void main() {
           )
         );
 
-
         Finder tiles = find.byKey(Key('timeTile'));
-
         Finder tile = tiles.first;
         ListTile timeTile = tester.firstWidget(tile);
+
+        // ensure tile is not selected initially
         expect(timeTile.selected, false);
 
-        //await tester.pump(Duration(seconds: 10));
+        expect(timeTile.tileColor, null);
+
+        // simulate a tap gesture on the tile
         await tester.tap(tile);
         await tester.pumpAndSettle();
 
+        // make sure tile is selected after the tap
         timeTile = tester.firstWidget(tile);
-
-        //print('tiles.first: ' + tiles.first.toString());
-        //print('timeTile: ' + timeTile.toString());
-
-        print('---------------');
-        print(timeTile.selected);
         expect(timeTile.selected, true);
 
 

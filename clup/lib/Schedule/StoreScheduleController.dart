@@ -23,6 +23,13 @@ class StoreScheduleController {
 
   }
 
+  // clear schedule
+  clear(){
+    timeSlots = [];
+    timesAvailable = {};
+    selectedTimes = {};
+  }
+
   // Albertons
   setAlbertsons(){
     // Albertsons

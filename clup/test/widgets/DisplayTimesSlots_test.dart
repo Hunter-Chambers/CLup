@@ -79,7 +79,6 @@ void main() {
         }
     });
 
-/*
   testWidgets('Select first available tile for Albertsons', (WidgetTester tester) async {
       // reset schedule
       storeSchedule.clear();
@@ -140,7 +139,6 @@ void main() {
         expect(storeSchedule.getSelectedTimes(), storeSchedule.timeSlots[i]);
 
   });
-  */
 
   testWidgets('Select first available tile for Walmart', (WidgetTester tester) async {
         // reset schedule

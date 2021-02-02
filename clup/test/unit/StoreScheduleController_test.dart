@@ -118,6 +118,8 @@ void main() {
 
   });
 
+
+  // this test does not look at whether or not the tile is available
   test('Update selected times', () {
 
     setup([]);

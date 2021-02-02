@@ -112,6 +112,7 @@ class Services {
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
       }
+
       return "failure";
     } catch (e) {
       print(e);
@@ -124,4 +125,3 @@ class Services {
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
   }
 }
-

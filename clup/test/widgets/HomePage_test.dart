@@ -10,35 +10,47 @@ import 'package:clup/StoreProfile/StoreLogin.dart';
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/mockito.dart';
+
+class _MockNavigatorObserver extends Mock implements NavigatorObserver {}
 
 void main() {
-  testWidgets('Successful Customer Login Test', (WidgetTester tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: HomePage(key: Key("homePage"), title: "CLup Home Page"),
-      ),
-    );
+  testWidgets('Test Customer Login', (WidgetTester tester) async {
+    _MockNavigatorObserver mockObserver = _MockNavigatorObserver();
+    await tester.runAsync(() async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: HomePage(
+            key: Key("homePage"),
+            title: "CLup Home Page",
+          ),
+          navigatorObservers: [mockObserver],
+        ),
+      );
 
-    final Finder loginBtnFinder =
-        find.widgetWithText(FloatingActionButton, "Login");
+      final Finder loginBtnFinder =
+          find.widgetWithText(FloatingActionButton, "Login");
 
-    final TextField userFieldWidget =
-        tester.firstWidget(find.byKey(Key("userField")));
-    final TextField passFieldWidget =
-        tester.firstWidget(find.byKey(Key("passField")));
+      final TextField userFieldWidget =
+          tester.firstWidget(find.byKey(Key("userField")));
+      final TextField passFieldWidget =
+          tester.firstWidget(find.byKey(Key("passField")));
 
-    userFieldWidget.controller.text = "customer";
-    passFieldWidget.controller.text = "password00";
+      userFieldWidget.controller?.text = "customer";
+      passFieldWidget.controller?.text = "password00";
 
-    expect(loginBtnFinder, findsOneWidget);
-    expect(find.byKey(Key("customerLoginPage")), findsNothing);
+      expect(loginBtnFinder, findsOneWidget);
+      expect(find.byKey(Key("customerLoginPage")), findsNothing);
 
-    await tester.tap(loginBtnFinder);
-    await tester.pumpAndSettle();
+      await tester.tap(loginBtnFinder);
+      await tester.pump();
+      await Future.delayed(Duration(seconds: 1));
 
-    expect(find.byKey(Key("customerLoginPage")), findsOneWidget);
+      expect(find.byKey(Key("customerLoginPage")), findsOneWidget);
+    });
   });
 
+  /*
   testWidgets('Failed Login Test', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -82,4 +94,5 @@ void main() {
       ),
     );
   });
+  */
 }

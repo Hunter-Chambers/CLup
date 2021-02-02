@@ -133,32 +133,32 @@ class _HomePageState extends State<HomePage> {
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
                       onPressed: () async {
+                        _showLoadingIndicator();
+
                         String result = await Services.attemptLogin(
                           _usernameController.text,
                           _passwordController.text,
                         );
 
                         if (result == "failure") {
-                          showDialog(
-                            context: context,
-                            builder: (context) => AlertDialog(
-                              title: Text("Login Failed"),
-                              content: Text("The login attempt failed."),
-                            ),
-                          );
+                          _hideLoadingIndicator();
+                          _showAlertMessage("Login Failed",
+                              "Username or Password is incorrect");
+                        } else if (result == "timed out") {
+                          _hideLoadingIndicator();
+                          _showAlertMessage(
+                              "Login Failed", "Connection timed out");
                         } else {
                           String userRecord =
                               await Services.attemptLoadProfile(result);
 
                           if (userRecord == "failure") {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                title: Text("Login Failed"),
-                                content: Text("An unexpected error occurred"),
-                              ),
-                            );
+                            _hideLoadingIndicator();
+                            _showAlertMessage(
+                                "Login Failed", "An unexpected error occurred");
                           } else {
+                            await _hideLoadingIndicator();
+
                             Map<String, dynamic> payload = json.decode(
                                 ascii.decode(base64.decode(
                                     base64.normalize(result.split(".")[1]))));
@@ -178,7 +178,8 @@ class _HomePageState extends State<HomePage> {
                               customerProfile.getTextController("phone").text =
                                   recordValues["phone"];
 
-                              Navigator.push(
+                              print("HERE");
+                              return Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => CustomerLogin(
@@ -347,18 +348,14 @@ class _HomePageState extends State<HomePage> {
                         "with why CLup was developed."),
               ),
               FloatingActionButton.extended(
-               heroTag: "createtabletag",
+                heroTag: "createtabletag",
                 onPressed: () async {
                   String result = await Services.createTable("huntertable");
 
                   if (result == "failure") {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text("Table Creation Failed"),
-                        content: Text("Failed to create table."),
-                      ),
-                    );
+                    //_hideLoadingIndicator();
+                    _showAlertMessage(
+                        "Table Creation Failed", "Failed to create table");
                   }
                 },
                 label: Text("Create Table"),
@@ -368,13 +365,9 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () async {
                   if (_usernameController.text == "" ||
                       _passwordController.text == "") {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text("Adding Profile Failed"),
-                        content: Text("Failed to add the profile."),
-                      ),
-                    );
+                    //_hideLoadingIndicator();
+                    _showAlertMessage("Adding Profile Failed",
+                        "Username or Password is empty");
                   } else {
                     String result = await Services.addRec(
                         _usernameController.text,
@@ -385,13 +378,9 @@ class _HomePageState extends State<HomePage> {
                         "(333) 333 - 3333");
 
                     if (result == "failure") {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text("Adding Profile Failed"),
-                          content: Text("Failed to add the profile."),
-                        ),
-                      );
+                      //_hideLoadingIndicator();
+                      _showAlertMessage(
+                          "Adding Profile Failed", "Failed to add the profile");
                     }
                   }
                 },
@@ -434,6 +423,68 @@ class _HomePageState extends State<HomePage> {
 
   _setPassword(String input) {
     password = input;
+  }
+
+  _showAlertMessage(String title, String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(title),
+        content: Text(message),
+      ),
+    );
+  }
+
+  _hideLoadingIndicator() {
+    Navigator.of(context).pop();
+  }
+
+  _showLoadingIndicator() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return WillPopScope(
+            onWillPop: () async => false,
+            child: AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+              ),
+              backgroundColor: Colors.black87,
+              content: Container(
+                padding: EdgeInsets.all(16),
+                color: Colors.black.withOpacity(0.8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 16),
+                      child: Container(
+                        child: CircularProgressIndicator(
+                          strokeWidth: 3,
+                        ),
+                        width: 32,
+                        height: 32,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 4),
+                      child: Text(
+                        "Loading. Please wait...",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   _onButtonPressed(BuildContext context, int option) {

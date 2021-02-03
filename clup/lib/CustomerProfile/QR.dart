@@ -17,7 +17,7 @@ class _QRState extends State<QR> {
   final CustomerProfileController customerProfile;
   _QRState({this.customerProfile});
 
-  final List<String> dropDownItems = List<String>();
+  final List<String> dropDownItems = [];
   String dropDownValue = "";
   int qrIndex = 0;
 
@@ -113,17 +113,20 @@ class _QRState extends State<QR> {
               "To Profile Page",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-              )
+              ),
             ),
           )
         ],
       ),
     );
   }
-  _onButtonPressed(BuildContext context){
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) => CustomerLogin(customerController: customerProfile),
-      )
-    );
+
+  _onButtonPressed(BuildContext context) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              CustomerLogin(customerController: customerProfile),
+        ));
   }
 }

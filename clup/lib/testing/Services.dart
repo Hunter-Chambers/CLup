@@ -1,7 +1,10 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' show window;
+
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'Employee.dart';
-import 'dart:html' show window;
 
 class Services {
   static const ROOT = "http://10.0.6.1/cs4391/hc998658/";
@@ -84,7 +87,9 @@ class Services {
       map['username'] = username;
       map['password'] = password;
 
-      final response = await http.post(ROOT + "tokenization.php", body: map);
+      final response = await http
+          .post(ROOT + "tokenization.php", body: map)
+          .timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         window.localStorage["csrf"] = response.body;
@@ -92,9 +97,11 @@ class Services {
       }
 
       return "failure";
+    } on TimeoutException catch (_) {
+      return "timed out";
     } catch (e) {
       print(e);
-      return "failure";
+      return "unexpected error";
     }
   }
 
@@ -106,12 +113,14 @@ class Services {
       var header = Map<String, String>();
       header['csrf'] = csrfToken;
 
-      final response = await http.post(ROOT + "tokenization.php",
-          headers: header, body: map);
+      final response = await http
+          .post(ROOT + "tokenization.php", headers: header, body: map)
+          .timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
       }
+
       return "failure";
     } catch (e) {
       print(e);
@@ -124,4 +133,3 @@ class Services {
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
   }
 }
-

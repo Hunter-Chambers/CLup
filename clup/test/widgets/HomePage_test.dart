@@ -5,19 +5,27 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:clup/HomePage.dart';
-import 'package:clup/StoreProfile/StoreLogin.dart';
-import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:clup/main.dart';
+import 'package:clup/HomePage.dart';
+import 'package:clup/CustomerProfile/CustomerLogin.dart';
+import 'package:clup/StoreProfile/StoreLogin.dart';
+
 void main() {
-  testWidgets('Successful Customer Login Test', (WidgetTester tester) async {
+  // Make sure to connect to server first
+  testWidgets('Test Correct Customer Login', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: HomePage(key: Key("homePage"), title: "CLup Home Page"),
+        //home: WebApp(
+        home: HomePage(
+          key: Key("homePage"),
+          title: "CLup Home Page",
+        ),
       ),
     );
+    expect(find.byType(HomePage), findsOneWidget);
 
     final Finder loginBtnFinder =
         find.widgetWithText(FloatingActionButton, "Login");
@@ -27,19 +35,23 @@ void main() {
     final TextField passFieldWidget =
         tester.firstWidget(find.byKey(Key("passField")));
 
-    userFieldWidget.controller.text = "customer";
-    passFieldWidget.controller.text = "password00";
+    userFieldWidget.controller?.text = "customer";
+    passFieldWidget.controller?.text = "password00";
 
     expect(loginBtnFinder, findsOneWidget);
-    expect(find.byKey(Key("customerLoginPage")), findsNothing);
+    expect(find.byType(CustomerLogin), findsNothing);
 
-    await tester.tap(loginBtnFinder);
-    await tester.pumpAndSettle();
+    await tester.runAsync(() async {
+      await tester.tap(loginBtnFinder);
+      await Future.delayed(Duration(seconds: 5));
+      await tester.pumpAndSettle();
+    });
 
-    expect(find.byKey(Key("customerLoginPage")), findsOneWidget);
+    expect(find.byType(CustomerLogin), findsOneWidget);
   });
 
-  testWidgets('Failed Login Test', (WidgetTester tester) async {
+  // Make sure to disconnect from server first
+  testWidgets('Test Timeout Error Login', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: HomePage(
@@ -48,38 +60,90 @@ void main() {
         ),
       ),
     );
+
+    final TextField userFieldWidget =
+        tester.firstWidget(find.byKey(Key("userField")));
+    final TextField passFieldWidget =
+        tester.firstWidget(find.byKey(Key("passField")));
+
+    userFieldWidget.controller?.text = "customer";
+    passFieldWidget.controller?.text = "password00";
+
+    final Finder loginBtnFinder =
+        find.widgetWithText(FloatingActionButton, "Login");
+
+    await tester.runAsync(() async {
+      await tester.tap(loginBtnFinder);
+      await Future.delayed(Duration(seconds: 5));
+      await tester.pumpAndSettle();
+    });
+
+    expect(find.text("Connection timed out"), findsOneWidget);
   });
 
-  testWidgets('Sample Test', (WidgetTester tester) async {
-    StoreProfileController temp = StoreProfileController([
-      "username",
-      "password",
-      "open_time",
-      "close_time",
-      "capacity",
-      "address",
-      "city",
-      "state",
-      "zipcode",
-    ]);
-
-    temp.getTextController("username").text = "store";
-    temp.getTextController("password").text = "password00";
-    temp.getTextController("open_time").text = "7:00AM";
-    temp.getTextController("close_time").text = "11:00PM";
-    temp.getTextController("capacity").text = "1500";
-    temp.getTextController("address").text = "1234 Random Street";
-    temp.getTextController("city").text = "Amarillo";
-    temp.getTextController("state").text = "TX";
-    temp.getTextController("zipcode").text = "79124";
-
+  // Make sure to add a throw statement to Services.attemptLogin()
+  testWidgets('Test Unexpected Error Login', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: StoreLogin(
-          key: Key("storeLoginPage"),
-          storeController: temp,
+        home: HomePage(
+          key: Key("homePage"),
+          title: "CLup Home Page",
         ),
       ),
     );
+
+    final TextField userFieldWidget =
+        tester.firstWidget(find.byKey(Key("userField")));
+    final TextField passFieldWidget =
+        tester.firstWidget(find.byKey(Key("passField")));
+
+    userFieldWidget.controller?.text = "customer";
+    passFieldWidget.controller?.text = "password00";
+
+    final Finder loginBtnFinder =
+        find.widgetWithText(FloatingActionButton, "Login");
+
+    await tester.runAsync(() async {
+      await tester.tap(loginBtnFinder);
+      await Future.delayed(Duration(seconds: 5));
+      await tester.pumpAndSettle();
+    });
+
+    expect(find.text("Login Failed"), findsOneWidget);
+    expect(find.text("An unexpected error occurred"), findsOneWidget);
+  });
+
+  // Make sure to connect to server first
+  // Make sure to add a throw statement to Services.attemptLoadProfile()
+  testWidgets('Test Unexpected Error Loading Profile',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: HomePage(
+          key: Key("homePage"),
+          title: "CLup Home Page",
+        ),
+      ),
+    );
+
+    final TextField userFieldWidget =
+        tester.firstWidget(find.byKey(Key("userField")));
+    final TextField passFieldWidget =
+        tester.firstWidget(find.byKey(Key("passField")));
+
+    userFieldWidget.controller?.text = "customer";
+    passFieldWidget.controller?.text = "password00";
+
+    final Finder loginBtnFinder =
+        find.widgetWithText(FloatingActionButton, "Login");
+
+    await tester.runAsync(() async {
+      await tester.tap(loginBtnFinder);
+      await Future.delayed(Duration(seconds: 5));
+      await tester.pumpAndSettle();
+    });
+
+    expect(find.text("Loading Profile Failed"), findsOneWidget);
+    expect(find.text("An unexpected error occurred"), findsOneWidget);
   });
 }

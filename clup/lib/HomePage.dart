@@ -4,7 +4,6 @@ import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:clup/StoreProfile/StoreSignup.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'CustomerProfile/CustomerLogin.dart';
 import 'CustomerProfile/CustomerSignup.dart';
@@ -25,10 +24,6 @@ class _HomePageState extends State<HomePage> {
   // controllers to get text from username and password fields
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-
-  // holds user's username and password
-  String username = "";
-  String password = "";
 
   // profile controllers
   CustomerProfileController customerProfile = CustomerProfileController([
@@ -148,16 +143,20 @@ class _HomePageState extends State<HomePage> {
                           _hideLoadingIndicator();
                           _showAlertMessage(
                               "Login Failed", "Connection timed out");
+                        } else if (result == "unexpected error") {
+                          _hideLoadingIndicator();
+                          _showAlertMessage(
+                              "Login Failed", "An unexpected error occurred");
                         } else {
                           String userRecord =
                               await Services.attemptLoadProfile(result);
 
                           if (userRecord == "failure") {
                             _hideLoadingIndicator();
-                            _showAlertMessage(
-                                "Login Failed", "An unexpected error occurred");
+                            _showAlertMessage("Loading Profile Failed",
+                                "An unexpected error occurred");
                           } else {
-                            await _hideLoadingIndicator();
+                            _hideLoadingIndicator();
 
                             Map<String, dynamic> payload = json.decode(
                                 ascii.decode(base64.decode(
@@ -178,7 +177,6 @@ class _HomePageState extends State<HomePage> {
                               customerProfile.getTextController("phone").text =
                                   recordValues["phone"];
 
-                              print("HERE");
                               return Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -347,6 +345,8 @@ class _HomePageState extends State<HomePage> {
                     Text("A brief description about CLup will go here, along "
                         "with why CLup was developed."),
               ),
+
+              // Create Table button
               FloatingActionButton.extended(
                 heroTag: "createtabletag",
                 onPressed: () async {
@@ -360,12 +360,13 @@ class _HomePageState extends State<HomePage> {
                 },
                 label: Text("Create Table"),
               ),
+
+              // Add Record button
               FloatingActionButton.extended(
                 heroTag: "addrectag",
                 onPressed: () async {
                   if (_usernameController.text == "" ||
                       _passwordController.text == "") {
-                    //_hideLoadingIndicator();
                     _showAlertMessage("Adding Profile Failed",
                         "Username or Password is empty");
                   } else {
@@ -378,7 +379,6 @@ class _HomePageState extends State<HomePage> {
                         "(333) 333 - 3333");
 
                     if (result == "failure") {
-                      //_hideLoadingIndicator();
                       _showAlertMessage(
                           "Adding Profile Failed", "Failed to add the profile");
                     }
@@ -417,14 +417,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  _setUsername(String input) {
-    username = input;
-  }
-
-  _setPassword(String input) {
-    password = input;
-  }
-
   _showAlertMessage(String title, String message) {
     showDialog(
       context: context,
@@ -435,7 +427,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _hideLoadingIndicator() {
+  _hideLoadingIndicator() async {
     Navigator.of(context).pop();
   }
 
@@ -488,12 +480,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   _onButtonPressed(BuildContext context, int option) {
-    String customerUsername = 'customer';
-    String customerPassword = 'password00';
-
-    String storeUsername = 'store';
-    String storePassword = 'password00';
-
     switch (option) {
       case 1:
         {
@@ -513,64 +499,6 @@ class _HomePageState extends State<HomePage> {
               ));
         }
         break;
-      case 3:
-        {
-          if (username != customerUsername && username != storeUsername) {
-            Fluttertoast.showToast(
-              msg: 'Username did not match any users.',
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-            );
-          } else if (password != customerPassword &&
-              password != storePassword) {
-            Fluttertoast.showToast(
-              msg: 'Password was incorrect.',
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-            );
-          } else if (username == customerUsername) {
-            customerProfile.getTextController("username").text =
-                _usernameController.text;
-            customerProfile.getTextController("password").text =
-                _passwordController.text;
-            customerProfile.getTextController("fname").text = "FirstName";
-            customerProfile.getTextController("lname").text = "LastName";
-            customerProfile.getTextController("email").text =
-                "random@email.com";
-            customerProfile.getTextController("phone").text =
-                "(123) 456 - 7890";
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => CustomerLogin(
-                    key: Key("customerLoginPage"),
-                    customerController: customerProfile,
-                  ),
-                ));
-          } else {
-            storeProfile.getTextController("username").text =
-                _usernameController.text;
-            storeProfile.getTextController("password").text =
-                _passwordController.text;
-            storeProfile.getTextController("open_time").text = "7:00AM";
-            storeProfile.getTextController("close_time").text = "11:00PM";
-            storeProfile.getTextController("capacity").text = "1500";
-            storeProfile.getTextController("address").text =
-                "1234 Random Street";
-            storeProfile.getTextController("city").text = "Amarillo";
-            storeProfile.getTextController("state").text = "TX";
-            storeProfile.getTextController("zipcode").text = "79124";
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => StoreLogin(
-                    storeController: storeProfile,
-                  ),
-                ));
-          }
-        }
-        break;
-        return null;
     }
   }
 }

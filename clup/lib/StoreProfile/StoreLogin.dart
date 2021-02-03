@@ -25,14 +25,9 @@ class _StoreLoginState extends State<StoreLogin> {
   Map<String, dynamic> payload;
   _StoreLoginState({this.jwt, this.payload, this.storeController});
 
-  // call scaffoldKey in order to show snackbar
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-
       // color for the whole page
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
@@ -125,7 +120,7 @@ class _StoreLoginState extends State<StoreLogin> {
   }
 
   _showSnackBar() {
-    _scaffoldKey.currentState.showSnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(
       new SnackBar(
         content: new Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -145,7 +140,7 @@ class _StoreLoginState extends State<StoreLogin> {
   }
 
   _onButtonPressed(BuildContext context, int option) async {
-    _scaffoldKey.currentState.removeCurrentSnackBar();
+    ScaffoldMessenger.of(context).removeCurrentSnackBar();
     switch (option) {
       case 1:
         {

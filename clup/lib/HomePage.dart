@@ -12,9 +12,10 @@ import 'StoreProfile/StoreSignup.dart';
 import 'testing/Services.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+  HomePage({Key key, this.title, this.services}) : super(key: key);
 
   final String title;
+  final Services services;
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                       onPressed: () async {
                         _showLoadingIndicator();
 
-                        String result = await Services.attemptLogin(
+                        String result = await widget.services.attemptLogin(
                           _usernameController.text,
                           _passwordController.text,
                         );
@@ -149,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                               "Login Failed", "An unexpected error occurred");
                         } else {
                           String userRecord =
-                              await Services.attemptLoadProfile(result);
+                              await widget.services.attemptLoadProfile(result);
 
                           if (userRecord == "failure") {
                             _hideLoadingIndicator();

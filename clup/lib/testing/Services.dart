@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import 'Employee.dart';
 
 class Services {
-  static const ROOT = "http://10.0.6.1/cs4391/hc998658/";
+  static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
   static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   static const _ADD_REC_ACTION = "ADD_REC";
   static const _GET_REC_ACTION = "GET_REC";
@@ -23,7 +23,7 @@ class Services {
       map['action'] = _CREATE_TABLE_ACTION;
       map['table_name'] = tableName;
 
-      final response = await http.post(ROOT + "database.php", body: map);
+      final response = await http.post(ROOT, body: map);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -48,7 +48,7 @@ class Services {
       map['email'] = email;
       map['phone'] = phone;
 
-      final response = await http.post(ROOT + "database.php", body: map);
+      final response = await http.post(ROOT, body: map);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -67,7 +67,7 @@ class Services {
       map['action'] = _GET_REC_ACTION;
       map['username'] = username;
 
-      final response = await http.post(ROOT + "database.php", body: map);
+      final response = await http.post(ROOT, body: map);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -80,16 +80,15 @@ class Services {
     }
   }
 
-  static Future<String> attemptLogin(String username, String password) async {
+  Future<String> attemptLogin(String username, String password) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOGIN_ACTION;
       map['username'] = username;
       map['password'] = password;
 
-      final response = await http
-          .post(ROOT + "tokenization.php", body: map)
-          .timeout(Duration(seconds: 5));
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         window.localStorage["csrf"] = response.body;
@@ -105,7 +104,7 @@ class Services {
     }
   }
 
-  static Future<String> attemptLoadProfile(String csrfToken) async {
+  Future<String> attemptLoadProfile(String csrfToken) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOAD_PROFILE;
@@ -114,7 +113,7 @@ class Services {
       header['csrf'] = csrfToken;
 
       final response = await http
-          .post(ROOT + "tokenization.php", headers: header, body: map)
+          .post(ROOT, headers: header, body: map)
           .timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {

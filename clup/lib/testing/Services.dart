@@ -80,7 +80,7 @@ class Services {
     }
   }
 
-  static Future<String> attemptLogin(String username, String password) async {
+  Future<String> attemptLogin(String username, String password) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOGIN_ACTION;
@@ -105,7 +105,7 @@ class Services {
     }
   }
 
-  static Future<String> attemptLoadProfile(String csrfToken) async {
+  Future<String> attemptLoadProfile(String csrfToken) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ATTEMPT_LOAD_PROFILE;

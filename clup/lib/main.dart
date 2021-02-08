@@ -13,10 +13,16 @@ import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 
 void main() {
-  runApp(WebApp());
+  runApp(WebApp(
+    services: Services(),
+  ));
 }
 
 class WebApp extends StatelessWidget {
+  WebApp({this.services});
+
+  final Services services;
+
   Future<List<dynamic>> get userOrNone async {
     var csrfTokenOrEmpty = window.localStorage.containsKey("csrf")
         ? window.localStorage["csrf"]
@@ -32,7 +38,7 @@ class WebApp extends StatelessWidget {
         if (DateTime.fromMillisecondsSinceEpoch(payload["exp"] * 1000)
             .isAfter(DateTime.now())) {
           return [
-            await Services.attemptLoadProfile(csrfTokenOrEmpty),
+            await services.attemptLoadProfile(csrfTokenOrEmpty),
             payload,
           ];
         }
@@ -122,6 +128,7 @@ class WebApp extends StatelessWidget {
             return HomePage(
               key: Key("homePage"),
               title: "CLup Home Page",
+              services: services,
             );
           }),
     );

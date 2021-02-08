@@ -172,14 +172,12 @@ class StoreScheduleController {
       if (keys.first == index || keys.last == index)
         selectedTimes.remove(index);
       else {
-        /*
         Fluttertoast.showToast(
           msg: 'Selected time slots must be consecutive.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           webPosition: 'center',
           );
-          */
         timesUpdated = false;
       }
     }
@@ -197,14 +195,12 @@ class StoreScheduleController {
       // time was not consecutive
       else {
         // prompt the user to only select consecutive times
-        /*
         Fluttertoast.showToast(
           msg: 'Please only select consecutive time slots.',
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           webPosition: 'center',
         );
-        */
         timesUpdated = false;
 
       }

@@ -47,7 +47,8 @@ class ScheduleVisit extends StatelessWidget{
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
-                    Column(
+                    Expanded(child: 
+                      Column( 
                       children:  [ 
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
@@ -93,8 +94,10 @@ class ScheduleVisit extends StatelessWidget{
                       ),
                     ]
                     ),
-
-                    Column(
+                    ),
+                    
+                    Expanded(child: 
+                      Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
 
@@ -120,9 +123,11 @@ class ScheduleVisit extends StatelessWidget{
                           )
                         )
                       ] 
+                      ),
                     ),
-
-                    Column(
+                    
+                    Expanded(child: 
+                      Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -134,7 +139,10 @@ class ScheduleVisit extends StatelessWidget{
                         )
                       ]
                       ),
-                    Column(
+                    ),
+                    
+                    Expanded(child: 
+                      Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
@@ -148,6 +156,8 @@ class ScheduleVisit extends StatelessWidget{
                         ),
                       ],
                     ),
+                    ),
+                    
 
                   ], 
                 ),

@@ -103,20 +103,28 @@ class StoreScheduleView extends StatelessWidget {
   _onButtonPressed(BuildContext context) {
     String selectedTimes = storeSchedule.getSelectedTimes();
 
-    if (selectedTimes == '') 
-      selectedTimes = 'Please select one or more consecutive times.';
-    Fluttertoast.showToast(
-      msg:  'Scheduled a visit for: ' + selectedTimes,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      webPosition: 'center',
-    );
+    if (selectedTimes == '') {
+        selectedTimes = 'Please select one or more consecutive times.';
+      Fluttertoast.showToast(
+        msg: selectedTimes,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        webPosition: 'center',
+      );
+    }
 
-    _buildVisit(selectedTimes);
-
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) => QR(customerProfile: customerProfile)
-    ));
+    else{
+      _buildVisit(selectedTimes);
+      Fluttertoast.showToast(
+        msg:  'Scheduled a visit for: ' + selectedTimes,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP,
+        webPosition: 'center',
+      );     
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) => QR(customerProfile: customerProfile)
+      ));
+    }
   }
 
 }

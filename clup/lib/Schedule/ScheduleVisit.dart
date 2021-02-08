@@ -172,7 +172,7 @@ class ScheduleVisit extends StatelessWidget{
       switch(option){
         case 1: {
           Navigator.push(context, MaterialPageRoute(
-            builder: (context) => StatesView(),
+            builder: (context) => StatesView(customerController: customerProfile,),
             )
           );
         }

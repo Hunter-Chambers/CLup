@@ -48,13 +48,16 @@ class _HomePageState extends State<HomePage> {
   // shadow for the sign up button
   BoxShadow signupShadow = BoxShadow(
     color: Colors.grey.withOpacity(0.5),
-    spreadRadius: 0.5,
+    spreadRadius: 0.8,
     blurRadius: 5,
-    offset: Offset(5, 5),
+    offset: Offset(0, 8),
   );
 
   // ******************************************
   // test functions
+  double textfieldWidth(double width) {
+    return (width >= 600) ? width / 4 : width / 2.5;
+  }
   // ******************************************
 
   @override
@@ -81,14 +84,11 @@ class _HomePageState extends State<HomePage> {
           color: Colors.white,
           height: bodyHeight,
           width: width,
-          // ******************************************
-          //height: 500,
-          //width: 700,
-          // ******************************************
 
           // putting the items in a listview allows for resizing
           // the window without receiving any errors
-          child: ListView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               // the title of the page
               Container(
@@ -104,21 +104,17 @@ class _HomePageState extends State<HomePage> {
               ),
 
               // holds our text fields and buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: <Widget>[
-                  // holds the text fields in a column
+                  // holds the text fields in a row
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
-                    // ******************************************
-                    //width: 200,
-                    // ******************************************
-                    width: width / 3,
-                    child: Column(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         // username field
                         Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                          padding: EdgeInsets.only(right: 25),
+                          width: textfieldWidth(width),
                           child: TextField(
                             key: Key("userField"),
                             controller: _usernameController,
@@ -131,7 +127,8 @@ class _HomePageState extends State<HomePage> {
 
                         // password field
                         Container(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          padding: EdgeInsets.only(left: 25),
+                          width: textfieldWidth(width),
                           child: TextField(
                             key: Key("passField"),
                             obscureText: true,
@@ -146,215 +143,234 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
-                  // Login button
+                  // holds the buttons in a row
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
-                    // ******************************************
-                    height: 43,
-                    width: 960 / 6 - 35,
-                    // ******************************************
-                    child: FloatingActionButton.extended(
-                      heroTag: "LoginBtn",
-                      onPressed: () async {
-                        _showLoadingIndicator();
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        // Login button
+                        Container(
+                          margin: EdgeInsets.only(top: 25, right: 25),
+                          height: 43,
+                          width: 125,
+                          child: FloatingActionButton.extended(
+                            heroTag: "LoginBtn",
+                            onPressed: () async {
+                              _showLoadingIndicator();
 
-                        String result = await widget.services.attemptLogin(
-                          _usernameController.text,
-                          _passwordController.text,
-                        );
-
-                        if (result == "failure") {
-                          _hideLoadingIndicator();
-                          _showAlertMessage("Login Failed",
-                              "Username or Password is incorrect");
-                        } else if (result == "timed out") {
-                          _hideLoadingIndicator();
-                          _showAlertMessage(
-                              "Login Failed", "Connection timed out");
-                        } else if (result == "unexpected error") {
-                          _hideLoadingIndicator();
-                          _showAlertMessage(
-                              "Login Failed", "An unexpected error occurred");
-                        } else {
-                          String userRecord =
-                              await widget.services.attemptLoadProfile(result);
-
-                          if (userRecord == "failure") {
-                            _hideLoadingIndicator();
-                            _showAlertMessage("Loading Profile Failed",
-                                "An unexpected error occurred");
-                          } else {
-                            _hideLoadingIndicator();
-
-                            Map<String, dynamic> payload = json.decode(
-                                ascii.decode(base64.decode(
-                                    base64.normalize(result.split(".")[1]))));
-                            Map<String, dynamic> recordValues =
-                                json.decode(userRecord);
-
-                            if (payload["accType"] == "customer") {
-                              customerProfile
-                                  .getTextController("username")
-                                  .text = recordValues["username"];
-                              customerProfile.getTextController("fname").text =
-                                  recordValues["fname"];
-                              customerProfile.getTextController("lname").text =
-                                  recordValues["lname"];
-                              customerProfile.getTextController("email").text =
-                                  recordValues["email"];
-                              customerProfile.getTextController("phone").text =
-                                  recordValues["phone"];
-
-                              return Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => CustomerLogin(
-                                    key: Key("customerLoginPage"),
-                                    jwt: result,
-                                    payload: payload,
-                                    customerController: customerProfile,
-                                  ),
-                                ),
+                              String result =
+                                  await widget.services.attemptLogin(
+                                _usernameController.text,
+                                _passwordController.text,
                               );
-                            } else {
-                              storeProfile.getTextController("username").text =
-                                  recordValues["username"];
-                              storeProfile.getTextController("open_time").text =
-                                  recordValues["open_time"];
-                              storeProfile
-                                  .getTextController("close_time")
-                                  .text = recordValues["close_time"];
-                              storeProfile.getTextController("capacity").text =
-                                  recordValues["capacity"];
-                              storeProfile.getTextController("address").text =
-                                  recordValues["address"];
-                              storeProfile.getTextController("city").text =
-                                  recordValues["city"];
-                              storeProfile.getTextController("state").text =
-                                  recordValues["state"];
-                              storeProfile.getTextController("zipcode").text =
-                                  recordValues["zipcode"];
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => StoreLogin(
-                                    key: Key("storeLoginPage"),
-                                    jwt: result,
-                                    payload: payload,
-                                    storeController: storeProfile,
-                                  ),
-                                ),
-                              );
-                            }
-                          }
-                        }
-                      },
-                      label: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16.7,
-                        ),
-                      ),
-                    ),
-                  ),
+                              if (result == "failure") {
+                                _hideLoadingIndicator();
+                                _showAlertMessage("Login Failed",
+                                    "Username or Password is incorrect");
+                              } else if (result == "timed out") {
+                                _hideLoadingIndicator();
+                                _showAlertMessage(
+                                    "Login Failed", "Connection timed out");
+                              } else if (result == "unexpected error") {
+                                _hideLoadingIndicator();
+                                _showAlertMessage("Login Failed",
+                                    "An unexpected error occurred");
+                              } else {
+                                String userRecord = await widget.services
+                                    .attemptLoadProfile(result);
 
-                  // vertical divider
-                  Container(
-                    color: Color.fromARGB(255, 224, 224, 224),
-                    width: 3,
-                    height: 100,
-                  ),
+                                if (userRecord == "failure") {
+                                  _hideLoadingIndicator();
+                                  _showAlertMessage("Loading Profile Failed",
+                                      "An unexpected error occurred");
+                                } else {
+                                  _hideLoadingIndicator();
 
-                  // holds the sign-up button
-                  Container(
-                    margin: EdgeInsets.only(left: 15),
-                    // ******************************************
-                    height: 43,
-                    width: 960 / 6 - 35,
-                    // ******************************************
+                                  Map<String, dynamic> payload = json.decode(
+                                      ascii.decode(base64.decode(base64
+                                          .normalize(result.split(".")[1]))));
+                                  Map<String, dynamic> recordValues =
+                                      json.decode(userRecord);
 
-                    // this gives the button the blue, rounded look
-                    // as well as a shadow
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                      color: Color.fromARGB(255, 33, 150, 243),
-                      boxShadow: [signupShadow],
-                    ),
+                                  if (payload["accType"] == "customer") {
+                                    customerProfile
+                                        .getTextController("username")
+                                        .text = recordValues["username"];
+                                    customerProfile
+                                        .getTextController("fname")
+                                        .text = recordValues["fname"];
+                                    customerProfile
+                                        .getTextController("lname")
+                                        .text = recordValues["lname"];
+                                    customerProfile
+                                        .getTextController("email")
+                                        .text = recordValues["email"];
+                                    customerProfile
+                                        .getTextController("phone")
+                                        .text = recordValues["phone"];
 
-                    // hide the tooltip that comes
-                    // with the popup menu button
-                    child: TooltipTheme(
-                      data: TooltipThemeData(
-                        decoration: BoxDecoration(
-                          color: Colors.transparent,
-                        ),
-                      ),
+                                    return Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => CustomerLogin(
+                                          key: Key("customerLoginPage"),
+                                          jwt: result,
+                                          payload: payload,
+                                          customerController: customerProfile,
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    storeProfile
+                                        .getTextController("username")
+                                        .text = recordValues["username"];
+                                    storeProfile
+                                        .getTextController("open_time")
+                                        .text = recordValues["open_time"];
+                                    storeProfile
+                                        .getTextController("close_time")
+                                        .text = recordValues["close_time"];
+                                    storeProfile
+                                        .getTextController("capacity")
+                                        .text = recordValues["capacity"];
+                                    storeProfile
+                                        .getTextController("address")
+                                        .text = recordValues["address"];
+                                    storeProfile
+                                        .getTextController("city")
+                                        .text = recordValues["city"];
+                                    storeProfile
+                                        .getTextController("state")
+                                        .text = recordValues["state"];
+                                    storeProfile
+                                        .getTextController("zipcode")
+                                        .text = recordValues["zipcode"];
 
-                      // update the shadow when the
-                      // mouse is over the button
-                      child: MouseRegion(
-                        onHover: (e) => _updateShadow(1),
-                        onExit: (e) => _updateShadow(0),
-
-                        // the actual signup button
-                        child: PopupMenuButton(
-                          tooltip: '',
-
-                          // holds the signup text and icon
-                          // that appear on the signup button
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              // signup text
-                              Container(
-                                padding: EdgeInsets.fromLTRB(20, 12, 10, 12),
-                                child: Text(
-                                  "Sign Up",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                    fontSize: 16.7,
-                                  ),
-                                ),
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => StoreLogin(
+                                          key: Key("storeLoginPage"),
+                                          jwt: result,
+                                          payload: payload,
+                                          storeController: storeProfile,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                }
+                              }
+                            },
+                            label: Text(
+                              "Login",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.7,
                               ),
+                            ),
+                          ),
+                        ),
 
-                              // icon
-                              Container(
-                                padding: EdgeInsets.only(right: 12),
-                                child: Icon(
-                                  Icons.arrow_right,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                        // vertical divider
+                        Container(
+                          margin: EdgeInsets.only(top: 25),
+                          color: Color.fromARGB(255, 224, 224, 224),
+                          width: 3,
+                          height: 100,
+                        ),
+
+                        // holds the sign-up button
+                        Container(
+                          margin: EdgeInsets.only(top: 25, left: 25),
+                          height: 43,
+                          width: 125,
+
+                          // this gives the button the blue, rounded look
+                          // as well as a shadow
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30.0),
+                            color: Color.fromARGB(255, 33, 150, 243),
+                            boxShadow: [signupShadow],
                           ),
 
-                          // what happens when an item is selected
-                          onSelected: (String value) {
-                            setState(() {
-                              if (value == "Customer") {
-                                _onButtonPressed(context, 1);
-                              } else {
-                                _onButtonPressed(context, 2);
-                              }
-                            });
-                          },
-
-                          // list of items
-                          itemBuilder: (context) => <PopupMenuEntry<String>>[
-                            PopupMenuItem<String>(
-                              value: "Customer",
-                              child: Text("Customer"),
+                          // hide the tooltip that comes
+                          // with the popup menu button
+                          child: TooltipTheme(
+                            data: TooltipThemeData(
+                              decoration: BoxDecoration(
+                                color: Colors.transparent,
+                              ),
                             ),
-                            PopupMenuItem<String>(
-                              value: "Store",
-                              child: Text("Store"),
-                            )
-                          ],
+
+                            // update the shadow when the
+                            // mouse is over the button
+                            child: MouseRegion(
+                              onHover: (e) => _updateShadow(1),
+                              onExit: (e) => _updateShadow(0),
+
+                              // the actual signup button
+                              child: PopupMenuButton(
+                                tooltip: '',
+
+                                // holds the signup text and icon
+                                // that appear on the signup button
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    // signup text
+                                    Container(
+                                      padding:
+                                          EdgeInsets.fromLTRB(20, 12, 10, 12),
+                                      child: Text(
+                                        "Sign Up",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          fontSize: 16.7,
+                                        ),
+                                      ),
+                                    ),
+
+                                    // icon
+                                    Container(
+                                      padding: EdgeInsets.only(right: 12),
+                                      child: Icon(
+                                        Icons.arrow_right,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                // what happens when an item is selected
+                                onSelected: (String value) {
+                                  setState(() {
+                                    if (value == "Customer") {
+                                      _onButtonPressed(context, 1);
+                                    } else {
+                                      _onButtonPressed(context, 2);
+                                    }
+                                  });
+                                },
+
+                                // list of items
+                                itemBuilder: (context) =>
+                                    <PopupMenuEntry<String>>[
+                                  PopupMenuItem<String>(
+                                    value: "Customer",
+                                    child: Text("Customer"),
+                                  ),
+                                  PopupMenuItem<String>(
+                                    value: "Store",
+                                    child: Text("Store"),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ],
@@ -432,18 +448,18 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         signupShadow = BoxShadow(
           color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 3,
-          blurRadius: 10,
-          offset: Offset(5, 5),
+          spreadRadius: 0.8,
+          blurRadius: 8,
+          offset: Offset(0, 10),
         );
       });
     } else {
       setState(() {
         signupShadow = BoxShadow(
           color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 0.5,
+          spreadRadius: 0.8,
           blurRadius: 5,
-          offset: Offset(5, 5),
+          offset: Offset(0, 8),
         );
       });
     }

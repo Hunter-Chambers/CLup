@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     "zipcode",
   ]);
 
-  // text to appear in the sign up button
+  // shadow for the sign up button
   BoxShadow signupShadow = BoxShadow(
     color: Colors.grey.withOpacity(0.5),
     spreadRadius: 0.5,
@@ -53,8 +53,24 @@ class _HomePageState extends State<HomePage> {
     offset: Offset(5, 5),
   );
 
+  // ******************************************
+  // test functions
+  // ******************************************
+
   @override
   Widget build(BuildContext context) {
+    // ******************************************
+    // test variables
+    final double bodyHeight = MediaQuery.of(context).size.height;
+    final double bodyWidth = MediaQuery.of(context).size.width;
+
+    double width = 0.5 * bodyWidth;
+
+    if (width < 960) {
+      width = (960 <= bodyWidth) ? 960 : bodyWidth;
+    }
+    // ******************************************
+
     return Scaffold(
       // background for whole page
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -63,8 +79,12 @@ class _HomePageState extends State<HomePage> {
         // center white box
         child: Container(
           color: Colors.white,
-          height: 500,
-          width: 700,
+          height: bodyHeight,
+          width: width,
+          // ******************************************
+          //height: 500,
+          //width: 700,
+          // ******************************************
 
           // putting the items in a listview allows for resizing
           // the window without receiving any errors
@@ -89,8 +109,11 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   // holds the text fields in a column
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
-                    width: 200,
+                    padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
+                    // ******************************************
+                    //width: 200,
+                    // ******************************************
+                    width: width / 3,
                     child: Column(
                       children: <Widget>[
                         // username field
@@ -125,7 +148,11 @@ class _HomePageState extends State<HomePage> {
 
                   // Login button
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 15, 0),
+                    // ******************************************
+                    height: 43,
+                    width: 960 / 6 - 35,
+                    // ******************************************
                     child: FloatingActionButton.extended(
                       heroTag: "LoginBtn",
                       onPressed: () async {
@@ -242,7 +269,11 @@ class _HomePageState extends State<HomePage> {
 
                   // holds the sign-up button
                   Container(
-                    margin: EdgeInsets.only(left: 45),
+                    margin: EdgeInsets.only(left: 15),
+                    // ******************************************
+                    height: 43,
+                    width: 960 / 6 - 35,
+                    // ******************************************
 
                     // this gives the button the blue, rounded look
                     // as well as a shadow

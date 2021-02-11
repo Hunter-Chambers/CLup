@@ -35,7 +35,8 @@ class StoreScheduleView extends StatelessWidget {
           alignment: Alignment.center,
           height: 800,
           width: 1000,
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
             textDirection: TextDirection.ltr,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,7 +69,8 @@ class StoreScheduleView extends StatelessWidget {
                 )
               )
             ],
-          ),
+          )
+        ,)
         )
       ),
         

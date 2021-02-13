@@ -1,31 +1,22 @@
 import 'package:clup/StoreProfile/StoreProfileController.dart';
+import 'package:clup/testing/Services.dart';
 import 'package:flutter/material.dart';
 import 'StoreLogin.dart';
 
 class StoreSignup extends StatefulWidget {
-  StoreSignup({Key key}) : super(key: key);
+  final Services services;
+  final StoreProfileController storeProfile;
+
+  // helps validate the form
+  final _formKey = GlobalKey<FormState>();
+
+  StoreSignup({Key key, this.services, this.storeProfile}) : super(key: key);
 
   @override
   _StoreSignupState createState() => _StoreSignupState();
 }
 
 class _StoreSignupState extends State<StoreSignup> {
-  // specify fields for text editing controllers
-  final StoreProfileController storeProfile = StoreProfileController([
-    "username",
-    "password",
-    "open_time",
-    "close_time",
-    "capacity",
-    "address",
-    "city",
-    "state",
-    "zipcode",
-  ]);
-
-  // helps validate the form
-  final _formKey = GlobalKey<FormState>();
-
   String _openAmPm = "AM";
   String _closeAmPm = "AM";
 
@@ -45,7 +36,7 @@ class _StoreSignupState extends State<StoreSignup> {
             padding: EdgeInsets.fromLTRB(15, 30, 15, 30),
             children: <Widget>[
               Form(
-                key: _formKey,
+                key: widget._formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -54,7 +45,8 @@ class _StoreSignupState extends State<StoreSignup> {
                     Container(
                       margin: EdgeInsets.only(bottom: 20),
                       child: TextFormField(
-                        controller: storeProfile.getTextController("username"),
+                        controller:
+                            widget.storeProfile.getTextController("username"),
                         validator: (String value) {
                           if (value.length <= 0) {
                             return "Invalid username";
@@ -77,7 +69,8 @@ class _StoreSignupState extends State<StoreSignup> {
                       margin: EdgeInsets.only(bottom: 20),
                       child: TextFormField(
                         obscureText: true,
-                        controller: storeProfile.getTextController("password"),
+                        controller:
+                            widget.storeProfile.getTextController("password"),
                         validator: (String value) {
                           if (value.length < 10) {
                             return "Must be at least 10 characters";
@@ -86,7 +79,7 @@ class _StoreSignupState extends State<StoreSignup> {
                               new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
                             return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
                           }
-                          if (value.contains(storeProfile
+                          if (value.contains(widget.storeProfile
                               .getTextController("username")
                               .text)) {
                             return "Must not contain the username";
@@ -107,7 +100,7 @@ class _StoreSignupState extends State<StoreSignup> {
                         obscureText: true,
                         validator: (String value) {
                           if (!value.contains(new RegExp(r'^' +
-                                  storeProfile
+                                  widget.storeProfile
                                       .getTextController("password")
                                       .text +
                                   r'$')) ||
@@ -150,8 +143,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           width: 180,
                           margin: EdgeInsets.only(right: 25, bottom: 20),
                           child: TextFormField(
-                            controller:
-                                storeProfile.getTextController("address"),
+                            controller: widget.storeProfile
+                                .getTextController("address"),
                             validator: (String value) {
                               if (!value.contains(new RegExp(
                                   r"^([0-9])+ ([ a-zA-Z0-9'-])+$"))) {
@@ -171,7 +164,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           width: 150,
                           margin: EdgeInsets.only(right: 25, bottom: 20),
                           child: TextFormField(
-                            controller: storeProfile.getTextController("city"),
+                            controller:
+                                widget.storeProfile.getTextController("city"),
                             validator: (String value) {
                               if (!value
                                   .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
@@ -191,7 +185,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           width: 70,
                           margin: EdgeInsets.only(right: 25, bottom: 20),
                           child: TextFormField(
-                            controller: storeProfile.getTextController("state"),
+                            controller:
+                                widget.storeProfile.getTextController("state"),
                             validator: (String value) {
                               if (!value
                                   .contains(new RegExp(r"^([a-zA-Z]){2,2}$"))) {
@@ -211,8 +206,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           width: 100,
                           margin: EdgeInsets.only(bottom: 20),
                           child: TextFormField(
-                            controller:
-                                storeProfile.getTextController("zipcode"),
+                            controller: widget.storeProfile
+                                .getTextController("zipcode"),
                             validator: (String value) {
                               if (!value
                                   .contains(new RegExp(r"^([0-9]){5,5}$"))) {
@@ -237,8 +232,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           width: 150,
                           margin: EdgeInsets.only(right: 25, bottom: 20),
                           child: TextFormField(
-                            controller:
-                                storeProfile.getTextController("open_time"),
+                            controller: widget.storeProfile
+                                .getTextController("open_time"),
                             validator: (String value) {
                               if (!(value.contains(
                                       new RegExp(r'^1[0-2]:[0-5][0-9]$')) ||
@@ -307,8 +302,8 @@ class _StoreSignupState extends State<StoreSignup> {
                           margin:
                               EdgeInsets.only(left: 50, right: 25, bottom: 20),
                           child: TextFormField(
-                            controller:
-                                storeProfile.getTextController("close_time"),
+                            controller: widget.storeProfile
+                                .getTextController("close_time"),
                             validator: (String value) {
                               if (!(value.contains(
                                       new RegExp(r'^1[0-2]:[0-5][0-9]$')) ||
@@ -377,7 +372,8 @@ class _StoreSignupState extends State<StoreSignup> {
                     Container(
                       margin: EdgeInsets.only(bottom: 20),
                       child: TextFormField(
-                        controller: storeProfile.getTextController("capacity"),
+                        controller:
+                            widget.storeProfile.getTextController("capacity"),
                         validator: (String value) {
                           if (value.contains(new RegExp(r'[^0-9]')) ||
                               value.length <= 0) {
@@ -404,7 +400,7 @@ class _StoreSignupState extends State<StoreSignup> {
                     child: FloatingActionButton.extended(
                       heroTag: "SubmitBtn",
                       onPressed: () {
-                        if (_formKey.currentState.validate()) {
+                        if (widget._formKey.currentState.validate()) {
                           _onButtonPressed(context, 1);
                         }
                       },
@@ -429,21 +425,22 @@ class _StoreSignupState extends State<StoreSignup> {
     switch (option) {
       case 1:
         {
-          String time = storeProfile.getTextController("open_time").text;
+          String time = widget.storeProfile.getTextController("open_time").text;
           time += _openAmPm;
-          storeProfile.getTextController("open_time").text = time;
+          widget.storeProfile.getTextController("open_time").text = time;
 
-          time = storeProfile.getTextController("close_time").text;
+          time = widget.storeProfile.getTextController("close_time").text;
           time += _closeAmPm;
-          storeProfile.getTextController("close_time").text = time;
+          widget.storeProfile.getTextController("close_time").text = time;
 
-          storeProfile.getTextController("state").text =
-              storeProfile.getTextController("state").text.toUpperCase();
+          widget.storeProfile.getTextController("state").text =
+              widget.storeProfile.getTextController("state").text.toUpperCase();
 
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StoreLogin(storeController: storeProfile),
+                builder: (context) =>
+                    StoreLogin(storeController: widget.storeProfile),
               ));
         }
     }

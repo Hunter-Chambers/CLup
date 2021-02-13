@@ -12,10 +12,10 @@ import 'StoreProfile/StoreSignup.dart';
 import 'testing/Services.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title, this.services}) : super(key: key);
-
   final String title;
   final Services services;
+
+  HomePage({Key key, this.title, this.services}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -53,15 +53,19 @@ class _HomePageState extends State<HomePage> {
     offset: Offset(0, 8),
   );
 
+  // allows the textfields to be dynamically sized as
+  // the window changes sizes
   double textfieldWidth(double width) {
     return (width >= 600) ? width / 4 : width / 2.5;
   }
 
   @override
   Widget build(BuildContext context) {
+    // the height and width of the window
     final double bodyHeight = MediaQuery.of(context).size.height;
     final double bodyWidth = MediaQuery.of(context).size.width;
 
+    // the width of the center white column
     double width = 0.5 * bodyWidth;
 
     if (width < 960) {
@@ -304,6 +308,7 @@ class _HomePageState extends State<HomePage> {
 
                               // the actual signup button
                               child: PopupMenuButton(
+                                key: Key("signUpBtn"),
                                 tooltip: '',
 
                                 // holds the signup text and icon
@@ -351,10 +356,12 @@ class _HomePageState extends State<HomePage> {
                                 itemBuilder: (context) =>
                                     <PopupMenuEntry<String>>[
                                   PopupMenuItem<String>(
+                                    key: Key("customerMenuItem"),
                                     value: "Customer",
                                     child: Text("Customer"),
                                   ),
                                   PopupMenuItem<String>(
+                                    key: Key("storeMenuItem"),
                                     value: "Store",
                                     child: Text("Store"),
                                   )
@@ -503,6 +510,9 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  // method for showing a popup message. Similar to
+  // a toast or snackbar, except the message will not
+  // leave until the user dismisses it
   _showAlertMessage(String title, String message) {
     showDialog(
       context: context,
@@ -517,6 +527,11 @@ class _HomePageState extends State<HomePage> {
     Navigator.of(context).pop();
   }
 
+  // calling this method shows a circular loading icon
+  // within an alert message. However, the alert message
+  // that is generated cannot be dismissed by the user.
+  // The system MUST dismiss this alert message before
+  // finishing the rest of the code that called this method.
   _showLoadingIndicator() {
     showDialog(
         context: context,
@@ -572,7 +587,10 @@ class _HomePageState extends State<HomePage> {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CustomerSignup(),
+                builder: (context) => CustomerSignup(
+                  services: widget.services,
+                  customerProfile: customerProfile,
+                ),
               ));
         }
         break;
@@ -581,7 +599,10 @@ class _HomePageState extends State<HomePage> {
           return Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StoreSignup(),
+                builder: (context) => StoreSignup(
+                  services: widget.services,
+                  storeProfile: storeProfile,
+                ),
               ));
         }
         break;

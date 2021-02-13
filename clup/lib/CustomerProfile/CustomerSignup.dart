@@ -1,20 +1,17 @@
+import 'package:clup/testing/Services.dart';
 import 'package:flutter/material.dart';
 import 'CustomerLogin.dart';
 import 'CustomerProfileController.dart';
 
 class CustomerSignup extends StatelessWidget {
-  // specify fields for text editing controllers
-  final CustomerProfileController customerProfile = CustomerProfileController([
-    "username",
-    "password",
-    "fname",
-    "lname",
-    "email",
-    "phone",
-  ]);
+  final Services services;
+  final CustomerProfileController customerProfile;
 
   // helps validate the form
   final _formKey = GlobalKey<FormState>();
+
+  CustomerSignup({Key key, this.services, this.customerProfile})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +33,6 @@ class CustomerSignup extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    //
                     // username field
                     Container(
                       margin: EdgeInsets.only(bottom: 20),

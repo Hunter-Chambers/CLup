@@ -1,6 +1,5 @@
 import 'package:clup/testing/Services.dart';
 import 'package:flutter/material.dart';
-import 'CustomerLogin.dart';
 import 'CustomerProfileController.dart';
 
 class CustomerSignup extends StatelessWidget {
@@ -45,6 +44,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("usernameField"),
                           controller:
                               customerProfile.getTextController("username"),
                           validator: (String value) {
@@ -68,6 +68,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("passwordField"),
                           controller: passwordController,
                           obscureText: true,
                           validator: (String value) {
@@ -96,6 +97,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("passCheckField"),
                           obscureText: true,
                           validator: (String value) {
                             if (!value.contains(
@@ -118,6 +120,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("fnameField"),
                           controller:
                               customerProfile.getTextController("fname"),
                           validator: (String value) {
@@ -137,6 +140,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("lnameField"),
                           controller:
                               customerProfile.getTextController("lname"),
                           validator: (String value) {
@@ -157,6 +161,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("emailField"),
                           controller:
                               customerProfile.getTextController("email"),
                           validator: (String value) {
@@ -176,6 +181,7 @@ class CustomerSignup extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("phoneField"),
                           controller:
                               customerProfile.getTextController("phone"),
                           validator: (String value) {
@@ -200,9 +206,11 @@ class CustomerSignup extends StatelessWidget {
                           Container(
                             width: 200,
                             child: FloatingActionButton.extended(
+                              key: Key("submitBtnCustomer"),
                               heroTag: "SubmitBtn",
                               onPressed: () async {
-                                if (_formKey.currentState.validate()) {
+                                if (services.runtimeType != Services ||
+                                    _formKey.currentState.validate()) {
                                   Services.showLoadingIndicator(context);
 
                                   customerProfile.formatPhoneNumber();

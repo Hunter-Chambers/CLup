@@ -532,6 +532,7 @@ class _HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) => CustomerSignup(
+                  key: Key("customerSignupPage"),
                   services: widget.services,
                   customerProfile: customerProfile,
                 ),
@@ -544,6 +545,7 @@ class _HomePageState extends State<HomePage> {
               context,
               MaterialPageRoute(
                 builder: (context) => StoreSignup(
+                  key: Key("storeSignupPage"),
                   services: widget.services,
                   storeProfile: storeProfile,
                 ),

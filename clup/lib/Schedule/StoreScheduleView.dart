@@ -62,6 +62,7 @@ class StoreScheduleView extends StatelessWidget {
               Container(
                 child: FloatingActionButton.extended(
                   heroTag: 'SchedTimesBtn',
+                  key: Key('subSchedBtn'),
                   onPressed: () => _onButtonPressed(context),
                   label: Text(
                     'Schedule Times',

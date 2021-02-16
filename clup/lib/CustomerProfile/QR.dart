@@ -93,6 +93,7 @@ class _QRState extends State<QR> {
             child: Center(
               child: RepaintBoundary(
                 child: QrImage(
+                  key: Key('QRcode'),
                   data: customerProfile.visits[qrIndex],
                   size: 0.5 * bodyHeight,
                   errorStateBuilder: (context, err) {

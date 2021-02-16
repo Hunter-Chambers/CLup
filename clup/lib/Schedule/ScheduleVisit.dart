@@ -153,6 +153,7 @@ class ScheduleVisit extends StatelessWidget{
                           children: [
                             Container(
                               child: FloatingActionButton.extended(
+                                key: Key('strLookBtn'),
                                 heroTag: "LookupBtn",
                                 onPressed: () => _onButtonPressed(context, 1),
                                 label: Text(
@@ -192,35 +193,36 @@ class ScheduleVisit extends StatelessWidget{
   
   _onButtonPressed(BuildContext context, int option){
 
-    if ( storeSchedule.getTextController('Store').text != '') {
       switch(option){
         case 1: {
-          Navigator.push(context, MaterialPageRoute(
-            builder: (context) => StatesView(customerController: customerProfile,),
-            )
-          );
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) => StatesView(customerController: customerProfile,),
+              )
+            );
+          
         }
         break;
         case 2: {
-          return Navigator.push(context, MaterialPageRoute(
-            builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerProfile: customerProfile,),
-            )
-          );
+          if ( storeSchedule.getTextController('Store').text != '') {
+            return Navigator.push(context, MaterialPageRoute(
+              builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerProfile: customerProfile,),
+              )
+            );
+          }
+          else {
+           Fluttertoast.showToast(
+             msg: 'Please select a store.',
+             toastLength: Toast.LENGTH_SHORT,
+             gravity: ToastGravity.BOTTOM,
+             webPosition: 'center',
+           );
+          }
         }
         break;
       }
 
-    }
 
-    else {
-
-      Fluttertoast.showToast(
-        msg: 'Please select a store.',
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        webPosition: 'center',
-      );
-    }
+    
     
     return null;
   } 

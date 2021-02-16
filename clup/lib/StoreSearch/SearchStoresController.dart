@@ -12,9 +12,9 @@ class SearchStoresController {
     label = '';
 
     dropDownMenus['States'] = ['Texas', 'Oklahoma', 'New Mexico'];
-    dropDownMenus['Cities'] = ['Amarillo', 'Lubbock', 'Dallas'];
-    dropDownMenus['Stores'] = ['Walmart', 'HEB', 'United Supermarkets'];
-    dropDownMenus['Addresses'] = ['111 SomeLane', '222 SomeRoad', '333 SomeStreet'];
+    //dropDownMenus['Cities'] = ['Amarillo', 'Lubbock', 'Dallas'];
+    //dropDownMenus['Stores'] = ['Walmart', 'HEB', 'United Supermarkets'];
+    //dropDownMenus['Addresses'] = ['111 SomeLane', '222 SomeRoad', '333 SomeStreet'];
 
   }
 
@@ -38,8 +38,8 @@ class SearchStoresController {
     return( selections[dropDown] );
   }
 
-  whichState() {
-    String key = getSelection('State');
+  whichState(String label) {
+    String key = getSelection(label);
 
     switch (key) {
       case 'Oklahoma': {
@@ -53,6 +53,41 @@ class SearchStoresController {
     }
     return null;
 
+  }
+
+  whichSelection(String label) {
+    String key = getSelection(label);
+
+    switch (label) {
+      case 'States': {
+        switch (key){
+          case 'Texas':{
+          dropDownMenus['Cities'] = ['Amarillo', 'Lubbock', 'Dallas'];
+          }
+          break;
+          case 'Oklahoma': {
+           dropDownMenus['Cities'] = ['Norman', 'Stillwater', 'Oklahoma City'];
+          }
+          break;
+          case 'New Mexico': {
+           dropDownMenus['Cities'] = ['Albuquerque', 'Santa Fe', 'Angel Fire'];
+          }
+          break;   }
+        }
+      break;
+      case 'Cities': {
+        
+      }
+      break;
+      case 'Stores': {
+
+      }
+      break;
+      case 'Addresses': {
+
+      }
+      break;
+    }
   }
 
 }

@@ -19,7 +19,7 @@ class DropDown extends StatefulWidget {
   _DropDownState createState() {
     label = labels[this.index];
     menuItems.setLabel( label );
-    return _DropDownState(searchController: menuItems, customerController: customerProfile, label: label);
+    return _DropDownState(index: this.index, searchController: menuItems, customerController: customerProfile, label: label);
   }
 }
 
@@ -28,7 +28,8 @@ class _DropDownState extends State<DropDown> {
   SearchStoresController menuItems;
   CustomerProfileController customerProfile;
   String label;
-  _DropDownState({this.label, SearchStoresController searchController, CustomerProfileController customerController}) 
+  int index;
+  _DropDownState({this.index, this.label, SearchStoresController searchController, CustomerProfileController customerController}) 
       :this.menuItems = searchController, this.customerProfile = customerController;
   String dropdownValue; 
   
@@ -50,8 +51,8 @@ class _DropDownState extends State<DropDown> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          menuItems.setSelection('State', dropdownValue);
-          menuItems.whichState();
+          menuItems.setSelection(label, dropdownValue);
+          _setNextDropDown();
         });
       },
       items: _displayMenu(),
@@ -59,14 +60,22 @@ class _DropDownState extends State<DropDown> {
   }
 
   List<DropdownMenuItem<String>> _displayMenu(){
-    return (
-      menuItems.getMenuItems(widget.label)
-        .map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
+    List<String> items = menuItems.getMenuItems(label);
+   return (
+        items?.map<DropdownMenuItem<String>>((String value) {
+          return new DropdownMenuItem<String>(
             value: value,
-            child: Text(value),
+            child: new Text(value),
         );
-      }).toList()
+      })?.toList() ?? []
     );
+  }
+
+
+  _setNextDropDown() {
+    setState(() {
+          menuItems.whichSelection(label);
+    });
+ 
   }
 }

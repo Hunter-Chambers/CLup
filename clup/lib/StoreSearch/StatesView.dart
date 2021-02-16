@@ -123,6 +123,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
+      key: Key('StateDrpDwn'),
       hint: Text(label),
       value: dropdownValue,
       icon: Icon(Icons.arrow_drop_down),

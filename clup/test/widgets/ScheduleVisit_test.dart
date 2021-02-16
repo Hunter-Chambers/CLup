@@ -84,6 +84,16 @@ void main() {
       )
     );
 
+    // get the select store button
+    Finder selStrButton = find.byKey(Key('selStrButton'));
+
+    // tap the button with no store selected
+    await tester.tap(selStrButton);
+    await tester.pumpAndSettle();
+
+    // should remain on the same page
+    expect(find.text('Choose a Store to Visit'), findsOneWidget);
+
     // add a second walmart
     customerProfile.addvisit('Walmart');
 
@@ -97,17 +107,61 @@ void main() {
     // get the text field that displays the selected store
     Finder findText = find.byKey(Key('selectedStore'));
     TextField selectedStore = tester.firstWidget(findText);
-    print(selectedStore.controller.text);
+    //print(selectedStore.controller.text);
 
-    // get the select store button
-    Finder selStrButton = find.byKey(Key('selStrButton'));
 
     // tap the button
     await tester.tap(selStrButton);
     await tester.pumpAndSettle();
 
+    // title of next page should be the only widget found
+    // if on the same page there are two matching widgets instead of one
     expect(find.text(selectedStore.controller.text), findsOneWidget);
 
   });
 
+
+  testWidgets('Store Lookup button', (WidgetTester tester) async {
+    await tester.pumpWidget( 
+      MaterialApp(
+       home: ScheduleVisit( customerController: customerProfile,)
+      )
+    );
+
+    Finder findText = find.byKey(Key('selectedStore'));
+    TextField selectedStore = tester.firstWidget(findText);
+
+    expect(selectedStore.controller.text, '');
+
+    // find the store lookup button
+    Finder strLookBtn = find.byKey(Key('strLookBtn'));
+
+    // tap the button
+    await tester.tap(strLookBtn);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Select a State'), findsOneWidget);
+
+    await tester.pumpWidget( 
+      MaterialApp(
+       home: ScheduleVisit( customerController: customerProfile,)
+      )
+    );
+
+    // Get the first listtile from the favorites list
+    Finder stores = find.byKey(Key('storeTile'));
+    Finder store = stores.first;
+
+    // click the tile
+    await tester.tap(store);
+    await tester.pumpAndSettle();
+
+    // tap the button
+    await tester.tap(strLookBtn);
+    await tester.pumpAndSettle();
+
+    expect(find.text('Select a State'), findsOneWidget);
+    expect(find.text('Choose a Store to Visit'), findsNothing);
+
+  });
 }

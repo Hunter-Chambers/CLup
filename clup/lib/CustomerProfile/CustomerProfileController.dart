@@ -37,4 +37,65 @@ class CustomerProfileController {
   removeVisit(int index) {
     visits.removeAt(index);
   }
+
+  reset() {
+    for (TextEditingController value in fieldsMap.values) value.clear();
+  }
+
+  formatPhoneNumber() {
+    String phoneInput = getTextController("phone").text;
+    String phone = "";
+    int i = 0;
+
+    if (phoneInput[i] != "(") {
+      phone += "(";
+      phone += phoneInput.substring(i, i + 3);
+      i += 3;
+    } else {
+      phone += phoneInput.substring(i, i + 4);
+      i += 4;
+    }
+
+    if (phoneInput[i] != ")") {
+      phone += ")";
+    } else {
+      phone += phoneInput[i];
+      i += 1;
+    }
+
+    if (phoneInput[i] != " ") {
+      phone += " ";
+      if (phoneInput[i] == "-") {
+        i += 1;
+      }
+      phone += phoneInput.substring(i, i + 3);
+      i += 3;
+    } else {
+      phone += phoneInput.substring(i, i + 4);
+      i += 4;
+    }
+
+    if (phoneInput[i] != " ") {
+      phone += " ";
+    } else {
+      phone += phoneInput[i];
+      i += 1;
+    }
+
+    if (phoneInput[i] != "-") {
+      phone += "-";
+    } else {
+      phone += phoneInput[i];
+      i += 1;
+    }
+
+    if (phoneInput[i] != " ") {
+      phone += " ";
+      phone += phoneInput.substring(i, i + 4);
+    } else {
+      phone += phoneInput.substring(i, i + 5);
+    }
+
+    getTextController("phone").text = phone;
+  }
 }

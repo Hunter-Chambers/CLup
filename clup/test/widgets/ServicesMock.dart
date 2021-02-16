@@ -1,3 +1,5 @@
+import 'package:clup/CustomerProfile/CustomerSignup.dart';
+import 'package:clup/StoreProfile/StoreSignup.dart';
 import 'package:clup/testing/Services.dart';
 
 class ServicesMock implements Services {
@@ -9,6 +11,19 @@ class ServicesMock implements Services {
   final String id;
   final bool failLoadProfile;
   String mockUsername;
+
+  Future<String> addProfile(Map<String, dynamic> map, Type tableName) {
+    if (id == "test_pass" && tableName == CustomerSignup)
+      return Future.value("success");
+    else if (id == "test_pass" && tableName == StoreSignup)
+      return Future.value("success");
+    else if (id == "test_timeout")
+      return Future.value("timed out");
+    else if (id == "test_unexpected_error")
+      return Future.value("unexpected error");
+    else
+      return Future.value("failure");
+  }
 
   Future<String> attemptLogin(String username, String password) async {
     if (id == "" && username == "customer" && password == "password00") {

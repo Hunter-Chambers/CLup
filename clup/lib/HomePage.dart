@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
   ]);
   StoreProfileController storeProfile = StoreProfileController([
     "username",
+    "store_name",
     "open_time",
     "close_time",
     "capacity",
@@ -52,12 +53,6 @@ class _HomePageState extends State<HomePage> {
     blurRadius: 5,
     offset: Offset(0, 8),
   );
-
-  // allows the textfields to be dynamically sized as
-  // the window changes sizes
-  double textfieldWidth(double width) {
-    return (width >= 600) ? width / 4 : width / 2.5;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                           child: FloatingActionButton.extended(
                             heroTag: "LoginBtn",
                             onPressed: () async {
-                              _showLoadingIndicator();
+                              Services.showLoadingIndicator(context);
 
                               String result =
                                   await widget.services.attemptLogin(
@@ -161,28 +156,36 @@ class _HomePageState extends State<HomePage> {
                                 _passwordController.text,
                               );
 
+                              _passwordController.clear();
+
                               if (result == "failure") {
-                                _hideLoadingIndicator();
-                                _showAlertMessage("Login Failed",
-                                    "Username or Password is incorrect");
+                                Services.hideLoadingIndicator(context);
+                                Services.showAlertMessage(
+                                    "Login Failed",
+                                    "Username or Password is incorrect",
+                                    context);
                               } else if (result == "timed out") {
-                                _hideLoadingIndicator();
-                                _showAlertMessage(
-                                    "Login Failed", "Connection timed out");
+                                Services.hideLoadingIndicator(context);
+                                Services.showAlertMessage("Login Failed",
+                                    "Connection timed out", context);
                               } else if (result == "unexpected error") {
-                                _hideLoadingIndicator();
-                                _showAlertMessage("Login Failed",
-                                    "An unexpected error occurred");
+                                Services.hideLoadingIndicator(context);
+                                Services.showAlertMessage("Login Failed",
+                                    "An unexpected error occurred", context);
                               } else {
                                 String userRecord = await widget.services
                                     .attemptLoadProfile(result);
 
                                 if (userRecord == "failure") {
-                                  _hideLoadingIndicator();
-                                  _showAlertMessage("Loading Profile Failed",
-                                      "An unexpected error occurred");
+                                  Services.hideLoadingIndicator(context);
+                                  Services.showAlertMessage(
+                                      "Loading Profile Failed",
+                                      "An unexpected error occurred",
+                                      context);
                                 } else {
-                                  _hideLoadingIndicator();
+                                  _usernameController.clear();
+
+                                  Services.hideLoadingIndicator(context);
 
                                   Map<String, dynamic> payload = json.decode(
                                       ascii.decode(base64.decode(base64
@@ -222,6 +225,9 @@ class _HomePageState extends State<HomePage> {
                                     storeProfile
                                         .getTextController("username")
                                         .text = recordValues["username"];
+                                    storeProfile
+                                        .getTextController("store_name")
+                                        .text = recordValues["store_name"];
                                     storeProfile
                                         .getTextController("open_time")
                                         .text = recordValues["open_time"];
@@ -444,10 +450,12 @@ class _HomePageState extends State<HomePage> {
                   Map<String, dynamic> payload = json.decode(ascii.decode(
                       base64.decode(base64.normalize(result.split(".")[1]))));
                   Map<String, dynamic> recordValues = json.decode(
-                      '{"username":"store","open_time":"7:00AM","close_time":"11:00PM","capacity":"1500","address":"1234 Random Street","city":"Amarillo","state":"TX","zipcode":"79124"}');
+                      '{"username":"store","store_name":"Rando Store","open_time":"7:00AM","close_time":"11:00PM","capacity":"1500","address":"1234 Random Street","city":"Amarillo","state":"TX","zipcode":"79124"}');
 
                   storeProfile.getTextController("username").text =
                       recordValues["username"];
+                  storeProfile.getTextController("store_name").text =
+                      recordValues["store_name"];
                   storeProfile.getTextController("open_time").text =
                       recordValues["open_time"];
                   storeProfile.getTextController("close_time").text =
@@ -486,6 +494,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  // allows the textfields to be dynamically sized as
+  // the window changes sizes
+  double textfieldWidth(double width) {
+    return (width >= 600) ? width / 4 : width / 2.5;
+  }
+
   // method for dynamically updating the signup
   // button's shadow when the mouse is over it
   _updateShadow(option) {
@@ -508,76 +522,6 @@ class _HomePageState extends State<HomePage> {
         );
       });
     }
-  }
-
-  // method for showing a popup message. Similar to
-  // a toast or snackbar, except the message will not
-  // leave until the user dismisses it
-  _showAlertMessage(String title, String message) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title),
-        content: Text(message),
-      ),
-    );
-  }
-
-  _hideLoadingIndicator() async {
-    Navigator.of(context).pop();
-  }
-
-  // calling this method shows a circular loading icon
-  // within an alert message. However, the alert message
-  // that is generated cannot be dismissed by the user.
-  // The system MUST dismiss this alert message before
-  // finishing the rest of the code that called this method.
-  _showLoadingIndicator() {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return WillPopScope(
-            onWillPop: () async => false,
-            child: AlertDialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8.0)),
-              ),
-              backgroundColor: Colors.black87,
-              content: Container(
-                padding: EdgeInsets.all(16),
-                color: Colors.black.withOpacity(0.8),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 16),
-                      child: Container(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 3,
-                        ),
-                        width: 32,
-                        height: 32,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 4),
-                      child: Text(
-                        "Loading. Please wait...",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        });
   }
 
   _onButtonPressed(BuildContext context, int option) {

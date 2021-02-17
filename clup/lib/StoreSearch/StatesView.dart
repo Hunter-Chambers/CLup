@@ -7,7 +7,7 @@ import '../CustomerProfile/CustomerProfileController.dart';
 import 'DropDown.dart';
 
 class StatesView extends StatelessWidget {
-  final String _title = 'Select a State';
+  //final String _title = 'Select a State';
   //final String _label = 'States';
 
   CustomerProfileController customerProfile;
@@ -15,7 +15,30 @@ class StatesView extends StatelessWidget {
   StatesView ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    MaterialApp(
+      home: MyStatesView(searchController: menuItems,),
+    );}
+}
+
+class MyStatesView extends StatefulWidget{
+  SearchStoresController menuItems;
+  CustomerProfileController customerProfile;
+  MyStatesView({SearchStoresController searchController, CustomerProfileController customerController })
+  : this.menuItems = searchController, this.customerProfile = customerController;
+  
+  @override
+   _MyStatesViewState createState() => _MyStatesViewState(searchController: menuItems, customerController: customerProfile);
+
+}
+
+class _MyStatesViewState extends State<MyStatesView>{
+  SearchStoresController menuItems;
+  CustomerProfileController customerProfile;
+  _MyStatesViewState({SearchStoresController searchController, CustomerProfileController customerController})
+  : this.menuItems = searchController, this.customerProfile = customerController;
+   Widget build(BuildContext context ) {
+      return Scaffold(
       appBar: AppBar(title: Text('To Login Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: Center(
@@ -29,7 +52,7 @@ class StatesView extends StatelessWidget {
                 alignment: Alignment.center,
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
                 child: Text(
-                  _title,
+                  'Search for a Store',
                   style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
@@ -93,10 +116,17 @@ class StatesView extends StatelessWidget {
         ),
       ),
     );
-  }
+   }
   _onButtonPressed(BuildContext context, int option){
+    setState(() {
+      
+    });
+    /*
     return Navigator.push(context, MaterialPageRoute(
       builder: (context) => CitiesView(searchController: menuItems, customerController: customerProfile,),
       )
-    );}
+      
+    );
+    */
+    }
 }

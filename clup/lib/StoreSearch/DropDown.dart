@@ -28,6 +28,7 @@ class _DropDownState extends State<DropDown> {
   SearchStoresController menuItems;
   CustomerProfileController customerProfile;
   String label;
+  int _lastChanged = 0;
   int index;
   _DropDownState({this.index, this.label, SearchStoresController searchController, CustomerProfileController customerController}) 
       :this.menuItems = searchController, this.customerProfile = customerController;
@@ -39,7 +40,7 @@ class _DropDownState extends State<DropDown> {
     return DropdownButton<String>(
       key: Key('StateDrpDwn'),
       hint: Text(label),
-      value: dropdownValue,
+      value: _setValue(),
       icon: Icon(Icons.arrow_drop_down),
       iconSize: 24,
       elevation: 16,
@@ -50,6 +51,7 @@ class _DropDownState extends State<DropDown> {
       ),
       onChanged: (String newValue) {
         setState(() {
+          _lastChanged = index;
           dropdownValue = newValue;
           menuItems.setSelection(label, dropdownValue);
           _setNextDropDown();
@@ -60,6 +62,9 @@ class _DropDownState extends State<DropDown> {
   }
 
   List<DropdownMenuItem<String>> _displayMenu(){
+    if ( _lastChanged < index ) {
+
+    }
     List<String> items = menuItems.getMenuItems(label);
    return (
         items?.map<DropdownMenuItem<String>>((String value) {
@@ -77,5 +82,12 @@ class _DropDownState extends State<DropDown> {
           menuItems.whichSelection(label);
     });
  
+  }
+
+  String _setValue(){
+    if ( _lastChanged < index ){
+      return dropdownValue = null;
+    }
+    return dropdownValue;
   }
 }

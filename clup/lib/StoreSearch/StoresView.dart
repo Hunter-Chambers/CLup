@@ -106,7 +106,7 @@ class MyStatefulWidget extends StatefulWidget {
       :this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
   @override
   _MyStatefulWidgetState createState() {
-    menuItems.setLabel( label );
+    //menuItems.setLabel( label );
     return _MyStatefulWidgetState(searchController: menuItems, customerController: customerProfile, label: label);
   }
 }

@@ -36,7 +36,14 @@ class _MyStatesViewState extends State<MyStatesView>{
   SearchStoresController menuItems;
   CustomerProfileController customerProfile;
   _MyStatesViewState({SearchStoresController searchController, CustomerProfileController customerController})
-  : this.menuItems = searchController, this.customerProfile = customerController;
+  : this.menuItems = searchController, this.customerProfile = customerController;    
+
+  // Drop Down values
+  String _statesValue, _citiesValue, _storesValue, _addressesValue;
+
+  // Drop Down flags
+  bool _statesChanged = false, _citiesChanged = false, _storesChanged = false;
+
    Widget build(BuildContext context ) {
       return Scaffold(
       appBar: AppBar(title: Text('To Login Page')),
@@ -66,17 +73,129 @@ class _MyStatesViewState extends State<MyStatesView>{
                     padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
                     height: 50,
                     alignment: Alignment.center,
-                    child: ListView.builder(
+                    child: ListView(
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.only(right: 50),
                       shrinkWrap: true,
-                      itemCount: 4,
-                      itemBuilder:(context, index) { 
-                        return Padding(
-                          padding: EdgeInsets.only(right: 20),
-                        child: DropDown(searchController: menuItems, customerController: customerProfile, index: index)
-                        );
-                    }, 
+                      children: [
+
+
+                      /* ================================================================= States Drop Down */
+                      Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child:
+                        DropdownButton<String>(
+                          key: Key('StateDrpDwn'),
+                          hint: Text(menuItems.labels[0]),
+                          value: _statesValue,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blue,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              _statesChanged = true;
+                              _statesValue = newValue;
+                              menuItems.setSelection(menuItems.labels[0], _statesValue);
+                              _setNextDropDown(0);
+                            });
+                          },
+                          items: _displayMenu(0),
+                        )   ,
+                      ), 
+                       
+
+                      /* ================================================================= Cities Drop Down */
+
+                      Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child: 
+                        DropdownButton<String>(
+                          key: Key('CityDrpDwn'),
+                          hint: Text(menuItems.labels[1]),
+                          value: _citiesValue,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blue,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              _citiesValue = newValue;
+                              menuItems.setSelection(menuItems.labels[1], _citiesValue);
+                              _setNextDropDown(1);
+                            });
+                          },
+                          items: _displayMenu(1),
+                        ),
+                      ), 
+
+                       
+
+                      /* ================================================================= Stores Drop Down */
+
+                      Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child:
+                        DropdownButton<String>(
+                          key: Key('StoreDrpDwn'),
+                          hint: Text(menuItems.labels[2]),
+                          value: _storesValue,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blue,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              _storesValue = newValue;
+                              menuItems.setSelection(menuItems.labels[2], _storesValue);
+                              _setNextDropDown(2);
+                            });
+                          },
+                          items: _displayMenu(2),
+                        ),
+                      ),
+
+                      /* ================================================================= Stores Drop Down */
+
+                      Padding(
+                        padding: EdgeInsets.only(right: 20),
+                        child:
+                        DropdownButton<String>(
+                          key: Key('AddressDrpDwn'),
+                          hint: Text(menuItems.labels[3]),
+                          value: _addressesValue,
+                          icon: Icon(Icons.arrow_drop_down),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: TextStyle(color: Colors.black),
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blue,
+                          ),
+                          onChanged: (String newValue) {
+                            setState(() {
+                              _addressesValue = newValue;
+                              menuItems.setSelection(menuItems.labels[3], _addressesValue);
+                              _setNextDropDown(3);
+                            });
+                          },
+                          items: _displayMenu(3),
+                        ),
+                      ),
+                       
+                      ],
                     ),
                   ),
                   
@@ -117,6 +236,42 @@ class _MyStatesViewState extends State<MyStatesView>{
       ),
     );
    }
+
+  List<DropdownMenuItem<String>> _displayMenu(int i){
+    List<String> items = menuItems.getMenuItems(menuItems.labels[i]);
+    return (
+         items?.map<DropdownMenuItem<String>>((String value) {
+           return new DropdownMenuItem<String>(
+             value: value,
+             child: new Text(value),
+         );
+       })?.toList() ?? []
+     );
+   }
+
+
+  _setNextDropDown(int i) {
+    setState(() {
+      if ( _statesChanged ) {
+        _citiesValue = null;
+        _storesValue = null;
+        _addressesValue = null;
+        _statesChanged = false;
+      }
+      else if ( _citiesChanged ) {
+        _storesValue = null;
+        _addressesValue = null;
+        _citiesChanged = false;
+      }
+      else if ( _storesChanged ) {
+        _addressesValue = null;
+        _storesChanged = false;
+      }
+          menuItems.whichSelection(menuItems.labels[i]);
+    });
+ 
+  }
+
   _onButtonPressed(BuildContext context, int option){
     setState(() {
       

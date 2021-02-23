@@ -1,6 +1,6 @@
 class SearchStoresController {
   Map <String, List<String>> dropDownMenus = new Map<String, List<String>>();
-  String label;
+  List<String> labels;
   Map<String, String> selections = new Map<String, String>();
 
   SearchStoresController(){
@@ -9,7 +9,7 @@ class SearchStoresController {
     selections['Store'] = '';
     selections['Address'] = '';
 
-    label = '';
+    labels = ['States', 'Cities', 'Stores', 'Addresses'];
 
     dropDownMenus['States'] = ['Texas', 'Oklahoma', 'New Mexico'];
     //dropDownMenus['Cities'] = ['Amarillo', 'Lubbock', 'Dallas'];
@@ -24,10 +24,6 @@ class SearchStoresController {
 
   setMenuItems( String menu, List<String> menuItems ){
     dropDownMenus[menu] = menuItems;
-  }
-
-  setLabel( String newLabel ) {
-    label = newLabel;
   }
 
   setSelection(String dropDown, String selection){

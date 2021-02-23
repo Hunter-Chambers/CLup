@@ -18,7 +18,7 @@ class DropDown extends StatefulWidget {
   @override
   _DropDownState createState() {
     label = labels[this.index];
-    menuItems.setLabel( label );
+    //menuItems.setLabel( label );
     return _DropDownState(index: this.index, searchController: menuItems, customerController: customerProfile, label: label);
   }
 }

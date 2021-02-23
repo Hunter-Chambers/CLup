@@ -1,7 +1,6 @@
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/Schedule/StoreScheduleView.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:clup/CustomerProfile/QR.dart';
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
 void main() {

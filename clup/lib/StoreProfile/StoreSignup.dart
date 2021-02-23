@@ -52,6 +52,7 @@ class _StoreSignupState extends State<StoreSignup> {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("usernameField"),
                           controller:
                               widget.storeProfile.getTextController("username"),
                           validator: (String value) {
@@ -76,6 +77,7 @@ class _StoreSignupState extends State<StoreSignup> {
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
                           obscureText: true,
+                          key: Key("passwordField"),
                           controller: widget.passwordController,
                           validator: (String value) {
                             if (value.length < 10) {
@@ -104,6 +106,7 @@ class _StoreSignupState extends State<StoreSignup> {
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
                           obscureText: true,
+                          key: Key("passCheckField"),
                           validator: (String value) {
                             if (!value.contains(new RegExp(r'^' +
                                     widget.passwordController.text +
@@ -124,6 +127,7 @@ class _StoreSignupState extends State<StoreSignup> {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("storeNameField"),
                           controller: widget.storeProfile
                               .getTextController("store_name"),
                           validator: (String value) {
@@ -147,6 +151,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             width: 180,
                             margin: EdgeInsets.only(right: 25, bottom: 20),
                             child: TextFormField(
+                              key: Key("storeAddressField"),
                               controller: widget.storeProfile
                                   .getTextController("address"),
                               validator: (String value) {
@@ -168,6 +173,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             width: 150,
                             margin: EdgeInsets.only(right: 25, bottom: 20),
                             child: TextFormField(
+                              key: Key("cityField"),
                               controller:
                                   widget.storeProfile.getTextController("city"),
                               validator: (String value) {
@@ -189,6 +195,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             width: 70,
                             margin: EdgeInsets.only(right: 25, bottom: 20),
                             child: TextFormField(
+                              key: Key("stateField"),
                               controller: widget.storeProfile
                                   .getTextController("state"),
                               validator: (String value) {
@@ -210,6 +217,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             width: 100,
                             margin: EdgeInsets.only(bottom: 20),
                             child: TextFormField(
+                              key: Key("zipcodeField"),
                               controller: widget.storeProfile
                                   .getTextController("zipcode"),
                               validator: (String value) {
@@ -236,6 +244,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             width: 150,
                             margin: EdgeInsets.only(right: 25, bottom: 20),
                             child: TextFormField(
+                              key: Key("storeOpenField"),
                               controller: widget.storeProfile
                                   .getTextController("open_time"),
                               validator: (String value) {
@@ -307,6 +316,7 @@ class _StoreSignupState extends State<StoreSignup> {
                             margin: EdgeInsets.only(
                                 left: 50, right: 25, bottom: 20),
                             child: TextFormField(
+                              key: Key("storeCloseField"),
                               controller: widget.storeProfile
                                   .getTextController("close_time"),
                               validator: (String value) {
@@ -378,6 +388,7 @@ class _StoreSignupState extends State<StoreSignup> {
                       Container(
                         margin: EdgeInsets.only(bottom: 20),
                         child: TextFormField(
+                          key: Key("capacityField"),
                           controller:
                               widget.storeProfile.getTextController("capacity"),
                           validator: (String value) {
@@ -404,6 +415,7 @@ class _StoreSignupState extends State<StoreSignup> {
                     Container(
                       width: 200,
                       child: FloatingActionButton.extended(
+                        key: Key("submitBtnStore"),
                         heroTag: "SubmitBtn",
                         onPressed: () async {
                           if (widget._formKey.currentState.validate()) {

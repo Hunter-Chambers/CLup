@@ -209,8 +209,7 @@ class CustomerSignup extends StatelessWidget {
                               key: Key("submitBtnCustomer"),
                               heroTag: "SubmitBtn",
                               onPressed: () async {
-                                if (services.runtimeType != Services ||
-                                    _formKey.currentState.validate()) {
+                                if (_formKey.currentState.validate()) {
                                   Services.showLoadingIndicator(context);
 
                                   customerProfile.formatPhoneNumber();

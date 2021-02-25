@@ -1,26 +1,46 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+
+import '../testing/Services.dart';
+//import 'package:flutter/services.dart' show rootBundle;
+
 class SearchStoresController {
+  int cityID, storeID;
+  Services services;
   Map <String, List<String>> dropDownMenus = new Map<String, List<String>>();
   List<String> labels;
   Map<String, String> selections = new Map<String, String>();
 
   SearchStoresController(){
-    selections['State'] = '';
-    selections['City'] = '';
-    selections['Store'] = '';
-    selections['Address'] = '';
+    selections['State'] = null;
+    selections['City'] = null;
+    selections['Store'] = null;
+    selections['Address'] = null;
 
     labels = ['States', 'Cities', 'Stores', 'Addresses'];
 
-    dropDownMenus['States'] = ['Texas', 'Oklahoma', 'New Mexico'];
-    //dropDownMenus['Cities'] = ['Amarillo', 'Lubbock', 'Dallas'];
-    //dropDownMenus['Stores'] = ['Walmart', 'HEB', 'United Supermarkets'];
-    //dropDownMenus['Addresses'] = ['111 SomeLane', '222 SomeRoad', '333 SomeStreet'];
-
   }
 
-  List<String> getMenuItems( String menu ) {
-    return dropDownMenus[menu];
+  Future<String> getMenuItems( String menu) async{
+    return await rootBundle.loadString("$menu.json");
   }
+
+  setCityID(int id){
+    cityID = id;
+  }
+  
+  int getCityID() {
+    return cityID;
+  }
+
+  setStoreID(int id){
+    storeID = id;
+  }
+
+  int getStoreID() {
+    return storeID;
+  }
+
 
   setMenuItems( String menu, List<String> menuItems ){
     dropDownMenus[menu] = menuItems;

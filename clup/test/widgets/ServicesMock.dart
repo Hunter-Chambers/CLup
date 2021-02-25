@@ -10,6 +10,29 @@ class ServicesMock implements Services {
   final bool failLoadProfile;
   String mockUsername;
 
+  Future<String> getALLRec(String tablename) async {
+    String payload = '';
+    if ( tablename == 'States' ) {
+      payload = 'Oklahoma, NewMexico, Texas';
+    }
+    else if ( tablename == 'Oklahoma') {
+      payload = 'Norman, Oklahoma City, Stillwater';
+    }
+    else if ( tablename == 'NewMexico' ) {
+      payload = 'Albuquerque, Angel Fire, Santa Fe';
+    }
+    else if ( tablename == 'Texas' ) {
+      payload = 'Amarillo, Dallas, Lubbock';
+    }
+    else if (tablename == 'Stores') {
+      payload = 'HEB, United Supermarket, Walmart';
+    }
+    else if (tablename == 'Addresses') {
+      payload = '111 SomeRoad, 222 SomeLane, 333 SomeStreet';
+    }
+
+    return Future.value(payload);
+  }
   Future<String> attemptLogin(String username, String password) async {
     if (id == "" && username == "customer" && password == "password00") {
       String payload =

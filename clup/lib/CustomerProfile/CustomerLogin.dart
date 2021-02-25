@@ -1,6 +1,6 @@
 //import 'package:clup/SearchStoresView_Backup.dart';
 
-import 'package:clup/StoreSearch/StatesView.dart';
+import 'package:clup/StoreSearch/StoreSearch.dart';
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
@@ -197,7 +197,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => StatesView(
+                builder: (context) => StoreSearch(
                   customerController: customerController,
                 ),
               ));

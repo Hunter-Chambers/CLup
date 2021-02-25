@@ -1,21 +1,23 @@
-import 'package:clup/CustomerProfile/CustomerLogin.dart';
+/*
+import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
+import 'AddressesView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 
-class AddressesView extends StatelessWidget {
-  static const String _title = 'Select an Address';
-  static const String _label = 'Addresses';
-  final SearchStoresController menuItems;
-  final CustomerProfileController customerProfile;
-  AddressesView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
+class StoresView extends StatelessWidget {
+  static const String _title = 'Select a Store';
+  static const String _label = 'Stores';
+  SearchStoresController menuItems;
+  CustomerProfileController customerProfile;
+  StoresView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
       : this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('To Select a Store Page')),
+      appBar: AppBar(title: Text('To Select a City Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: Center(
         child: Container(
@@ -39,7 +41,7 @@ class AddressesView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                     width: 200,
                     child: Column(
                       children: <Widget>[
@@ -51,40 +53,22 @@ class AddressesView extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
-                    child: Builder(
-                      builder: (context) =>
-                        Center(
-                          child: FloatingActionButton.extended(
-                            heroTag: 'AddressBtn',
-                            onPressed: () => _onButtonPressed(context, 1),
-                            label: Text(
-                              "Add",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              )
-                            )
-                          ),
-                        )
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: "StoresBtn",
+                      onPressed: () => _onButtonPressed(context, 2),
+                      label: Text(
+                        "Select",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
                   Container(
                     color: Color.fromARGB(255, 224, 224, 224),
                     width: 3,
                     height: 100,
-                  ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
-                    child: FloatingActionButton.extended(
-                      heroTag: 'RetLogBtn',
-                      onPressed: () => _onButtonPressed(context, 2),
-                      label: Text(
-                        "To Profile Page",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        )
-                      ),
-                    )
                   ),
                 ],
               ),
@@ -96,6 +80,9 @@ class AddressesView extends StatelessWidget {
                   endIndent: 30,
                 ),
               ),
+              Container(
+                padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
+              ),
             ],
           ),
         ),
@@ -103,34 +90,10 @@ class AddressesView extends StatelessWidget {
     );
   }
   _onButtonPressed(BuildContext context, int option){
-
-    switch (option) {
-      case 1: {
-        String storeSelection = menuItems.getSelection('Store') + ', ' + 
-        menuItems.getSelection('Address') + ', ' + 
-        menuItems.getSelection('City') + ', ' + 
-        menuItems.getSelection('State');
-
-        customerProfile.addFavoriteStore(storeSelection);
-        String msg = storeSelection + ' was added to Favorites';
-
-    
-        final snackBar = SnackBar(content: Text(msg));
-
-        Scaffold.of(context).showSnackBar(snackBar);
-      }
-      break;
-      case 2: {
-        return Navigator.push(context, MaterialPageRoute(
-          builder: (context) => CustomerLogin(customerController: customerProfile,),
-          )
-        );
-      }
-      break;
-    }
-
-    return null;
-
+    return Navigator.push(context, MaterialPageRoute(
+      builder: (context) => AddressesView(searchController: menuItems, customerController: customerProfile),
+      )
+    );
   }
 }
   
@@ -145,7 +108,7 @@ class MyStatefulWidget extends StatefulWidget {
   @override
   _MyStatefulWidgetState createState() {
     //menuItems.setLabel( label );
-    return _MyStatefulWidgetState(searchController: menuItems, customerConrtoller: customerProfile, label: label);
+    return _MyStatefulWidgetState(searchController: menuItems, customerController: customerProfile, label: label);
   }
 }
 
@@ -154,8 +117,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   SearchStoresController menuItems;
   CustomerProfileController customerProfile;
   String label;
-  _MyStatefulWidgetState({SearchStoresController searchController, String label, CustomerProfileController customerConrtoller}) 
-      : this.menuItems = searchController, this.customerProfile = customerConrtoller, this.label = label;
+  _MyStatefulWidgetState({SearchStoresController searchController, CustomerProfileController customerController, String label})
+       : this.menuItems = searchController, this.customerProfile = customerController, this.label = label;
   String dropdownValue; 
   
 
@@ -175,7 +138,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          menuItems.setSelection('Address', dropdownValue);
+          menuItems.setSelection('Store', dropdownValue);
         });
       },
       items: _displayMenu(),
@@ -194,3 +157,4 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+*/

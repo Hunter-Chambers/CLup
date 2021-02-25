@@ -1,7 +1,7 @@
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../StoreSearch/StatesView.dart';
+import '../StoreSearch/StoreSearch.dart';
 import 'StoreScheduleView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/rendering.dart';
@@ -196,7 +196,7 @@ class ScheduleVisit extends StatelessWidget{
       switch(option){
         case 1: {
             Navigator.push(context, MaterialPageRoute(
-              builder: (context) => StatesView(customerController: customerProfile,),
+              builder: (context) => StoreSearch(customerController: customerProfile,),
               )
             );
           

@@ -1,0 +1,83 @@
+{
+        "Walmart-1":{
+
+            "addresses" : ["111 someRoad"]
+
+        },
+        "Walmart-2":{
+
+            "addresses" : ["222 someRoad"]
+
+        },
+        "Walmart-4":{
+
+            "addresses" : ["333 someRoad"]
+
+        },
+        "Walmart-7":{
+
+            "addresses" : ["444 someRoad"]
+
+        },
+        "Walmart-9":{
+
+            "addresses" : ["555 someRoad"]
+
+        },
+        "United Supermarket-2":{
+
+            "addresses" : ["111 someStreet"]
+
+        },
+        "United Supermarket-5":{
+
+            "addresses" : ["222 someStreet"]
+
+        },
+        "Albertsons-6":{
+
+            "addresses" : ["111 SomeLane"]
+
+        },
+        "Albertsons-7":{
+
+            "addresses" : ["222 someLane"]
+
+        },
+        "Albertsons-8":{
+
+            "addresses" : ["333 someLane"]
+
+        },
+        "Albertsons-9":{
+
+            "addresses" : ["444 someLane"]
+
+        },
+        "HEB-3":{
+
+            "addresses" : ["111 somePlace"]
+
+        },
+        "HEB-4":{
+
+            "addresses" : ["222 somePlace"]
+
+        },
+        "HEB-5":{
+
+            "addresses" : ["333 somePlace"]
+
+        },
+        "HEB-8":{
+
+            "addresses" : ["444 somePlace"]
+
+        },
+        "HEB-9":{
+
+            "addresses" : ["555 somePlace"]
+
+        }
+
+}

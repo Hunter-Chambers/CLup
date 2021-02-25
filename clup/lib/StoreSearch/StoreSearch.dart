@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:flutter/rendering.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'SearchStoresController.dart';
-//import 'package:fluttertoast/fluttertoast.dart';
-import 'CitiesView.dart';
+import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
-import 'DropDown.dart';
 
-class StatesView extends StatelessWidget {
+class StoreSearch extends StatelessWidget {
   //final String _title = 'Select a State';
   //final String _label = 'States';
 
   CustomerProfileController customerProfile;
   SearchStoresController menuItems = SearchStoresController();
-  StatesView ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
+  StoreSearch ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
+    print(customerProfile.getTextController('username').text);
     return 
     MaterialApp(
-      home: MyStatesView(searchController: menuItems,),
+      home: MyStatesView(searchController: menuItems, customerController: customerProfile,),
     );}
 }
 
@@ -37,6 +38,12 @@ class _MyStatesViewState extends State<MyStatesView>{
   CustomerProfileController customerProfile;
   _MyStatesViewState({SearchStoresController searchController, CustomerProfileController customerController})
   : this.menuItems = searchController, this.customerProfile = customerController;    
+  void initState() {
+    _setStatesList();
+    super.initState();
+  }
+  // lists to display dropdown items
+  List _statesList, _citiesList, _storesList, _addressesList;
 
   // Drop Down values
   String _statesValue, _citiesValue, _storesValue, _addressesValue;
@@ -45,6 +52,7 @@ class _MyStatesViewState extends State<MyStatesView>{
   bool _statesChanged = false, _citiesChanged = false, _storesChanged = false;
 
    Widget build(BuildContext context ) {
+     print(customerProfile.getTextController('username').text);
       return Scaffold(
       appBar: AppBar(title: Text('To Login Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -128,6 +136,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                           ),
                           onChanged: (String newValue) {
                             setState(() {
+                              _citiesChanged = true;
                               _citiesValue = newValue;
                               menuItems.setSelection(menuItems.labels[1], _citiesValue);
                               _setNextDropDown(1);
@@ -158,6 +167,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                           ),
                           onChanged: (String newValue) {
                             setState(() {
+                              _storesChanged = true;
                               _storesValue = newValue;
                               menuItems.setSelection(menuItems.labels[2], _storesValue);
                               _setNextDropDown(2);
@@ -167,7 +177,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                         ),
                       ),
 
-                      /* ================================================================= Stores Drop Down */
+                      /* ================================================================= Addresses Drop Down */
 
                       Padding(
                         padding: EdgeInsets.only(right: 20),
@@ -191,7 +201,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                               _setNextDropDown(3);
                             });
                           },
-                          items: _displayMenu(3),
+                          items:  _displayMenu(3),
                         ),
                       ),
                        
@@ -208,9 +218,9 @@ class _MyStatesViewState extends State<MyStatesView>{
                     padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
                     child: FloatingActionButton.extended(
                       heroTag: "StateBtn",
-                      onPressed: () => _onButtonPressed(context, 2),
+                      onPressed: () => _onButtonPressed(context, 1),
                       label: Text(
-                        "Select",
+                        "Add to favorites",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -238,9 +248,31 @@ class _MyStatesViewState extends State<MyStatesView>{
    }
 
   List<DropdownMenuItem<String>> _displayMenu(int i){
-    List<String> items = menuItems.getMenuItems(menuItems.labels[i]);
+    List<dynamic> items;
+    switch (i) {
+      case 0: {
+        items = _statesList;
+      }
+      break;
+
+      case 1: {
+        items = _citiesList;
+      }
+      break;
+
+      case 2: {
+        items = _storesList;
+      }
+      break;
+
+      case 3: {
+        items = _addressesList;
+      }
+      break;
+    }
+    
     return (
-         items?.map<DropdownMenuItem<String>>((String value) {
+         items?.map<DropdownMenuItem<String>>((dynamic value) {
            return new DropdownMenuItem<String>(
              value: value,
              child: new Text(value),
@@ -250,38 +282,151 @@ class _MyStatesViewState extends State<MyStatesView>{
    }
 
 
-  _setNextDropDown(int i) {
+  _setNextDropDown(int i) async{
+    String dropDown = menuItems.labels[i];
+    String selection = menuItems.getSelection(dropDown);
     setState(() {
       if ( _statesChanged ) {
         _citiesValue = null;
+        _citiesList = null;
+        menuItems.setSelection(menuItems.labels[1], null);
+
         _storesValue = null;
+        _storesList = null;
+        menuItems.setSelection(menuItems.labels[2], null);
+        
         _addressesValue = null;
+        _addressesList = null;
+        menuItems.setSelection(menuItems.labels[3], null);
+
         _statesChanged = false;
+
+        _setCitiesList(selection);
       }
       else if ( _citiesChanged ) {
         _storesValue = null;
+        _storesList = null;
+        menuItems.setSelection(menuItems.labels[2], null);
+        
         _addressesValue = null;
+        _addressesList = null;
+        menuItems.setSelection(menuItems.labels[3], null);
+
         _citiesChanged = false;
+
+        _setStoresList(selection);
       }
       else if ( _storesChanged ) {
         _addressesValue = null;
+        _addressesList = null;
+        menuItems.setSelection(menuItems.labels[3], null);
+
         _storesChanged = false;
+
+        _setAddressesList(selection);
       }
-          menuItems.whichSelection(menuItems.labels[i]);
+      menuItems.whichSelection(menuItems.labels[i]);
     });
- 
   }
 
-  _onButtonPressed(BuildContext context, int option){
+  _setStatesList() async {
+
+    String jsonString = await menuItems.getMenuItems(menuItems.labels[0]);
+    Map<String, dynamic> statesMap = jsonDecode(jsonString);
+
     setState(() {
-      
+      _statesList = statesMap[menuItems.labels[0]];
     });
-    /*
-    return Navigator.push(context, MaterialPageRoute(
-      builder: (context) => CitiesView(searchController: menuItems, customerController: customerProfile,),
-      )
-      
-    );
-    */
+
+  }
+
+  _setCitiesList(String selection) async {
+
+    String jsonString = await menuItems.getMenuItems(menuItems.labels[1]);
+    Map<String, dynamic> citiesMap = jsonDecode(jsonString);
+    String key = selection;
+    menuItems.setCityID(citiesMap[key]['id']);
+
+    setState(() {
+      _citiesList = citiesMap[key]['cities'];
+    });
+
+  }
+
+
+  _setStoresList(String selection) async {
+
+    String jsonString = await menuItems.getMenuItems(menuItems.labels[2]);
+    Map<String, dynamic> storesMap = jsonDecode(jsonString);
+
+    int id = menuItems.getCityID();
+    String key = selection+'-$id';
+    menuItems.setStoreID(storesMap[key]['id']);
+
+    setState(() {
+      _storesList = storesMap[key]['stores'];
+    });
+
+  }
+
+  _setAddressesList(String selection) async {
+
+    String jsonString = await menuItems.getMenuItems(menuItems.labels[3]);
+    Map<String, dynamic> addressesMap = jsonDecode(jsonString);
+
+    int id = menuItems.getStoreID();
+    String key = selection+'-$id';
+
+    setState(() {
+      _addressesList = addressesMap[key]['addresses'];
+    });
+
+  }
+  _onButtonPressed(BuildContext context, int option){
+
+    switch (option) {
+      case 1: {
+        String state = menuItems.getSelection(menuItems.labels[0]);
+        String city = menuItems.getSelection(menuItems.labels[1]);
+        String store = menuItems.getSelection(menuItems.labels[2]);
+        String address = menuItems.getSelection(menuItems.labels[3]);
+        //print('State: $state');
+        //print('City: $city');
+        //print('Store: $store');
+        //print('Address: $address');
+        if (address == null || store == null || city == null || state == null ) {
+          Fluttertoast.showToast(
+            gravity: ToastGravity.BOTTOM,
+            toastLength: Toast.LENGTH_LONG,
+            msg: 'One or more fields not selected.',
+            webPosition: 'center',
+            );
+
+        }
+        else {
+          String storeSelection = store + ',' +
+          address + ',' + city + ',' +  state;
+          customerProfile.addFavoriteStore(storeSelection);
+          String msg = storeSelection + ' was added to Favorites';
+
+
+    
+          final snackBar = SnackBar(content: Text(msg));
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+      }
+      break;
+      case 2: {
+        return Navigator.push(context, MaterialPageRoute(
+          builder: (context) => CustomerLogin(customerController: customerProfile,),
+          )
+        );
+      }
+      break;
     }
+
+    return null;
+
+  }
 }

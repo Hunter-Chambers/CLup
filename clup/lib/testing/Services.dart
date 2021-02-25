@@ -7,10 +7,11 @@ import 'package:http/http.dart' as http;
 import 'Employee.dart';
 
 class Services {
-  static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
+  static const ROOT = "http://10.0.6.1/cs4391/le1010274/backend.php";
   static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   static const _ADD_REC_ACTION = "ADD_REC";
   static const _GET_REC_ACTION = "GET_REC";
+  static const _GET_ALL_ACTION = "GET_ALL";
   static const _UPDATE_REC_ACTION = "UPDATE_REC";
   static const _DELETE_REC_ACTION = "DELETE_REC";
 
@@ -49,6 +50,28 @@ class Services {
       map['phone'] = phone;
 
       final response = await http.post(ROOT, body: map);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> getALLRecs(String tablename) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _GET_ALL_ACTION;
+      map['tablename'] = tablename;
+
+      final response = await http.post(ROOT, body: map);
+      print('We are here.');
+      print(response.body);
+      print('Made it past.');
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

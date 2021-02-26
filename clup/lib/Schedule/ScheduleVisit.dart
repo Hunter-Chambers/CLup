@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -84,7 +85,7 @@ class ScheduleVisit extends StatelessWidget{
                                     key: Key('storeTile'),
                                     tileColor: Colors.white,
                                     title: Text(
-                                      '${entries[index].split(", ").first}',
+                                      "${entries[index].split(',').first}",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(fontWeight: FontWeight.bold)
                                       ),

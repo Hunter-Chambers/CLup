@@ -5,6 +5,15 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'SearchStoresController.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
+// ================================================================
+/* This view displays 4 dynamic, dependent dropdown boxes
+   that display store location information starting from the
+   state -> city -> store -> address. Once all 4 dropdowns have
+   a selected value, the user may click on the 'Add to favorites'
+   button to add the store to their list of favorites saved in 
+   his/her profile. A second button allows the user to travel back
+   to his/her profile page. The user may add 0 to many stores.' */
+// ====================================================================
 
 class StoreSearch extends StatelessWidget {
   //final String _title = 'Select a State';
@@ -214,6 +223,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                     width: 3,
                     height: 100,
                   ),
+                  // ================================================== Add to favorites button
                   Container(
                     padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
                     child: FloatingActionButton.extended(
@@ -229,6 +239,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                   ),
                 ],
               ),
+
               Container(
                 padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
                 child: Divider(
@@ -237,6 +248,17 @@ class _MyStatesViewState extends State<MyStatesView>{
                   endIndent: 30,
                 ),
               ),
+
+                  // ================================================== Return to profile page button
+              Container(
+                padding: EdgeInsets.fromLTRB(300,20,300,0),
+                child: FloatingActionButton.extended(
+                  onPressed:() => _onButtonPressed(context, 2), 
+                  heroTag: 'strToProfBtn',
+                  label: Text('Return to Profile Page'),
+                  )
+              ),
+
               Container(
                 padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
               ),
@@ -247,6 +269,9 @@ class _MyStatesViewState extends State<MyStatesView>{
     );
    }
 
+
+  // helper function to determine which list is displayed
+  // in the dropdown
   List<DropdownMenuItem<String>> _displayMenu(int i){
     List<dynamic> items;
     switch (i) {
@@ -270,18 +295,40 @@ class _MyStatesViewState extends State<MyStatesView>{
       }
       break;
     }
+
+    return menuItems.convertMenu(items);
     
-    return (
-         items?.map<DropdownMenuItem<String>>((dynamic value) {
-           return new DropdownMenuItem<String>(
-             value: value,
-             child: new Text(value),
-         );
-       })?.toList() ?? []
-     );
    }
+    
+  // When the user has added a store to his/her favorites
+  // this function is called to reset all dropdowns back
+  // to default values
+  _reset(){
 
+    _statesValue = null;
+    _statesList = null;
+    menuItems.setSelection(menuItems.labels[0], null);
+      
+    _citiesValue = null;
+    _citiesList = null;
+    menuItems.setSelection(menuItems.labels[1], null);
 
+    _storesValue = null;
+    _storesList = null;
+    menuItems.setSelection(menuItems.labels[2], null);
+    
+    _addressesValue = null;
+    _addressesList = null;
+    menuItems.setSelection(menuItems.labels[3], null);
+
+    _setStatesList();
+
+  }
+
+  // When a user selects a value from a dropbox,
+  // this function controls the 'dependency' of all
+  // the following drop boxes
+  
   _setNextDropDown(int i) async{
     String dropDown = menuItems.labels[i];
     String selection = menuItems.getSelection(dropDown);
@@ -325,14 +372,16 @@ class _MyStatesViewState extends State<MyStatesView>{
 
         _setAddressesList(selection);
       }
-      menuItems.whichSelection(menuItems.labels[i]);
     });
   }
 
+  // a helper function to set the _statesList of the states
+  // dropdown and trigger a setstate() for the parent widget 
   _setStatesList() async {
 
-    String jsonString = await menuItems.getMenuItems(menuItems.labels[0]);
-    Map<String, dynamic> statesMap = jsonDecode(jsonString);
+    Map<String, dynamic> statesMap =
+      await menuItems.getMenuItems(menuItems.labels[0]);
+    
 
     setState(() {
       _statesList = statesMap[menuItems.labels[0]];
@@ -340,10 +389,14 @@ class _MyStatesViewState extends State<MyStatesView>{
 
   }
 
+
+  // a helper function to set the _citiesList of the cities
+  // dropdown and trigger a setstate() for the parent widget 
   _setCitiesList(String selection) async {
 
-    String jsonString = await menuItems.getMenuItems(menuItems.labels[1]);
-    Map<String, dynamic> citiesMap = jsonDecode(jsonString);
+    Map<String, dynamic> citiesMap =
+      await menuItems.getMenuItems(menuItems.labels[1]);
+
     String key = selection;
     menuItems.setCityID(citiesMap[key]['id']);
 
@@ -354,10 +407,12 @@ class _MyStatesViewState extends State<MyStatesView>{
   }
 
 
+  // a helper function to set the _storesList of the stores
+  // dropdown and trigger a setstate() for the parent widget 
   _setStoresList(String selection) async {
 
-    String jsonString = await menuItems.getMenuItems(menuItems.labels[2]);
-    Map<String, dynamic> storesMap = jsonDecode(jsonString);
+    Map<String, dynamic> storesMap =
+      await menuItems.getMenuItems(menuItems.labels[2]);
 
     int id = menuItems.getCityID();
     String key = selection+'-$id';
@@ -369,10 +424,13 @@ class _MyStatesViewState extends State<MyStatesView>{
 
   }
 
+  // a helper function to set the _addressesList of the addresses
+  // dropdown and trigger a setstate() for the parent widget 
   _setAddressesList(String selection) async {
 
-    String jsonString = await menuItems.getMenuItems(menuItems.labels[3]);
-    Map<String, dynamic> addressesMap = jsonDecode(jsonString);
+    
+    Map<String, dynamic> addressesMap =
+      await menuItems.getMenuItems(menuItems.labels[3]);
 
     int id = menuItems.getStoreID();
     String key = selection+'-$id';
@@ -382,19 +440,21 @@ class _MyStatesViewState extends State<MyStatesView>{
     });
 
   }
+
+
+  // helper function that controls what happens
+  // when either button is pressed
   _onButtonPressed(BuildContext context, int option){
 
+    // the 'Add to favorites' button was pressed
     switch (option) {
       case 1: {
-        String state = menuItems.getSelection(menuItems.labels[0]);
-        String city = menuItems.getSelection(menuItems.labels[1]);
-        String store = menuItems.getSelection(menuItems.labels[2]);
-        String address = menuItems.getSelection(menuItems.labels[3]);
-        //print('State: $state');
-        //print('City: $city');
-        //print('Store: $store');
-        //print('Address: $address');
-        if (address == null || store == null || city == null || state == null ) {
+
+        String storeInfo = menuItems.buildStoreInfo();
+
+        // if one or more fields were not selected,
+        // prompt the user 
+        if ( storeInfo == '' ) {
           Fluttertoast.showToast(
             gravity: ToastGravity.BOTTOM,
             toastLength: Toast.LENGTH_LONG,
@@ -403,20 +463,23 @@ class _MyStatesViewState extends State<MyStatesView>{
             );
 
         }
+        // all fields were selected,
+        // add the store info to user's favorites.
+        // Prompt the user store was added
         else {
-          String storeSelection = store + ',' +
-          address + ',' + city + ',' +  state;
-          customerProfile.addFavoriteStore(storeSelection);
-          String msg = storeSelection + ' was added to Favorites';
+          customerProfile.addFavoriteStore(storeInfo);
 
-
+          String msg = storeInfo + ' was added to Favorites';
     
           final snackBar = SnackBar(content: Text(msg));
-
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+          _reset();
         }
       }
       break;
+
+      // 'Return to Profile Page' button was pressed
       case 2: {
         return Navigator.push(context, MaterialPageRoute(
           builder: (context) => CustomerLogin(customerController: customerProfile,),

@@ -24,7 +24,6 @@ class StoreSearch extends StatelessWidget {
   StoreSearch ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
-    print(customerProfile.getTextController('username').text);
     return 
     MaterialApp(
       home: MyStatesView(searchController: menuItems, customerController: customerProfile,),

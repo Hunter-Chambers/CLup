@@ -56,13 +56,15 @@ class _StoreSignupState extends State<StoreSignup> {
                           controller:
                               widget.storeProfile.getTextController("username"),
                           validator: (String value) {
-                            if (value.length <= 0) {
-                              return "Invalid username";
+                            if (value.length < 5 || value.length > 15) {
+                              return "Must be 5-15 characters";
                             }
+
                             if (value.contains(
                                 new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
                               return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
                             }
+
                             return null;
                           },
                           decoration: const InputDecoration(
@@ -131,10 +133,15 @@ class _StoreSignupState extends State<StoreSignup> {
                           controller: widget.storeProfile
                               .getTextController("store_name"),
                           validator: (String value) {
+                            if (value.contains(new RegExp(r"^ +"))) {
+                              return "Please remove all leading spaces";
+                            }
+
                             if (!value
                                 .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
                               return "Must only contain ' - and letters.";
                             }
+
                             return null;
                           },
                           decoration: const InputDecoration(
@@ -177,10 +184,15 @@ class _StoreSignupState extends State<StoreSignup> {
                               controller:
                                   widget.storeProfile.getTextController("city"),
                               validator: (String value) {
+                                if (value.contains(new RegExp(r"^ +"))) {
+                                  return "Please remove all leading spaces";
+                                }
+
                                 if (!value.contains(
                                     new RegExp(r"^([ a-zA-Z'-])+$"))) {
                                   return "Must be a valid\ncity name.";
                                 }
+
                                 return null;
                               },
                               decoration: const InputDecoration(
@@ -203,6 +215,7 @@ class _StoreSignupState extends State<StoreSignup> {
                                     new RegExp(r"^([a-zA-Z]){2,2}$"))) {
                                   return "Must be\nin the\nform XX.";
                                 }
+
                                 return null;
                               },
                               decoration: const InputDecoration(
@@ -276,6 +289,7 @@ class _StoreSignupState extends State<StoreSignup> {
 
                             // open am/pm button
                             child: PopupMenuButton(
+                              key: Key("openAmPmBtn"),
                               tooltip: '',
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -291,10 +305,12 @@ class _StoreSignupState extends State<StoreSignup> {
                               itemBuilder: (context) =>
                                   <PopupMenuEntry<String>>[
                                 PopupMenuItem<String>(
+                                  key: Key("openAm"),
                                   value: "AM",
                                   child: Text("AM"),
                                 ),
                                 PopupMenuItem<String>(
+                                  key: Key("openPm"),
                                   value: "PM",
                                   child: Text("PM"),
                                 )
@@ -348,6 +364,7 @@ class _StoreSignupState extends State<StoreSignup> {
 
                             // close am/pm button
                             child: PopupMenuButton(
+                              key: Key("closeAmPmBtn"),
                               tooltip: '',
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -363,10 +380,12 @@ class _StoreSignupState extends State<StoreSignup> {
                               itemBuilder: (context) =>
                                   <PopupMenuEntry<String>>[
                                 PopupMenuItem<String>(
+                                  key: Key("closeAm"),
                                   value: "AM",
                                   child: Text("AM"),
                                 ),
                                 PopupMenuItem<String>(
+                                  key: Key("closePm"),
                                   value: "PM",
                                   child: Text("PM"),
                                 )
@@ -393,6 +412,7 @@ class _StoreSignupState extends State<StoreSignup> {
                               widget.storeProfile.getTextController("capacity"),
                           validator: (String value) {
                             if (value.contains(new RegExp(r'[^0-9$]')) ||
+                                value.contains(new RegExp(r"^0+")) ||
                                 value.length <= 0) {
                               return "Must only contain numbers";
                             }

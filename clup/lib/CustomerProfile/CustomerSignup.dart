@@ -124,9 +124,15 @@ class CustomerSignup extends StatelessWidget {
                           controller:
                               customerProfile.getTextController("fname"),
                           validator: (String value) {
-                            if (!value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                            if (value.contains(new RegExp(r"^ +"))) {
+                              return "Please remove all leading spaces";
+                            }
+
+                            if (!value
+                                .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
                               return "Must only contain ' - and letters.";
                             }
+
                             return null;
                           },
                           decoration: const InputDecoration(
@@ -144,10 +150,15 @@ class CustomerSignup extends StatelessWidget {
                           controller:
                               customerProfile.getTextController("lname"),
                           validator: (String value) {
+                            if (value.contains(new RegExp(r"^ +"))) {
+                              return "Please remove all leading spaces";
+                            }
+
                             if (!value
                                 .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
                               return "Must only contain ' - and letters.";
                             }
+
                             return null;
                           },
                           decoration: const InputDecoration(

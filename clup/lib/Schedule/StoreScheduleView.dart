@@ -35,7 +35,8 @@ class StoreScheduleView extends StatelessWidget {
           alignment: Alignment.center,
           height: 800,
           width: 1000,
-          child: Column(
+          child: SingleChildScrollView(
+            child: Column(
             textDirection: TextDirection.ltr,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -61,6 +62,7 @@ class StoreScheduleView extends StatelessWidget {
               Container(
                 child: FloatingActionButton.extended(
                   heroTag: 'SchedTimesBtn',
+                  key: Key('subSchedBtn'),
                   onPressed: () => _onButtonPressed(context),
                   label: Text(
                     'Schedule Times',
@@ -68,7 +70,8 @@ class StoreScheduleView extends StatelessWidget {
                 )
               )
             ],
-          ),
+          )
+        ,)
         )
       ),
         
@@ -103,20 +106,28 @@ class StoreScheduleView extends StatelessWidget {
   _onButtonPressed(BuildContext context) {
     String selectedTimes = storeSchedule.getSelectedTimes();
 
-    if (selectedTimes == '') 
-      selectedTimes = 'Please select one or more consecutive times.';
-    Fluttertoast.showToast(
-      msg:  'Scheduled a visit for: ' + selectedTimes,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      webPosition: 'center',
-    );
+    if (selectedTimes == '') {
+        selectedTimes = 'Please select one or more consecutive times.';
+      Fluttertoast.showToast(
+        msg: selectedTimes,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.TOP,
+        webPosition: 'center',
+      );
+    }
 
-    _buildVisit(selectedTimes);
-
-    Navigator.push(context, MaterialPageRoute(
-      builder: (context) => QR(customerProfile: customerProfile)
-    ));
+    else{
+      _buildVisit(selectedTimes);
+      Fluttertoast.showToast(
+        msg:  'Scheduled a visit for: ' + selectedTimes,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.TOP,
+        webPosition: 'center',
+      );     
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) => QR(customerProfile: customerProfile)
+      ));
+    }
   }
 
 }

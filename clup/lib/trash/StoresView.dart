@@ -1,21 +1,23 @@
+/*
+import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'SearchStoresController.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
-import 'CitiesView.dart';
+import 'AddressesView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 
-class StatesView extends StatelessWidget {
-  final String _title = 'Select a State';
-  final String _label = 'States';
-
+class StoresView extends StatelessWidget {
+  static const String _title = 'Select a Store';
+  static const String _label = 'Stores';
+  SearchStoresController menuItems;
   CustomerProfileController customerProfile;
-  SearchStoresController menuItems = SearchStoresController();
-  StatesView ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
+  StoresView({Key key, SearchStoresController searchController, CustomerProfileController customerController}) 
+      : this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('To Login Page')),
+      appBar: AppBar(title: Text('To Select a City Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: Center(
         child: Container(
@@ -39,21 +41,21 @@ class StatesView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
                     width: 200,
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           alignment: Alignment.center,
                           child: MyStatefulWidget(searchController: menuItems, customerController: customerProfile, label: _label)),
                       ],
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 45, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: FloatingActionButton.extended(
-                      heroTag: "StateBtn",
+                      heroTag: "StoresBtn",
                       onPressed: () => _onButtonPressed(context, 2),
                       label: Text(
                         "Select",
@@ -89,10 +91,11 @@ class StatesView extends StatelessWidget {
   }
   _onButtonPressed(BuildContext context, int option){
     return Navigator.push(context, MaterialPageRoute(
-      builder: (context) => CitiesView(searchController: menuItems, customerController: customerProfile,),
+      builder: (context) => AddressesView(searchController: menuItems, customerController: customerProfile),
       )
-    );}
+    );
   }
+}
   
 /// This is the stateful widget that the main application instantiates.
 class MyStatefulWidget extends StatefulWidget {
@@ -104,7 +107,7 @@ class MyStatefulWidget extends StatefulWidget {
       :this.menuItems = searchController, this.customerProfile = customerController, super(key: key);
   @override
   _MyStatefulWidgetState createState() {
-    menuItems.setLabel( label );
+    //menuItems.setLabel( label );
     return _MyStatefulWidgetState(searchController: menuItems, customerController: customerProfile, label: label);
   }
 }
@@ -114,9 +117,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   SearchStoresController menuItems;
   CustomerProfileController customerProfile;
   String label;
-  _MyStatefulWidgetState({this.label, SearchStoresController searchController, CustomerProfileController customerController}) 
-      :this.menuItems = searchController, this.customerProfile = customerController;
-  //_MyStatefulWidgetState({SearchStoresController searchController, String label}) : this.menuItems = searchController, this.label = label;
+  _MyStatefulWidgetState({SearchStoresController searchController, CustomerProfileController customerController, String label})
+       : this.menuItems = searchController, this.customerProfile = customerController, this.label = label;
   String dropdownValue; 
   
 
@@ -136,8 +138,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       onChanged: (String newValue) {
         setState(() {
           dropdownValue = newValue;
-          menuItems.setSelection('State', dropdownValue);
-          menuItems.whichState();
+          menuItems.setSelection('Store', dropdownValue);
         });
       },
       items: _displayMenu(),
@@ -156,3 +157,4 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     );
   }
 }
+*/

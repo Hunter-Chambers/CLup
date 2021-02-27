@@ -1,0 +1,56 @@
+{
+        "Albuquerque-1":{
+
+            "id" : 1,
+            "stores" : ["Walmart"]
+
+        },
+        "Amarillo-3":{
+
+            "id" : 2,
+            "stores" : ["Walmart", "United Supermarket"]
+
+        },
+        "Angel Fire-1":{
+
+            "id" : 3,
+            "stores" : ["HEB"]
+
+        },
+        "Dallas-3":{
+        
+            "id" : 4,
+            "stores" : ["HEB", "Walmart"]
+
+        },
+        "Lubbock-3":{
+
+            "id" : 5,
+            "stores" : ["HEB", "United Supermarket"]
+
+        },
+        "Norman-2":{
+            
+            "id" : 6,
+            "stores" : ["Albertsons"]
+
+        },
+
+        "Oklahoma City-2":{
+
+            "id" : 7,
+            "stores" : ["Albertsons", "Walmart"]
+
+        },
+        "Stillwater-2":{
+
+            "id" : 8,
+            "stores" : ["Albertsons", "HEB"]
+
+        },
+        "Santa Fe-1":{
+
+            "id" : 9,
+            "stores" : ["Albertsons", "Walmart", "HEB"]
+        }
+}

@@ -254,6 +254,7 @@ void main() {
    await tester.pumpAndSettle();
 
    // unavailable tile should still not be selected
+   timeTile = tester.firstWidget(tile);
    expect(timeTile.selected, false);
 
    // unavailble tile should still not be enabled

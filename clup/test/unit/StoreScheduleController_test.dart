@@ -148,7 +148,7 @@ void main() {
     /* add a nonconsecutive item */
     i = 4;
     expect(storeSchedule.updateSelectedTimes(i, storeSchedule.timeSlots[i]), false); 
-
+    expect(storeSchedule.selectedTimes.length, 2);
     
     /* remove an item on the end */
     i = 2;

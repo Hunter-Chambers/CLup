@@ -90,6 +90,7 @@ class WebApp extends StatelessWidget {
               } else {
                 StoreProfileController storeProfile = StoreProfileController([
                   "username",
+                  "store_name",
                   "open_time",
                   "close_time",
                   "capacity",
@@ -101,6 +102,8 @@ class WebApp extends StatelessWidget {
 
                 storeProfile.getTextController("username").text =
                     userInfo["username"];
+                storeProfile.getTextController("store_name").text =
+                    userInfo["store_name"];
                 storeProfile.getTextController("open_time").text =
                     userInfo["open_time"];
                 storeProfile.getTextController("close_time").text =

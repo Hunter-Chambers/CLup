@@ -10,6 +10,19 @@ class ServicesMock implements Services {
   final bool failLoadProfile;
   String mockUsername;
 
+  Future<String> addProfile(Map<String, dynamic> map, Type tableName) {
+    if (id == "test_pass" && mockUsername == "customer")
+      return Future.value("success");
+    else if (id == "test_pass" && mockUsername == "store")
+      return Future.value("success");
+    else if (id == "test_timeout")
+      return Future.value("timed out");
+    else if (id == "test_unexpected_error")
+      return Future.value("unexpected error");
+    else
+      return Future.value("failure");
+  }
+
   Future<String> getALLRec(String tablename) async {
     String payload = '';
     if ( tablename == 'States' ) {
@@ -33,6 +46,7 @@ class ServicesMock implements Services {
 
     return Future.value(payload);
   }
+
   Future<String> attemptLogin(String username, String password) async {
     if (id == "" && username == "customer" && password == "password00") {
       String payload =

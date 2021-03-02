@@ -160,7 +160,7 @@ void main() {
     await tester.tap(strLookBtn);
     await tester.pumpAndSettle();
 
-    expect(find.text('Select a State'), findsOneWidget);
+    expect(find.text('Search for a Store'), findsOneWidget);
     expect(find.text('Choose a Store to Visit'), findsNothing);
 
   });

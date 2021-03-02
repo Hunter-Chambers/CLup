@@ -25,7 +25,7 @@ class SearchStoresController {
   // pulls dropdown infromation from specified json file
   Future<Map<String, dynamic>> getMenuItems( String menu) async{
 
-    String jsonString = await rootBundle.loadString("$menu.json");
+    String jsonString = await rootBundle.loadString("jsonManagement/$menu.json");
     return jsonDecode(jsonString);
 
   }

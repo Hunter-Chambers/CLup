@@ -1,10 +1,14 @@
+import 'package:clup/StoreSearch/UpdateStoreSearchJsons.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
+import 'UpdateStoreSearchJsons.dart';
+import '../testing/Services.dart';
+import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'SearchStoresController.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
+
 // ================================================================
 /* This view displays 4 dynamic, dependent dropdown boxes
    that display store location information starting from the
@@ -60,7 +64,6 @@ class _MyStatesViewState extends State<MyStatesView>{
   bool _statesChanged = false, _citiesChanged = false, _storesChanged = false;
 
    Widget build(BuildContext context ) {
-     print(customerProfile.getTextController('username').text);
       return Scaffold(
       appBar: AppBar(title: Text('To Login Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -257,6 +260,16 @@ class _MyStatesViewState extends State<MyStatesView>{
                   label: Text('Return to Profile Page'),
                   )
               ),
+              /*
+              Container(
+                padding: EdgeInsets.fromLTRB(300,20,300,0),
+                child: FloatingActionButton.extended(
+                  onPressed:() => _onButtonPressed(context, 3), 
+                  heroTag: 'testBtn',
+                  label: Text('Add entry to the json'),
+                  )
+              ),
+              */
 
               Container(
                 padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
@@ -443,7 +456,7 @@ class _MyStatesViewState extends State<MyStatesView>{
 
   // helper function that controls what happens
   // when either button is pressed
-  _onButtonPressed(BuildContext context, int option){
+  _onButtonPressed(BuildContext context, int option) {
 
     // the 'Add to favorites' button was pressed
     switch (option) {
@@ -486,7 +499,12 @@ class _MyStatesViewState extends State<MyStatesView>{
         );
       }
       break;
+      case 3: {
+        UpdateStoreSearchJsons.update();
+      }
+      break;
     }
+    
 
     return null;
 

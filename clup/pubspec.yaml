@@ -51,9 +51,11 @@ flutter:
   uses-material-design: true
 
   assets:
-      - assets/States.json
-      - assets/Cities.json
-      - assets/Stores.json
+      - assets/jsonManagement/States.json
+      - assets/jsonManagement/Cities.json
+      - assets/jsonManagement/Stores.json
+      - assets/jsonManagement/Addresses.json
+      - assets/jsonManagement/AddStore.py
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

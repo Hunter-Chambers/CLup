@@ -1,4 +1,5 @@
 // ignore: avoid_web_libraries_in_flutter
+import 'dart:io';
 import 'dart:html' show window;
 
 import 'dart:async';
@@ -155,6 +156,15 @@ class Services {
       print(e);
       return "failure";
     }
+  }
+
+  static void updateJson(List<String> storeInfo) async {
+    //String state = storeInfo[0];
+    //String city = storeInfo[1];
+    //String store = storeInfo[2];
+    //String address = storeInfo[3];
+
+    await Process.run('python', ['--version'], runInShell: true);
   }
 
   // method for showing a popup message. Similar to

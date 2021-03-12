@@ -67,6 +67,12 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(CustomerLogin), findsOneWidget);
+
+      expect(find.textContaining("Username: customer"), findsOneWidget);
+      expect(
+          find.textContaining("Email: some_email@place.com"), findsOneWidget);
+      expect(find.textContaining("Phone Number: (333) 333 - 3333"),
+          findsOneWidget);
     });
 
     // Successful Store Login

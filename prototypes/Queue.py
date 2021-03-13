@@ -108,7 +108,11 @@ class Queue:
 
 
     def peek(self):
-        return self.__queue[self.__front]
+        if self.__front:
+            return self.__queue[self.__front]
+        else:
+            return None
+        # end if
     # end peek
     
 

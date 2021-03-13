@@ -3,6 +3,8 @@
 from Customer import *
 from Queue  import * 
 import json
+import math
+from datetime import *
 
 
 '''
@@ -48,7 +50,7 @@ class ScheduleVisit:
 
 
         if customer.getStartVisit() == 'ASAP':
-            print("entered if")
+            # print("entered if")
 
 
             '''
@@ -63,8 +65,11 @@ class ScheduleVisit:
             blocksToCheck += visitLength / 15
             '''
 
+            currentTime = datetime.now()
+            currentTime += timedelta(hours=1, minutes=math.ceil(currentTime.minute / 15) * 15 - currentTime.minute)
+
             done = False
-            i = 3
+            i = keys.index(currentTime.strftime("%H%M"))
 
             while not done and i < numKeys:
                 valid = True
@@ -99,8 +104,8 @@ class ScheduleVisit:
             # end while
 
             if done:
-                print(keys)
-                print('i: ', i)
+                # print(keys)
+                # print('i: ', i)
                 # we found a valid block
                 # prompt customer nearest available visit time
                 
@@ -270,10 +275,12 @@ class ScheduleVisit:
                     'visit_start' : customer.getStartVisit()
                     }
 
+            '''
             for i in range(start, start + blocksToCheck):
                 print(storeSchedule[keys[i]]['num_reservations'])
                 storeSchedule[keys[i]]['num_reservations'] += partySize
                 print(storeSchedule[keys[i]]['num_reservations'])
+            '''
 
 
     # end makeReservation

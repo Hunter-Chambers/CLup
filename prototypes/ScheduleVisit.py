@@ -3,6 +3,8 @@
 from Customer import *
 from Queue  import * 
 import json
+import math
+from datetime import *
 
 
 '''
@@ -32,7 +34,8 @@ class ScheduleVisit:
     
     
 
-    def makeReservation(customer, queue, limit, shoppingCustomers):
+    def makeReservation(customer, queue, limit, shoppingCustomers, currentTime = datetime.now()):
+        currentTime += timedelta(minutes=math.ceil(currentTime.minute / 15) * 15 - currentTime.minute)
 
         filepath = './mockDatabase.json'
 
@@ -48,7 +51,7 @@ class ScheduleVisit:
 
 
         if customer.getStartVisit() == 'ASAP':
-            print("entered if")
+            # print("entered if")
 
 
             '''
@@ -63,8 +66,18 @@ class ScheduleVisit:
             blocksToCheck += visitLength / 15
             '''
 
+            hourFromNow = currentTime + timedelta(hours=1)
+
             done = False
-            i = 3
+            try:
+                i = keys.index(hourFromNow.strftime("%H%M"))
+            except ValueError:
+                done = True
+            # end try/except
+
+            if hourFromNow.date() > currentTime.date():
+                done = True
+            # end if
 
             while not done and i < numKeys:
                 valid = True
@@ -99,8 +112,8 @@ class ScheduleVisit:
             # end while
 
             if done:
-                print(keys)
-                print('i: ', i)
+                # print(keys)
+                # print('i: ', i)
                 # we found a valid block
                 # prompt customer nearest available visit time
                 
@@ -146,7 +159,7 @@ class ScheduleVisit:
 
             elif choice == 'B':
 
-                k = 0
+                k = keys.index(currentTime.strftime("%H%M"))
                 room = False
                 while not room and k < numKeys:
                     valid = True
@@ -196,7 +209,7 @@ class ScheduleVisit:
                             'party_size' : customer.getPartySize(),
                             'type' : 'walk_in',
                             'visit_length' : customer.getVisitLength(),
-                            'visit_start' : customer.getStartVisit()
+                            # 'visit_start' : customer.getStartVisit()
                             }
 
                     print("You have 15 minutes to scan in or you will lose your spot.")
@@ -266,14 +279,14 @@ class ScheduleVisit:
                     'contact_info' : customer.getContactInfo(),
                     'party_size' : customer.getPartySize(),
                     'type' : 'scheduled',
-                    'visit_length' : customer.getVisitLength(),
-                    'visit_start' : customer.getStartVisit()
+                    'visit_length' : customer.getVisitLength()
+                    # 'visit_start' : customer.getStartVisit()
                     }
 
             for i in range(start, start + blocksToCheck):
-                print(storeSchedule[keys[i]]['num_reservations'])
+                # print(storeSchedule[keys[i]]['num_reservations'])
                 storeSchedule[keys[i]]['num_reservations'] += partySize
-                print(storeSchedule[keys[i]]['num_reservations'])
+                # print(storeSchedule[keys[i]]['num_reservations'])
 
 
     # end makeReservation

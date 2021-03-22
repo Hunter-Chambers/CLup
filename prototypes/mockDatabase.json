@@ -1,753 +1,782 @@
 {
-  "0000": {
-    "Customer_Username_2": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_53": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_91": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 9
-  }, 
-  "0015": {
-    "Customer_Username_43": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_5": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_67": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_82": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_86": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 25
-  }, 
-  "0030": {
-    "num_reservations": 20
-  }, 
-  "0045": {
-    "Customer_Username_12": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_28": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "customer": {
-      "contact_info": "customer@yahoo.com", 
-      "in_both": false, 
-      "party_size": 2, 
-      "visit_length": 3, 
-      "visit_start": "ASAP"
-    }, 
-    "num_reservations": 17
-  }, 
-  "0100": {
-    "Customer_Username_45": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_8": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 13
-  }, 
-  "0115": {
-    "Customer_Username_27": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_36": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_63": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_93": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 19
-  }, 
-  "0130": {
-    "Customer_Username_89": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 14
-  }, 
-  "0145": {
-    "Customer_Username_46": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_65": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 13
-  }, 
-  "0200": {
-    "Customer_Username_81": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_9": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 12
-  }, 
-  "0215": {
-    "Customer_Username_32": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 10
-  }, 
-  "0230": {
-    "Customer_Username_16": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_61": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_62": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_70": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 23
-  }, 
-  "0245": {
-    "num_reservations": 16
-  }, 
-  "0300": {
-    "Customer_Username_60": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 19
-  }, 
-  "0315": {
-    "Customer_Username_31": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 8
-  }, 
-  "0330": {
-    "num_reservations": 5
-  }, 
-  "0345": {
-    "Customer_Username_95": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 6
-  }, 
-  "0400": {
-    "Customer_Username_24": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_44": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_51": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 8
-  }, 
-  "0415": {
-    "Customer_Username_15": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_55": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_66": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_79": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 14
-  }, 
-  "0430": {
-    "Customer_Username_18": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_19": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_84": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_92": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 28
-  }, 
-  "0445": {
-    "Customer_Username_68": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_98": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 20
-  }, 
-  "0500": {
-    "Customer_Username_58": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_90": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 18
-  }, 
-  "0515": {
-    "Customer_Username_11": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 15
-  }, 
-  "0530": {
-    "Customer_Username_47": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_99": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 6
-  }, 
-  "0545": {
-    "Customer_Username_30": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_33": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_64": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 12
-  }, 
-  "0600": {
-    "Customer_Username_42": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_77": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 10
-  }, 
-  "0615": {
-    "Customer_Username_35": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 6
-  }, 
-  "0630": {
-    "Customer_Username_74": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 7
-  }, 
-  "0645": {
-    "Customer_Username_10": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 7
-  }, 
   "0700": {
-    "Customer_Username_22": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_54": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_87": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 10
-  }, 
+    "num_reservations": 2,
+    "Customer_Username_60": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
   "0715": {
-    "Customer_Username_37": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_4": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_40": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 17
-  }, 
+    "num_reservations": 2
+  },
   "0730": {
-    "Customer_Username_29": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
+    "num_reservations": 5,
+    "Customer_Username_61": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
       "visit_length": 4
-    }, 
-    "Customer_Username_75": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 12
-  }, 
+    }
+  },
   "0745": {
-    "Customer_Username_88": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 9
-  }, 
-  "0800": {
-    "num_reservations": 4
-  }, 
-  "0815": {
-    "Customer_Username_34": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_49": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_6": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
+    "num_reservations": 27,
+    "Customer_Username_2": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
       "visit_length": 3
-    }, 
-    "Customer_Username_97": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 14
-  }, 
-  "0830": {
-    "Customer_Username_0": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_80": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "num_reservations": 14
-  }, 
-  "0845": {
-    "Customer_Username_39": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_72": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "Customer_Username_73": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 21
-  }, 
-  "0900": {
-    "Customer_Username_59": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_94": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 13
-  }, 
-  "0915": {
-    "num_reservations": 10
-  }, 
-  "0930": {
-    "Customer_Username_20": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_76": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 14
-  }, 
-  "0945": {
-    "Customer_Username_56": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
-    "num_reservations": 13
-  }, 
-  "1000": {
-    "Customer_Username_1": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_25": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 4
-    }, 
+    },
     "Customer_Username_3": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_4": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_18": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_34": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_59": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_70": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
       "visit_length": 4
-    }, 
-    "Customer_Username_41": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_50": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_52": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_7": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
+    }
+  },
+  "0800": {
+    "num_reservations": 20
+  },
+  "0815": {
+    "num_reservations": 18,
+    "Customer_Username_84": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
       "visit_length": 4
-    }, 
-    "num_reservations": 23
-  }, 
-  "1015": {
-    "Customer_Username_85": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 23
-  }, 
-  "1030": {
-    "Customer_Username_38": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "Customer_Username_69": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_78": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 22
-  }, 
-  "1045": {
-    "Customer_Username_48": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "num_reservations": 19
-  }, 
-  "1100": {
-    "num_reservations": 5
-  }, 
-  "1115": {
-    "Customer_Username_21": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_57": {
-      "contact_info": "email@place.com", 
-      "party_size": 5, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_71": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
-    "Customer_Username_96": {
-      "contact_info": "email@place.com", 
-      "party_size": 2, 
-      "type": "scheduled", 
-      "visit_length": 2
-    }, 
-    "num_reservations": 11
-  }, 
-  "1130": {
-    "Customer_Username_13": {
-      "contact_info": "email@place.com", 
-      "party_size": 1, 
-      "type": "scheduled", 
-      "visit_length": 3
-    }, 
+    }
+  },
+  "0830": {
+    "num_reservations": 17,
     "Customer_Username_14": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
       "visit_length": 2
-    }, 
+    },
+    "Customer_Username_19": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_37": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_64": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "0845": {
+    "num_reservations": 14,
+    "Customer_Username_97": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "0900": {
+    "num_reservations": 9,
     "Customer_Username_17": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
-      "visit_length": 1
-    }, 
-    "Customer_Username_23": {
-      "contact_info": "email@place.com", 
-      "party_size": 3, 
-      "type": "scheduled", 
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
       "visit_length": 3
-    }, 
-    "Customer_Username_26": {
-      "contact_info": "email@place.com", 
-      "party_size": 4, 
-      "type": "scheduled", 
+    }
+  },
+  "0915": {
+    "num_reservations": 9,
+    "Customer_Username_39": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_41": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "0930": {
+    "num_reservations": 13,
+    "Customer_Username_88": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
       "visit_length": 1
-    }, 
-    "num_reservations": 25
-  }, 
+    }
+  },
+  "0945": {
+    "num_reservations": 16,
+    "Customer_Username_25": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_28": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_45": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1000": {
+    "num_reservations": 9
+  },
+  "1015": {
+    "num_reservations": 5
+  },
+  "1030": {
+    "num_reservations": 5
+  },
+  "1045": {
+    "num_reservations": 3,
+    "Customer_Username_81": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_92": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1100": {
+    "num_reservations": 22,
+    "Customer_Username_31": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_48": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_62": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_65": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_72": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1115": {
+    "num_reservations": 22
+  },
+  "1130": {
+    "num_reservations": 19,
+    "Customer_Username_82": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
   "1145": {
-    "num_reservations": 16
-  }, 
+    "num_reservations": 9
+  },
   "1200": {
-    "num_reservations": 4
-  }, 
+    "num_reservations": 4,
+    "Customer_Username_50": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
   "1215": {
+    "num_reservations": 14,
+    "Customer_Username_5": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_20": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1230": {
+    "num_reservations": 17,
+    "Customer_Username_69": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_74": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1245": {
+    "num_reservations": 13,
+    "Customer_Username_12": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "1300": {
+    "num_reservations": 17,
+    "Customer_Username_29": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_51": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1315": {
+    "num_reservations": 9,
+    "Customer_Username_87": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_89": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1330": {
+    "num_reservations": 6,
+    "Customer_Username_10": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1345": {
+    "num_reservations": 17,
+    "Customer_Username_46": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_53": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_85": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_94": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1400": {
+    "num_reservations": 25,
+    "Customer_Username_15": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_22": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_98": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1415": {
+    "num_reservations": 21,
+    "Customer_Username_63": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_67": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_71": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1430": {
+    "num_reservations": 23,
+    "Customer_Username_6": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_43": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "1445": {
+    "num_reservations": 10,
+    "Customer_Username_93": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1500": {
+    "num_reservations": 9,
+    "Customer_Username_1": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "1515": {
+    "num_reservations": 12,
+    "Customer_Username_13": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_54": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1530": {
+    "num_reservations": 13,
+    "Customer_Username_55": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_90": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1545": {
+    "num_reservations": 14,
+    "Customer_Username_47": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1600": {
+    "num_reservations": 5
+  },
+  "1615": {
+    "num_reservations": 15,
+    "Customer_Username_27": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_49": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_86": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_99": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1630": {
+    "num_reservations": 21,
+    "Customer_Username_8": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_38": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_52": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_58": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1645": {
+    "num_reservations": 21,
+    "Customer_Username_78": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1700": {
+    "num_reservations": 9
+  },
+  "1715": {
+    "num_reservations": 15,
+    "Customer_Username_23": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_91": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_96": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1730": {
+    "num_reservations": 15,
+    "Customer_Username_33": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1745": {
+    "num_reservations": 14,
+    "Customer_Username_68": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "1800": {
+    "num_reservations": 6,
+    "Customer_Username_44": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1815": {
+    "num_reservations": 7,
+    "Customer_Username_32": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_36": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1830": {
+    "num_reservations": 18,
+    "Customer_Username_24": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_40": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    },
+    "Customer_Username_56": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_79": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1845": {
+    "num_reservations": 12,
+    "Customer_Username_57": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "1900": {
+    "num_reservations": 16,
+    "Customer_Username_21": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    },
+    "Customer_Username_83": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "1915": {
+    "num_reservations": 5,
+    "Customer_Username_0": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 4
+    }
+  },
+  "1930": {
+    "num_reservations": 6,
+    "Customer_Username_11": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "1945": {
+    "num_reservations": 10,
+    "Customer_Username_9": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_30": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "2000": {
+    "num_reservations": 12,
+    "Customer_Username_66": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    },
+    "Customer_Username_77": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "2015": {
+    "num_reservations": 14,
+    "Customer_Username_73": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "2030": {
+    "num_reservations": 2,
+    "Customer_Username_80": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "2045": {
+    "num_reservations": 7,
+    "Customer_Username_42": {
+      "contact_info": "email@place.com",
+      "party_size": 5,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "2100": {
+    "num_reservations": 7,
+    "Customer_Username_26": {
+      "contact_info": "email@place.com",
+      "party_size": 2,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "Customer_Username_76": {
+      "contact_info": "email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "2115": {
+    "num_reservations": 6,
+    "Customer_Username_16": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 3
+    }
+  },
+  "2130": {
+    "num_reservations": 10,
+    "Customer_Username_75": {
+      "contact_info": "email@place.com",
+      "party_size": 4,
+      "type": "scheduled",
+      "visit_length": 2
+    }
+  },
+  "2145": {
+    "num_reservations": 5
+  },
+  "2200": {
+    "num_reservations": 1,
+    "Customer_Username_7": {
+      "contact_info": "email@place.com",
+      "party_size": 1,
+      "type": "scheduled",
+      "visit_length": 1
+    }
+  },
+  "2215": {
+    "num_reservations": 0
+  },
+  "2230": {
+    "num_reservations": 0
+  },
+  "2245": {
     "num_reservations": 0
   }
 }

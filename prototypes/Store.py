@@ -73,21 +73,21 @@ class Store:
         keys.sort()
         numKeys = len(keys)
 
-        print()
-        print(keys)
-        print()
-        print()
+        # print()
+        # print(keys)
+        # print()
+        # print()
 
         ''' Logic could be handled in the Cron Job'''
         for key in keys:
-            print(key)
+            # print(key)
             self.__shoppingCustomers[key] = {
                     'scheduled': 0,
                     'walk_ins': 0
                     }
-            print(self.__shoppingCustomers)
-            print()
-            print()
+            # print(self.__shoppingCustomers)
+            # print()
+            # print()
 
         # print(self.__shoppingCustomers)
 
@@ -211,9 +211,9 @@ class Store:
 
         if match:
             # admit customer
-            print('Customer admitted.')
+            # print('Customer admitted.')
             self.__currentCapacity += partySize
-            print('Current capacity: ', self.__currentCapacity)
+            # print('Current capacity: ', self.__currentCapacity)
 
             startTime = customer.getStartVisit()
             start = keys.index(startTime)
@@ -249,50 +249,53 @@ class Store:
     def checkWaitingCustomer(self):
 
         waitingCustomer = self.__queue.peek()
-        print(waitingCustomer)
-        startTime = waitingCustomer.getStartVisit()
-        partySize = waitingCustomer.getPartySize()
-        blocksToCheck = waitingCustomer.getVisitLength()
-        keys = list(self.__shoppingCustomers.keys())
-        keys.sort()
-        numKeys = len(keys)
 
-        start = keys.index(startTime)
-        room = True
-        for i in range(start, start + blocksToCheck):
-            numWalkIns = self.__shoppingCustomers[keys[i]]['walk_ins']
-            numScheduled = self.__shoppingCustomers[keys[i]]['scheduled']
+        if (waitingCustomer):
+            # print(waitingCustomer)
+            startTime = waitingCustomer.getStartVisit()
+            partySize = waitingCustomer.getPartySize()
+            blocksToCheck = waitingCustomer.getVisitLength()
+            keys = list(self.__shoppingCustomers.keys())
+            keys.sort()
+            numKeys = len(keys)
 
-            if numWalkIns + numScheduled + partySize > self.__storeCapacity:
-                room = False
-            # end if
-
-        # end for
-                     
-        if not room:
-            print('Party Size exceeds capacity for one or more planned time slot.')
-
-        else:
-            # add customer to shopping customers
-            customer = self.__queue.remove()
-            self.__shoppingCustomers[keys[start]][customer.getUsername()] = {
-                    'contact_info' : customer.getContactInfo(),
-                    'type' : 'walk_in',
-                    'party_size' : customer.getPartySize(),
-                    'visit_length' : customer.getVisitLength(),
-                    'visit_start' : customer.getStartVisit()
-                    }
-
-
+            start = keys.index(startTime)
+            room = True
             for i in range(start, start + blocksToCheck):
-                self.__shoppingCustomers[keys[i]]['walk_ins'] += partySize
+                numWalkIns = self.__shoppingCustomers[keys[i]]['walk_ins']
+                numScheduled = self.__shoppingCustomers[keys[i]]['scheduled']
 
-             # end for
-            '''
-            with open(filepath, 'w') as f:
-                json.dump(storeSchedule, f, indent=2, sort_keys=True)
-            '''
+                if numWalkIns + numScheduled + partySize > self.__storeCapacity:
+                    room = False
+                # end if
 
+            # end for
+                         
+            if not room:
+                print('Party Size exceeds capacity for one or more planned time slot.')
+
+            else:
+                # add customer to shopping customers
+                customer = self.__queue.remove()
+                self.__shoppingCustomers[keys[start]][customer.getUsername()] = {
+                        'contact_info' : customer.getContactInfo(),
+                        'type' : 'walk_in',
+                        'party_size' : customer.getPartySize(),
+                        'visit_length' : customer.getVisitLength(),
+                        'visit_start' : customer.getStartVisit()
+                        }
+
+
+                for i in range(start, start + blocksToCheck):
+                    self.__shoppingCustomers[keys[i]]['walk_ins'] += partySize
+
+                 # end for
+                '''
+                with open(filepath, 'w') as f:
+                    json.dump(storeSchedule, f, indent=2, sort_keys=True)
+                '''
+
+            # end if
         # end if
 
 
@@ -321,7 +324,7 @@ class Store:
 
         # end if
         '''
-        # end checkWaitingCustomer
+    # end checkWaitingCustomer
 
 
 
@@ -333,14 +336,14 @@ class Store:
         startTime = customer.getStartVisit()
         username = customer.getUsername()
         blocksToCheck = customer.getVisitLength()
-        print('startTime: ', startTime)
+        # print('startTime: ', startTime)
         keys = list(self.__shoppingCustomers.keys())
         keys.sort()
 
         start = keys.index(startTime)
         self.__shoppingCustomers[startTime].pop(username)
 
-        print('Current capacity: ', self.__currentCapacity)
+        # print('Current capacity: ', self.__currentCapacity)
 
 
 
@@ -365,10 +368,10 @@ class Store:
 
         # end if 
             
-        print('Customer released.')
-        print('Customer party size: ', partySize)
-        print('Current capacity: ', self.__currentCapacity)
-        print()
+        # print('Customer released.')
+        # print('Customer party size: ', partySize)
+        # print('Current capacity: ', self.__currentCapacity)
+        # print()
 
         self.checkWaitingCustomer()
 

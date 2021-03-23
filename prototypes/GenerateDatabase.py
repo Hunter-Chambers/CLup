@@ -1,4 +1,4 @@
-#!/mingw64/bin/Python30/python.exe
+#!/usr/bin/env python3
 
 from random import *
 from datetime import *

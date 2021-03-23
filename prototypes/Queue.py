@@ -8,7 +8,13 @@ ATTRIBUTES
     Item front - next item waiting to be processed
     Item rear  - last item waiting to be processed
     int size   - keeps track of the total items in
-            the queue
+                 the queue
+    float totalWaitTime    - total wait time of recently 
+                             waited customers (minutes)
+    float averageWaitTime  - average wait time or recently
+                             waited customers (minutes)
+    int numCustomersWaited - number of recently waited
+                             customers
 
 BEHAVIORS
     add()     - adds an item to the rear of the queue
@@ -27,6 +33,9 @@ class Queue:
         self.__size = 0
         self.__front = None
         self.__rear = None
+        self.__totalWaitTime = 0
+        self.__totalWaitedCustomers = 0
+        self.__averageWaitTime = 0
 
     # end init
 
@@ -58,6 +67,26 @@ class Queue:
         return output
 
     # end str
+
+    def averageWait(self, waitTime):
+
+        if self.__size() <= 0:
+            self.__totalWait = 0
+            self.__numCustomersWaited = 0
+            self.__averageWaitTime = 0
+
+        else:
+            self.__totalWait += waitTime
+            self.__numCustomersWaited += 1
+            self.__averageWaitTime = self.__totalWait / self.__numCustomersWaited
+        
+        # end if
+
+    # end averageWait
+
+    def getAverageWaitTime(self):
+        return self.__averageWaitTime
+    # end getAverageWaitTime
 
     def size(self):
         return self.__size

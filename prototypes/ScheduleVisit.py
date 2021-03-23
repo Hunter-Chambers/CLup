@@ -116,6 +116,85 @@ class ScheduleVisit:
                 # print('i: ', i)
                 # we found a valid block
                 # prompt customer nearest available visit time
+                # and display queue info
+
+                startTime = customer.getStartVisit()
+                z = i
+                full = False
+
+                while not full and z < numKeys and z < i + blocksToCheck:
+                    if shoppingCustomers[keys[z]]['scheduled'] + shoppingCustomers[keys[z]]['scheduled'] >= storeCapacity:
+                        full = True
+                    else:
+                        z += 1
+
+                    # end if
+
+                # end while
+
+
+                if not full:
+                    # State 1
+                    # There is available room in the store
+
+                    print('There is currently no wait to enter the store.')
+
+
+                elif queue.size() <= 0:
+                    # State 2
+                    # NO available room in the store
+                    # and queue is empty
+
+                    done = False
+                    index = 0
+                    while not done and index < numKeys:
+                        key = keys[index]
+                        print(key)
+                        if shoppingCustomers[key]['scheduled'] > 0 or shoppingCustomers[key]['walk_ins'] > 0:
+                            print('HAS customers')
+                            print()
+
+                            customers = list(shoppingCustomers[key].keys())
+                            customers.sort()
+
+                            numCustomers = len(customers) - 2
+                            closestCustomer = customers[0]
+
+                            shortest = int(shoppingCustomers[key][closestCustomer]['visit_length'])
+                            for customer in customers[1:numCustomers]:
+                                visitLength = int(shoppingCustomers[key][customer]['visit_length'])
+                                if visitLength < shortest:
+                                    shortest = visitLength
+                                    closestCustomer = customer
+
+                                # end if
+
+                            # end for
+                            print('Closest Customer: ', closestCustomer) 
+                            done = True
+
+                        # end if
+
+                        index += 1
+
+                    # end while
+
+                else:
+                    # State 3
+                    # NO available room in the store
+                    # and queue is NOT empty
+
+                    print('Number of customers currently waiting in line: ', queue.size())
+                    print('Estimated wait time: ', queue.getAverageWaitTime() )
+
+
+
+
+
+
+
+                
+                
                 
                 print('Earliest available time at: ', keys[i] )
 

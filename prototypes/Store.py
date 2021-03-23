@@ -4,6 +4,7 @@ import json
 from Customer import *
 from Queue import *
 from ScheduleVisit import *
+from datetime import *
 #from Schedule import *
 
 '''
@@ -277,6 +278,11 @@ class Store:
             else:
                 # add customer to shopping customers
                 customer = self.__queue.remove()
+                currentHours = datetime.now().hours
+                currentMinutes = datetime.now().minutes + 60 * currentHours
+                startWait = int(customer.getStartVisit()[2:]) + int(customer.getStartVisit()[0:2]) * 60
+                customerWaitTime = currentMinutes - startWait
+                print(self.__queue.averageWait(customerWaitTime))
                 self.__shoppingCustomers[keys[start]][customer.getUsername()] = {
                         'contact_info' : customer.getContactInfo(),
                         'type' : 'walk_in',
@@ -341,6 +347,7 @@ class Store:
         keys.sort()
 
         start = keys.index(startTime)
+        customerType = self.__shoppingCustomers.[startTime][username].getType()
         self.__shoppingCustomers[startTime].pop(username)
 
         # print('Current capacity: ', self.__currentCapacity)
@@ -348,10 +355,10 @@ class Store:
 
 
         for i in range(start, start + blocksToCheck):
-            if self.__shoppingCustomers[keys[i]]['scheduled'] - partySize < 0:
-                self.__shoppingCustomers[keys[i]]['scheduled'] = 0
+            if self.__shoppingCustomers[keys[i]][customerType] - partySize < 0:
+                self.__shoppingCustomers[keys[i]][customerType] = 0
             else:
-                self.__shoppingCustomers[keys[i]]['scheduled'] -= partySize
+                self.__shoppingCustomers[keys[i]][customerType] -= partySize
 
 
         with open('shoppingCustomers.json', 'w') as f:

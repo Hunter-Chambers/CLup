@@ -34,10 +34,14 @@ class Queue:
         self.__front = None
         self.__rear = None
         self.__totalWaitTime = 0
-        self.__totalWaitedCustomers = 0
+        self.__numCustomersWaited = 0
         self.__averageWaitTime = 0
 
     # end init
+
+    def getList(self):
+        return self.__queue
+    # end getList
 
     def __str__(self):
         
@@ -70,15 +74,15 @@ class Queue:
 
     def averageWait(self, waitTime):
 
-        if self.__size() <= 0:
-            self.__totalWait = 0
+        if self.__size <= 0:
+            self.__totalWaitTime = 0
             self.__numCustomersWaited = 0
             self.__averageWaitTime = 0
 
         else:
-            self.__totalWait += waitTime
+            self.__totalWaitTime += waitTime
             self.__numCustomersWaited += 1
-            self.__averageWaitTime = self.__totalWait / self.__numCustomersWaited
+            self.__averageWaitTime = self.__totalWaitTime // self.__numCustomersWaited
         
         # end if
 
@@ -136,12 +140,18 @@ class Queue:
     # end remove
 
 
-    def peek(self):
-        if self.__front:
-            return self.__queue[self.__front]
-        else:
-            return None
+    def peek(self, index = 0):
+        if index == 0:
+            if self.__front != None:
+                return self.__queue[self.__front]
+            else:
+                return None
+            
+            # end if
         # end if
+        return self.__queue[index]
+
+        
     # end peek
     
 

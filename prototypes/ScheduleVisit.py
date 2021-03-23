@@ -51,8 +51,9 @@ class ScheduleVisit:
 
 
         if customer.getStartVisit() == 'ASAP':
-            # print("entered if")
-
+            # print("entered if")            
+            
+            customer.setStartVisit( currentTime.strftime('%H%M') ) 
 
             '''
             # start visit = 1800, end visit = 1900, visitLength = 100
@@ -112,83 +113,92 @@ class ScheduleVisit:
                 # end if
 
             # end while
+            startTime = datetime.strptime(customer.getStartVisit(), '%H%M')
+            startTimeMinutes = math.floor(startTime.minute / 15) * 15
+            if startTimeMinutes == 0:
+                startTimeMinutes = '00'
+            else:
+                startTimeMinutes = str(startTimeMinutes)
 
-            if done and i:
+            startTime = startTime.strftime('%H') + startTimeMinutes
+            z = keys.index(startTime)
+            startIndex = z
+            full = False
+
+            while not full and z < numKeys and z < startIndex + blocksToCheck:
+                if shoppingCustomers[keys[z]]['scheduled'] + shoppingCustomers[keys[z]]['walk_ins'] + partySize >= storeCapacity:
+                    full = True
+                else:
+                    z += 1
+
+                # end if
+
+            # end while
+
+
+            if not full:
+                # State 1
+                # There is available room in the store
+
+                print('There is currently no wait to enter the store.')
+
+
+            elif queue.size() <= 0:
+                # State 2
+                # NO available room in the store
+                # and queue is empty
+
+                done = False
+                index = 0
+                while not done and index < numKeys:
+                    key = keys[index]
+                    print(key)
+                    if shoppingCustomers[key]['scheduled'] > 0 or shoppingCustomers[key]['walk_ins'] > 0:
+                        print('HAS customers')
+                        print()
+
+                        customers = list(shoppingCustomers[key].keys())
+                        customers.sort()
+
+                        numCustomers = len(customers) - 2
+                        closestCustomer = customers[0]
+
+                        shortest = int(shoppingCustomers[key][closestCustomer]['visit_length'])
+                        for cust in customers[1:numCustomers]:
+                            visitLength = int(shoppingCustomers[key][cust]['visit_length'])
+                            if visitLength < shortest:
+                                shortest = visitLength
+                                closestCustomer = cust
+
+                            # end if
+
+                        # end for
+                        print('Closest Customer: ', closestCustomer) 
+                        done = True
+
+                    # end if
+
+                    index += 1
+
+                # end while
+
+            else:
+                # State 3
+                # NO available room in the store
+                # and queue is NOT empty
+
+                print('Number of customers currently waiting in line: ', queue.size())
+                print('Estimated wait time: ', queue.getAverageWaitTime() )
+
+
+            if done and i and i < numKeys:
                 # print(keys)
                 # print('i: ', i)
                 # we found a valid block
                 # prompt customer nearest available visit time
                 # and display queue info
 
-                startTime = customer.getStartVisit()
-                z = i
-                full = False
-
-                while not full and z < numKeys and z < i + blocksToCheck:
-                    if shoppingCustomers[keys[z]]['scheduled'] + shoppingCustomers[keys[z]]['scheduled'] >= storeCapacity:
-                        full = True
-                    else:
-                        z += 1
-
-                    # end if
-
-                # end while
-
-
-                if not full:
-                    # State 1
-                    # There is available room in the store
-
-                    print('There is currently no wait to enter the store.')
-
-
-                elif queue.size() <= 0:
-                    # State 2
-                    # NO available room in the store
-                    # and queue is empty
-
-                    done = False
-                    index = 0
-                    while not done and index < numKeys:
-                        key = keys[index]
-                        print(key)
-                        if shoppingCustomers[key]['scheduled'] > 0 or shoppingCustomers[key]['walk_ins'] > 0:
-                            print('HAS customers')
-                            print()
-
-                            customers = list(shoppingCustomers[key].keys())
-                            customers.sort()
-
-                            numCustomers = len(customers) - 2
-                            closestCustomer = customers[0]
-
-                            shortest = int(shoppingCustomers[key][closestCustomer]['visit_length'])
-                            for customer in customers[1:numCustomers]:
-                                visitLength = int(shoppingCustomers[key][customer]['visit_length'])
-                                if visitLength < shortest:
-                                    shortest = visitLength
-                                    closestCustomer = customer
-
-                                # end if
-
-                            # end for
-                            print('Closest Customer: ', closestCustomer) 
-                            done = True
-
-                        # end if
-
-                        index += 1
-
-                    # end while
-
-                else:
-                    # State 3
-                    # NO available room in the store
-                    # and queue is NOT empty
-
-                    print('Number of customers currently waiting in line: ', queue.size())
-                    print('Estimated wait time: ', queue.getAverageWaitTime() )
-
+                
 
 
 
@@ -287,13 +297,15 @@ class ScheduleVisit:
                 ptr = k
                 z = 0
                 while room and ptr < numKeys and z < stop:
-                    print("ptr:", ptr)
-                    print("scheduled:", shoppingCustomers[keys[ptr]]['scheduled'])
-                    print("walk_ins:", shoppingCustomers[keys[ptr]]['walk_ins'])
-                    print("limit:", limit)
+                    # print("ptr:", ptr)
+                    # print("scheduled:", shoppingCustomers[keys[ptr]]['scheduled'])
+                    # print("walk_ins:", shoppingCustomers[keys[ptr]]['walk_ins'])
+                    # print("limit:", limit)
 
                     if shoppingCustomers[keys[ptr]]['scheduled'] + shoppingCustomers[keys[ptr]]['walk_ins'] + partySize > storeCapacity:
+                        
                         room = False
+
                     else:
                         ptr += 1
 
@@ -302,8 +314,9 @@ class ScheduleVisit:
 
 
 
+
                 if room:
-                    print("stop:", stop)
+                    # print("stop:", stop)
 
                     if k + stop > numKeys:
                         blocksToCheck = numKeys - k
@@ -318,7 +331,7 @@ class ScheduleVisit:
                     shoppingCustomers[keys[k]][customer.getUsername()] = {
                             'contact_info' : customer.getContactInfo(),
                             'party_size' : customer.getPartySize(),
-                            'type' : 'walk_in',
+                            'type' : 'walk_ins',
                             'visit_length' : blocksToCheck,
                             }
 
@@ -335,6 +348,7 @@ class ScheduleVisit:
                             }
 
                     print("You have 15 minutes to scan in or you will lose your spot.")
+                    return 1
 
 
 
@@ -343,6 +357,7 @@ class ScheduleVisit:
                     # an open spot
                     print('Joined the queue of waiting customers.')
                     queue.add(customer)
+                    return 0
 
 
 
@@ -411,6 +426,7 @@ class ScheduleVisit:
                 # print(storeSchedule[keys[i]]['num_reservations'])
 
 
+        return 0
     # end makeReservation
 
 
@@ -448,7 +464,7 @@ def main():
             }
     limit = 60
 
-    ScheduleVisit.makeReservation(customer, Queue(), limit, shoppingCustomers)
+    ScheduleVisit.makeReservation(customer, Queue(), limit, 100, shoppingCustomers)
 
     print('*'*60)
     print(shoppingCustomers)
@@ -461,7 +477,7 @@ def main():
     customer.setVisitLength(3)
     customer.setContactInfo('customer@hotmail.com')
 
-    ScheduleVisit.makeReservation(customer, Queue(), limit, shoppingCustomers)
+    ScheduleVisit.makeReservation(customer, Queue(), limit, 100, shoppingCustomers)
 
     print('*'*60)
     print(shoppingCustomers)

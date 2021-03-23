@@ -252,25 +252,38 @@ class Store:
         waitingCustomer = self.__queue.peek()
 
         if (waitingCustomer):
+            filepath = './mockDatabase.json'
+
+            with open(filepath) as f:
+                storeSchedule = json.load(f)
             # print(waitingCustomer)
             startTime = waitingCustomer.getStartVisit()
             partySize = waitingCustomer.getPartySize()
             blocksToCheck = waitingCustomer.getVisitLength()
+            if blocksToCheck > 4:
+                blocksToCheck = 4
             keys = list(self.__shoppingCustomers.keys())
             keys.sort()
             numKeys = len(keys)
 
             start = keys.index(startTime)
             room = True
-            for i in range(start, start + blocksToCheck):
+            i = start
+            while i < start + blocksToCheck and i < numKeys:
+                numReservations = storeSchedule[keys[i]]['num_reservations']
                 numWalkIns = self.__shoppingCustomers[keys[i]]['walk_ins']
                 numScheduled = self.__shoppingCustomers[keys[i]]['scheduled']
 
-                if numWalkIns + numScheduled + partySize > self.__storeCapacity:
+                if numWalkIns + numScheduled + numReservations + partySize > self.__storeCapacity:
                     room = False
                 # end if
+                
+                i += 1
 
-            # end for
+            # end while
+
+            if i >= numKeys:
+                room = False
                          
             if not room:
                 print('Party Size exceeds capacity for one or more planned time slot.')
@@ -278,14 +291,14 @@ class Store:
             else:
                 # add customer to shopping customers
                 customer = self.__queue.remove()
-                currentHours = datetime.now().hours
-                currentMinutes = datetime.now().minutes + 60 * currentHours
+                currentHours = datetime.now().hour
+                currentMinutes = datetime.now().minute + 60 * currentHours
                 startWait = int(customer.getStartVisit()[2:]) + int(customer.getStartVisit()[0:2]) * 60
                 customerWaitTime = currentMinutes - startWait
                 print(self.__queue.averageWait(customerWaitTime))
                 self.__shoppingCustomers[keys[start]][customer.getUsername()] = {
                         'contact_info' : customer.getContactInfo(),
-                        'type' : 'walk_in',
+                        'type' : 'walk_ins',
                         'party_size' : customer.getPartySize(),
                         'visit_length' : customer.getVisitLength(),
                         'visit_start' : customer.getStartVisit()
@@ -301,7 +314,10 @@ class Store:
                     json.dump(storeSchedule, f, indent=2, sort_keys=True)
                 '''
 
+                return 1
+
             # end if
+            return 0
         # end if
 
 
@@ -330,6 +346,8 @@ class Store:
 
         # end if
         '''
+        return 0
+
     # end checkWaitingCustomer
 
 
@@ -347,7 +365,7 @@ class Store:
         keys.sort()
 
         start = keys.index(startTime)
-        customerType = self.__shoppingCustomers.[startTime][username].getType()
+        customerType = self.__shoppingCustomers[startTime][username]['type']
         self.__shoppingCustomers[startTime].pop(username)
 
         # print('Current capacity: ', self.__currentCapacity)
@@ -380,7 +398,8 @@ class Store:
         # print('Current capacity: ', self.__currentCapacity)
         # print()
 
-        self.checkWaitingCustomer()
+        return self.checkWaitingCustomer()
+
 
 
     # end releaseCusomter

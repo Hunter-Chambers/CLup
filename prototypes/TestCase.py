@@ -14,10 +14,12 @@ asapChance = 0.50
 
 
 randomID = 0
+totalAsap = 0
+admittedAsap = 0
 
 
 def randomScheduling(store, startTimes, currentTime, customerChoice = None):
-    global scheduleChance, asapChance, randomID
+    global scheduleChance, asapChance, randomID, totalAsap, admittedAsap
 
     # check if a random scheduling is occurring
     if (random() < scheduleChance):
@@ -34,10 +36,18 @@ def randomScheduling(store, startTimes, currentTime, customerChoice = None):
             # generate a customer with a random party size of 1 to 5,
             # and a random visit length of 15min to 1hr
             customer = Customer("Random_" + str(randomID), randint(1, 5), None, randint(1, 4), "email@place.com")
+            print()
+            print()
+            print(customer.getUsername(), "is scheduling a visit.")
+            print("Party Size is:", customer.getPartySize())
+            currentCapacity = store.getShoppingCustomers()[currentTime]['scheduled'] + store.getShoppingCustomers()[currentTime]['walk_ins']
+            print('Current Capacity:', currentCapacity)
+            print('Queue Size:', store.getQueue().size())
             randomID += 1
 
             # there is a 50% chance of the customer choosing ASAP
             if (random() < asapChance or not startTimes):
+                totalAsap += 1
                 customer.setStartVisit("ASAP")
                 valid = True
 
@@ -69,14 +79,14 @@ def randomScheduling(store, startTimes, currentTime, customerChoice = None):
             # end if
 
             if (valid):
-                ScheduleVisit.makeReservation(customer, store.getQueue(), int(store.getStoreCapacity() * 0.60), store.getShoppingCustomers(), customerChoice, datetime.strptime(currentTime, "%H%M"))
+                admittedAsap += ScheduleVisit.makeReservation(customer, store.getQueue(), int(store.getStoreCapacity() * 0.60), store.getStoreCapacity(), store.getShoppingCustomers(), customerChoice, datetime.strptime(currentTime, "%H%M"))
             # end if
         # end for
     # end if
 # end randomScheduling
 
 def main():
-    '''
+    global totalAsap, admittedAsap
     with open("mockDatabase.json") as f:
         storeSchedule = json.load(f)
     # end with
@@ -97,11 +107,6 @@ def main():
         print("Current Time:", keys[i])
         print()
 
-        #############################################################
-        # this is a 30% chance for some customers to schedule a visit
-        # in the future.
-        randomScheduling(store, keys[i + 4:], keys[i], "B")
-        #############################################################
 
         print()
 
@@ -126,12 +131,13 @@ def main():
                         contactInfo = shoppingCustomers[keys[j]][username]["contact_info"]
 
                         customer = Customer(username, partySize, startVisit, visitLength, contactInfo)
-                        store.releaseCustomer(customer)
+                        admittedAsap += store.releaseCustomer(customer)
 
                         print(customer.getUsername(), "was released at", keys[i])
                     # end if
                 # end if
             # end for
+
 
             j -= 1
         # end while
@@ -156,21 +162,33 @@ def main():
         # end for
         #################################################################
 
+
+        print()
+
+        #############################################################
+        # this is a 30% chance for some customers to schedule a visit
+        # in the future.
+        randomScheduling(store, keys[i + 4:], keys[i], "B")
+        #############################################################
+
         with open("mockDatabase.json") as f:
             storeSchedule = json.load(f)
         # end with
 
         f.close()
 
+        # input()
     # end for
+    print("Total ASAP Customers:", totalAsap)
+    print("Admitted ASAP Customers:", admittedAsap)
+    print(store.getQueue())
     #****************************************************************
     #****************************************************************
     #****************************************************************
     #****************************************************************
     #****************************************************************
-
-    print("\n"*5)
     '''
+    print("\n"*5)
 
     storeSchedule = {
             "0000" : {
@@ -293,8 +311,8 @@ def main():
             customer = Customer("Test2_asap_" + str(randomID), randint(1, 5), "ASAP", randint(1, 4), "email@place.com")
             randomID += 1
         # end for
-        input()
-        print(store.getQueue())
+        #input()
+        #print(store.getQueue())
         #############################################################
 
         with open("mockDatabase.json") as f:
@@ -305,6 +323,7 @@ def main():
 
     # end for
     #****************************************************************
+    '''
 # end main
 
 if (__name__ == "__main__"):

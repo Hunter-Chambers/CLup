@@ -34,7 +34,7 @@ class ScheduleVisit:
     
     
 
-    def makeReservation(customer, queue, limit, shoppingCustomers, currentTime = datetime.now()):
+    def makeReservation(customer, queue, limit, storeCapacity, shoppingCustomers, choice = None, currentTime = datetime.now()):
         currentTime += timedelta(minutes=math.ceil(currentTime.minute / 15) * 15 - currentTime.minute)
 
         filepath = './mockDatabase.json'
@@ -72,10 +72,12 @@ class ScheduleVisit:
             try:
                 i = keys.index(hourFromNow.strftime("%H%M"))
             except ValueError:
+                i = None
                 done = True
             # end try/except
 
             if hourFromNow.date() > currentTime.date():
+                i = None
                 done = True
             # end if
 
@@ -111,7 +113,7 @@ class ScheduleVisit:
 
             # end while
 
-            if done:
+            if done and i:
                 # print(keys)
                 # print('i: ', i)
                 # we found a valid block
@@ -214,7 +216,8 @@ class ScheduleVisit:
 
             # end if/else
 
-            choice = input()
+            if not choice:
+                choice = input()
 
             if choice == 'A':
                 # add party size of planned visit to the store reservations scheduled
@@ -239,6 +242,7 @@ class ScheduleVisit:
             elif choice == 'B':
 
                 k = keys.index(currentTime.strftime("%H%M"))
+                '''
                 room = False
                 while not room and k < numKeys:
                     valid = True
@@ -271,17 +275,56 @@ class ScheduleVisit:
                     # end if
 
                 # end while
+                '''
+
+                if blocksToCheck > 4:
+                    stop = 4
+                else:
+                    stop = blocksToCheck
+                # end if
+
+                room = True
+                ptr = k
+                z = 0
+                while room and ptr < numKeys and z < stop:
+                    print("ptr:", ptr)
+                    print("scheduled:", shoppingCustomers[keys[ptr]]['scheduled'])
+                    print("walk_ins:", shoppingCustomers[keys[ptr]]['walk_ins'])
+                    print("limit:", limit)
+
+                    if shoppingCustomers[keys[ptr]]['scheduled'] + shoppingCustomers[keys[ptr]]['walk_ins'] + partySize > storeCapacity:
+                        room = False
+                    else:
+                        ptr += 1
+
+                    z += 1
+                # end while
 
 
 
                 if room:
+                    print("stop:", stop)
+
+                    if k + stop > numKeys:
+                        blocksToCheck = numKeys - k
+                    # end if
 
                     # add to shopping customers
                     # prompt( 15 minutes to arrive | lose spot )
                     for j in range(k, k + blocksToCheck):
                         shoppingCustomers[keys[j]]['walk_ins'] += partySize
-
                     # end for
+
+                    shoppingCustomers[keys[k]][customer.getUsername()] = {
+                            'contact_info' : customer.getContactInfo(),
+                            'party_size' : customer.getPartySize(),
+                            'type' : 'walk_in',
+                            'visit_length' : blocksToCheck,
+                            }
+
+                    with open('shoppingCustomers.json', 'w') as f:
+                        json.dump(shoppingCustomers, f, indent=2, sort_keys=True)
+                    # end with
 
                     storeSchedule[keys[k]][customer.getUsername()] = {
                             'contact_info' : customer.getContactInfo(),

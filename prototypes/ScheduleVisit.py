@@ -152,10 +152,7 @@ class ScheduleVisit:
                 index = 0
                 while not done and index < numKeys:
                     key = keys[index]
-                    print(key)
                     if shoppingCustomers[key]['scheduled'] > 0 or shoppingCustomers[key]['walk_ins'] > 0:
-                        print('HAS customers')
-                        print()
 
                         customers = list(shoppingCustomers[key].keys())
                         customers.sort()
@@ -173,7 +170,6 @@ class ScheduleVisit:
                             # end if
 
                         # end for
-                        print('Closest Customer: ', closestCustomer) 
                         done = True
 
                     # end if
@@ -181,6 +177,19 @@ class ScheduleVisit:
                     index += 1
 
                 # end while
+
+                # get customer end time of visit
+                endTimeIndex = keys.index(key) + shoppingCustomers[key][closestCustomer]['visit_length']
+                endTime = keys[endTimeIndex]
+
+                # subtract current time minutes to from end time minutes
+                # to get estimated wait time
+                endTimeMinutes = int(endTime[2:]) + int(endTime[0:2]) * 60
+                currentWaitMinutes = currentTime.minute + currentTime.hour * 60
+                waitTime = endTimeMinutes - currentWaitMinutes
+
+                print('Number of customers currently waiting in line: ', queue.size())
+                print('Estimated wait time: ', waitTime )
 
             else:
                 # State 3

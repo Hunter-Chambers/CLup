@@ -365,6 +365,7 @@ class ScheduleVisit:
                     # customer has opted to wait in line for
                     # an open spot
                     print('Joined the queue of waiting customers.')
+                    customer.setStartVisit(currentTime.strftime("%H%M"))
                     queue.add(customer)
                     return 0
 

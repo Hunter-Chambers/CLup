@@ -94,6 +94,7 @@ def main():
     f.close()
 
     keys = sorted(list(storeSchedule.keys()))
+    numKeys = len(keys)
 
     store = Store(100)
     store.setShoppingCustomers()
@@ -101,7 +102,7 @@ def main():
     #****************************************************************
     # loop through the day by looping through each 15 min time block.
     # each loop represents going through a 15 min block of time
-    for i in range(len(keys)):
+    for i in range(numKeys):
 
         print("-"*60)
         print("Current Time:", keys[i])
@@ -123,7 +124,7 @@ def main():
                             datetime.strptime(keys[j], "%H%M") +
                             timedelta(minutes=(shoppingCustomers[keys[j]][username]["visit_length"] * 15))
                             ).strftime("%H%M")
-
+                    
                     if (endVisit == keys[i]):
                         partySize = shoppingCustomers[keys[j]][username]["party_size"]
                         startVisit = keys[j]
@@ -131,13 +132,12 @@ def main():
                         contactInfo = shoppingCustomers[keys[j]][username]["contact_info"]
 
                         customer = Customer(username, partySize, startVisit, visitLength, contactInfo)
-                        admittedAsap += store.releaseCustomer(customer)
+                        admittedAsap += store.releaseCustomer(customer, keys[i])
 
                         print(customer.getUsername(), "was released at", keys[i])
                     # end if
                 # end if
             # end for
-
 
             j -= 1
         # end while
@@ -162,6 +162,77 @@ def main():
         # end for
         #################################################################
 
+        queueCopy = store.getQueue().getList().copy()
+
+        startTime = keys[i]
+        for cust in queueCopy:
+            #startTime = cust.getStartVisit()
+            partySize = cust.getPartySize()
+
+            blocksToCheck = cust.getVisitLength()
+            if blocksToCheck > 4:
+                blocksToCheck = 4
+            # end if
+
+            start = keys.index(startTime)
+            room = True
+            index = start
+            while index < start + blocksToCheck and index < numKeys:
+                numReservations = storeSchedule[keys[index]]['num_reservations']
+                '''
+                if (index == i):
+                    numReservations = 0
+                # end if
+                '''
+
+                numWalkIns = store.getShoppingCustomers()[keys[index]]['walk_ins']
+                numScheduled = store.getShoppingCustomers()[keys[index]]['scheduled']
+
+                if numWalkIns + numScheduled + numReservations + partySize > store.getStoreCapacity():
+                    room = False
+                # end if
+                
+                index += 1
+            # end while
+
+            if index < start + blocksToCheck:
+                room = False
+            # end if
+
+            if room:
+                store.getQueue().getList().remove(cust)
+                store.getQueue().setSize(store.getQueue().size() - 1)
+                store.getQueue().setRear(store.getQueue().getRear() - 1)
+
+                if not store.getQueue().getList():
+                    store.getQueue().setFront(None)
+                    store.getQueue().setRear(None)
+                # end if
+
+                currentHours = int(keys[i][:2])
+                currentMinutes = int(keys[i][2:]) + 60 * currentHours
+                startWait = int(cust.getStartVisit()[2:]) + int(cust.getStartVisit()[0:2]) * 60
+                customerWaitTime = currentMinutes - startWait
+                store.getQueue().averageWait(customerWaitTime)
+
+                store.getShoppingCustomers()[keys[start]][cust.getUsername()] = {
+                        'contact_info' : cust.getContactInfo(),
+                        'type' : 'walk_ins',
+                        'party_size' : partySize,
+                        'visit_length' : blocksToCheck
+                        # 'visit_start' : keys[start]
+                        }
+
+
+                for someIndex in range(start, start + blocksToCheck):
+                    store.getShoppingCustomers()[keys[someIndex]]['walk_ins'] += partySize
+                # end for
+
+                print(cust.getUsername(), "was admitted from the queue at", keys[i])
+
+                admittedAsap += 1
+            # end if
+        # end for
 
         print()
 
@@ -177,12 +248,51 @@ def main():
 
         f.close()
 
+        print()
+        print("Current Capacity:", store.getShoppingCustomers()[keys[i]]["scheduled"] + store.getShoppingCustomers()[keys[i]]["walk_ins"])
+
         # input()
     # end for
+    #****************************************************************
+
+    #****************************************************************
+    # this loop handles releasing customers at the end of the day
+    j = numKeys - 1
+    shoppingCustomers = store.getShoppingCustomers()
+    while (j >= 0):
+        usernames = list(shoppingCustomers[keys[j]].keys())
+
+        for username in usernames:
+            if (username != "scheduled" and username != "walk_ins"):
+                endVisit = (
+                        datetime.strptime(keys[j], "%H%M") +
+                        timedelta(minutes=(shoppingCustomers[keys[j]][username]["visit_length"] * 15))
+                        ).strftime("%H%M")
+
+                # FIX THIS
+                if (endVisit == "2300"):
+                    partySize = shoppingCustomers[keys[j]][username]["party_size"]
+                    startVisit = keys[j]
+                    visitLength = shoppingCustomers[keys[j]][username]["visit_length"]
+                    contactInfo = shoppingCustomers[keys[j]][username]["contact_info"]
+
+                    customer = Customer(username, partySize, startVisit, visitLength, contactInfo)
+
+                    # FIX THIS
+                    admittedAsap += store.releaseCustomer(customer, "2300")
+
+                    print(customer.getUsername(), "was released at", "FIX THIS")
+                # end if
+            # end if
+        # end for
+
+        j -= 1
+    # end while
+    #****************************************************************
+
     print("Total ASAP Customers:", totalAsap)
     print("Admitted ASAP Customers:", admittedAsap)
     print(store.getQueue())
-    #****************************************************************
     #****************************************************************
     #****************************************************************
     #****************************************************************

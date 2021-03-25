@@ -39,6 +39,26 @@ class Queue:
 
     # end init
 
+    ########################################
+    ########################################
+    def setSize(self, newSize):
+        self.__size = newSize
+    # end setSize
+
+    def setFront(self, newFront):
+        self.__front = newFront
+    # end setFront
+
+    def getRear(self):
+        return self.__rear
+    # end getRear
+
+    def setRear(self, newRear):
+        self.__rear = newRear
+    # end setRear
+    ########################################
+    ########################################
+
     def getList(self):
         return self.__queue
     # end getList
@@ -140,18 +160,12 @@ class Queue:
     # end remove
 
 
-    def peek(self, index = 0):
-        if index == 0:
-            if self.__front != None:
-                return self.__queue[self.__front]
-            else:
-                return None
-            
-            # end if
+    def peek(self):
+        if self.__front != None:
+            return self.__queue[self.__front]
+        else:
+            return None
         # end if
-        return self.__queue[index]
-
-        
     # end peek
     
 

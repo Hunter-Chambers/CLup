@@ -247,8 +247,108 @@ class Store:
 
 
 
-    def checkWaitingCustomer(self):
+    def checkWaitingCustomer(self, currentTime = datetime.now().strftime("%H%M")):
+        currentTimeMinutes = (int(currentTime[2:]) // 15) * 15
+        if currentTimeMinutes == 0:
+            currentTimeMinutes = "00"
+        else:
+            currentTimeMinutes = str(currentTimeMinutes)
+        # end if
 
+        currentTime = str(currentTime[:2]) + currentTimeMinutes
+
+        queueCopy = self.getQueue().getList().copy()
+
+        with open("mockDatabase.json") as f:
+            storeSchedule = json.load(f)
+        # print(waitingCustomer)
+
+        f.close()
+
+        keys = sorted(list(storeSchedule.keys()))
+        numKeys = len(keys)
+
+        if currentTime in keys:
+
+            # startTime = keys[currentTime]
+            for cust in queueCopy:
+                #startTime = cust.getStartVisit()
+                partySize = cust.getPartySize()
+
+                blocksToCheck = cust.getVisitLength()
+                if blocksToCheck > 4:
+                    blocksToCheck = 4
+                # end if
+
+                start = keys.index(currentTime)
+                room = True
+                index = start
+                while index < start + blocksToCheck and index < numKeys:
+                    numReservations = storeSchedule[keys[index]]['num_reservations']
+                    '''
+                    if (index == start):
+                        numReservations = 0
+                    # end if
+                    '''
+
+                    numWalkIns = self.getShoppingCustomers()[keys[index]]['walk_ins']
+                    numScheduled = self.getShoppingCustomers()[keys[index]]['scheduled']
+
+                    if numWalkIns + numScheduled + numReservations + partySize > self.getStoreCapacity():
+                        room = False
+                    # end if
+                    
+                    index += 1
+                # end while
+
+                if index < start + blocksToCheck:
+                    room = False
+                # end if
+
+                if room:
+                    self.getQueue().getList().remove(cust)
+                    self.getQueue().setSize(self.getQueue().size() - 1)
+                    self.getQueue().setRear(self.getQueue().getRear() - 1)
+
+                    if not self.getQueue().getList():
+                        self.getQueue().setFront(None)
+                        self.getQueue().setRear(None)
+                    # end if
+
+                    currentHours = int(keys[start][:2])
+                    currentMinutes = int(keys[start][2:]) + 60 * currentHours
+                    startWait = int(cust.getStartVisit()[2:]) + int(cust.getStartVisit()[0:2]) * 60
+                    customerWaitTime = currentMinutes - startWait
+                    self.__queue.averageWait(customerWaitTime)
+
+                    self.getShoppingCustomers()[keys[start]][cust.getUsername()] = {
+                            'contact_info' : cust.getContactInfo(),
+                            'type' : 'walk_ins',
+                            'party_size' : partySize,
+                            'visit_length' : blocksToCheck
+                            # 'visit_start' : keys[start]
+                            }
+
+
+                    for someIndex in range(start, start + blocksToCheck):
+                        self.getShoppingCustomers()[keys[someIndex]]['walk_ins'] += partySize
+                    # end for
+
+                    print(cust.getUsername(), "was admitted from the queue at", keys[start])
+
+                    return 1
+                # end if
+            # end for
+        # end if
+
+        return 0
+
+        #################################################################################
+        #################################################################################
+        #################################################################################
+        #################################################################################
+
+        '''
         waitingCustomer = self.__queue.peek()
 
         if (waitingCustomer):
@@ -307,12 +407,13 @@ class Store:
 
                 for i in range(start, start + blocksToCheck):
                     self.__shoppingCustomers[keys[i]]['walk_ins'] += partySize
+                # end for
 
-                 # end for
-                '''
+                print("UPON RELEASE")
+                print(customer.getUsername(), "was admitted from the queue at", keys[start])
+
                 with open(filepath, 'w') as f:
                     json.dump(storeSchedule, f, indent=2, sort_keys=True)
-                '''
 
                 return 1
 
@@ -320,6 +421,13 @@ class Store:
             return 0
         # end if
 
+        return 0
+        '''
+
+        #################################################################################
+        #################################################################################
+        #################################################################################
+        #################################################################################
 
         '''
         if self.__currentCapacity + partySize < self.__threshold * self.__storeCapacity:
@@ -346,14 +454,12 @@ class Store:
 
         # end if
         '''
-        return 0
-
     # end checkWaitingCustomer
 
 
 
 
-    def releaseCustomer(self, customer):
+    def releaseCustomer(self, customer, currentTime = datetime.now().strftime("%H%M")):
 
 
         partySize = customer.getPartySize()
@@ -398,7 +504,16 @@ class Store:
         # print('Current capacity: ', self.__currentCapacity)
         # print()
 
-        return self.checkWaitingCustomer()
+        currentTimeMinutes = (int(currentTime[2:]) // 15) * 15
+        if currentTimeMinutes == 0:
+            currentTimeMinutes = "00"
+        else:
+            currentTimeMinutes = str(currentTimeMinutes)
+        # end if
+
+        currentTime = str(currentTime[:2]) + currentTimeMinutes
+
+        return self.checkWaitingCustomer(currentTime)
 
 
 

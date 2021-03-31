@@ -301,11 +301,13 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
     if (startTime == "ASAP"):
         nextTimeBlockHour = str(currentTime[:2])
         nextTimeBlockMinutes = str(((int(currentTime[2:]) // 15) * 15) + 15)
-        if (nextTimeBlockMinutes == "0"):
+        if (nextTimeBlockMinutes == "60"):
             nextTimeBlockMinutes = "00"
             nextTimeBlockHour = str(int(nextTimeBlockHour) + 1)
 
-            if (nextTimeBlockHour == "24"):
+            if (len(nextTimeBlockHour) < 2):
+                nextTimeBlockHour = "0" + nextTimeBlockHour
+            elif (nextTimeBlockHour == "24"):
                 nextTimeBlockHour = "00"
             # end if
         # end if
@@ -348,10 +350,11 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
 
             while (not full and j < len(keys) and j < end):
                 numReservations = storeSchedule[keys[j]]["num_reservations"]
-                shoppingScheduled = shoppingCustomers[keys[j]]["scheduled"]
-                shoppingWalkins = shoppingCustomers[keys[j]]["walk_ins"]
+                #shoppingScheduled = shoppingCustomers[keys[j]]["scheduled"]
+                #shoppingWalkins = shoppingCustomers[keys[j]]["walk_ins"]
 
-                if (numReservations + shoppingScheduled + shoppingWalkins + partySize > MAX_CAPACITY):
+                if (numReservations + partySize > MAX_CAPACITY):
+                #if (numReservations + shoppingScheduled + shoppingWalkins + partySize > MAX_CAPACITY):
                     full = True
                 else:
                     j += 1
@@ -625,10 +628,11 @@ def checkWaitingCustomers(nextTimeBlock, currentTime):
 
             while (not full and start < len(keys) and start < end):
                 numReservations = storeSchedule[keys[start]]['num_reservations']
-                numWalkIns = shoppingCustomers[keys[start]]['walk_ins']
-                numScheduled = shoppingCustomers[keys[start]]['scheduled']
+                #numWalkIns = shoppingCustomers[keys[start]]['walk_ins']
+                #numScheduled = shoppingCustomers[keys[start]]['scheduled']
 
-                if (numReservations + numWalkIns + numScheduled + partySize > MAX_CAPACITY):
+                if (numReservations + partySize > MAX_CAPACITY):
+                #if (numReservations + numWalkIns + numScheduled + partySize > MAX_CAPACITY):
                     full = True
                 else:
                     start += 1

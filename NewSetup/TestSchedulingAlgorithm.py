@@ -47,6 +47,7 @@ def main():
 
         print("-"*60)
         print("Current Time Block:", key)
+        print("Scheduled Capacity:", storeSchedule[key]["num_reservations"])
         print()
 
         endOfCurrentBlock = (
@@ -148,12 +149,26 @@ def main():
 
         f.close()
 
+        for customer in queue:
+            username = list(customer.keys())[0]
+            customer[username]["current_wait_time"] += 15
+        # end for
+
         print()
-        print("Scheduled:", shoppingCustomers[key]["scheduled"])
-        print("Walk_ins:", shoppingCustomers[key]["walk_ins"])
+        scheduled = shoppingCustomers[key]["scheduled"]
+        walkins = shoppingCustomers[key]["walk_ins"]
+        print("Scheduled:", scheduled)
+        print("Walk_ins:", walkins)
+        print("Current Capacity:", scheduled + walkins)
 
     # end for
     ###################################################################
+
+    print()
+    print(len(queue), "still in queue:")
+    for customer in queue:
+        print(customer)
+    # end for
 
 # end main
 
@@ -177,10 +192,17 @@ def randomScheduling(currentBlock, currentTime):
             }
         }
 
+        print()
+        print(username, "was generated")
+        print("Party Size:", partySize)
+        print("Visit Length:", visitLength)
+
         if (random() < ASAP_CHANCE):
             startTime = "ASAP"
             valid = True
         else:
+            customer[username]["type"] = "scheduled"
+
             startTime = datetime.strptime(choice(keys), "%H%M")
             nextSchedulableTimeBlock = datetime.strptime(currentBlock, "%H%M") +\
                 timedelta(hours=1, minutes=15)
@@ -194,9 +216,14 @@ def randomScheduling(currentBlock, currentTime):
 
                 f.close()
 
-                valid = True
                 i = keys.index(startTime)
                 endIndex = i + visitLength
+
+                valid = True
+                if (endIndex >= len(keys)):
+                    valid = False
+                # end if
+
                 while (valid and i < len(keys) and i < endIndex):
                     if (storeSchedule[keys[i]]["num_reservations"] + partySize > MAX_CAPACITY * SCHEDULED_PERCENTAGE):
                         valid = False
@@ -211,6 +238,9 @@ def randomScheduling(currentBlock, currentTime):
 
         if (valid):
             makeReservation(customer, startTime, currentTime)
+        else:
+            print(username, "failed to schedule a visit")
+            print()
         # end if
     # end if
 # end randomScheduling
@@ -364,6 +394,8 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
 
         # TODO: add print statements to options
         if (option == "A"):
+            customer[username]["type"] = "scheduled"
+
             storeSchedule[keys[i]].update(customer)
 
             for block in range(i, i + visitLength):
@@ -380,6 +412,7 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
                 customerInfo["current_wait_time"] = 0
                 queue.append(customer)
                 print(username, "joined the queue of customers.")
+                print()
             else:
                 endTimeMinutes = str(endTime[2:])
                 visitLength = int(endTimeMinutes) - int(nextTimeBlockMinutes)
@@ -398,7 +431,7 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
 
                 i = keys.index(nextTimeBlock)
                 for block in range(i, i + visitLength):
-                    storeSchedule[keys[i]]["num_reservations"] += partySize
+                    storeSchedule[keys[block]]["num_reservations"] += partySize
                 # end for
 
                 with open("mockDatabase.json", "w") as f:
@@ -406,6 +439,9 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
                 # end with
 
                 f.close()
+
+                print(username, "scheduled a visit at", nextTimeBlock)
+                print()
             # end if
         else:
             # customer has chosen not to come to the store at all
@@ -419,7 +455,7 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
 
         start = keys.index(startTime)
         for i in range(start, start + visitLength):
-            storeSchedule[startTime]["num_reservations"] += partySize
+            storeSchedule[keys[i]]["num_reservations"] += partySize
         # end for
 
         with open("mockDatabase.json", "w") as f:
@@ -427,6 +463,9 @@ def makeReservation(customer, startTime, currentTime = datetime.now().strftime("
         # end with
 
         f.close()
+
+        print(username, "scheduled a visit at", startTime)
+        print()
     # end if
 # end makeReservation
 
@@ -494,14 +533,6 @@ def admitCustomer(customer, visitStartBlock, currentTime = datetime.now().strfti
         customerType = customerInfo["type"]
         start = keys.index(visitStartBlock)
 
-        print("*"*60)
-        print("*"*60)
-        print("HERE")
-        print(username)
-        print(customerType)
-        print("*"*60)
-        print("*"*60)
-
         for i in range(start, start + blocksToUpdate):
             shoppingCustomers[keys[i]][customerType] += partySize
         # end for
@@ -526,18 +557,21 @@ def releaseCustomer(customer, visitStartBlock, currentTime = datetime.now().strf
     blocksToUpdate = customerInfo["visit_length"]
     customerType = customerInfo["type"]
 
-    if (visitStartBlock == "temp"):
-        currentTimeMinutes = ((int(currentTime[2:]) // 15) - 1) * 15
-        if (currentTimeMinutes == 0):
-            currentTimeMinutes = "00"
-        else:
-            currentTimeMinutes = str(currentTimeMinutes)
-        # end if
+    currentTimeMinutes = (int(currentTime[2:]) // 15) * 15
+    if (currentTimeMinutes == 0):
+        currentTimeMinutes = "00"
+    else:
+        currentTimeMinutes = str(currentTimeMinutes)
+    # end if
 
-        currentTimeBlock = str(currentTime[:2]) + currentTimeMinutes
+    currentTimeBlock = str(currentTime[:2]) + currentTimeMinutes
+
+    if (visitStartBlock == "temp"):
+        previousTimeBlock = (datetime.strptime(currentTimeBlock, "%H%M") -\
+            timedelta(minutes=15)).strftime("%H%M")
 
         shoppingCustomers[visitStartBlock].remove(customer)
-        start = keys.index(currentTimeBlock)
+        start = keys.index(previousTimeBlock)
 
         print(username, "did not show up for their visit.")
         print("They were removed from temp storage at", currentTime)
@@ -545,6 +579,7 @@ def releaseCustomer(customer, visitStartBlock, currentTime = datetime.now().strf
         shoppingCustomers[visitStartBlock].pop(username)
         start = keys.index(visitStartBlock)
 
+        print()
         print(username, "was released at", currentTime)
     # end if
 
@@ -557,33 +592,60 @@ def releaseCustomer(customer, visitStartBlock, currentTime = datetime.now().strf
     # end with
 
     if (queue):
-        pass
+        nextTimeBlock = (datetime.strptime(currentTimeBlock, "%H%M") +\
+            timedelta(minutes=15)).strftime("%H%M")
 
-        '''
-        currentTimeMinutes = int(currentTimeBlock[2:]) + 15
-        if (currentTimeMinutes == 60):
-            currentTimeMinutes = "00"
-            currentTimeHours = str(int(currentTimeBlock[:2]) + 1)
-        else:
-            currentTimeMinutes = str(currentTimeMinutes)
-            currentTimeHours = str(currentTimeBlock[:2])
-        # end if
-
-        if (currentTimeHours == "24"):
-            nextTimeBlock = "00" + currentTimeMinutes
-        else:
-            nextTimeBlock = currentTimeHours + currentTimeMinutes
-        # end if
-
-        checkWaitingCustomers(currentTimeBlock)
-        '''
+        checkWaitingCustomers(nextTimeBlock, currentTime)
     # end if
 # end releaseCustomer
 
-def checkWaitingCustomers(currentTimeBlock):
-    pass
-
+def checkWaitingCustomers(nextTimeBlock, currentTime):
     # TODO: write checkWaitingCustomer logic
+    global STORE_CLOSE, MAX_CAPACITY
+    global shoppingCustomers, queue
+
+    if (nextTimeBlock != STORE_CLOSE):
+        position = 0
+        done = False
+        while (not done and position < len(queue)):
+            with open("mockDatabase.json") as f:
+                storeSchedule = json.load(f)
+            # end with
+
+            f.close()
+
+            username, customerInfo = list(queue[position].items())[0]
+            partySize = customerInfo["party_size"]
+            blocksToCheck = customerInfo["visit_length"]
+            waitTime = customerInfo["current_wait_time"]
+
+            start = keys.index(nextTimeBlock)
+            end = start + blocksToCheck
+            full = False
+
+            while (not full and start < len(keys) and start < end):
+                numReservations = storeSchedule[keys[start]]['num_reservations']
+                numWalkIns = shoppingCustomers[keys[start]]['walk_ins']
+                numScheduled = shoppingCustomers[keys[start]]['scheduled']
+
+                if (numReservations + numWalkIns + numScheduled + partySize > MAX_CAPACITY):
+                    full = True
+                else:
+                    start += 1
+                # end if
+            # end while
+
+            if (start != end and waitTime >= 30):
+                done = True
+            elif (start == end and not full):
+                queue.pop(position)
+                print(username, "was removed from the queue.")
+                makeReservation({username: customerInfo}, nextTimeBlock, currentTime)
+            else:
+                position += 1
+            # end if
+        # end while
+    # end if
 # end checkWaitingCustomers
 
 if (__name__ == "__main__"):

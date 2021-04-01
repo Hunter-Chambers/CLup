@@ -236,133 +236,24 @@
     "walk_ins": 0
   },
   "2145": {
-    "Customer_Username_45": {
-      "contact_info": "email@place.com",
-      "party_size": 2,
-      "type": "scheduled",
-      "visit_length": 4
-    },
-    "Random_1243": {
-      "contact_info": "email@place.com",
-      "party_size": 1,
-      "type": "walk_ins",
-      "visit_length": 4
-    },
-    "scheduled": 2,
-    "walk_ins": 1
+    "scheduled": 0,
+    "walk_ins": 0
   },
   "2200": {
-    "Customer_Username_117": {
-      "contact_info": "email@place.com",
-      "party_size": 1,
-      "type": "scheduled",
-      "visit_length": 3
-    },
-    "Customer_Username_501": {
-      "contact_info": "email@place.com",
-      "party_size": 4,
-      "type": "scheduled",
-      "visit_length": 3
-    },
-    "Customer_Username_65": {
-      "contact_info": "email@place.com",
-      "party_size": 3,
-      "type": "scheduled",
-      "visit_length": 3
-    },
-    "Customer_Username_938": {
-      "contact_info": "email@place.com",
-      "party_size": 5,
-      "type": "scheduled",
-      "visit_length": 3
-    },
-    "scheduled": 15,
-    "walk_ins": 1
+    "scheduled": 0,
+    "walk_ins": 0
   },
   "2215": {
-    "Customer_Username_571": {
-      "contact_info": "email@place.com",
-      "party_size": 1,
-      "type": "scheduled",
-      "visit_length": 2
-    },
-    "Customer_Username_588": {
-      "contact_info": "email@place.com",
-      "party_size": 5,
-      "type": "scheduled",
-      "visit_length": 2
-    },
-    "Customer_Username_840": {
-      "contact_info": "email@place.com",
-      "party_size": 5,
-      "type": "scheduled",
-      "visit_length": 2
-    },
-    "Random_1288": {
-      "contact_info": "email@place.com",
-      "party_size": 1,
-      "type": "walk_ins",
-      "visit_length": 3
-    },
-    "scheduled": 26,
-    "walk_ins": 2
+    "scheduled": 0,
+    "walk_ins": 0
   },
   "2230": {
-    "scheduled": 30,
-    "walk_ins": 7
+    "scheduled": 0,
+    "walk_ins": 0
   },
   "2245": {
     "scheduled": 0,
-    "walk_ins": 6
+    "walk_ins": 0
   },
-  "temp": [
-    {
-      "Customer_Username_427": {
-        "contact_info": "email@place.com",
-        "party_size": 3,
-        "type": "scheduled",
-        "visit_length": 1
-      }
-    },
-    {
-      "Customer_Username_725": {
-        "contact_info": "email@place.com",
-        "party_size": 1,
-        "type": "scheduled",
-        "visit_length": 1
-      }
-    },
-    {
-      "Random_1314": {
-        "contact_info": "email@place.com",
-        "party_size": 1,
-        "type": "walk_ins",
-        "visit_length": 2
-      }
-    },
-    {
-      "Random_1318": {
-        "contact_info": "email@place.com",
-        "party_size": 1,
-        "type": "walk_ins",
-        "visit_length": 2
-      }
-    },
-    {
-      "Random_1319": {
-        "contact_info": "email@place.com",
-        "party_size": 1,
-        "type": "walk_ins",
-        "visit_length": 2
-      }
-    },
-    {
-      "Random_1329": {
-        "contact_info": "email@place.com",
-        "party_size": 2,
-        "type": "walk_ins",
-        "visit_length": 2
-      }
-    }
-  ]
+  "temp": []
 }

@@ -1,5 +1,4 @@
 <?php
-    echo 'Hello World';
 
     // params
     $customer = [];
@@ -11,6 +10,7 @@
     //$currentTime = now..;
 
     $command = escapeshellcmd('C:\Users\easte\OneDrive\Documents\CLupProjectFiles\Code\prototypes\ScheduleVisit.py');
+    $command = $command." Layton";
     //c/Users/easte/OneDrive/Documents/CLupProjectFiles/Code/prototypes/ScheduleVisit.py');
     echo $command;
     $output = shell_exec($command);

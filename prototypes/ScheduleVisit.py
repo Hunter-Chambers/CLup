@@ -1,10 +1,12 @@
-#!/mingw64/bin/Python30/python.exe
+#!/c/Users/easte/AppData/Local/Programs/Python/Python38/python.exe
 
+'''#!/mingw64/bin/Python30/python.exe'''
 from Customer import *
 from Queue  import * 
 import json
 import math
 from datetime import *
+import sys
 
 
 '''
@@ -30,414 +32,210 @@ BEHAVIOURS:
 
 '''
 
-class ScheduleVisit:
-    
-    
+def makeReservation(customer, startTime, currentTime = datetime.now().strftime("%H%M")):
+    global shoppingCustomers, keys
+    partySize = 3
+    visitLength = 2
+    customer = {
+        "username": {
+            "contact_info": "email@place.com",
+            "party_size": partySize,
+            "type": "walk_ins",
+            "visit_length": visitLength
+        }
+    }
 
-    def makeReservation(customer, queue, limit, storeCapacity, shoppingCustomers, choice = None, currentTime = datetime.now()):
-        currentTime += timedelta(minutes=math.ceil(currentTime.minute / 15) * 15 - currentTime.minute)
-
-        filepath = './mockDatabase.json'
-
-        with open(filepath) as f:
-            storeSchedule = json.load(f)
-        
-        partySize = customer.getPartySize()
-        blocksToCheck = customer.getVisitLength()
-
-        keys = list(storeSchedule.keys())
-        keys.sort()
-        numKeys = len(keys)
+    print(sys.argv[1])
+    # customer.setUsername()
+    # customer.setPartySize()
+    # customer.setStartVisit()
+    # customer.setVisitLength()
+    # customer.setContactInfo()
 
 
-        if customer.getStartVisit() == 'ASAP':
-            # print("entered if")            
-            
-            customer.setStartVisit( currentTime.strftime('%H%M') ) 
+    with open("mockDatabase.json") as f:
+        storeSchedule = json.load(f)
+    # end with
 
-            '''
-            # start visit = 1800, end visit = 1900, visitLength = 100
-            visitLength = customer.getEndVisit() - customer.getStartVisit()
-            blocksToCheck = 0
-            while visitLength - 100 >= 0:
-                blocksToCheck += 4
-                visitLength -= 100
-            # end while
+    f.close()
 
-            blocksToCheck += visitLength / 15
-            '''
+    username, customerInfo = list(customer.items())[0]
+    partySize = customerInfo["party_size"]
+    visitLength = customerInfo["visit_length"]
 
-            hourFromNow = currentTime + timedelta(hours=1)
+    if (startTime == "ASAP"):
+        nextTimeBlockHour = str(currentTime[:2])
+        nextTimeBlockMinutes = str(((int(currentTime[2:]) // 15) * 15) + 15)
+        if (nextTimeBlockMinutes == "60"):
+            nextTimeBlockMinutes = "00"
+            nextTimeBlockHour = str(int(nextTimeBlockHour) + 1)
 
-            done = False
-            try:
-                i = keys.index(hourFromNow.strftime("%H%M"))
-            except ValueError:
-                i = None
-                done = True
-            # end try/except
-
-            if hourFromNow.date() > currentTime.date():
-                i = None
-                done = True
+            if (len(nextTimeBlockHour) < 2):
+                nextTimeBlockHour = "0" + nextTimeBlockHour
+            elif (nextTimeBlockHour == "24"):
+                nextTimeBlockHour = "00"
             # end if
+        # end if
 
-            while not done and i < numKeys:
-                valid = True
-                ptr = i
+        nextTimeBlock = nextTimeBlockHour + nextTimeBlockMinutes
 
-                while valid and ptr - i < blocksToCheck:
+        # i needs a value just in case the program
+        # does not enter the next if
+        i = len(keys)
 
-                    if storeSchedule[keys[ptr]]['num_reservations'] + partySize > limit:
-                        valid = False
-                     
-                    ptr += 1
+        if (nextTimeBlock in keys):
+            done = False
+            i = keys.index(nextTimeBlock) + 4
 
-                    if valid and ptr - i >= blocksToCheck:
+            while (not done and i < len(keys)):
+                start = i
+                end = start + visitLength
+                while (not done and start < len(keys) and start < end):
+                    if (storeSchedule[keys[start]]["num_reservations"] + partySize > MAX_CAPACITY * SCHEDULED_PERCENTAGE):
                         done = True
-
-
-                    elif ptr >= numKeys:
-                        valid = False
-
+                    else:
+                        start += 1
                     # end if
-
                 # end while
 
-
-                if valid:
-                    done = True
-                else:
-                    i = ptr
-
+                if (not done):
+                    i = start
                 # end if
-
             # end while
-            startTime = datetime.strptime(customer.getStartVisit(), '%H%M')
-            startTimeMinutes = math.floor(startTime.minute / 15) * 15
-            if startTimeMinutes == 0:
-                startTimeMinutes = '00'
-            else:
-                startTimeMinutes = str(startTimeMinutes)
+        # end if
 
-            startTime = startTime.strftime('%H') + startTimeMinutes
-            z = keys.index(startTime)
-            startIndex = z
+        # TODO: give estimated wait time
+        if (not (nextTimeBlock in keys) or checkLongWaitTime()):
+            restOfB = "Join the queue of customers"
+            full = True
+        else:
             full = False
+            j = keys.index(nextTimeBlock)
+            end = j + 4
 
-            while not full and z < numKeys and z < startIndex + blocksToCheck:
-                if shoppingCustomers[keys[z]]['scheduled'] + shoppingCustomers[keys[z]]['walk_ins'] + partySize >= storeCapacity:
+            while (not full and j < len(keys) and j < end):
+                numReservations = storeSchedule[keys[j]]["num_reservations"]
+                #shoppingScheduled = shoppingCustomers[keys[j]]["scheduled"]
+                #shoppingWalkins = shoppingCustomers[keys[j]]["walk_ins"]
+
+                if (numReservations + partySize > MAX_CAPACITY):
+                #if (numReservations + shoppingScheduled + shoppingWalkins + partySize > MAX_CAPACITY):
                     full = True
                 else:
-                    z += 1
-
+                    j += 1
                 # end if
-
             # end while
 
-
-            if not full:
-                # State 1
-                # There is available room in the store
-
-                print('There is currently no wait to enter the store.')
-
-
-            elif queue.size() <= 0:
-                # State 2
-                # NO available room in the store
-                # and queue is empty
-
-                done = False
-                index = 0
-                while not done and index < numKeys:
-                    key = keys[index]
-                    if shoppingCustomers[key]['scheduled'] > 0 or shoppingCustomers[key]['walk_ins'] > 0:
-
-                        customers = list(shoppingCustomers[key].keys())
-                        customers.sort()
-
-                        numCustomers = len(customers) - 2
-                        closestCustomer = customers[0]
-
-                        shortest = int(shoppingCustomers[key][closestCustomer]['visit_length'])
-                        for cust in customers[1:numCustomers]:
-                            visitLength = int(shoppingCustomers[key][cust]['visit_length'])
-                            if visitLength < shortest:
-                                shortest = visitLength
-                                closestCustomer = cust
-
-                            # end if
-
-                        # end for
-                        done = True
-
-                    # end if
-
-                    index += 1
-
-                # end while
-
-                # get customer end time of visit
-                endTimeIndex = keys.index(key) + shoppingCustomers[key][closestCustomer]['visit_length']
-                endTime = keys[endTimeIndex]
-
-                # subtract current time minutes to from end time minutes
-                # to get estimated wait time
-                endTimeMinutes = int(endTime[2:]) + int(endTime[0:2]) * 60
-                currentWaitMinutes = currentTime.minute + currentTime.hour * 60
-                waitTime = endTimeMinutes - currentWaitMinutes
-
-                print('Number of customers currently waiting in line: ', queue.size())
-                print('Estimated wait time: ', waitTime )
-
+            if (full):
+                restOfB = "Join the queue of customers"
             else:
-                # State 3
-                # NO available room in the store
-                # and queue is NOT empty
+                try:
+                    endTime = keys[j]
+                except IndexError:
+                    endTime = STORE_CLOSE
+                # end try/except
 
-                print('Number of customers currently waiting in line: ', queue.size())
-                print('Estimated wait time: ', queue.getAverageWaitTime() )
+                restOfB = "Enter the store at " + nextTimeBlock +\
+                    " and leave before " + endTime
+            # end if
+        # end if
 
+        if (i < len(keys)):
+            # we found a block of time that fits
+            # their visit information
 
-            if done and i and i < numKeys:
-                # print(keys)
-                # print('i: ', i)
-                # we found a valid block
-                # prompt customer nearest available visit time
-                # and display queue info
+            print("Earliest available time at:", keys[i])
+            print("Would you like to:")
+            print("A) Schedule a Reservation at:", keys[i])
+            print("B) " + restOfB)
+        else:
+            # no reservable times were found
 
-                
+            print("No reservable times were found that match your criteria.")
+            print("Would you like to:")
+            print("B) " + restOfB)
+        # end if
 
+        # get choice from customer
+        # option = choice(["A", "B", "C"])
+        option = "B"
 
+        # TODO: add print statements to options
+        if (option == "A"):
+            customer[username]["type"] = "scheduled"
 
+            storeSchedule[keys[i]].update(customer)
 
+            for block in range(i, i + visitLength):
+                storeSchedule[keys[i]]["num_reservations"] += partySize
+            # end for
 
+            with open("mockDatabase.json", "w") as f:
+                json.dump(storeSchedule, f, indent=2, sort_keys=True)
+            # end with
 
-                
-                
-                
-                print('Earliest available time at: ', keys[i] )
-
-                print('Would you like to: ')
-                print('A) Schedule Reservation at time: ', keys[i])
-                print('B) Join the waiting queue.')
-                print('C) Both schedule a reservation and wait in the queue.')
-                print('D) Neither.')
-
+            f.close()
+        elif (option == "B"):
+            if (full):
+                customerInfo["current_wait_time"] = 0
+                queue.append(customer)
+                print(username, "joined the queue of customers.")
+                print()
             else:
-                # valid block not found for the day
+                endTimeMinutes = str(endTime[2:])
+                visitLength = int(endTimeMinutes) - int(nextTimeBlockMinutes)
 
-                print('No available times today for reservation.')
-
-                print('B) Join the waiting queue.')
-                print('D) Neither.')
-
-            # end if/else
-
-            if not choice:
-                choice = input()
-
-            if choice == 'A':
-                # add party size of planned visit to the store reservations scheduled
-                for j in range(i, i + blocksToCheck):
-                    storeSchedule[keys[j]]['num_reservations'] += partySize
-                
-                # end for
-
-                storeSchedule[keys[i]][customer.getUsername()] = {
-                        'contact_info' : customer.getContactInfo(),
-                        'in_both' : False,
-                        'party_size' : customer.getPartySize(),
-                        'visit_length' : customer.getVisitLength(),
-                        'visit_start' : customer.getStartVisit()
-                        }
-
-                with open(filepath, 'w') as f:
-                    json.dump(storeSchedule, f, indent=2, sort_keys=True)
-
-
-
-            elif choice == 'B':
-
-                k = keys.index(currentTime.strftime("%H%M"))
-                '''
-                room = False
-                while not room and k < numKeys:
-                    valid = True
-                    ptr = k
-
-                    while valid and ptr - k < blocksToCheck:
-
-                        if shoppingCustomers[keys[ptr]]['scheduled'] + shoppingCustomers[keys[ptr]]['walk_ins'] + partySize > limit:
-                            valid = False
-                         
-                        ptr += 1
-
-                        if valid and ptr - k >= blocksToCheck:
-                            done = True
-
-
-                        elif ptr >= numKeys:
-                            valid = False
-
-                        # end if
-
-                    # end while
-
-
-                    if valid:
-                        room = True
-                    else:
-                        k = ptr
-
-                    # end if
-
-                # end while
-                '''
-
-                if blocksToCheck > 4:
-                    stop = 4
+                if (visitLength == 0):
+                    customerInfo["visit_length"] = 4
+                elif (visitLength < 0):
+                    customerInfo["visit_length"] = 4 - (abs(visitLength) // 15)
                 else:
-                    stop = blocksToCheck
+                    customerInfo["visit_length"] = visitLength // 15
                 # end if
 
-                room = True
-                ptr = k
-                z = 0
-                while room and ptr < numKeys and z < stop:
-                    # print("ptr:", ptr)
-                    # print("scheduled:", shoppingCustomers[keys[ptr]]['scheduled'])
-                    # print("walk_ins:", shoppingCustomers[keys[ptr]]['walk_ins'])
-                    # print("limit:", limit)
+                visitLength = customerInfo["visit_length"]
 
-                    if shoppingCustomers[keys[ptr]]['scheduled'] + shoppingCustomers[keys[ptr]]['walk_ins'] + partySize > storeCapacity:
-                        
-                        room = False
+                storeSchedule[nextTimeBlock].update(customer)
 
-                    else:
-                        ptr += 1
-
-                    z += 1
-                # end while
-
-
-
-
-                if room:
-                    # print("stop:", stop)
-
-                    if k + stop > numKeys:
-                        blocksToCheck = numKeys - k
-                    # end if
-
-                    # add to shopping customers
-                    # prompt( 15 minutes to arrive | lose spot )
-                    for j in range(k, k + blocksToCheck):
-                        shoppingCustomers[keys[j]]['walk_ins'] += partySize
-                    # end for
-
-                    shoppingCustomers[keys[k]][customer.getUsername()] = {
-                            'contact_info' : customer.getContactInfo(),
-                            'party_size' : customer.getPartySize(),
-                            'type' : 'walk_ins',
-                            'visit_length' : blocksToCheck,
-                            }
-
-                    with open('shoppingCustomers.json', 'w') as f:
-                        json.dump(shoppingCustomers, f, indent=2, sort_keys=True)
-                    # end with
-
-                    storeSchedule[keys[k]][customer.getUsername()] = {
-                            'contact_info' : customer.getContactInfo(),
-                            'party_size' : customer.getPartySize(),
-                            'type' : 'walk_in',
-                            'visit_length' : customer.getVisitLength(),
-                            # 'visit_start' : customer.getStartVisit()
-                            }
-
-                    print("You have 15 minutes to scan in or you will lose your spot.")
-                    return 1
-
-
-
-                else:
-                    # customer has opted to wait in line for
-                    # an open spot
-                    print('Joined the queue of waiting customers.')
-                    customer.setStartVisit(currentTime.strftime("%H%M"))
-                    queue.add(customer)
-                    return 0
-
-
-
-
-                
-            elif choice == 'C':
-
-                # add party size of planned visit to the store reservations scheduled
-                for j in range(i, i + blocksToCheck):
-                    storeSchedule[keys[j]]['num_reservations'] += partySize
-                
+                i = keys.index(nextTimeBlock)
+                for block in range(i, i + visitLength):
+                    storeSchedule[keys[block]]["num_reservations"] += partySize
                 # end for
 
-                storeSchedule[keys[i]][customer.getUsername()] = {
-                        'contact_info' : customer.getContactInfo(),
-                        'party_size' : customer.getPartySize(),
-                        'type' : 'both',
-                        'visit_length' : customer.getVisitLength(),
-                        'visit_start' : customer.getStartVisit()
-                        }
-
-                with open(filepath, 'w') as f:
+                with open("mockDatabase.json", "w") as f:
                     json.dump(storeSchedule, f, indent=2, sort_keys=True)
+                # end with
 
+                f.close()
 
-
-
-                # add customer to queue
-                print('Joined the queue of waiting customers.')
-                queue.add(customer)
-
-
-
-
-            else:
-
-                return
-
-
-            # add to queue
-            # queue.add(customer)
-
-            # add to schedule
-            # search for consecutive available slots with
-            # enough room for remainder of the day
-
+                print(username, "scheduled a visit at", nextTimeBlock)
+                print()
+            # end if
         else:
-            # customer has scheduled a visit
-            # through the scheduling interface
-            # therefore add the visit to the schedule
+            # customer has chosen not to come to the store at all
+            return
+        # end if
+    else:
+        # a customer has scheduled a visit through the scheduling
+        # interface, so we simply add it to the schedule
 
-            startTime = customer.getStartVisit()
-            start = keys.index(startTime)
+        storeSchedule[startTime].update(customer)
 
-            storeSchedule[keys[start]][customer.getUsername()] = {
-                    'contact_info' : customer.getContactInfo(),
-                    'party_size' : customer.getPartySize(),
-                    'type' : 'scheduled',
-                    'visit_length' : customer.getVisitLength()
-                    # 'visit_start' : customer.getStartVisit()
-                    }
+        start = keys.index(startTime)
+        for i in range(start, start + visitLength):
+            storeSchedule[keys[i]]["num_reservations"] += partySize
+        # end for
 
-            for i in range(start, start + blocksToCheck):
-                # print(storeSchedule[keys[i]]['num_reservations'])
-                storeSchedule[keys[i]]['num_reservations'] += partySize
-                # print(storeSchedule[keys[i]]['num_reservations'])
+        with open("mockDatabase.json", "w") as f:
+            json.dump(storeSchedule, f, indent=2, sort_keys=True)
+        # end with
 
+        f.close()
 
-        return 0
-    # end makeReservation
+        print(username, "scheduled a visit at", startTime)
+        print()
+    # end if
+# end makeReservation
 
 
 
@@ -474,7 +272,7 @@ def main():
             }
     limit = 60
 
-    ScheduleVisit.makeReservation(customer, Queue(), limit, 100, shoppingCustomers)
+    makeReservation(customer, '1200' )
 
     print('*'*60)
     print(shoppingCustomers)
@@ -487,7 +285,7 @@ def main():
     customer.setVisitLength(3)
     customer.setContactInfo('customer@hotmail.com')
 
-    ScheduleVisit.makeReservation(customer, Queue(), limit, 100, shoppingCustomers)
+    makeReservation(customer, '1200')
 
     print('*'*60)
     print(shoppingCustomers)

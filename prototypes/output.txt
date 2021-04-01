@@ -1,0 +1,5473 @@
+./TestCase.py
+------------------------------------------------------------
+Current Time: 0700
+
+
+
+Customer_Username_209 was admitted at 0700
+Customer_Username_236 was admitted at 0700
+Customer_Username_325 was admitted at 0700
+Customer_Username_508 was admitted at 0700
+Customer_Username_550 was admitted at 0700
+Customer_Username_764 was admitted at 0700
+Customer_Username_790 was admitted at 0700
+Customer_Username_864 was admitted at 0700
+Customer_Username_891 was admitted at 0700
+Customer_Username_1098 was admitted at 0700
+Customer_Username_1127 was admitted at 0700
+Customer_Username_1199 was admitted at 0700
+Customer_Username_1213 was admitted at 0700
+Customer_Username_1294 was admitted at 0700
+Customer_Username_1315 was admitted at 0700
+Customer_Username_1505 was admitted at 0700
+Customer_Username_1803 was admitted at 0700
+Customer_Username_1865 was admitted at 0700
+Customer_Username_2175 was admitted at 0700
+Customer_Username_2250 was admitted at 0700
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0715
+
+
+Customer_Username_864 was released at 0715
+Customer_Username_1098 was released at 0715
+Customer_Username_1127 was released at 0715
+Customer_Username_1199 was released at 0715
+Customer_Username_1213 was released at 0715
+Customer_Username_1294 was released at 0715
+Customer_Username_1315 was released at 0715
+Customer_Username_1505 was released at 0715
+Customer_Username_1803 was released at 0715
+Customer_Username_1865 was released at 0715
+Customer_Username_2175 was released at 0715
+Customer_Username_2250 was released at 0715
+
+Customer_Username_3 was admitted at 0715
+Customer_Username_46 was admitted at 0715
+Customer_Username_102 was admitted at 0715
+Customer_Username_107 was admitted at 0715
+Customer_Username_182 was admitted at 0715
+Customer_Username_250 was admitted at 0715
+Customer_Username_317 was admitted at 0715
+Customer_Username_366 was admitted at 0715
+Customer_Username_371 was admitted at 0715
+Customer_Username_432 was admitted at 0715
+Customer_Username_519 was admitted at 0715
+Customer_Username_715 was admitted at 0715
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0730
+
+
+Customer_Username_3 was released at 0730
+Customer_Username_432 was released at 0730
+Customer_Username_764 was released at 0730
+Customer_Username_790 was released at 0730
+Customer_Username_891 was released at 0730
+
+Customer_Username_256 was admitted at 0730
+Customer_Username_281 was admitted at 0730
+Customer_Username_323 was admitted at 0730
+Customer_Username_433 was admitted at 0730
+Customer_Username_439 was admitted at 0730
+Customer_Username_460 was admitted at 0730
+Customer_Username_501 was admitted at 0730
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0745
+
+
+Customer_Username_433 was released at 0745
+Customer_Username_501 was released at 0745
+Customer_Username_46 was released at 0745
+Customer_Username_107 was released at 0745
+Customer_Username_182 was released at 0745
+Customer_Username_317 was released at 0745
+Customer_Username_519 was released at 0745
+Customer_Username_715 was released at 0745
+
+Customer_Username_42 was admitted at 0745
+Customer_Username_112 was admitted at 0745
+Customer_Username_154 was admitted at 0745
+Customer_Username_240 was admitted at 0745
+Customer_Username_560 was admitted at 0745
+Customer_Username_731 was admitted at 0745
+Customer_Username_1464 was admitted at 0745
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0800
+
+
+Customer_Username_42 was released at 0800
+Customer_Username_240 was released at 0800
+Customer_Username_560 was released at 0800
+Customer_Username_731 was released at 0800
+Customer_Username_1464 was released at 0800
+Customer_Username_366 was released at 0800
+Customer_Username_371 was released at 0800
+Customer_Username_209 was released at 0800
+Customer_Username_236 was released at 0800
+Customer_Username_325 was released at 0800
+Customer_Username_508 was released at 0800
+Customer_Username_550 was released at 0800
+
+Customer_Username_45 was admitted at 0800
+Customer_Username_106 was admitted at 0800
+Customer_Username_115 was admitted at 0800
+Customer_Username_134 was admitted at 0800
+Customer_Username_173 was admitted at 0800
+Customer_Username_226 was admitted at 0800
+Customer_Username_266 was admitted at 0800
+Customer_Username_274 was admitted at 0800
+Customer_Username_330 was admitted at 0800
+Customer_Username_345 was admitted at 0800
+Customer_Username_376 was admitted at 0800
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0815
+
+
+Customer_Username_112 was released at 0815
+Customer_Username_281 was released at 0815
+Customer_Username_323 was released at 0815
+Customer_Username_102 was released at 0815
+Customer_Username_250 was released at 0815
+
+Customer_Username_11 was admitted at 0815
+Customer_Username_276 was admitted at 0815
+Customer_Username_286 was admitted at 0815
+Customer_Username_327 was admitted at 0815
+Customer_Username_365 was admitted at 0815
+Customer_Username_667 was admitted at 0815
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0830
+
+
+Customer_Username_286 was released at 0830
+Customer_Username_134 was released at 0830
+Customer_Username_266 was released at 0830
+Customer_Username_256 was released at 0830
+Customer_Username_439 was released at 0830
+Customer_Username_460 was released at 0830
+
+Customer_Username_158 was admitted at 0830
+Customer_Username_175 was admitted at 0830
+Customer_Username_211 was admitted at 0830
+Customer_Username_332 was admitted at 0830
+Customer_Username_349 was admitted at 0830
+Customer_Username_494 was admitted at 0830
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0845
+
+
+Customer_Username_175 was released at 0845
+Customer_Username_494 was released at 0845
+Customer_Username_11 was released at 0845
+Customer_Username_667 was released at 0845
+Customer_Username_45 was released at 0845
+Customer_Username_106 was released at 0845
+Customer_Username_173 was released at 0845
+Customer_Username_345 was released at 0845
+Customer_Username_376 was released at 0845
+Customer_Username_154 was released at 0845
+
+Customer_Username_6 was admitted at 0845
+Customer_Username_26 was admitted at 0845
+Customer_Username_113 was admitted at 0845
+Customer_Username_117 was admitted at 0845
+Customer_Username_133 was admitted at 0845
+Customer_Username_152 was admitted at 0845
+Customer_Username_166 was admitted at 0845
+Customer_Username_261 was admitted at 0845
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0900
+
+
+Customer_Username_6 was released at 0900
+Customer_Username_332 was released at 0900
+Customer_Username_349 was released at 0900
+Customer_Username_276 was released at 0900
+Customer_Username_327 was released at 0900
+Customer_Username_115 was released at 0900
+Customer_Username_226 was released at 0900
+Customer_Username_274 was released at 0900
+Customer_Username_330 was released at 0900
+
+Customer_Username_4 was admitted at 0900
+Customer_Username_126 was admitted at 0900
+Customer_Username_187 was admitted at 0900
+Customer_Username_238 was admitted at 0900
+Customer_Username_249 was admitted at 0900
+Customer_Username_313 was admitted at 0900
+Customer_Username_464 was admitted at 0900
+Customer_Username_1076 was admitted at 0900
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 0915
+
+
+Customer_Username_126 was released at 0915
+Customer_Username_1076 was released at 0915
+Customer_Username_113 was released at 0915
+Customer_Username_158 was released at 0915
+Customer_Username_365 was released at 0915
+
+Customer_Username_23 was admitted at 0915
+Customer_Username_370 was admitted at 0915
+Customer_Username_395 was admitted at 0915
+Customer_Username_417 was admitted at 0915
+Customer_Username_470 was admitted at 0915
+Customer_Username_661 was admitted at 0915
+Customer_Username_1142 was admitted at 0915
+Customer_Username_2592 was admitted at 0915
+
+
+
+Random_0 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 60
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_1 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 63
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_2 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 67
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_3 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 68
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_4 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 73
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_5 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 77
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_6 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 79
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_7 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 81
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_8 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 85
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_9 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 86
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_10 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 88
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_11 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 92
+Queue Size: 0
+
+
+Random_12 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 0
+
+
+Random_13 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 92
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_14 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 97
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_15 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 99
+Queue Size: 0
+0700
+0715
+0730
+0745
+0800
+0815
+0830
+HAS customers
+
+Closest Customer:  Customer_Username_211
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_16 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 99
+Queue Size: 1
+Number of customers currently waiting in line:  1
+Estimated wait time:  0
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_17 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 99
+Queue Size: 2
+Number of customers currently waiting in line:  2
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_18 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 99
+Queue Size: 3
+
+
+Random_19 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 99
+Queue Size: 3
+Number of customers currently waiting in line:  3
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_20 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 99
+Queue Size: 4
+
+Current Capacity: 99
+------------------------------------------------------------
+Current Time: 0930
+
+
+Customer_Username_23 was released at 0930
+Customer_Username_470 was released at 0930
+Customer_Username_661 was released at 0930
+Customer_Username_1142 was released at 0930
+Customer_Username_2592 was released at 0930
+Random_7 was released at 0930
+Customer_Username_313 was released at 0930
+Customer_Username_464 was released at 0930
+Customer_Username_26 was released at 0930
+Customer_Username_117 was released at 0930
+Customer_Username_133 was released at 0930
+Customer_Username_152 was released at 0930
+Customer_Username_166 was released at 0930
+Customer_Username_211 was released at 0930
+
+Customer_Username_9 was admitted at 0930
+Customer_Username_32 was admitted at 0930
+Customer_Username_39 was admitted at 0930
+Customer_Username_168 was admitted at 0930
+Customer_Username_363 was admitted at 0930
+Customer_Username_405 was admitted at 0930
+Customer_Username_485 was admitted at 0930
+Customer_Username_579 was admitted at 0930
+Customer_Username_1067 was admitted at 0930
+Customer_Username_1243 was admitted at 0930
+
+
+Current Capacity: 95
+------------------------------------------------------------
+Current Time: 0945
+
+
+Customer_Username_39 was released at 0945
+Customer_Username_485 was released at 0945
+Customer_Username_579 was released at 0945
+Customer_Username_1067 was released at 0945
+Customer_Username_1243 was released at 0945
+Random_1 was released at 0945
+Random_2 was released at 0945
+Random_3 was released at 0945
+Random_6 was released at 0945
+Random_8 was released at 0945
+Random_14 was released at 0945
+Customer_Username_4 was released at 0945
+Customer_Username_238 was released at 0945
+Customer_Username_261 was released at 0945
+
+Customer_Username_21 was admitted at 0945
+Customer_Username_64 was admitted at 0945
+Customer_Username_87 was admitted at 0945
+Customer_Username_99 was admitted at 0945
+Customer_Username_194 was admitted at 0945
+Customer_Username_220 was admitted at 0945
+Customer_Username_260 was admitted at 0945
+Customer_Username_292 was admitted at 0945
+Customer_Username_350 was admitted at 0945
+Customer_Username_381 was admitted at 0945
+Customer_Username_387 was admitted at 0945
+
+
+Current Capacity: 80
+------------------------------------------------------------
+Current Time: 1000
+
+
+Customer_Username_21 was released at 1000
+Customer_Username_194 was released at 1000
+Customer_Username_292 was released at 1000
+Customer_Username_381 was released at 1000
+Customer_Username_168 was released at 1000
+Customer_Username_370 was released at 1000
+Customer_Username_395 was released at 1000
+Customer_Username_417 was released at 1000
+Random_4 was released at 1000
+Random_5 was released at 1000
+Random_10 was released at 1000
+Customer_Username_187 was released at 1000
+Customer_Username_249 was released at 1000
+
+Customer_Username_86 was admitted at 1000
+Customer_Username_145 was admitted at 1000
+Customer_Username_177 was admitted at 1000
+Customer_Username_212 was admitted at 1000
+Customer_Username_229 was admitted at 1000
+Customer_Username_384 was admitted at 1000
+Customer_Username_525 was admitted at 1000
+Customer_Username_1021 was admitted at 1000
+
+
+Current Capacity: 70
+------------------------------------------------------------
+Current Time: 1015
+
+
+Customer_Username_64 was released at 1015
+Customer_Username_87 was released at 1015
+Customer_Username_99 was released at 1015
+Customer_Username_350 was released at 1015
+Customer_Username_387 was released at 1015
+Customer_Username_32 was released at 1015
+Random_0 was released at 1015
+Random_9 was released at 1015
+Random_13 was released at 1015
+
+Customer_Username_14 was admitted at 1015
+Customer_Username_203 was admitted at 1015
+Customer_Username_305 was admitted at 1015
+Customer_Username_314 was admitted at 1015
+Customer_Username_1364 was admitted at 1015
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1030
+
+
+Customer_Username_1364 was released at 1030
+Customer_Username_384 was released at 1030
+Customer_Username_525 was released at 1030
+Customer_Username_1021 was released at 1030
+Customer_Username_9 was released at 1030
+Customer_Username_363 was released at 1030
+Customer_Username_405 was released at 1030
+
+Customer_Username_0 was admitted at 1030
+Customer_Username_82 was admitted at 1030
+Customer_Username_206 was admitted at 1030
+Customer_Username_215 was admitted at 1030
+Customer_Username_296 was admitted at 1030
+
+
+
+Random_21 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 60
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_22 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 64
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_23 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 67
+Queue Size: 4
+
+
+Random_24 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 67
+Queue Size: 4
+
+
+Random_25 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 67
+Queue Size: 4
+
+
+Random_26 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 67
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_27 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 69
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_28 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 74
+Queue Size: 4
+
+
+Random_29 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 74
+Queue Size: 4
+
+
+Random_30 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 74
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_31 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 78
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_32 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 80
+Queue Size: 4
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_33 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 81
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_34 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 83
+Queue Size: 4
+
+
+Random_35 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 83
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_36 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 86
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_37 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 88
+Queue Size: 4
+
+
+Random_38 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 88
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_39 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 93
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_40 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 98
+Queue Size: 4
+Number of customers currently waiting in line:  4
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_41 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 4
+Number of customers currently waiting in line:  4
+Estimated wait time:  0
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_42 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 5
+Number of customers currently waiting in line:  5
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_43 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 6
+
+
+Random_44 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 6
+Number of customers currently waiting in line:  6
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_45 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_46 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_47 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_48 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_49 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_50 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_51 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 7
+Number of customers currently waiting in line:  7
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_52 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 8
+
+
+Random_53 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 8
+Number of customers currently waiting in line:  8
+Estimated wait time:  0
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+Current Capacity: 100
+------------------------------------------------------------
+Current Time: 1045
+
+
+Customer_Username_206 was released at 1045
+Random_32 was released at 1045
+Random_40 was released at 1045
+Customer_Username_14 was released at 1045
+Customer_Username_145 was released at 1045
+Customer_Username_220 was released at 1045
+Customer_Username_260 was released at 1045
+
+Customer_Username_67 was admitted at 1045
+Customer_Username_216 was admitted at 1045
+Customer_Username_224 was admitted at 1045
+Customer_Username_291 was admitted at 1045
+Customer_Username_328 was admitted at 1045
+Customer_Username_329 was admitted at 1045
+Customer_Username_339 was admitted at 1045
+
+
+Current Capacity: 97
+------------------------------------------------------------
+Current Time: 1100
+
+
+Customer_Username_291 was released at 1100
+Customer_Username_82 was released at 1100
+Customer_Username_296 was released at 1100
+Random_27 was released at 1100
+Random_35 was released at 1100
+Customer_Username_203 was released at 1100
+Customer_Username_314 was released at 1100
+Customer_Username_86 was released at 1100
+Customer_Username_177 was released at 1100
+Customer_Username_212 was released at 1100
+Customer_Username_229 was released at 1100
+
+Customer_Username_60 was admitted at 1100
+Customer_Username_94 was admitted at 1100
+Customer_Username_183 was admitted at 1100
+Customer_Username_304 was admitted at 1100
+Customer_Username_409 was admitted at 1100
+Customer_Username_455 was admitted at 1100
+Customer_Username_514 was admitted at 1100
+Customer_Username_738 was admitted at 1100
+Customer_Username_782 was admitted at 1100
+Customer_Username_819 was admitted at 1100
+Customer_Username_987 was admitted at 1100
+Customer_Username_1057 was admitted at 1100
+
+
+Current Capacity: 89
+------------------------------------------------------------
+Current Time: 1115
+
+
+Customer_Username_60 was released at 1115
+Customer_Username_183 was released at 1115
+Customer_Username_304 was released at 1115
+Customer_Username_409 was released at 1115
+Customer_Username_782 was released at 1115
+Customer_Username_819 was released at 1115
+Customer_Username_224 was released at 1115
+Customer_Username_0 was released at 1115
+Random_26 was released at 1115
+Random_30 was released at 1115
+Customer_Username_305 was released at 1115
+
+Customer_Username_52 was admitted at 1115
+Customer_Username_148 was admitted at 1115
+Customer_Username_237 was admitted at 1115
+Customer_Username_247 was admitted at 1115
+Customer_Username_355 was admitted at 1115
+Customer_Username_404 was admitted at 1115
+Customer_Username_411 was admitted at 1115
+Customer_Username_442 was admitted at 1115
+Customer_Username_551 was admitted at 1115
+Customer_Username_556 was admitted at 1115
+Customer_Username_765 was admitted at 1115
+Customer_Username_1070 was admitted at 1115
+Customer_Username_1110 was admitted at 1115
+
+
+Current Capacity: 83
+------------------------------------------------------------
+Current Time: 1130
+
+
+Random_15 was admitted from the queue at 1130
+Customer_Username_551 was released at 1130
+Random_16 was admitted from the queue at 1130
+Customer_Username_556 was released at 1130
+Random_17 was admitted from the queue at 1130
+Customer_Username_765 was released at 1130
+Customer_Username_1070 was released at 1130
+Customer_Username_1110 was released at 1130
+Customer_Username_514 was released at 1130
+Customer_Username_738 was released at 1130
+Customer_Username_987 was released at 1130
+Customer_Username_1057 was released at 1130
+Customer_Username_67 was released at 1130
+Customer_Username_216 was released at 1130
+Customer_Username_329 was released at 1130
+Customer_Username_339 was released at 1130
+Customer_Username_215 was released at 1130
+Random_21 was released at 1130
+Random_22 was released at 1130
+Random_31 was released at 1130
+Random_33 was released at 1130
+Random_36 was released at 1130
+Random_38 was released at 1130
+Random_39 was released at 1130
+
+Customer_Username_57 was admitted at 1130
+Customer_Username_137 was admitted at 1130
+Customer_Username_252 was admitted at 1130
+Customer_Username_426 was admitted at 1130
+Customer_Username_441 was admitted at 1130
+Customer_Username_480 was admitted at 1130
+Customer_Username_488 was admitted at 1130
+Customer_Username_558 was admitted at 1130
+
+
+Current Capacity: 69
+------------------------------------------------------------
+Current Time: 1145
+
+
+Random_19 was admitted from the queue at 1145
+Random_17 was released at 1145
+Random_41 was admitted from the queue at 1145
+Customer_Username_57 was released at 1145
+Random_42 was admitted from the queue at 1145
+Customer_Username_252 was released at 1145
+Customer_Username_441 was released at 1145
+Customer_Username_148 was released at 1145
+Customer_Username_237 was released at 1145
+Customer_Username_247 was released at 1145
+Customer_Username_404 was released at 1145
+Customer_Username_411 was released at 1145
+Customer_Username_94 was released at 1145
+Customer_Username_328 was released at 1145
+
+Customer_Username_31 was admitted at 1145
+Customer_Username_58 was admitted at 1145
+Customer_Username_139 was admitted at 1145
+Customer_Username_141 was admitted at 1145
+Customer_Username_263 was admitted at 1145
+Customer_Username_301 was admitted at 1145
+Customer_Username_303 was admitted at 1145
+Customer_Username_359 was admitted at 1145
+Customer_Username_428 was admitted at 1145
+Customer_Username_496 was admitted at 1145
+Customer_Username_623 was admitted at 1145
+Customer_Username_836 was admitted at 1145
+Customer_Username_1016 was admitted at 1145
+Customer_Username_1033 was admitted at 1145
+Customer_Username_1588 was admitted at 1145
+Customer_Username_1838 was admitted at 1145
+
+
+Current Capacity: 75
+------------------------------------------------------------
+Current Time: 1200
+
+
+Random_19 was released at 1200
+Random_42 was released at 1200
+Customer_Username_263 was released at 1200
+Customer_Username_428 was released at 1200
+Customer_Username_1016 was released at 1200
+Customer_Username_1033 was released at 1200
+Customer_Username_1588 was released at 1200
+Random_15 was released at 1200
+Customer_Username_137 was released at 1200
+Customer_Username_355 was released at 1200
+Customer_Username_455 was released at 1200
+
+Customer_Username_172 was admitted at 1200
+Customer_Username_279 was admitted at 1200
+Customer_Username_284 was admitted at 1200
+Customer_Username_290 was admitted at 1200
+Customer_Username_340 was admitted at 1200
+Customer_Username_367 was admitted at 1200
+Customer_Username_573 was admitted at 1200
+Customer_Username_616 was admitted at 1200
+Customer_Username_865 was admitted at 1200
+Customer_Username_1329 was admitted at 1200
+
+
+
+Random_54 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 64
+Queue Size: 3
+
+
+Random_55 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 64
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_56 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 65
+Queue Size: 3
+
+
+Random_57 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 65
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_58 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 67
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_59 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 68
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_60 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 69
+Queue Size: 3
+
+
+Random_61 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 69
+Queue Size: 3
+
+
+Random_62 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 69
+Queue Size: 3
+
+
+Random_63 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 69
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_64 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 73
+Queue Size: 3
+
+
+Random_65 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 73
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_66 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 78
+Queue Size: 3
+
+
+Random_67 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 78
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_68 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 82
+Queue Size: 3
+
+
+Random_69 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 82
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_70 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_71 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_72 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_73 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_74 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_75 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_76 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_77 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_78 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 86
+Queue Size: 3
+
+
+Random_79 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 86
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_80 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 89
+Queue Size: 3
+
+
+Random_81 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 89
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_82 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 92
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_83 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 96
+Queue Size: 3
+Number of customers currently waiting in line:  3
+Estimated wait time:  117
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_84 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 96
+Queue Size: 4
+
+
+Random_85 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 96
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_86 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 97
+Queue Size: 4
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 98
+------------------------------------------------------------
+Current Time: 1215
+
+
+Customer_Username_172 was released at 1215
+Customer_Username_279 was released at 1215
+Customer_Username_1329 was released at 1215
+Random_59 was released at 1215
+Random_65 was released at 1215
+Random_67 was released at 1215
+Random_81 was released at 1215
+Customer_Username_303 was released at 1215
+Customer_Username_496 was released at 1215
+Customer_Username_836 was released at 1215
+Customer_Username_1838 was released at 1215
+Random_16 was released at 1215
+Customer_Username_426 was released at 1215
+Customer_Username_488 was released at 1215
+Customer_Username_52 was released at 1215
+Customer_Username_442 was released at 1215
+
+Customer_Username_73 was admitted at 1215
+Customer_Username_114 was admitted at 1215
+Customer_Username_354 was admitted at 1215
+Customer_Username_360 was admitted at 1215
+Customer_Username_462 was admitted at 1215
+Customer_Username_466 was admitted at 1215
+Customer_Username_632 was admitted at 1215
+
+
+Current Capacity: 83
+------------------------------------------------------------
+Current Time: 1230
+
+
+Customer_Username_462 was released at 1230
+Customer_Username_632 was released at 1230
+Customer_Username_290 was released at 1230
+Customer_Username_367 was released at 1230
+Customer_Username_573 was released at 1230
+Customer_Username_865 was released at 1230
+Random_58 was released at 1230
+Random_79 was released at 1230
+Random_85 was released at 1230
+Random_41 was released at 1230
+Customer_Username_141 was released at 1230
+Customer_Username_623 was released at 1230
+Customer_Username_480 was released at 1230
+Customer_Username_558 was released at 1230
+
+Customer_Username_27 was admitted at 1230
+Customer_Username_66 was admitted at 1230
+Customer_Username_190 was admitted at 1230
+Customer_Username_243 was admitted at 1230
+Customer_Username_298 was admitted at 1230
+Customer_Username_410 was admitted at 1230
+Customer_Username_436 was admitted at 1230
+Customer_Username_478 was admitted at 1230
+Customer_Username_552 was admitted at 1230
+Customer_Username_681 was admitted at 1230
+Customer_Username_900 was admitted at 1230
+Customer_Username_1011 was admitted at 1230
+Customer_Username_2304 was admitted at 1230
+Customer_Username_2388 was admitted at 1230
+Customer_Username_2859 was admitted at 1230
+Customer_Username_3258 was admitted at 1230
+
+
+Current Capacity: 76
+------------------------------------------------------------
+Current Time: 1245
+
+
+Customer_Username_410 was released at 1245
+Customer_Username_552 was released at 1245
+Customer_Username_900 was released at 1245
+Customer_Username_2304 was released at 1245
+Customer_Username_2388 was released at 1245
+Customer_Username_2859 was released at 1245
+Customer_Username_3258 was released at 1245
+Customer_Username_114 was released at 1245
+Customer_Username_360 was released at 1245
+Customer_Username_284 was released at 1245
+Customer_Username_340 was released at 1245
+Random_57 was released at 1245
+Random_63 was released at 1245
+Customer_Username_31 was released at 1245
+Customer_Username_58 was released at 1245
+Customer_Username_139 was released at 1245
+Customer_Username_301 was released at 1245
+Customer_Username_359 was released at 1245
+
+Customer_Username_38 was admitted at 1245
+Customer_Username_155 was admitted at 1245
+Customer_Username_191 was admitted at 1245
+Customer_Username_202 was admitted at 1245
+Customer_Username_258 was admitted at 1245
+Customer_Username_269 was admitted at 1245
+Customer_Username_299 was admitted at 1245
+Customer_Username_377 was admitted at 1245
+Customer_Username_399 was admitted at 1245
+Customer_Username_736 was admitted at 1245
+Customer_Username_1503 was admitted at 1245
+
+
+Current Capacity: 70
+------------------------------------------------------------
+Current Time: 1300
+
+
+Random_44 was admitted from the queue at 1300
+Customer_Username_155 was released at 1300
+Customer_Username_736 was released at 1300
+Customer_Username_1503 was released at 1300
+Customer_Username_66 was released at 1300
+Customer_Username_436 was released at 1300
+Customer_Username_478 was released at 1300
+Customer_Username_1011 was released at 1300
+Customer_Username_73 was released at 1300
+Customer_Username_466 was released at 1300
+Customer_Username_616 was released at 1300
+Random_55 was released at 1300
+Random_69 was released at 1300
+Random_82 was released at 1300
+Random_86 was released at 1300
+
+Customer_Username_2 was admitted at 1300
+Customer_Username_7 was admitted at 1300
+Customer_Username_12 was admitted at 1300
+Customer_Username_37 was admitted at 1300
+Customer_Username_81 was admitted at 1300
+Customer_Username_85 was admitted at 1300
+Customer_Username_204 was admitted at 1300
+Customer_Username_255 was admitted at 1300
+Customer_Username_382 was admitted at 1300
+
+
+
+Random_87 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 65
+Queue Size: 3
+
+
+Random_88 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 65
+Queue Size: 3
+
+
+Random_89 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 65
+Queue Size: 3
+
+
+Random_90 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 65
+Queue Size: 3
+
+
+Random_91 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 65
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_92 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 67
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_93 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 71
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_94 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 75
+Queue Size: 3
+
+
+Random_95 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 75
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_96 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 77
+Queue Size: 3
+
+
+Random_97 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 77
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_98 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 78
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_99 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 82
+Queue Size: 3
+
+
+Random_100 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 82
+Queue Size: 3
+
+
+Random_101 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 82
+Queue Size: 3
+
+
+Random_102 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 82
+Queue Size: 3
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_103 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 83
+Queue Size: 3
+
+
+Random_104 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 83
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_105 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 86
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_106 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 87
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_107 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 89
+Queue Size: 3
+
+
+Random_108 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 89
+Queue Size: 3
+
+
+Random_109 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 89
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_110 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 90
+Queue Size: 3
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 91
+------------------------------------------------------------
+Current Time: 1315
+
+
+Random_44 was released at 1315
+Customer_Username_85 was released at 1315
+Customer_Username_204 was released at 1315
+Customer_Username_255 was released at 1315
+Customer_Username_382 was released at 1315
+Random_98 was released at 1315
+Random_102 was released at 1315
+Customer_Username_38 was released at 1315
+Customer_Username_269 was released at 1315
+Customer_Username_377 was released at 1315
+Customer_Username_399 was released at 1315
+Customer_Username_27 was released at 1315
+Customer_Username_298 was released at 1315
+Customer_Username_681 was released at 1315
+Customer_Username_354 was released at 1315
+
+Customer_Username_20 was admitted at 1315
+Customer_Username_48 was admitted at 1315
+Customer_Username_54 was admitted at 1315
+Customer_Username_65 was admitted at 1315
+Customer_Username_75 was admitted at 1315
+Customer_Username_95 was admitted at 1315
+Customer_Username_140 was admitted at 1315
+Customer_Username_198 was admitted at 1315
+Customer_Username_287 was admitted at 1315
+Customer_Username_307 was admitted at 1315
+
+
+Current Capacity: 81
+------------------------------------------------------------
+Current Time: 1330
+
+
+Random_53 was admitted from the queue at 1330
+Customer_Username_48 was released at 1330
+Customer_Username_65 was released at 1330
+Customer_Username_7 was released at 1330
+Customer_Username_12 was released at 1330
+Customer_Username_37 was released at 1330
+Customer_Username_81 was released at 1330
+Random_92 was released at 1330
+Random_93 was released at 1330
+Random_95 was released at 1330
+Random_105 was released at 1330
+Customer_Username_191 was released at 1330
+Customer_Username_258 was released at 1330
+Customer_Username_299 was released at 1330
+Customer_Username_190 was released at 1330
+Customer_Username_243 was released at 1330
+
+Customer_Username_40 was admitted at 1330
+Customer_Username_69 was admitted at 1330
+Customer_Username_84 was admitted at 1330
+Customer_Username_234 was admitted at 1330
+Customer_Username_321 was admitted at 1330
+Customer_Username_537 was admitted at 1330
+Customer_Username_656 was admitted at 1330
+Customer_Username_777 was admitted at 1330
+Customer_Username_946 was admitted at 1330
+Customer_Username_1504 was admitted at 1330
+Customer_Username_2025 was admitted at 1330
+
+
+Current Capacity: 73
+------------------------------------------------------------
+Current Time: 1345
+
+
+Customer_Username_40 was released at 1345
+Customer_Username_69 was released at 1345
+Customer_Username_321 was released at 1345
+Customer_Username_946 was released at 1345
+Customer_Username_75 was released at 1345
+Customer_Username_140 was released at 1345
+Customer_Username_307 was released at 1345
+Customer_Username_2 was released at 1345
+Random_104 was released at 1345
+Random_106 was released at 1345
+Random_110 was released at 1345
+Customer_Username_202 was released at 1345
+
+Customer_Username_176 was admitted at 1345
+Customer_Username_265 was admitted at 1345
+Customer_Username_319 was admitted at 1345
+Customer_Username_391 was admitted at 1345
+Customer_Username_461 was admitted at 1345
+Customer_Username_1212 was admitted at 1345
+Customer_Username_1512 was admitted at 1345
+Customer_Username_1857 was admitted at 1345
+Customer_Username_1910 was admitted at 1345
+Customer_Username_4674 was admitted at 1345
+
+
+Current Capacity: 67
+------------------------------------------------------------
+Current Time: 1400
+
+
+Random_51 was admitted from the queue at 1400
+Customer_Username_176 was released at 1400
+Random_83 was admitted from the queue at 1400
+Customer_Username_461 was released at 1400
+Customer_Username_1212 was released at 1400
+Customer_Username_1512 was released at 1400
+Customer_Username_1857 was released at 1400
+Customer_Username_1910 was released at 1400
+Customer_Username_4674 was released at 1400
+Customer_Username_234 was released at 1400
+Customer_Username_537 was released at 1400
+Customer_Username_656 was released at 1400
+Customer_Username_777 was released at 1400
+Customer_Username_1504 was released at 1400
+Customer_Username_2025 was released at 1400
+Customer_Username_54 was released at 1400
+Customer_Username_95 was released at 1400
+Customer_Username_287 was released at 1400
+Random_91 was released at 1400
+Random_97 was released at 1400
+Random_109 was released at 1400
+
+Customer_Username_33 was admitted at 1400
+Customer_Username_44 was admitted at 1400
+Customer_Username_56 was admitted at 1400
+Customer_Username_213 was admitted at 1400
+Customer_Username_221 was admitted at 1400
+Customer_Username_235 was admitted at 1400
+Customer_Username_271 was admitted at 1400
+Customer_Username_277 was admitted at 1400
+Customer_Username_283 was admitted at 1400
+Customer_Username_297 was admitted at 1400
+Customer_Username_320 was admitted at 1400
+Customer_Username_372 was admitted at 1400
+Customer_Username_414 was admitted at 1400
+Customer_Username_438 was admitted at 1400
+
+
+Current Capacity: 72
+------------------------------------------------------------
+Current Time: 1415
+
+
+Random_51 was released at 1415
+Customer_Username_33 was released at 1415
+Customer_Username_56 was released at 1415
+Customer_Username_320 was released at 1415
+Customer_Username_372 was released at 1415
+Customer_Username_414 was released at 1415
+Customer_Username_319 was released at 1415
+Customer_Username_20 was released at 1415
+Customer_Username_198 was released at 1415
+
+Customer_Username_28 was admitted at 1415
+Customer_Username_130 was admitted at 1415
+Customer_Username_170 was admitted at 1415
+Customer_Username_222 was admitted at 1415
+Customer_Username_230 was admitted at 1415
+Customer_Username_435 was admitted at 1415
+Customer_Username_636 was admitted at 1415
+Customer_Username_935 was admitted at 1415
+Customer_Username_1226 was admitted at 1415
+Customer_Username_1282 was admitted at 1415
+Customer_Username_2030 was admitted at 1415
+
+
+
+Random_111 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 68
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_112 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 69
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_113 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 71
+Queue Size: 0
+
+
+Random_114 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 71
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_115 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 76
+Queue Size: 0
+
+
+Random_116 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 76
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_117 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 78
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_118 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 83
+Queue Size: 0
+
+
+Random_119 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 83
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_120 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 86
+Queue Size: 0
+
+
+Random_121 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 86
+Queue Size: 0
+
+
+Random_122 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 0
+
+
+Random_123 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 86
+Queue Size: 0
+
+
+Random_124 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 91
+------------------------------------------------------------
+Current Time: 1430
+
+
+Customer_Username_28 was released at 1430
+Customer_Username_130 was released at 1430
+Customer_Username_230 was released at 1430
+Customer_Username_636 was released at 1430
+Customer_Username_935 was released at 1430
+Customer_Username_1226 was released at 1430
+Customer_Username_1282 was released at 1430
+Customer_Username_2030 was released at 1430
+Random_117 was released at 1430
+Random_83 was released at 1430
+Customer_Username_44 was released at 1430
+Customer_Username_235 was released at 1430
+Customer_Username_283 was released at 1430
+Customer_Username_265 was released at 1430
+Random_53 was released at 1430
+Customer_Username_84 was released at 1430
+
+Customer_Username_50 was admitted at 1430
+Customer_Username_96 was admitted at 1430
+Customer_Username_275 was admitted at 1430
+Customer_Username_408 was admitted at 1430
+Customer_Username_415 was admitted at 1430
+Customer_Username_446 was admitted at 1430
+Customer_Username_475 was admitted at 1430
+Customer_Username_477 was admitted at 1430
+Customer_Username_744 was admitted at 1430
+
+
+Current Capacity: 78
+------------------------------------------------------------
+Current Time: 1445
+
+
+Customer_Username_275 was released at 1445
+Customer_Username_435 was released at 1445
+Random_116 was released at 1445
+Random_124 was released at 1445
+Customer_Username_213 was released at 1445
+Customer_Username_271 was released at 1445
+Customer_Username_277 was released at 1445
+Customer_Username_391 was released at 1445
+
+Customer_Username_100 was admitted at 1445
+Customer_Username_104 was admitted at 1445
+Customer_Username_142 was admitted at 1445
+Customer_Username_248 was admitted at 1445
+Customer_Username_326 was admitted at 1445
+Customer_Username_352 was admitted at 1445
+Customer_Username_697 was admitted at 1445
+Customer_Username_3196 was admitted at 1445
+
+
+Current Capacity: 71
+------------------------------------------------------------
+Current Time: 1500
+
+
+Customer_Username_248 was released at 1500
+Customer_Username_697 was released at 1500
+Customer_Username_3196 was released at 1500
+Customer_Username_96 was released at 1500
+Customer_Username_415 was released at 1500
+Customer_Username_477 was released at 1500
+Customer_Username_222 was released at 1500
+Customer_Username_221 was released at 1500
+Customer_Username_297 was released at 1500
+Customer_Username_438 was released at 1500
+
+Customer_Username_19 was admitted at 1500
+Customer_Username_24 was admitted at 1500
+Customer_Username_61 was admitted at 1500
+Customer_Username_157 was admitted at 1500
+Customer_Username_181 was admitted at 1500
+Customer_Username_403 was admitted at 1500
+Customer_Username_423 was admitted at 1500
+Customer_Username_463 was admitted at 1500
+
+
+Current Capacity: 71
+------------------------------------------------------------
+Current Time: 1515
+
+
+Customer_Username_157 was released at 1515
+Customer_Username_423 was released at 1515
+Customer_Username_326 was released at 1515
+Customer_Username_50 was released at 1515
+Customer_Username_408 was released at 1515
+Customer_Username_446 was released at 1515
+Customer_Username_475 was released at 1515
+Customer_Username_170 was released at 1515
+Random_111 was released at 1515
+Random_112 was released at 1515
+Random_114 was released at 1515
+Random_119 was released at 1515
+
+Customer_Username_116 was admitted at 1515
+Customer_Username_193 was admitted at 1515
+Customer_Username_228 was admitted at 1515
+Customer_Username_309 was admitted at 1515
+Customer_Username_797 was admitted at 1515
+Customer_Username_1727 was admitted at 1515
+Customer_Username_2784 was admitted at 1515
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1530
+
+
+Customer_Username_797 was released at 1530
+Customer_Username_1727 was released at 1530
+Customer_Username_2784 was released at 1530
+Customer_Username_19 was released at 1530
+Customer_Username_403 was released at 1530
+Customer_Username_463 was released at 1530
+Customer_Username_104 was released at 1530
+Customer_Username_142 was released at 1530
+Customer_Username_352 was released at 1530
+Customer_Username_744 was released at 1530
+
+Customer_Username_47 was admitted at 1530
+Customer_Username_62 was admitted at 1530
+Customer_Username_110 was admitted at 1530
+Customer_Username_128 was admitted at 1530
+Customer_Username_151 was admitted at 1530
+Customer_Username_201 was admitted at 1530
+Customer_Username_219 was admitted at 1530
+Customer_Username_273 was admitted at 1530
+Customer_Username_285 was admitted at 1530
+
+
+
+Random_125 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 60
+Queue Size: 0
+
+
+Random_126 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 60
+Queue Size: 0
+
+
+Random_127 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 60
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_128 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 62
+Queue Size: 0
+
+
+Random_129 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 62
+Queue Size: 0
+
+
+Random_130 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 62
+Queue Size: 0
+
+
+Random_131 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 62
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_132 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 66
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_133 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 70
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_134 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 73
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_135 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 76
+Queue Size: 0
+
+
+Random_136 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 76
+Queue Size: 0
+
+Current Capacity: 76
+------------------------------------------------------------
+Current Time: 1545
+
+
+Customer_Username_62 was released at 1545
+Customer_Username_110 was released at 1545
+Customer_Username_128 was released at 1545
+Random_133 was released at 1545
+Customer_Username_193 was released at 1545
+Customer_Username_181 was released at 1545
+Customer_Username_100 was released at 1545
+
+Customer_Username_68 was admitted at 1545
+Customer_Username_79 was admitted at 1545
+Customer_Username_264 was admitted at 1545
+Customer_Username_351 was admitted at 1545
+Customer_Username_402 was admitted at 1545
+Customer_Username_445 was admitted at 1545
+Customer_Username_490 was admitted at 1545
+Customer_Username_664 was admitted at 1545
+
+
+Current Capacity: 73
+------------------------------------------------------------
+Current Time: 1600
+
+
+Customer_Username_445 was released at 1600
+Customer_Username_664 was released at 1600
+Customer_Username_151 was released at 1600
+Customer_Username_273 was released at 1600
+Customer_Username_285 was released at 1600
+Random_127 was released at 1600
+Customer_Username_116 was released at 1600
+Customer_Username_309 was released at 1600
+Customer_Username_24 was released at 1600
+Customer_Username_61 was released at 1600
+
+Customer_Username_29 was admitted at 1600
+Customer_Username_78 was admitted at 1600
+Customer_Username_162 was admitted at 1600
+Customer_Username_164 was admitted at 1600
+Customer_Username_167 was admitted at 1600
+Customer_Username_200 was admitted at 1600
+Customer_Username_295 was admitted at 1600
+Customer_Username_300 was admitted at 1600
+Customer_Username_312 was admitted at 1600
+Customer_Username_324 was admitted at 1600
+Customer_Username_412 was admitted at 1600
+Customer_Username_798 was admitted at 1600
+Customer_Username_810 was admitted at 1600
+
+
+Current Capacity: 71
+------------------------------------------------------------
+Current Time: 1615
+
+
+Customer_Username_162 was released at 1615
+Customer_Username_167 was released at 1615
+Customer_Username_295 was released at 1615
+Customer_Username_300 was released at 1615
+Customer_Username_798 was released at 1615
+Customer_Username_810 was released at 1615
+Customer_Username_219 was released at 1615
+Customer_Username_228 was released at 1615
+
+Customer_Username_118 was admitted at 1615
+Customer_Username_207 was admitted at 1615
+Customer_Username_394 was admitted at 1615
+Customer_Username_607 was admitted at 1615
+Customer_Username_647 was admitted at 1615
+Customer_Username_663 was admitted at 1615
+Customer_Username_1152 was admitted at 1615
+
+
+Current Capacity: 71
+------------------------------------------------------------
+Current Time: 1630
+
+
+Customer_Username_607 was released at 1630
+Customer_Username_663 was released at 1630
+Customer_Username_1152 was released at 1630
+Customer_Username_29 was released at 1630
+Customer_Username_78 was released at 1630
+Customer_Username_412 was released at 1630
+Customer_Username_79 was released at 1630
+Customer_Username_490 was released at 1630
+Customer_Username_47 was released at 1630
+Customer_Username_201 was released at 1630
+Random_131 was released at 1630
+Random_132 was released at 1630
+Random_134 was released at 1630
+
+Customer_Username_17 was admitted at 1630
+Customer_Username_53 was admitted at 1630
+Customer_Username_197 was admitted at 1630
+Customer_Username_208 was admitted at 1630
+Customer_Username_242 was admitted at 1630
+Customer_Username_306 was admitted at 1630
+Customer_Username_530 was admitted at 1630
+Customer_Username_813 was admitted at 1630
+Customer_Username_838 was admitted at 1630
+Customer_Username_986 was admitted at 1630
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1645
+
+
+Customer_Username_53 was released at 1645
+Customer_Username_530 was released at 1645
+Customer_Username_813 was released at 1645
+Customer_Username_986 was released at 1645
+Customer_Username_394 was released at 1645
+Customer_Username_164 was released at 1645
+Customer_Username_312 was released at 1645
+Customer_Username_324 was released at 1645
+Customer_Username_68 was released at 1645
+Customer_Username_264 was released at 1645
+Customer_Username_351 was released at 1645
+Customer_Username_402 was released at 1645
+
+Customer_Username_5 was admitted at 1645
+Customer_Username_122 was admitted at 1645
+Customer_Username_132 was admitted at 1645
+Customer_Username_146 was admitted at 1645
+Customer_Username_150 was admitted at 1645
+Customer_Username_159 was admitted at 1645
+Customer_Username_253 was admitted at 1645
+Customer_Username_331 was admitted at 1645
+Customer_Username_430 was admitted at 1645
+Customer_Username_1268 was admitted at 1645
+Customer_Username_2249 was admitted at 1645
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1700
+
+
+Customer_Username_132 was released at 1700
+Customer_Username_159 was released at 1700
+Customer_Username_331 was released at 1700
+Customer_Username_430 was released at 1700
+Customer_Username_1268 was released at 1700
+Customer_Username_2249 was released at 1700
+Customer_Username_242 was released at 1700
+Customer_Username_838 was released at 1700
+Customer_Username_118 was released at 1700
+Customer_Username_207 was released at 1700
+Customer_Username_647 was released at 1700
+Customer_Username_200 was released at 1700
+
+Customer_Username_59 was admitted at 1700
+Customer_Username_70 was admitted at 1700
+Customer_Username_105 was admitted at 1700
+Customer_Username_125 was admitted at 1700
+Customer_Username_131 was admitted at 1700
+Customer_Username_147 was admitted at 1700
+Customer_Username_205 was admitted at 1700
+Customer_Username_293 was admitted at 1700
+Customer_Username_316 was admitted at 1700
+Customer_Username_357 was admitted at 1700
+Customer_Username_541 was admitted at 1700
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1715
+
+
+Customer_Username_293 was released at 1715
+Customer_Username_122 was released at 1715
+Customer_Username_150 was released at 1715
+Customer_Username_17 was released at 1715
+Customer_Username_208 was released at 1715
+
+Customer_Username_51 was admitted at 1715
+Customer_Username_311 was admitted at 1715
+Customer_Username_358 was admitted at 1715
+Customer_Username_443 was admitted at 1715
+
+
+Current Capacity: 60
+------------------------------------------------------------
+Current Time: 1730
+
+
+Customer_Username_358 was released at 1730
+Customer_Username_105 was released at 1730
+Customer_Username_125 was released at 1730
+Customer_Username_316 was released at 1730
+Customer_Username_5 was released at 1730
+Customer_Username_197 was released at 1730
+Customer_Username_306 was released at 1730
+
+Customer_Username_63 was admitted at 1730
+Customer_Username_136 was admitted at 1730
+Customer_Username_231 was admitted at 1730
+Customer_Username_294 was admitted at 1730
+Customer_Username_302 was admitted at 1730
+Customer_Username_468 was admitted at 1730
+Customer_Username_518 was admitted at 1730
+Customer_Username_536 was admitted at 1730
+
+
+
+Random_137 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 60
+Queue Size: 0
+
+
+Random_138 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 60
+Queue Size: 0
+
+
+Random_139 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 60
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_140 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 61
+Queue Size: 0
+
+
+Random_141 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 61
+Queue Size: 0
+
+
+Random_142 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 61
+Queue Size: 0
+
+
+Random_143 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 61
+Queue Size: 0
+
+
+Random_144 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 61
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_145 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 63
+Queue Size: 0
+
+
+Random_146 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 63
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_147 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 68
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_148 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 72
+Queue Size: 0
+
+
+Random_149 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 72
+Queue Size: 0
+
+
+Random_150 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 72
+Queue Size: 0
+
+
+Random_151 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 72
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_152 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 74
+Queue Size: 0
+
+
+Random_153 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 74
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_154 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 75
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_155 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 76
+Queue Size: 0
+
+
+Random_156 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 76
+Queue Size: 0
+
+
+Random_157 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 76
+Queue Size: 0
+
+
+Random_158 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 76
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_159 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 79
+Queue Size: 0
+
+
+Random_160 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 79
+Queue Size: 0
+
+
+Random_161 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 79
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_162 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 80
+Queue Size: 0
+
+
+Random_163 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 80
+Queue Size: 0
+
+
+Random_164 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 80
+Queue Size: 0
+
+
+Random_165 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 80
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 84
+------------------------------------------------------------
+Current Time: 1745
+
+
+Customer_Username_136 was released at 1745
+Customer_Username_468 was released at 1745
+Customer_Username_518 was released at 1745
+Customer_Username_536 was released at 1745
+Random_147 was released at 1745
+Random_158 was released at 1745
+Customer_Username_59 was released at 1745
+Customer_Username_131 was released at 1745
+Customer_Username_205 was released at 1745
+Customer_Username_541 was released at 1745
+Customer_Username_146 was released at 1745
+Customer_Username_253 was released at 1745
+
+Customer_Username_1 was admitted at 1745
+Customer_Username_97 was admitted at 1745
+Customer_Username_192 was admitted at 1745
+Customer_Username_223 was admitted at 1745
+Customer_Username_532 was admitted at 1745
+Customer_Username_567 was admitted at 1745
+Customer_Username_653 was admitted at 1745
+Customer_Username_716 was admitted at 1745
+Customer_Username_721 was admitted at 1745
+Customer_Username_1051 was admitted at 1745
+Customer_Username_1239 was admitted at 1745
+
+
+Current Capacity: 77
+------------------------------------------------------------
+Current Time: 1800
+
+
+Customer_Username_192 was released at 1800
+Customer_Username_532 was released at 1800
+Customer_Username_716 was released at 1800
+Customer_Username_63 was released at 1800
+Customer_Username_231 was released at 1800
+Random_146 was released at 1800
+Random_165 was released at 1800
+Customer_Username_51 was released at 1800
+Customer_Username_70 was released at 1800
+Customer_Username_147 was released at 1800
+Customer_Username_357 was released at 1800
+
+Customer_Username_108 was admitted at 1800
+Customer_Username_163 was admitted at 1800
+Customer_Username_437 was admitted at 1800
+Customer_Username_498 was admitted at 1800
+Customer_Username_499 was admitted at 1800
+Customer_Username_500 was admitted at 1800
+Customer_Username_821 was admitted at 1800
+Customer_Username_853 was admitted at 1800
+Customer_Username_907 was admitted at 1800
+Customer_Username_1330 was admitted at 1800
+Customer_Username_1525 was admitted at 1800
+
+
+
+Random_166 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 68
+Queue Size: 0
+
+
+Random_167 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 68
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_168 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 69
+Queue Size: 0
+
+
+Random_169 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 69
+Queue Size: 0
+
+
+Random_170 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 69
+Queue Size: 0
+
+
+Random_171 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 69
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_172 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 70
+Queue Size: 0
+
+
+Random_173 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 70
+Queue Size: 0
+
+
+Random_174 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 70
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_175 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 75
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_176 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 77
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_177 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 79
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_178 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 82
+Queue Size: 0
+
+
+Random_179 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 82
+Queue Size: 0
+
+
+Random_180 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 82
+Queue Size: 0
+
+
+Random_181 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 82
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_182 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 87
+Queue Size: 0
+
+
+Random_183 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 87
+Queue Size: 0
+
+
+Random_184 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 87
+Queue Size: 0
+
+
+Random_185 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 87
+Queue Size: 0
+
+
+Random_186 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 87
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_187 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 89
+Queue Size: 0
+
+
+Random_188 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 89
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_189 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 0
+
+
+Random_190 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 0
+
+
+Random_191 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 0
+
+
+Random_192 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 0
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_193 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 95
+Queue Size: 0
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_194 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 96
+Queue Size: 0
+
+
+Random_195 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 96
+Queue Size: 0
+0700
+0715
+0730
+0745
+0800
+0815
+0830
+0845
+0900
+0915
+0930
+0945
+1000
+1015
+1030
+1045
+1100
+1115
+1130
+1145
+1200
+1215
+1230
+1245
+1300
+1315
+1330
+1345
+1400
+1415
+1430
+1445
+1500
+1515
+1530
+1545
+1600
+1615
+1630
+1645
+1700
+1715
+HAS customers
+
+Closest Customer:  Customer_Username_311
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_196 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 96
+Queue Size: 1
+
+
+Random_197 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 96
+Queue Size: 1
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_198 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 98
+Queue Size: 1
+
+
+Random_199 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 98
+Queue Size: 1
+Number of customers currently waiting in line:  1
+Estimated wait time:  0
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_200 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 98
+Queue Size: 2
+
+
+Random_201 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 98
+Queue Size: 2
+
+
+Random_202 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 98
+Queue Size: 2
+Number of customers currently waiting in line:  2
+Estimated wait time:  0
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_203 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 2
+Number of customers currently waiting in line:  2
+Estimated wait time:  0
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+Current Capacity: 100
+------------------------------------------------------------
+Current Time: 1815
+
+
+Customer_Username_108 was released at 1815
+Customer_Username_437 was released at 1815
+Customer_Username_499 was released at 1815
+Customer_Username_500 was released at 1815
+Customer_Username_1330 was released at 1815
+Customer_Username_1525 was released at 1815
+Random_174 was released at 1815
+Random_175 was released at 1815
+Random_177 was released at 1815
+Random_181 was released at 1815
+Random_193 was released at 1815
+Customer_Username_223 was released at 1815
+Customer_Username_721 was released at 1815
+Customer_Username_1051 was released at 1815
+Customer_Username_302 was released at 1815
+Random_139 was released at 1815
+Random_144 was released at 1815
+Random_151 was released at 1815
+Random_161 was released at 1815
+Customer_Username_311 was released at 1815
+Customer_Username_443 was released at 1815
+
+Customer_Username_43 was admitted at 1815
+Customer_Username_89 was admitted at 1815
+Customer_Username_184 was admitted at 1815
+Customer_Username_196 was admitted at 1815
+Customer_Username_210 was admitted at 1815
+Customer_Username_233 was admitted at 1815
+Customer_Username_341 was admitted at 1815
+Customer_Username_386 was admitted at 1815
+Customer_Username_467 was admitted at 1815
+Customer_Username_487 was admitted at 1815
+Customer_Username_489 was admitted at 1815
+Customer_Username_529 was admitted at 1815
+Customer_Username_638 was admitted at 1815
+Customer_Username_1410 was admitted at 1815
+Customer_Username_1598 was admitted at 1815
+
+
+Current Capacity: 78
+------------------------------------------------------------
+Current Time: 1830
+
+
+Random_203 was admitted from the queue at 1830
+Customer_Username_43 was released at 1830
+Customer_Username_184 was released at 1830
+Customer_Username_210 was released at 1830
+Customer_Username_529 was released at 1830
+Customer_Username_1410 was released at 1830
+Customer_Username_1598 was released at 1830
+Customer_Username_163 was released at 1830
+Customer_Username_498 was released at 1830
+Customer_Username_821 was released at 1830
+Customer_Username_853 was released at 1830
+Random_167 was released at 1830
+Random_171 was released at 1830
+Random_186 was released at 1830
+Random_188 was released at 1830
+Customer_Username_97 was released at 1830
+Customer_Username_567 was released at 1830
+Customer_Username_653 was released at 1830
+Customer_Username_1239 was released at 1830
+Customer_Username_294 was released at 1830
+Random_153 was released at 1830
+Random_154 was released at 1830
+
+Customer_Username_25 was admitted at 1830
+Customer_Username_55 was admitted at 1830
+Customer_Username_103 was admitted at 1830
+Customer_Username_111 was admitted at 1830
+Customer_Username_121 was admitted at 1830
+Customer_Username_124 was admitted at 1830
+Customer_Username_153 was admitted at 1830
+Customer_Username_218 was admitted at 1830
+Customer_Username_227 was admitted at 1830
+Customer_Username_383 was admitted at 1830
+Customer_Username_385 was admitted at 1830
+Customer_Username_392 was admitted at 1830
+Customer_Username_612 was admitted at 1830
+Customer_Username_896 was admitted at 1830
+
+
+Current Capacity: 72
+------------------------------------------------------------
+Current Time: 1845
+
+
+Random_203 was released at 1845
+Customer_Username_103 was released at 1845
+Customer_Username_612 was released at 1845
+Customer_Username_896 was released at 1845
+Customer_Username_89 was released at 1845
+Customer_Username_196 was released at 1845
+Customer_Username_638 was released at 1845
+Customer_Username_907 was released at 1845
+Random_197 was released at 1845
+Random_202 was released at 1845
+Customer_Username_1 was released at 1845
+
+Customer_Username_30 was admitted at 1845
+Customer_Username_186 was admitted at 1845
+Customer_Username_214 was admitted at 1845
+Customer_Username_232 was admitted at 1845
+Customer_Username_268 was admitted at 1845
+Customer_Username_486 was admitted at 1845
+Customer_Username_611 was admitted at 1845
+
+
+
+Random_204 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 65
+Queue Size: 2
+
+
+Random_205 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 65
+Queue Size: 2
+
+
+Random_206 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 65
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_207 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 68
+Queue Size: 2
+
+
+Random_208 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 68
+Queue Size: 2
+
+
+Random_209 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 68
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_210 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 71
+Queue Size: 2
+
+
+Random_211 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 71
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_212 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 75
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_213 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 79
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_214 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 81
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_215 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 83
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_216 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 84
+Queue Size: 2
+
+
+Random_217 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 84
+Queue Size: 2
+
+
+Random_218 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 84
+Queue Size: 2
+
+
+Random_219 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 84
+Queue Size: 2
+
+
+Random_220 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 84
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_221 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 89
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_222 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 94
+Queue Size: 2
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_223 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 97
+Queue Size: 2
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_224 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 98
+Queue Size: 2
+Number of customers currently waiting in line:  2
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_225 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 2
+Number of customers currently waiting in line:  2
+Estimated wait time:  30
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_226 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 3
+Number of customers currently waiting in line:  3
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_227 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 4
+Number of customers currently waiting in line:  4
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_228 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 5
+
+
+Random_229 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 5
+Number of customers currently waiting in line:  5
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_230 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 6
+
+
+Random_231 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 6
+Number of customers currently waiting in line:  6
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_232 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 7
+
+
+Random_233 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 7
+Number of customers currently waiting in line:  7
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_234 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 8
+Number of customers currently waiting in line:  8
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_235 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 9
+
+
+Random_236 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 9
+Number of customers currently waiting in line:  9
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_237 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 10
+Number of customers currently waiting in line:  10
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_238 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 11
+Number of customers currently waiting in line:  11
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_239 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 12
+
+
+Random_240 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 12
+Number of customers currently waiting in line:  12
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+Current Capacity: 100
+------------------------------------------------------------
+Current Time: 1900
+
+
+Customer_Username_186 was released at 1900
+Customer_Username_486 was released at 1900
+Random_223 was released at 1900
+Customer_Username_25 was released at 1900
+Customer_Username_124 was released at 1900
+Customer_Username_392 was released at 1900
+Customer_Username_233 was released at 1900
+Customer_Username_467 was released at 1900
+Customer_Username_489 was released at 1900
+Random_176 was released at 1900
+Random_192 was released at 1900
+
+Customer_Username_143 was admitted at 1900
+Customer_Username_169 was admitted at 1900
+Customer_Username_282 was admitted at 1900
+Customer_Username_505 was admitted at 1900
+Customer_Username_531 was admitted at 1900
+Customer_Username_1116 was admitted at 1900
+Customer_Username_1287 was admitted at 1900
+Customer_Username_3075 was admitted at 1900
+
+
+Current Capacity: 94
+------------------------------------------------------------
+Current Time: 1915
+
+
+Customer_Username_282 was released at 1915
+Customer_Username_505 was released at 1915
+Customer_Username_531 was released at 1915
+Customer_Username_1116 was released at 1915
+Customer_Username_1287 was released at 1915
+Customer_Username_3075 was released at 1915
+Customer_Username_611 was released at 1915
+Random_206 was released at 1915
+Random_212 was released at 1915
+Random_222 was released at 1915
+Customer_Username_55 was released at 1915
+Customer_Username_153 was released at 1915
+Customer_Username_383 was released at 1915
+Customer_Username_385 was released at 1915
+Customer_Username_341 was released at 1915
+Customer_Username_386 was released at 1915
+Customer_Username_487 was released at 1915
+
+Customer_Username_36 was admitted at 1915
+Customer_Username_91 was admitted at 1915
+Customer_Username_98 was admitted at 1915
+Customer_Username_135 was admitted at 1915
+Customer_Username_144 was admitted at 1915
+Customer_Username_179 was admitted at 1915
+Customer_Username_225 was admitted at 1915
+Customer_Username_241 was admitted at 1915
+Customer_Username_245 was admitted at 1915
+Customer_Username_257 was admitted at 1915
+
+
+
+Random_241 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 84
+Queue Size: 13
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_242 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 87
+Queue Size: 13
+
+
+Random_243 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 87
+Queue Size: 13
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_244 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 88
+Queue Size: 13
+
+
+Random_245 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 88
+Queue Size: 13
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_246 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 91
+Queue Size: 13
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_247 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 93
+Queue Size: 13
+
+
+Random_248 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 93
+Queue Size: 13
+
+
+Random_249 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 93
+Queue Size: 13
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_250 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 95
+Queue Size: 13
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_251 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 99
+Queue Size: 13
+Number of customers currently waiting in line:  13
+Estimated wait time:  30
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_252 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 99
+Queue Size: 14
+
+
+Random_253 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 99
+Queue Size: 14
+Number of customers currently waiting in line:  14
+Estimated wait time:  30
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_254 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 99
+Queue Size: 15
+
+
+Random_255 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 99
+Queue Size: 15
+Number of customers currently waiting in line:  15
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_256 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 15
+Number of customers currently waiting in line:  15
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_257 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 16
+
+
+Random_258 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 16
+
+
+Random_259 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 16
+
+
+Random_260 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 16
+
+
+Random_261 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 16
+Number of customers currently waiting in line:  16
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_262 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 17
+Number of customers currently waiting in line:  17
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_263 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 18
+
+
+Random_264 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 18
+Number of customers currently waiting in line:  18
+Estimated wait time:  30
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_265 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 19
+
+
+Random_266 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 19
+
+
+Random_267 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 19
+
+
+Random_268 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 19
+
+
+Random_269 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 19
+Number of customers currently waiting in line:  19
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_270 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 20
+
+
+Random_271 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 20
+
+
+Random_272 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 20
+Number of customers currently waiting in line:  20
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_273 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 21
+Number of customers currently waiting in line:  21
+Estimated wait time:  30
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_274 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 22
+
+Current Capacity: 100
+------------------------------------------------------------
+Current Time: 1930
+
+
+Customer_Username_241 was released at 1930
+Random_241 was released at 1930
+Random_245 was released at 1930
+Random_249 was released at 1930
+Customer_Username_143 was released at 1930
+Customer_Username_214 was released at 1930
+Customer_Username_268 was released at 1930
+Random_215 was released at 1930
+Random_221 was released at 1930
+Customer_Username_111 was released at 1930
+Customer_Username_121 was released at 1930
+Customer_Username_218 was released at 1930
+Customer_Username_227 was released at 1930
+
+Customer_Username_76 was admitted at 1930
+Customer_Username_88 was admitted at 1930
+Customer_Username_92 was admitted at 1930
+Customer_Username_119 was admitted at 1930
+Customer_Username_165 was admitted at 1930
+Customer_Username_199 was admitted at 1930
+Customer_Username_524 was admitted at 1930
+
+
+Current Capacity: 86
+------------------------------------------------------------
+Current Time: 1945
+
+
+Random_225 was admitted from the queue at 1945
+Customer_Username_119 was released at 1945
+Random_229 was admitted from the queue at 1945
+Customer_Username_524 was released at 1945
+Customer_Username_36 was released at 1945
+Customer_Username_135 was released at 1945
+Customer_Username_144 was released at 1945
+Customer_Username_225 was released at 1945
+Random_250 was released at 1945
+Customer_Username_30 was released at 1945
+Customer_Username_232 was released at 1945
+Random_209 was released at 1945
+Random_211 was released at 1945
+Random_213 was released at 1945
+Random_214 was released at 1945
+Random_220 was released at 1945
+Random_224 was released at 1945
+
+Customer_Username_74 was admitted at 1945
+Customer_Username_333 was admitted at 1945
+Customer_Username_336 was admitted at 1945
+Customer_Username_338 was admitted at 1945
+Customer_Username_373 was admitted at 1945
+Customer_Username_456 was admitted at 1945
+Customer_Username_495 was admitted at 1945
+Customer_Username_549 was admitted at 1945
+Customer_Username_598 was admitted at 1945
+
+
+Current Capacity: 67
+------------------------------------------------------------
+Current Time: 2000
+
+
+Random_236 was admitted from the queue at 2000
+Random_225 was released at 2000
+Customer_Username_549 was released at 2000
+Customer_Username_88 was released at 2000
+Customer_Username_92 was released at 2000
+Customer_Username_91 was released at 2000
+Customer_Username_245 was released at 2000
+Random_243 was released at 2000
+Random_255 was released at 2000
+Customer_Username_169 was released at 2000
+
+Customer_Username_356 was admitted at 2000
+Customer_Username_362 was admitted at 2000
+Customer_Username_491 was admitted at 2000
+Customer_Username_528 was admitted at 2000
+Customer_Username_542 was admitted at 2000
+Customer_Username_724 was admitted at 2000
+Customer_Username_1111 was admitted at 2000
+Customer_Username_1513 was admitted at 2000
+
+
+Current Capacity: 64
+------------------------------------------------------------
+Current Time: 2015
+
+
+Random_195 was admitted from the queue at 2015
+Customer_Username_542 was released at 2015
+Random_256 was admitted from the queue at 2015
+Customer_Username_724 was released at 2015
+Customer_Username_1111 was released at 2015
+Customer_Username_1513 was released at 2015
+Customer_Username_495 was released at 2015
+Customer_Username_165 was released at 2015
+Customer_Username_98 was released at 2015
+Customer_Username_179 was released at 2015
+Customer_Username_257 was released at 2015
+Random_246 was released at 2015
+
+Customer_Username_49 was admitted at 2015
+Customer_Username_138 was admitted at 2015
+Customer_Username_195 was admitted at 2015
+Customer_Username_239 was admitted at 2015
+Customer_Username_244 was admitted at 2015
+Customer_Username_348 was admitted at 2015
+Customer_Username_361 was admitted at 2015
+Customer_Username_427 was admitted at 2015
+Customer_Username_453 was admitted at 2015
+Customer_Username_510 was admitted at 2015
+Customer_Username_651 was admitted at 2015
+Customer_Username_944 was admitted at 2015
+
+
+
+Random_275 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 68
+Queue Size: 17
+
+
+Random_276 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 68
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_277 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 71
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_278 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 76
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_279 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 77
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_280 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 81
+Queue Size: 17
+
+
+Random_281 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 81
+Queue Size: 17
+
+
+Random_282 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 81
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_283 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 85
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_284 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 87
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_285 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 92
+Queue Size: 17
+
+
+Random_286 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 92
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_287 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 93
+Queue Size: 17
+
+
+Random_288 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 93
+Queue Size: 17
+
+
+Random_289 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 93
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_290 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 94
+Queue Size: 17
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_291 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 97
+Queue Size: 17
+
+Current Capacity: 97
+------------------------------------------------------------
+Current Time: 2030
+
+
+Customer_Username_195 was released at 2030
+Random_236 was released at 2030
+Customer_Username_491 was released at 2030
+Random_229 was released at 2030
+Customer_Username_74 was released at 2030
+Customer_Username_333 was released at 2030
+Customer_Username_338 was released at 2030
+Customer_Username_373 was released at 2030
+Customer_Username_456 was released at 2030
+Customer_Username_76 was released at 2030
+Customer_Username_199 was released at 2030
+
+Customer_Username_93 was admitted at 2030
+Customer_Username_251 was admitted at 2030
+Customer_Username_353 was admitted at 2030
+Customer_Username_364 was admitted at 2030
+Customer_Username_413 was admitted at 2030
+Customer_Username_421 was admitted at 2030
+Customer_Username_587 was admitted at 2030
+Customer_Username_852 was admitted at 2030
+Customer_Username_1337 was admitted at 2030
+Customer_Username_1391 was admitted at 2030
+
+
+Current Capacity: 95
+------------------------------------------------------------
+Current Time: 2045
+
+
+Customer_Username_364 was released at 2045
+Customer_Username_852 was released at 2045
+Customer_Username_1337 was released at 2045
+Customer_Username_1391 was released at 2045
+Random_256 was released at 2045
+Customer_Username_49 was released at 2045
+Customer_Username_453 was released at 2045
+Customer_Username_510 was released at 2045
+Customer_Username_651 was released at 2045
+Customer_Username_944 was released at 2045
+Random_277 was released at 2045
+Random_279 was released at 2045
+Random_283 was released at 2045
+Random_284 was released at 2045
+Customer_Username_336 was released at 2045
+Customer_Username_598 was released at 2045
+
+Customer_Username_13 was admitted at 2045
+Customer_Username_18 was admitted at 2045
+Customer_Username_120 was admitted at 2045
+Customer_Username_127 was admitted at 2045
+Customer_Username_160 was admitted at 2045
+Customer_Username_178 was admitted at 2045
+Customer_Username_288 was admitted at 2045
+Customer_Username_343 was admitted at 2045
+Customer_Username_400 was admitted at 2045
+
+
+Current Capacity: 78
+------------------------------------------------------------
+Current Time: 2100
+
+
+Random_199 was admitted from the queue at 2100
+Customer_Username_120 was released at 2100
+Random_269 was admitted from the queue at 2100
+Customer_Username_127 was released at 2100
+Customer_Username_178 was released at 2100
+Customer_Username_413 was released at 2100
+Customer_Username_587 was released at 2100
+Random_195 was released at 2100
+Customer_Username_239 was released at 2100
+Customer_Username_244 was released at 2100
+Customer_Username_348 was released at 2100
+Customer_Username_361 was released at 2100
+Customer_Username_427 was released at 2100
+Random_276 was released at 2100
+Random_282 was released at 2100
+Random_289 was released at 2100
+Random_290 was released at 2100
+Customer_Username_356 was released at 2100
+Customer_Username_362 was released at 2100
+Customer_Username_528 was released at 2100
+
+Customer_Username_8 was admitted at 2100
+Customer_Username_72 was admitted at 2100
+Customer_Username_101 was admitted at 2100
+Customer_Username_171 was admitted at 2100
+Customer_Username_188 was admitted at 2100
+Customer_Username_217 was admitted at 2100
+Customer_Username_272 was admitted at 2100
+Customer_Username_337 was admitted at 2100
+Customer_Username_422 was admitted at 2100
+Customer_Username_730 was admitted at 2100
+Customer_Username_1102 was admitted at 2100
+
+
+Current Capacity: 68
+------------------------------------------------------------
+Current Time: 2115
+
+
+Customer_Username_730 was released at 2115
+Customer_Username_1102 was released at 2115
+Customer_Username_13 was released at 2115
+Customer_Username_93 was released at 2115
+Customer_Username_421 was released at 2115
+Customer_Username_138 was released at 2115
+Random_278 was released at 2115
+Random_286 was released at 2115
+
+Customer_Username_90 was admitted at 2115
+Customer_Username_156 was admitted at 2115
+Customer_Username_334 was admitted at 2115
+Customer_Username_418 was admitted at 2115
+Customer_Username_503 was admitted at 2115
+
+
+Current Capacity: 66
+------------------------------------------------------------
+Current Time: 2130
+
+
+Random_226 was admitted from the queue at 2130
+Customer_Username_334 was released at 2130
+Random_199 was released at 2130
+Customer_Username_72 was released at 2130
+Customer_Username_101 was released at 2130
+Customer_Username_171 was released at 2130
+Customer_Username_337 was released at 2130
+Customer_Username_343 was released at 2130
+Customer_Username_251 was released at 2130
+Customer_Username_353 was released at 2130
+
+Customer_Username_16 was admitted at 2130
+Customer_Username_35 was admitted at 2130
+Customer_Username_109 was admitted at 2130
+Customer_Username_149 was admitted at 2130
+Customer_Username_289 was admitted at 2130
+Customer_Username_576 was admitted at 2130
+Customer_Username_1900 was admitted at 2130
+Customer_Username_1944 was admitted at 2130
+
+
+
+Random_292 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 65
+Queue Size: 14
+
+
+Random_293 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 65
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_294 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 67
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_295 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 71
+Queue Size: 14
+
+
+Random_296 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 71
+Queue Size: 14
+
+
+Random_297 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 71
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_298 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 76
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_299 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 80
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_300 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 84
+Queue Size: 14
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_301 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 86
+Queue Size: 14
+
+
+Random_302 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 86
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_303 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 87
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_304 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 89
+Queue Size: 14
+
+
+Random_305 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 89
+Queue Size: 14
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_306 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 93
+Queue Size: 14
+There is currently no wait to enter the store.
+Earliest available time at:  2245
+Would you like to: 
+A) Schedule Reservation at time:  2245
+B) Join the waiting queue.
+C) Both schedule a reservation and wait in the queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_307 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 95
+Queue Size: 14
+
+
+Random_308 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 95
+Queue Size: 14
+
+
+Random_309 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 95
+Queue Size: 14
+
+
+Random_310 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 95
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 98
+------------------------------------------------------------
+Current Time: 2145
+
+
+Customer_Username_1900 was released at 2145
+Customer_Username_1944 was released at 2145
+Random_300 was released at 2145
+Random_305 was released at 2145
+Random_306 was released at 2145
+Customer_Username_503 was released at 2145
+Random_269 was released at 2145
+Customer_Username_272 was released at 2145
+Customer_Username_422 was released at 2145
+Customer_Username_18 was released at 2145
+Customer_Username_160 was released at 2145
+Customer_Username_288 was released at 2145
+Customer_Username_400 was released at 2145
+
+Customer_Username_10 was admitted at 2145
+Customer_Username_71 was admitted at 2145
+Customer_Username_80 was admitted at 2145
+Customer_Username_185 was admitted at 2145
+Customer_Username_368 was admitted at 2145
+Customer_Username_599 was admitted at 2145
+Customer_Username_627 was admitted at 2145
+Customer_Username_676 was admitted at 2145
+
+
+Current Capacity: 89
+------------------------------------------------------------
+Current Time: 2200
+
+
+Customer_Username_10 was released at 2200
+Customer_Username_71 was released at 2200
+Customer_Username_185 was released at 2200
+Customer_Username_627 was released at 2200
+Random_226 was released at 2200
+Customer_Username_109 was released at 2200
+Customer_Username_576 was released at 2200
+Random_293 was released at 2200
+Random_298 was released at 2200
+Random_302 was released at 2200
+Customer_Username_90 was released at 2200
+Customer_Username_8 was released at 2200
+Customer_Username_188 was released at 2200
+Customer_Username_217 was released at 2200
+
+Customer_Username_129 was admitted at 2200
+Customer_Username_174 was admitted at 2200
+Customer_Username_180 was admitted at 2200
+Customer_Username_310 was admitted at 2200
+Customer_Username_509 was admitted at 2200
+Customer_Username_564 was admitted at 2200
+Customer_Username_739 was admitted at 2200
+Customer_Username_778 was admitted at 2200
+Customer_Username_965 was admitted at 2200
+Customer_Username_1044 was admitted at 2200
+
+
+
+Random_311 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 78
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_312 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 83
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_313 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 85
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_314 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 86
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_315 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 87
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_316 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 90
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_317 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 93
+Queue Size: 14
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_318 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 97
+Queue Size: 14
+Number of customers currently waiting in line:  14
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_319 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 14
+Number of customers currently waiting in line:  14
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_320 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 15
+Number of customers currently waiting in line:  15
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_321 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 16
+Number of customers currently waiting in line:  16
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_322 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 17
+Number of customers currently waiting in line:  17
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_323 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 18
+Number of customers currently waiting in line:  18
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_324 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 19
+Number of customers currently waiting in line:  19
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_325 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 20
+Number of customers currently waiting in line:  20
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_326 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 21
+Number of customers currently waiting in line:  21
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_327 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 22
+Number of customers currently waiting in line:  22
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_328 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 23
+Number of customers currently waiting in line:  23
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_329 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 24
+Number of customers currently waiting in line:  24
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_330 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 100
+Queue Size: 25
+Number of customers currently waiting in line:  25
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_331 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 100
+Queue Size: 26
+Number of customers currently waiting in line:  26
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_332 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 27
+Number of customers currently waiting in line:  27
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_333 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 28
+Number of customers currently waiting in line:  28
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_334 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 29
+Number of customers currently waiting in line:  29
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_335 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 30
+Number of customers currently waiting in line:  30
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_336 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 31
+Number of customers currently waiting in line:  31
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_337 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 32
+Number of customers currently waiting in line:  32
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_338 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 33
+Number of customers currently waiting in line:  33
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_339 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 34
+Number of customers currently waiting in line:  34
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_340 is scheduling a visit.
+Party Size is: 5
+Current Capacity: 100
+Queue Size: 35
+Number of customers currently waiting in line:  35
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_341 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 100
+Queue Size: 36
+Number of customers currently waiting in line:  36
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+
+Random_342 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 100
+Queue Size: 37
+Number of customers currently waiting in line:  37
+Estimated wait time:  96
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+Joined the queue of waiting customers.
+
+Current Capacity: 100
+------------------------------------------------------------
+Current Time: 2215
+
+
+Customer_Username_564 was released at 2215
+Customer_Username_778 was released at 2215
+Customer_Username_1044 was released at 2215
+Random_311 was released at 2215
+Customer_Username_599 was released at 2215
+Customer_Username_16 was released at 2215
+Customer_Username_35 was released at 2215
+Customer_Username_149 was released at 2215
+Random_294 was released at 2215
+Random_299 was released at 2215
+Customer_Username_156 was released at 2215
+Customer_Username_418 was released at 2215
+
+Customer_Username_41 was admitted at 2215
+Customer_Username_77 was admitted at 2215
+Customer_Username_641 was admitted at 2215
+Customer_Username_677 was admitted at 2215
+Customer_Username_717 was admitted at 2215
+Customer_Username_720 was admitted at 2215
+Customer_Username_735 was admitted at 2215
+Customer_Username_808 was admitted at 2215
+Customer_Username_882 was admitted at 2215
+Customer_Username_970 was admitted at 2215
+Customer_Username_1031 was admitted at 2215
+Customer_Username_1437 was admitted at 2215
+
+
+Current Capacity: 87
+------------------------------------------------------------
+Current Time: 2230
+
+
+Random_264 was admitted from the queue at 2230
+Customer_Username_641 was released at 2230
+Customer_Username_720 was released at 2230
+Customer_Username_808 was released at 2230
+Customer_Username_970 was released at 2230
+Customer_Username_1031 was released at 2230
+Customer_Username_129 was released at 2230
+Customer_Username_174 was released at 2230
+Customer_Username_180 was released at 2230
+Customer_Username_739 was released at 2230
+Customer_Username_965 was released at 2230
+Random_316 was released at 2230
+Random_317 was released at 2230
+Random_318 was released at 2230
+Customer_Username_368 was released at 2230
+Customer_Username_676 was released at 2230
+Customer_Username_289 was released at 2230
+Random_297 was released at 2230
+Random_303 was released at 2230
+Random_310 was released at 2230
+
+Customer_Username_123 was admitted at 2230
+Customer_Username_189 was admitted at 2230
+Customer_Username_871 was admitted at 2230
+Customer_Username_1225 was admitted at 2230
+Customer_Username_1331 was admitted at 2230
+Customer_Username_2176 was admitted at 2230
+Customer_Username_2181 was admitted at 2230
+Customer_Username_2214 was admitted at 2230
+Customer_Username_2296 was admitted at 2230
+
+
+Current Capacity: 69
+------------------------------------------------------------
+Current Time: 2245
+
+
+Random_251 was admitted from the queue at 2245
+Random_264 was released at 2245
+Random_253 was admitted from the queue at 2245
+Customer_Username_123 was released at 2245
+Random_326 was admitted from the queue at 2245
+Customer_Username_189 was released at 2245
+Random_334 was admitted from the queue at 2245
+Customer_Username_871 was released at 2245
+Random_335 was admitted from the queue at 2245
+Customer_Username_1225 was released at 2245
+Random_337 was admitted from the queue at 2245
+Customer_Username_1331 was released at 2245
+Random_340 was admitted from the queue at 2245
+Customer_Username_2176 was released at 2245
+Random_341 was admitted from the queue at 2245
+Customer_Username_2181 was released at 2245
+Customer_Username_2214 was released at 2245
+Customer_Username_2296 was released at 2245
+Customer_Username_41 was released at 2245
+Customer_Username_77 was released at 2245
+Customer_Username_677 was released at 2245
+Customer_Username_717 was released at 2245
+Customer_Username_735 was released at 2245
+Customer_Username_882 was released at 2245
+Customer_Username_1437 was released at 2245
+Customer_Username_310 was released at 2245
+Customer_Username_509 was released at 2245
+Random_312 was released at 2245
+Random_314 was released at 2245
+Customer_Username_80 was released at 2245
+
+
+
+
+Random_343 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 31
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_344 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 35
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_345 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 38
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_346 is scheduling a visit.
+Party Size is: 4
+Current Capacity: 40
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_347 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 44
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_348 is scheduling a visit.
+Party Size is: 2
+Current Capacity: 47
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_349 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 49
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_350 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 52
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_351 is scheduling a visit.
+Party Size is: 1
+Current Capacity: 55
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+
+Random_352 is scheduling a visit.
+Party Size is: 3
+Current Capacity: 56
+Queue Size: 29
+There is currently no wait to enter the store.
+No available times today for reservation.
+B) Join the waiting queue.
+D) Neither.
+You have 15 minutes to scan in or you will lose your spot.
+
+Current Capacity: 59
+Random_251 was released at FIX THIS
+Random_253 was released at FIX THIS
+Random_326 was released at FIX THIS
+Random_334 was released at FIX THIS
+Random_335 was released at FIX THIS
+Random_337 was released at FIX THIS
+Random_340 was released at FIX THIS
+Random_341 was released at FIX THIS
+Random_343 was released at FIX THIS
+Random_344 was released at FIX THIS
+Random_345 was released at FIX THIS
+Random_346 was released at FIX THIS
+Random_347 was released at FIX THIS
+Random_348 was released at FIX THIS
+Random_349 was released at FIX THIS
+Random_350 was released at FIX THIS
+Random_351 was released at FIX THIS
+Random_352 was released at FIX THIS
+Random_313 was released at FIX THIS
+Random_315 was released at FIX THIS
+Total ASAP Customers: 201
+Admitted ASAP Customers: 172
+
+Size: 29
+Front: 0
+Rear: 28
+Queue is now: [
+-- Customer attributes --
+Party Size: 5
+Start Visit: 1845
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_227
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 1845
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_231
+] [
+-- Customer attributes --
+Party Size: 3
+Start Visit: 1845
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_233
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 1845
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_234
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 1845
+Visit Length: 3
+Contact Info: email@place.com
+Username: Random_237
+] [
+-- Customer attributes --
+Party Size: 5
+Start Visit: 1845
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_238
+] [
+-- Customer attributes --
+Party Size: 5
+Start Visit: 1845
+Visit Length: 3
+Contact Info: email@place.com
+Username: Random_240
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 1915
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_261
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 1915
+Visit Length: 3
+Contact Info: email@place.com
+Username: Random_262
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 1915
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_272
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 1915
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_273
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_319
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_320
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_321
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_322
+] [
+-- Customer attributes --
+Party Size: 5
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_323
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_324
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 2200
+Visit Length: 3
+Contact Info: email@place.com
+Username: Random_325
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_327
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_328
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_329
+] [
+-- Customer attributes --
+Party Size: 2
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_330
+] [
+-- Customer attributes --
+Party Size: 3
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_331
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_332
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_333
+] [
+-- Customer attributes --
+Party Size: 5
+Start Visit: 2200
+Visit Length: 4
+Contact Info: email@place.com
+Username: Random_336
+] [
+-- Customer attributes --
+Party Size: 4
+Start Visit: 2200
+Visit Length: 3
+Contact Info: email@place.com
+Username: Random_338
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_339
+] [
+-- Customer attributes --
+Party Size: 1
+Start Visit: 2200
+Visit Length: 2
+Contact Info: email@place.com
+Username: Random_342
+] 
+

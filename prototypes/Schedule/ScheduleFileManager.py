@@ -10,13 +10,13 @@ city = sys.argv[2]
 store = sys.argv[3]
 address = sys.argv[4]
 storeUsername = sys.argv[5]
+startTime = sys.argv[6]
+endTime = sys.argv[7]
 
-# filePath = 'C:\\Users\\easte\\OneDrive\\Documents\\CLupProjectFiles\\Code\\prototypes\\Schedule'
-filePath = '/var/www/html/cs4391/le1010274/Schedule'
+filePath = 'C:\\Users\\easte\\OneDrive\\Documents\\CLupProjectFiles\\Code\\prototypes\\Schedule'
+# filePath = '/var/www/html/cs4391/le1010274/Schedule'
 os.chdir(filePath)
-days = ["day1", "day2", "day3", "day4", "day5", "day6", "day7" ]
-startTime = "0500"
-endTime = "1000"
+days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" ]
 
 timeHours = int(startTime[0:2])
 timeMins = int(startTime[2:])

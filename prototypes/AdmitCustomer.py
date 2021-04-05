@@ -7,7 +7,7 @@ import sys
 import json
 
 def admitCustomer(customer, visitStartBlock, trueAdmittance = True, currentTime = datetime.now().strftime("%H%M")):
-    global keys, shoppingCustomers
+    global keys, shoppingCustomers, filePath
 
     username, customerInfo = list(customer.items())[0]
 
@@ -36,34 +36,34 @@ def admitCustomer(customer, visitStartBlock, trueAdmittance = True, currentTime 
         # end for
 
         shoppingCustomers["temp"].append({username: customerInfo})
-        print(username, "was added to temp storage at", currentTime)
-        print("Party Size:", partySize)
-        print("Visit Length:", blocksToUpdate)
-        print()
+        print(username + " was added to temp storage at " + currentTime)
     # end if
 
-    with open('shoppingCustomers.json', 'w') as f:
+    with open(filePath, "w") as f:
         json.dump(shoppingCustomers, f, indent=2, sort_keys=True)
     # end with
 # end admitCustomer
 
 if (__name__ == "__main__"):
-    global keys, shoppingCustomers
+    global keys, shoppingCustomers, filePath
 
-    storeSchedule = None
-    with open("mockDatabase.json") as f:
-        storeSchedule = json.load(f)
+    state = sys.argv[1]
+    city = sys.argv[2]
+    store = sys.argv[3]
+    address = sys.argv[4]
+    storeUsername = sys.argv[5]
+
+    filePath = "/var/www/html/cs4391/hc998658/Schedule/" + state + "/" + city + "/" +\
+        store + "/" + address + "/" + storeUsername + "/shoppingCustomers.json"
+
+    with open(filePath) as f:
+        shoppingCustomers = json.load(f)
     # end with
 
     f.close()
 
-    keys = sorted(list(storeSchedule.keys()))
+    keys = sorted(list(shoppingCustomers.keys()))
+    keys.remove("temp")
 
-    with open("shoppingCustomers.json") as f:
-        shoppingCustomers = json.load(f)
-    # end with
-
-    print(sys.argv[1])
-
-    admitCustomer(json.loads(sys.argv[1]), sys.argv[2], bool(strtobool(sys.argv[3])))
+    admitCustomer(json.loads(sys.argv[6]), sys.argv[7], bool(strtobool(sys.argv[8])))
 # end if

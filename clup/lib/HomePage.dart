@@ -484,6 +484,140 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
+
+              FloatingActionButton.extended(
+                heroTag: "quickAdmitCustomer",
+                label: Text("Admit Customer"),
+                onPressed: () async {
+                  String state = "TX";
+                  String city = "Amarillo";
+                  String store = "\"Rando Mart\"";
+                  String address = "\"3 Lancaster Road\"";
+                  String storeUsername = "store_345";
+                  String customer =
+                      '\"{\\"Hunter\\": {\\"contact_info\\": \\"email@place.com\\", \\"party_size\\": 2, \\"type\\": \\"scheduled\\", \\"visit_length\\": 3}}\"';
+                  String visitStartBlock = "0800";
+                  String trueAdmittance = "True";
+
+                  String result = await Services.admitCustomer(
+                      state,
+                      city,
+                      store,
+                      address,
+                      storeUsername,
+                      customer,
+                      visitStartBlock,
+                      trueAdmittance);
+                  print(result);
+                },
+              ),
+
+              FloatingActionButton.extended(
+                heroTag: "quickMakeReservation",
+                label: Text("Make ASAP Reservation"),
+                onPressed: () async {
+                  String state = "TX";
+                  String city = "Amarillo";
+                  String store = "\"Rando Mart\"";
+                  String address = "\"3 Lancaster Road\"";
+                  String storeUsername = "store_345";
+                  String customer =
+                      '\"{\\"Hunter\\": {\\"contact_info\\": \\"email@place.com\\", \\"party_size\\": 2, \\"type\\": \\"scheduled\\", \\"visit_length\\": 3}}\"';
+                  String visitStartBlock = "ASAP";
+                  String storeCloseTime = "2300";
+                  String maxCapacity = "100";
+
+                  String result = await Services.makeReservation(
+                      state,
+                      city,
+                      store,
+                      address,
+                      storeUsername,
+                      customer,
+                      visitStartBlock,
+                      storeCloseTime,
+                      maxCapacity);
+                  print(result);
+                },
+              ),
+
+              FloatingActionButton.extended(
+                heroTag: "quickMakeChoice",
+                label: Text("Select Option B"),
+                onPressed: () async {
+                  String state = "TX";
+                  String city = "Amarillo";
+                  String store = "\"Rando Mart\"";
+                  String address = "\"3 Lancaster Road\"";
+                  String storeUsername = "store_345";
+                  String customer =
+                      '\"{\\"Hunter\\": {\\"contact_info\\": \\"email@place.com\\", \\"party_size\\": 2, \\"type\\": \\"scheduled\\", \\"visit_length\\": 3}}\"';
+                  String option = "B";
+                  String fullOrScheduledVisitStart = "False";
+                  String nextTimeBlock = "0815";
+                  String endTime = "0915";
+
+                  String result = await Services.makeChoice(
+                      state,
+                      city,
+                      store,
+                      address,
+                      storeUsername,
+                      customer,
+                      option,
+                      fullOrScheduledVisitStart,
+                      nextTimeBlock,
+                      endTime);
+                  print(result);
+                },
+              ),
+
+              FloatingActionButton.extended(
+                heroTag: "quickCheckForShopping",
+                label: Text("Check if Customer is Shopping"),
+                onPressed: () async {
+                  String state = "TX";
+                  String city = "Amarillo";
+                  String store = "\"Rando Mart\"";
+                  String address = "\"3 Lancaster Road\"";
+                  String storeUsername = "store_345";
+                  String customer =
+                      '\"{\\"Hunter\\": {\\"contact_info\\": \\"email@place.com\\", \\"party_size\\": 2, \\"type\\": \\"scheduled\\", \\"visit_length\\": 3}}\"';
+
+                  String result = await Services.customerIsShopping(
+                      state, city, store, address, storeUsername, customer);
+                  print(result);
+                },
+              ),
+
+              FloatingActionButton.extended(
+                heroTag: "quickReleaseCustomer",
+                label: Text("Release Customer"),
+                onPressed: () async {
+                  String state = "TX";
+                  String city = "Amarillo";
+                  String store = "\"Rando Mart\"";
+                  String address = "\"3 Lancaster Road\"";
+                  String storeUsername = "store_345";
+                  String customer =
+                      '\"{\\"Hunter\\": {\\"contact_info\\": \\"email@place.com\\", \\"party_size\\": 2, \\"type\\": \\"scheduled\\", \\"visit_length\\": 3}}\"';
+                  String visitStartBlock = "0800";
+                  String storeCloseTime = "2300";
+                  String maxCapacity = "100";
+
+                  String result = await Services.releaseCustomer(
+                      state,
+                      city,
+                      store,
+                      address,
+                      storeUsername,
+                      customer,
+                      visitStartBlock,
+                      storeCloseTime,
+                      maxCapacity);
+                  print(result);
+                },
+              ),
               // ***********************************************************
               // ***********************************************************
               // ***********************************************************

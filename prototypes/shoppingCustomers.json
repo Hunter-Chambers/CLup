@@ -255,5 +255,6 @@
     "scheduled": 0,
     "walk_ins": 0
   },
+  "queue": [],
   "temp": []
 }

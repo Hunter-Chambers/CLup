@@ -23,6 +23,12 @@ class Services {
   static const _ATTEMPT_LOGIN_ACTION = "ATTEMPT_LOGIN";
   static const _ATTEMPT_LOAD_PROFILE = "ATTEMPT_LOAD_PROFILE";
 
+  static const _ADMIT_CUSTOMER = "ADMIT_CUSTOMER";
+  static const _MAKE_RESERVATION = "MAKE_RESERVATION";
+  static const _MAKE_CHOICE = "MAKE_CHOICE";
+  static const _CHECK_FOR_SHOPPING_CUSTOMER = "CHECK_FOR_SHOPPING_CUSTOMER";
+  static const _RELEASE_CUSTOMER = "RELEASE_CUSTOMER";
+
   /*
   static Future<String> createTable(String tableName) async {
     try {
@@ -172,6 +178,185 @@ class Services {
       final response = await http
           .post(ROOT, headers: header, body: map)
           .timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> admitCustomer(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer,
+      String visitStartBlock,
+      String trueAdmittance) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _ADMIT_CUSTOMER;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+      map['visitStartBlock'] = visitStartBlock;
+      map['trueAdmittance'] = trueAdmittance;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> makeReservation(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer,
+      String visitStartBlock,
+      String storeCloseTime,
+      String maxCapacity) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _MAKE_RESERVATION;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+      map['visitStartBlock'] = visitStartBlock;
+      map['storeCloseTime'] = storeCloseTime;
+      map['maxCapacity'] = maxCapacity;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> makeChoice(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer,
+      String option,
+      String fullOrScheduledVisitStart,
+      String nextTimeBlock,
+      String endTime) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _MAKE_CHOICE;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+      map['option'] = option;
+      map['fullOrScheduledVisitStart'] = fullOrScheduledVisitStart;
+      map['nextTimeBlock'] = nextTimeBlock;
+      map['endTime'] = endTime;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> customerIsShopping(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _CHECK_FOR_SHOPPING_CUSTOMER;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> releaseCustomer(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer,
+      String visitStartBlock,
+      String storeCloseTime,
+      String maxCapacity) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _RELEASE_CUSTOMER;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+      map['visitStartBlock'] = visitStartBlock;
+      map['storeCloseTime'] = storeCloseTime;
+      map['maxCapacity'] = maxCapacity;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

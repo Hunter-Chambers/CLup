@@ -492,10 +492,6 @@ class _MyStatesViewState extends State<MyStatesView>{
         );
       }
       break;
-      case 3: {
-        UpdateStoreSearchJsons.update();
-      }
-      break;
     }
     
 

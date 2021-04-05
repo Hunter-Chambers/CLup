@@ -391,12 +391,10 @@ class _MyStatesViewState extends State<MyStatesView>{
   // dropdown and trigger a setstate() for the parent widget 
   _setStatesList() async {
 
-    Map<String, dynamic> statesMap =
-      await menuItems.getMenuItems(menuItems.labels[0]);
+    List tempList = await menuItems.getMenuItems("States.json", "states", "false");
     
-
     setState(() {
-      _statesList = statesMap[menuItems.labels[0]];
+      _statesList = tempList;
     });
 
   }
@@ -405,15 +403,14 @@ class _MyStatesViewState extends State<MyStatesView>{
   // a helper function to set the _citiesList of the cities
   // dropdown and trigger a setstate() for the parent widget 
   _setCitiesList(String selection) async {
+    List tempList = await menuItems.getMenuItems("Cities.json", selection, "true");
 
-    Map<String, dynamic> citiesMap =
-      await menuItems.getMenuItems(menuItems.labels[1]);
-
-    String key = selection;
-    menuItems.setCityID(citiesMap[key]['id']);
+    int id = int.parse(tempList[tempList.length - 1]);
+    tempList = tempList.sublist(0, tempList.length - 1);
+    menuItems.setCityID(id);
 
     setState(() {
-      _citiesList = citiesMap[key]['cities'];
+      _citiesList = tempList;
     });
 
   }
@@ -422,16 +419,16 @@ class _MyStatesViewState extends State<MyStatesView>{
   // a helper function to set the _storesList of the stores
   // dropdown and trigger a setstate() for the parent widget 
   _setStoresList(String selection) async {
+    int cityID = menuItems.getCityID();
+    String key = selection+'-$cityID';
+    List tempList = await menuItems.getMenuItems("Stores.json", key, "true");
 
-    Map<String, dynamic> storesMap =
-      await menuItems.getMenuItems(menuItems.labels[2]);
-
-    int id = menuItems.getCityID();
-    String key = selection+'-$id';
-    menuItems.setStoreID(storesMap[key]['id']);
+    int id = int.parse(tempList[tempList.length - 1]);
+    tempList = tempList.sublist(0, tempList.length - 1);
+    menuItems.setStoreID(id);
 
     setState(() {
-      _storesList = storesMap[key]['stores'];
+      _storesList = tempList;
     });
 
   }
@@ -439,16 +436,12 @@ class _MyStatesViewState extends State<MyStatesView>{
   // a helper function to set the _addressesList of the addresses
   // dropdown and trigger a setstate() for the parent widget 
   _setAddressesList(String selection) async {
-
-    
-    Map<String, dynamic> addressesMap =
-      await menuItems.getMenuItems(menuItems.labels[3]);
-
-    int id = menuItems.getStoreID();
-    String key = selection+'-$id';
+    int storeID = menuItems.getStoreID();
+    String key = selection+'-$storeID';
+    List tempList = await menuItems.getMenuItems("Addresses.json", key, "false");
 
     setState(() {
-      _addressesList = addressesMap[key]['addresses'];
+      _addressesList = tempList;
     });
 
   }
@@ -497,10 +490,6 @@ class _MyStatesViewState extends State<MyStatesView>{
           builder: (context) => CustomerLogin(customerController: customerProfile,),
           )
         );
-      }
-      break;
-      case 3: {
-        UpdateStoreSearchJsons.update();
       }
       break;
     }

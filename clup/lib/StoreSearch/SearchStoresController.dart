@@ -23,10 +23,23 @@ class SearchStoresController {
   }
 
   // pulls dropdown infromation from specified json file
-  Future<Map<String, dynamic>> getMenuItems( String menu) async{
+  Future<List<String>> getMenuItems( String fileName, String menu, String needID) async{
 
-    String jsonString = await rootBundle.loadString("jsonManagement/$menu.json");
-    return jsonDecode(jsonString);
+    String temp = await Services.getMenuItems(fileName, menu, needID);
+    List tempList = temp.split(",");
+    print(tempList);
+
+    for ( int i=0; i < tempList.length; i++) {
+      tempList[i] = tempList[i].replaceFirst(' u', "");
+      tempList[i] = tempList[i].replaceAll('\[', "");
+      tempList[i] = tempList[i].replaceAll('\]', "");
+      tempList[i] = tempList[i].replaceAll('\'', "");
+      tempList[i] = tempList[i].replaceAll('\n', "");
+    }
+    tempList[0] = tempList[0].replaceFirst('u', "");
+
+
+    return tempList;
 
   }
 

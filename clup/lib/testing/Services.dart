@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 
 class Services {
   static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
+  static const ROOT_layt = "http://10.0.6.1/cs4391/le1010274/";
+
   //static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   //static const _GET_REC_ACTION = "GET_REC";
 
@@ -65,6 +67,30 @@ class Services {
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
   }
   */
+
+  static Future<String> getMenuItems(String fileName, String menu, String needID) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['menu'] = menu;
+      map['fileName'] = fileName;
+      map['needID'] = needID;
+
+      String path = ROOT_layt + "StoreSearch/GetStore.php";
+      
+
+      final response = await http.post(path, body: map);
+      //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
 
   static Future<String> getALLRecs(String tablename) async {
     try {

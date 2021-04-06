@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../testing/Services.dart';
 
 class StoreScheduleController {
   Map <String, TextEditingController> fieldsMap;
@@ -37,6 +38,92 @@ class StoreScheduleController {
 
     fieldsMap = {};
   }
+  setTempSchedule() {
+    List<String> tempList = ["1", "2", "3"];
+    timeSlots = tempList;
+  }
+
+  /*
+  bool isLoaded() {
+    if (timeSlots == []) {
+      return false;
+    }
+    return true;
+  }
+  */
+  setSchedule() async {
+
+    String storeInfo = getTextController("Store").text;
+    List<String> storeInfoSplit = storeInfo.split(",");
+
+    String state = storeInfoSplit[0];
+    String city = storeInfoSplit[1];
+    String store = storeInfoSplit[2];
+    String address = storeInfoSplit[3];
+
+    String temp = await Services.getSchedule(state, city, store, address);
+    timeSlots = temp.split(",");
+    timeSlots = timeSlots.sublist(0, timeSlots.length - 1);
+
+    bool available;
+    String key;
+    String full;
+
+    String mins;
+    String hours;
+
+    for(int i =0; i<timeSlots.length; i++) {
+      String time = timeSlots[i];
+      key = time.split(":").first;
+      hours = key.substring(0,2);
+      mins = key.substring(2);
+      String startTime = hours + ":" + mins;
+
+
+      int minsNum = int.parse(mins);
+      minsNum += 15;
+      if (minsNum == 60) {
+        int hoursNum = int.parse(hours);
+        hoursNum += 1;
+        hours = hoursNum.toString();
+
+        mins = "00";
+
+        if (hours.length < 2) {
+          hours = "0" + hours;
+        }
+
+      }
+
+      key = startTime + " - " + hours + ":" + mins;
+
+      full = time.split(":").last;
+      if (full == "true") {
+        available = false;
+      }
+      else {
+        available = true;
+      }
+
+      timeSlots[i] = key;
+      timesAvailable[key] = available;
+
+      
+    }
+    /*
+    print("\n");
+    print("\n");
+    print(timeSlots);
+    print("\n");
+    print("\n");
+
+
+    print(timesAvailable);
+    print("\n");
+    print("\n");
+    */
+
+  }
 
   // Albertons
   setAlbertsons(){
@@ -66,6 +153,16 @@ class StoreScheduleController {
                 '6:00 - 6:15':false, '6:15 - 6:30':false, '6:30 - 6:45':true, '6:45 - 7:00':true,
                  };
 
+    
+    /*
+    print("---------------------------------");
+    print("---------------------------------");
+    print(timeSlots);
+    print("---------------------------------");
+    print("---------------------------------");
+    print(timesAvailable);
+    */
+
   }
   // Walmart
   setWalmart(){
@@ -77,7 +174,7 @@ class StoreScheduleController {
                 '2:00 - 2:15', '2:15 - 2:30', '2:30 - 2:45', '2:45 - 3:00',
                 '3:00 - 3:15', '3:15 - 3:30', '3:30 - 3:45', '3:45 - 4:00',
                 '4:00 - 4:15', '4:15 - 4:30', '4:30 - 4:45', '4:45 - 5:00',
-                '5:00 - 5:15', '5:15 - 5:30', '5:30 - 5:45', '5:45 - 6:00',
+                '5:00 - 5:15', '5:15 - 5:30', 
                  ];
 
     timesAvailable = {'8:00 - 8:15':false, '8:15 - 8:30':false, '8:30 - 8:45':false, '8:45 - 9:00':true,
@@ -88,7 +185,7 @@ class StoreScheduleController {
                 '2:00 - 2:15':false, '2:15 - 2:30':false, '2:30 - 2:45':true, '2:45 - 3:00':true,
                 '3:00 - 3:15':true, '3:15 - 3:30':true, '3:30 - 3:45':true, '3:45 - 4:00':false,
                 '4:00 - 4:15':false, '4:15 - 4:30':false, '4:30 - 4:45':true, '4:45 - 5:00':true,
-                '5:00 - 5:15':true, '5:15 - 5:30':true, '5:30 - 5:45':true, '5:45 - 6:00':true,
+                '5:00 - 5:15':true, '5:15 - 5:30':true, 
                  };
 
   }
@@ -155,6 +252,22 @@ class StoreScheduleController {
   bool getAvailable(String key) {
       return timesAvailable[key]; 
   }
+
+  List<DropdownMenuItem<String>> convertMenu(List<dynamic> items){
+    if ( items != null) {
+      items = items.toSet().toList();
+    }
+
+    return (
+         items?.map<DropdownMenuItem<String>>((dynamic value) {
+           return new DropdownMenuItem<String>(
+             value: value,
+             child: new Text(value),
+         );
+       })?.toList() ?? []
+     );
+   }
+
 
   bool updateSelectedTimes(int index, String time){
 

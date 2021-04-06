@@ -13,9 +13,32 @@ class ScheduleVisit extends StatelessWidget{
       : this.customerProfile = customerController, super(key: key);
     final _scrollController = ScrollController();
     final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
+  Widget build(BuildContext context) {
+    return
+    MaterialApp(
+      home: MyScheduleVisitView(scheduleController: storeSchedule, customerController: customerProfile),
+      );}
+}
+class MyScheduleVisitView extends StatefulWidget {
+  StoreScheduleController storeSchedule;
+  CustomerProfileController customerProfile;
+  MyScheduleVisitView({StoreScheduleController scheduleController, CustomerProfileController customerController})
+  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+
+  @override
+  _MyScheduleVisitViewState createState() => 
+    _MyScheduleVisitViewState(scheduleController: storeSchedule, customerController: customerProfile);
+}
+
+class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
+  StoreScheduleController storeSchedule;
+  CustomerProfileController customerProfile;
+  _MyScheduleVisitViewState({StoreScheduleController scheduleController, CustomerProfileController customerController})
+  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+  String _selectedStore, _selectedAddress;
+
   @override
   Widget build(BuildContext context) {
-    List<String> entries = customerProfile.favoriteStores;
     storeSchedule.getTextController('Store').text = '';
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -23,9 +46,11 @@ class ScheduleVisit extends StatelessWidget{
       body:Center(
         child: Container(
           color: Colors.white,
-          height:600,
+          height:450,
           width: 1400,
            child: 
+          
+           /*****************************************************************  Left Column */
            ListView( 
              controller: new ScrollController(),
              children: [
@@ -33,7 +58,7 @@ class ScheduleVisit extends StatelessWidget{
                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                children: [
                  Container(
-                   //padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                   padding: EdgeInsets.only(top: 20),
                    child: 
                      Text(
                        'Choose a Store to Visit',
@@ -51,11 +76,12 @@ class ScheduleVisit extends StatelessWidget{
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
 
-                        Expanded(child: 
+                        Expanded(
+                        child: 
                           Column( 
                           children:  [ 
                             Container(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              padding: EdgeInsets.fromLTRB(0, 100, 0, 20),
                               alignment: Alignment.center,
                               child: Text(
                                 'Favorite Stores',
@@ -67,11 +93,82 @@ class ScheduleVisit extends StatelessWidget{
                               )
                             ),
 
-                            Container(
-                            // Need both height and width or it won't render correctly
-                            height: 200,
-                            width: 200,
-                            child: Scrollbar( 
+
+                            Row( children: [                              
+            /*****************************************************************  store drop down */
+                              Expanded(child: 
+                                Container(
+                                  // Need both height and width or it won't render correctly
+                                  //height: 200,
+                                  //width: 200,
+                                  child: Padding(
+                                    padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                    child:
+                                    DropdownButton<String>(
+                                      key: Key('FavoritesDrpDwn'),
+                                      hint: Text("Choose a Store"),
+                                      value: _selectedStore,
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 24,
+                                      elevation: 16,
+                                      style: TextStyle(color: Colors.black),
+                                      underline: Container(
+                                        height: 2,
+                                        color: Colors.blue,
+                                      ),
+                                      onChanged: (String newValue) {
+                                        setState(() {
+                                          _onTapped(newValue, 1);
+                                        });
+                                      },
+                                      items: storeSchedule.convertMenu(customerProfile.getFavoriteStoreNames()),
+                                    ),
+                                  ),
+                                  ),
+                                ),
+                              
+
+            /*****************************************************************  address drop down */
+                              Expanded(child: 
+                                Container(
+                                  // Need both height and width or it won't render correctly
+                                  //height: 200,
+                                  //width: 200,
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                    child:
+                                    DropdownButton<String>(
+                                      key: Key('FavoritesDrpDwn'),
+                                      hint: Text("Choose an Address"),
+                                      value: _selectedAddress,
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 24,
+                                      elevation: 16,
+                                      style: TextStyle(color: Colors.black),
+                                      underline: Container(
+                                        height: 2,
+                                        color: Colors.blue,
+                                      ),
+                                      onChanged: (String newValue) {
+                                        setState(() {
+                                          _onTapped(newValue, 2);
+                                        });
+                                      },
+                                      items: 
+                                        storeSchedule.convertMenu(customerProfile.getFavoriteStoreAddresses(_selectedStore)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              
+
+                            ]
+                            ),
+                            
+                       
+           /*****************************************************************  store tiles */
+                            /*
+                            Scrollbar( 
                               controller: _scrollController,
                               isAlwaysShown: true,
                               child: ListView.separated(
@@ -96,16 +193,28 @@ class ScheduleVisit extends StatelessWidget{
                                 separatorBuilder: (BuildContext context, int index) => const Divider(),
                               )
                             )
-                          ),
+                            */
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                              child: FloatingActionButton.extended(
+                                key: Key('selStrButton'),
+                                heroTag: 'SelFavBtn',
+                                onPressed: () => _onButtonPressed(context, 2),
+                                label: Text(
+                                  'Select Store' ,
+                                ),
+                              )
+                            ),
                         ]
                         ),
                         ),
-                        
+                       /* 
                         Expanded(child: 
                           Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
 
+                            /*
                             Container(
                               // Have to define this field or it throws a render error
                               width: 500,
@@ -117,21 +226,13 @@ class ScheduleVisit extends StatelessWidget{
                                 controller: storeSchedule.getTextController('Store'),
                                 ),
                             ),
+                            */
 
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                              child: FloatingActionButton.extended(
-                                key: Key('selStrButton'),
-                                heroTag: 'SelFavBtn',
-                                onPressed: () => _onButtonPressed(context, 2),
-                                label: Text(
-                                  'Select Store' ,
-                                ),
-                              )
-                            )
+                            
                           ] 
                           ),
                         ),
+                        */
                         
                         Expanded(child: 
                           Column(
@@ -165,7 +266,6 @@ class ScheduleVisit extends StatelessWidget{
                           ],
                         ),
                         ),
-                        
 
                       ], 
                     ),
@@ -187,8 +287,20 @@ class ScheduleVisit extends StatelessWidget{
   }
 
 
-  _onTapped(String label){
-    storeSchedule.getTextController('Store').text = label;
+  _onTapped(String label, int option){
+    setState(() {
+      switch(option) {
+        case 1: {
+          _selectedStore = label;
+          _selectedAddress = null;
+        }
+        break;
+        case 2: {
+          _selectedAddress = label;
+        }
+        break;
+      }
+    });
   }
 
   
@@ -204,15 +316,19 @@ class ScheduleVisit extends StatelessWidget{
         }
         break;
         case 2: {
-          if ( storeSchedule.getTextController('Store').text != '') {
+          if ( !(_selectedStore == null || _selectedAddress == null)) {
+            storeSchedule.getTextController("Store").text = 
+              customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
+            print(storeSchedule.getTextController("Store").text);
+
             return Navigator.push(context, MaterialPageRoute(
-              builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerProfile: customerProfile,),
+              builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile,),
               )
             );
           }
           else {
            Fluttertoast.showToast(
-             msg: 'Please select a store.',
+             msg: 'Please select a store and an address.',
              toastLength: Toast.LENGTH_SHORT,
              gravity: ToastGravity.BOTTOM,
              webPosition: 'center',
@@ -220,6 +336,7 @@ class ScheduleVisit extends StatelessWidget{
           }
         }
         break;
+        
       }
 
 

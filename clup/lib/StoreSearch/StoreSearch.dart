@@ -474,6 +474,13 @@ class _MyStatesViewState extends State<MyStatesView>{
         else {
           customerProfile.addFavoriteStore(storeInfo);
 
+
+          /* TEMP */
+          List<String> storeSplit = storeInfo.split(",");
+          String store = storeSplit[0];
+          String address = storeSplit[1];
+          customerProfile.addStoreAddress(store, address);
+
           String msg = storeInfo + ' was added to Favorites';
     
           final snackBar = SnackBar(content: Text(msg));

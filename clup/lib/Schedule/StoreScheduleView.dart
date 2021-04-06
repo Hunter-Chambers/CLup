@@ -1,19 +1,57 @@
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/CustomerProfile/QR.dart';
+import 'package:clup/Schedule/ScheduleVisit.dart';
 import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'DisplayTimeSlots.dart';
+import "package:clup/Schedule/LoadingScreen.dart";
 
 class StoreScheduleView extends StatelessWidget {
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  StoreScheduleView({Key key, StoreScheduleController scheduleController, CustomerProfileController customerProfile}) 
-      : this.storeSchedule = scheduleController, this.customerProfile = customerProfile,  super(key: key);
+  StoreScheduleView({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
+      : this.storeSchedule = scheduleController, this.customerProfile = customerController,  super(key: key);
+
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyStoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile),
+      );}
+}
+class MyStoreScheduleView extends StatefulWidget {
+  StoreScheduleController storeSchedule;
+  CustomerProfileController customerProfile;
+  MyStoreScheduleView({StoreScheduleController scheduleController, CustomerProfileController customerController})
+  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+
+  @override
+  _MyStoreScheduleViewState createState() => 
+    _MyStoreScheduleViewState(scheduleController: storeSchedule, customerController: customerProfile);
+    
+}
+
+class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
+  List<String> data;
+  StoreScheduleController storeSchedule;
+  CustomerProfileController customerProfile;
+  _MyStoreScheduleViewState({StoreScheduleController scheduleController, CustomerProfileController customerController})
+  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+
+  @override
+  void initState() {
+    super.initState();
+    print("setting schedule");
+    _loadData().then((data) {
+      setState(() {
+        this.data = data;
+    });
+    });
+  }
 
   Widget build(BuildContext context) {
     String storeName = storeSchedule.getTextController('Store').text.split(', ').first; 
 
+    /*
     if (storeName == 'Walmart') 
       storeSchedule.setWalmart();
     else if(storeName == 'HEB'){
@@ -25,6 +63,21 @@ class StoreScheduleView extends StatelessWidget {
     else if (storeName == 'Albertsons'){
       storeSchedule.setAlbertsons();
     }
+    */
+    print("----------------------");
+    print("@@@@@@@@@@@@@@@@@@@@@@@@");
+    if( data == null ) {
+      return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
+    }
+    print("Printing data: ");
+    print(data);
+
+
+
+    print("----------------------");
+    print("@@@@@@@@@@@@@@@@@@@@@@@@");
+    //storeSchedule.setAlbertsons();
+    //storeSchedule.setWalmart();
 
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -78,6 +131,11 @@ class StoreScheduleView extends StatelessWidget {
     );
   }
 
+
+  Future _loadData() async{
+    await storeSchedule.setSchedule();
+    return this.data = storeSchedule.timeSlots;
+  }
 
   _buildVisit(String selectedTimes) {
     String visit = selectedTimes + ';';

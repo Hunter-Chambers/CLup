@@ -98,6 +98,38 @@ class Services {
     }
   }
 
+  static Future<String> getSchedule(String state, String city, String store, String address ) async {
+    try {
+      var map = Map<String, dynamic>();
+      //map['state'] = state;
+      map['state'] = "TX";
+      //map['city'] = city;
+      map['city'] = "Amarillo";
+      //map['store'] = store;
+      map['store'] = "Rando Mart";
+      //map['address'] = address;
+      map['address'] = "3 Lancaster Road";
+      map['storeUsername'] = "store_345";
+      map['fileName'] = "sunday.json";
+
+      String path = ROOT_layt + "Schedule/GetSchedule.php";
+      
+
+      final response = await http.post(path, body: map);
+      //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+
   static Future<String> getALLRecs(String tablename) async {
     try {
       var map = Map<String, dynamic>();

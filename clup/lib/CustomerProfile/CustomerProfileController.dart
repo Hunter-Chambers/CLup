@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CustomerProfileController {
   Map<String, TextEditingController> fieldsMap;
   List<String> favoriteStores;
+  Map<String, List<String>> favoriteStoresAddresses;
   List<String> visits;
 
   CustomerProfileController(List<String> fields) {
@@ -13,10 +14,64 @@ class CustomerProfileController {
     }
 
     favoriteStores = ['Walmart', 'Albertsons', 'Walgreens'];
+    favoriteStoresAddresses = { 
+      "Walmart": ["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
+      "HEB": ["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
+      "Albertsons":["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
+      "Walgreens":["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"]
+    };
     visits = [
       'visit_time;customer_username;customer_contact;store_name;address;city;state;zipcode',
     ];
   }
+
+// WILL NEED UPDATING
+// *************************************************************************
+// *************************************************************************
+  List<String> getFavoriteStoreNames() {
+    // ignore: deprecated_member_use
+    List<String> temp = List<String>(favoriteStores.length);
+    for (int i=0; i<favoriteStores.length; i++) {
+      temp[i] = favoriteStores[i].split(",").first;
+    }
+    return temp;
+
+  }
+
+  addStoreAddress(String storeName, String address) {
+    if (favoriteStoresAddresses.containsKey(storeName)) {
+        favoriteStoresAddresses[storeName].add(address);
+    }
+    else {
+      favoriteStoresAddresses[storeName] = [address];
+    }
+  }
+
+  List<String> getFavoriteStoreAddresses(String storeName) {
+    if( storeName == null) {
+      return null;
+    }
+    return favoriteStoresAddresses[storeName];
+  }
+
+  String getFullStoreInfo(String store, String address) {
+    int i = 0;
+    bool done = false;
+    while ( !done && i < favoriteStores.length) {
+      if ( favoriteStores[i].contains(store) && favoriteStores[i].contains(address)) {
+        done = true;
+      }
+      else {
+        i++;
+      }
+    }
+    if (done) {
+      return favoriteStores[i];
+    }
+    return "Something went wrong.";
+  }
+// *************************************************************************
+// *************************************************************************
 
   TextEditingController getTextController(String key) {
     return fieldsMap[key];

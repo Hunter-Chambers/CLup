@@ -27,7 +27,6 @@ class SearchStoresController {
 
     String temp = await Services.getMenuItems(fileName, menu, needID);
     List tempList = temp.split(",");
-    print(tempList);
 
     for ( int i=0; i < tempList.length; i++) {
       tempList[i] = tempList[i].replaceFirst(' u', "");
@@ -42,6 +41,7 @@ class SearchStoresController {
     return tempList;
 
   }
+  
 
   // ========================================= id handling
   setCityID(int id){

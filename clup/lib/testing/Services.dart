@@ -116,7 +116,44 @@ class Services {
       
 
       final response = await http.post(path, body: map);
-      //print(response.body);
+      print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+  static Future<String> updateSchedule(String state, String city, String store, String address, String times, String partySize ) async {
+    try {
+      var map = Map<String, dynamic>();
+      //map['state'] = state;
+      map['state'] = "TX";
+      //map['city'] = city;
+      map['city'] = "Amarillo";
+      //map['store'] = store;
+      map['store'] = "Rando Mart";
+      //map['address'] = address;
+      map['address'] = "3 Lancaster Road";
+      map['storeUsername'] = "store_345";
+      map['fileName'] = "sunday.json";
+      map['partySize'] = partySize;
+      String startTime = times.split(" - ").first;
+      String endTime = times.split(" - ").last;
+      map['startTime'] = startTime;
+      map['endTime'] = endTime;
+      
+
+
+      String path = ROOT_layt + "Schedule/UpdateSchedule.php";
+      
+
+      final response = await http.post(path, body: map);
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

@@ -6,6 +6,7 @@ import '../StoreSearch/StoreSearch.dart';
 import 'StoreScheduleView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/rendering.dart';
+import 'package:clup/CustomerProfile/CustomerLogin.dart';
 
 class ScheduleVisit extends StatelessWidget{
   final CustomerProfileController customerProfile;
@@ -208,7 +209,52 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                         ]
                         ),
                         ),
-                       /* 
+                        Expanded(
+                        child: 
+                          Column( 
+                          children:  [ 
+                            Container(
+                              padding: EdgeInsets.fromLTRB(0, 100, 0, 20),
+                              alignment: Alignment.center,
+                              child: Text(
+                                'Party Size',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.center,
+                              )
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                              child: TextFormField(
+                                controller: customerProfile.getTextController("party_size"),
+                                /*
+                                validator: (String value) {
+
+                                  if (value.contains(new RegExp(r"[a-zA-Z'-]")) || int.parse(value) > 6) {
+                                    return "Must be a number.";
+                                  }
+                                  else {
+                                    if (int.parse(value) > 6 || int.parse(value) < 1) {
+                                      return "Must be greater than one and less than 6";
+                                    }
+                                  }
+                                  
+                                  return null;
+                                },
+                                */
+                                decoration: const InputDecoration(
+                                  border: OutlineInputBorder(),
+                                  labelText: "Party Size",
+                                ),
+                              ),
+                            ),
+                          ]
+
+                          ),
+                        ),
+                        /*
                         Expanded(child: 
                           Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -260,6 +306,16 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                 onPressed: () => _onButtonPressed(context, 1),
                                 label: Text(
                                   "Store Lookup",
+                                )
+                              ),
+                            ),
+                            Container(
+                              child: FloatingActionButton.extended(
+                                key: Key('rtnProfBtn'),
+                                heroTag: "Back to Profile",
+                                onPressed: () => _onButtonPressed(context, 3),
+                                label: Text(
+                                  "Back to Profile",
                                 )
                               ),
                             ),
@@ -316,10 +372,21 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
         }
         break;
         case 2: {
-          if ( !(_selectedStore == null || _selectedAddress == null)) {
+          int partySize;
+          if ( customerProfile.getTextController("party_size").text != null) {
+            partySize = int.parse(customerProfile.getTextController("party_size").text);
+            print(partySize);
+          }
+          else {
+            partySize = -1;
+            print(partySize);
+          }
+          if ( !(_selectedStore == null || _selectedAddress == null) &&
+                (partySize > 1 && partySize < 6) ) {
+
             storeSchedule.getTextController("Store").text = 
               customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
-            print(storeSchedule.getTextController("Store").text);
+
 
             return Navigator.push(context, MaterialPageRoute(
               builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile,),
@@ -327,13 +394,35 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
             );
           }
           else {
-           Fluttertoast.showToast(
-             msg: 'Please select a store and an address.',
-             toastLength: Toast.LENGTH_SHORT,
-             gravity: ToastGravity.BOTTOM,
-             webPosition: 'center',
-           );
+
+            if (_selectedStore == null || _selectedAddress == null) {
+              Fluttertoast.showToast(
+                msg: 'Please select a store and an address.',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                webPosition: 'center',
+              );
+            }
+            else {
+              Fluttertoast.showToast(
+                msg: 'Party size must be between 1 and 5',
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                webPosition: 'center',
+              );
+
+            }
+           
           }
+        }
+        break;
+        case 3: {
+
+          return Navigator.push(context, MaterialPageRoute(
+            builder: (context) => CustomerLogin(scheduleController: storeSchedule, customerController: customerProfile,),
+            )
+          );
+
         }
         break;
         

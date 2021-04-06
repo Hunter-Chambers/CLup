@@ -7,11 +7,13 @@ class StoreScheduleController {
 
   List <String> timeSlots;
   Map <String, bool> timesAvailable;
+  Map <String, String> reserved;
   Map <int, String> selectedTimes;
 
   StoreScheduleController(List<String> fields,) {
     timeSlots = [];
     timesAvailable = {};
+    reserved = {};
 
     selectedTimes = new Map<int, String>();
 
@@ -67,7 +69,7 @@ class StoreScheduleController {
 
     bool available;
     String key;
-    String room;
+    int numReserved;
 
     String mins;
     String hours;
@@ -97,14 +99,15 @@ class StoreScheduleController {
 
       key = startTime + " - " + hours + ":" + mins;
 
-      room = time.split(":").last;
-      if (room == "true") {
+      numReserved = int.parse(time.split(":").last);
+      if (numReserved < 60) {
         available = true;
       }
       else {
         available = false;
       }
 
+      reserved[key] = numReserved.toString();
       timeSlots[i] = key;
       timesAvailable[key] = available;
 
@@ -269,58 +272,72 @@ class StoreScheduleController {
    }
 
 
-  bool updateSelectedTimes(int index, String time){
+  bool updateSelectedTimes(int index, String time, bool room){
+    bool timesUpdated;
+    if (room) {
+      timesUpdated = true;
 
-    bool timesUpdated = true;
-
-    // check if adding first time    
-    if (selectedTimes.length == 0) {
-      selectedTimes[index] = time;
-    }
-
-    // remove selected time if already exists
-    else if (selectedTimes.containsKey(index)) {
-      List<int> keys = selectedTimes.keys.toList();
-      keys.sort();
-      if (keys.first == index || keys.last == index)
-        selectedTimes.remove(index);
-      else {
-        Fluttertoast.showToast(
-          msg: 'Selected time slots must be consecutive.',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          webPosition: 'center',
-          );
-        timesUpdated = false;
+      // check if adding first time    
+      if (selectedTimes.length == 0) {
+        selectedTimes[index] = time;
       }
-    }
+
+      // remove selected time if already exists
+      else if (selectedTimes.containsKey(index)) {
+        List<int> keys = selectedTimes.keys.toList();
+        keys.sort();
+        if (keys.first == index || keys.last == index)
+          selectedTimes.remove(index);
+        else {
+          Fluttertoast.showToast(
+            msg: 'Selected time slots must be consecutive.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            webPosition: 'center',
+            );
+          timesUpdated = false;
+        }
+      }
     
-    else {
-      // check to see if newly selected time is consecutive
-      // to times already selected
-      if (( index > 0 && selectedTimes.containsKey(index - 1)) || 
-              (index < timeSlots.length - 1 &&  selectedTimes.containsKey(index + 1))) {
-      
-      // time can be selected
-      selectedTimes[index] = time;
-      }
-
-      // time was not consecutive
       else {
-        // prompt the user to only select consecutive times
-        Fluttertoast.showToast(
-          msg: 'Please only select consecutive time slots.',
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          webPosition: 'center',
-        );
-        timesUpdated = false;
+        // check to see if newly selected time is consecutive
+        // to times already selected
+        if (( index > 0 && selectedTimes.containsKey(index - 1)) || 
+                (index < timeSlots.length - 1 &&  selectedTimes.containsKey(index + 1))) {
+                
+        // time can be selected
+        selectedTimes[index] = time;
+        }
+
+        // time was not consecutive
+        else {
+          // prompt the user to only select consecutive times
+          Fluttertoast.showToast(
+            msg: 'Please only select consecutive time slots.',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            webPosition: 'center',
+          );
+          timesUpdated = false;
+
+        }
 
       }
 
-    }
 
-      return timesUpdated;
+  }
+  else{
+    timesUpdated = false;
+    Fluttertoast.showToast(
+            msg: 'Party size exceeds remaining spots',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            webPosition: 'center',
+            );
+  }
+
+    
+    return timesUpdated;
   }
 
   String getSelectedTimes() {

@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     "lname",
     "email",
     "phone",
+    "party_size",
   ]);
   StoreProfileController storeProfile = StoreProfileController([
     "username",

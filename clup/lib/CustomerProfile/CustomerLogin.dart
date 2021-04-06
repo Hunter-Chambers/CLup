@@ -5,14 +5,17 @@ import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
 import 'CustomerEdit.dart';
 import '../Schedule/ScheduleVisit.dart';
+import '../Schedule/StoreScheduleController.dart';
 import 'QR.dart';
+import 'package:clup/Schedule/ScheduleVisit.dart';
 
 class CustomerLogin extends StatefulWidget {
+  final StoreScheduleController scheduleController;
   final CustomerProfileController customerController;
   final String jwt;
   final Map<String, dynamic> payload;
 
-  CustomerLogin({Key key, this.jwt, this.payload, this.customerController})
+  CustomerLogin({Key key, this.jwt, this.payload, this.customerController, this.scheduleController})
       : super(key: key);
 
   @override
@@ -20,14 +23,16 @@ class CustomerLogin extends StatefulWidget {
         jwt: jwt,
         payload: payload,
         customerController: customerController,
+        scheduleController: scheduleController,
       );
 }
 
 class _CustomerLoginState extends State<CustomerLogin> {
   CustomerProfileController customerController;
+  StoreScheduleController scheduleController;
   String jwt;
   Map<String, dynamic> payload;
-  _CustomerLoginState({this.jwt, this.payload, this.customerController});
+  _CustomerLoginState({this.jwt, this.payload, this.customerController, this.scheduleController});
 
   @override
   Widget build(BuildContext context) {

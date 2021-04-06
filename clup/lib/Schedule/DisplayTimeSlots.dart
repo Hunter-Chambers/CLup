@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
+import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 
 
 class DisplayTimeSlots extends StatelessWidget{
   final _scrollController = ScrollController();
   StoreScheduleController storeSchedule;
-  DisplayTimeSlots({Key key, StoreScheduleController scheduleController,}) 
-      : this.storeSchedule = scheduleController,  super(key: key);
+  CustomerProfileController customerProfile;
+  DisplayTimeSlots({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController})
+      : this.storeSchedule = scheduleController, customerProfile = customerController,  super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class DisplayTimeSlots extends StatelessWidget{
               controller: _scrollController,
               itemCount: storeSchedule.timeSlots.length,
               itemBuilder: (BuildContext context, int index) => 
-                  StatefulListTile(passIndex: index, scheduleController: storeSchedule,),
+                  StatefulListTile(passIndex: index, scheduleController: storeSchedule, customerController: customerProfile,),
             )
     );
   }
@@ -36,11 +38,12 @@ class DisplayTimeSlots extends StatelessWidget{
  class StatefulListTile extends StatefulWidget {
    int index;
    StoreScheduleController storeSchedule;
-   StatefulListTile({Key key, int passIndex, StoreScheduleController scheduleController,}) 
-      : this.index = passIndex, this.storeSchedule = scheduleController, super(key: key);
+   CustomerProfileController customerProfile;
+   StatefulListTile({Key key, int passIndex, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
+      : this.index = passIndex, this.storeSchedule = scheduleController, customerProfile = customerController, super(key: key);
 
    @override
-   _StatefulListTileState createState() => _StatefulListTileState(passIndex: index, scheduleController: storeSchedule,);
+   _StatefulListTileState createState() => _StatefulListTileState(passIndex: index, scheduleController: storeSchedule, customerController: customerProfile);
  }
 
 
@@ -49,8 +52,9 @@ class DisplayTimeSlots extends StatelessWidget{
  class _StatefulListTileState extends State<StatefulListTile> {
    int index;
    StoreScheduleController storeSchedule;
-   _StatefulListTileState({int passIndex, StoreScheduleController scheduleController,}) 
-      : this.index = passIndex, this.storeSchedule = scheduleController;
+   CustomerProfileController customerProfile;
+   _StatefulListTileState({int passIndex, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
+      : this.index = passIndex, this.storeSchedule = scheduleController, customerProfile = customerController;
    bool _isSelected = false; 
    Color _color;
 
@@ -73,15 +77,32 @@ class DisplayTimeSlots extends StatelessWidget{
                    enabled: storeSchedule.getAvailable(time),
                    tileColor: _setColor(),
                    selected: _isSelected,
-                   title: Text(
-                     _displayTime(),
-                     style: TextStyle( 
-                       color: Colors.black,
-                       fontWeight: FontWeight.bold,
-                       fontSize: 16,
-                     ),
-                     textAlign: TextAlign.center,
-                     ),
+                   title: 
+                   Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                      Text(
+                       _displayTime(),
+                       style: TextStyle( 
+                         color: Colors.black,
+                         fontWeight: FontWeight.bold,
+                         fontSize: 16,
+                       ),
+                       textAlign: TextAlign.center,
+                      ),
+                      Text(
+                       _displayReserved(),
+                       style: TextStyle( 
+                         color: Colors.black,
+                         fontWeight: FontWeight.bold,
+                         fontSize: 10,
+                       ),
+                       textAlign: TextAlign.center,
+                      ),
+
+                     ]
+                     
+                   ),
                    onTap: () => _onTapped(time),
                  ),
      );
@@ -99,7 +120,10 @@ class DisplayTimeSlots extends StatelessWidget{
 
   
   _onTapped(String time){
-    bool timesUpdated = storeSchedule.updateSelectedTimes(index, time);
+    int numReserved = int.parse(storeSchedule.reserved[time]);
+    int partySize = int.parse(customerProfile.getTextController("party_size").text);
+    bool room = numReserved + partySize <= 60; 
+    bool timesUpdated = storeSchedule.updateSelectedTimes(index, time, room);
     _updateSelection(timesUpdated);
   }
 
@@ -111,6 +135,21 @@ class DisplayTimeSlots extends StatelessWidget{
     }
     return 'Full';
   }
+
+  String _displayReserved() {
+    String time = storeSchedule.timeSlots[index];
+    String reserved = storeSchedule.reserved[time];
+    int numReserved = int.parse(reserved);
+
+    if ( numReserved < 60 ) {
+      int numRemaining = 60 - numReserved;
+      String output = "Spots remaining: " + numRemaining.toString();
+      return output;
+    }
+    return '';
+
+  }
+
 
  }
 

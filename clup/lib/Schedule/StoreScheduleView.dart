@@ -6,6 +6,7 @@ import 'StoreScheduleController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'DisplayTimeSlots.dart';
 import "package:clup/Schedule/LoadingScreen.dart";
+import "package:clup/testing/Services.dart";
 
 class StoreScheduleView extends StatelessWidget {
   final StoreScheduleController storeSchedule;
@@ -101,7 +102,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
                 )
               ),
 
-              DisplayTimeSlots(scheduleController: storeSchedule,),
+              DisplayTimeSlots(scheduleController: storeSchedule, customerController: customerProfile),
 
                         Container(
                 child: Divider(
@@ -109,6 +110,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
               ),
 
               Container(
+                padding: EdgeInsets.only(top: 10),
                 child: FloatingActionButton.extended(
                   heroTag: 'SchedTimesBtn',
                   key: Key('subSchedBtn'),
@@ -172,6 +174,13 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
 
     else{
       _buildVisit(selectedTimes);
+      String state = "something";
+      String city = "something";
+      String store = "something";
+      String address = "something";
+      String partySize = customerProfile.getTextController("party_size").text;
+      Services.updateSchedule(state, city, store, address, selectedTimes, partySize);
+      
       Fluttertoast.showToast(
         msg:  'Scheduled a visit for: ' + selectedTimes,
         toastLength: Toast.LENGTH_LONG,

@@ -34,7 +34,7 @@ void main() {
   testWidgets('Submit button', (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
-        home: StoreScheduleView( scheduleController: storeSchedule, customerProfile: customerProfile,
+        home: StoreScheduleView( scheduleController: storeSchedule, customerController: customerProfile,
         ),
       ),
     );

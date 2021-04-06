@@ -40,7 +40,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   @override
   void initState() {
     super.initState();
-    print("setting schedule");
+    //print("setting schedule");
     _loadData().then((data) {
       setState(() {
         this.data = data;
@@ -64,18 +64,14 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
       storeSchedule.setAlbertsons();
     }
     */
-    print("----------------------");
-    print("@@@@@@@@@@@@@@@@@@@@@@@@");
     if( data == null ) {
       return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
     }
-    print("Printing data: ");
-    print(data);
+    //print("Printing data: ");
+    //print(data);
 
 
 
-    print("----------------------");
-    print("@@@@@@@@@@@@@@@@@@@@@@@@");
     //storeSchedule.setAlbertsons();
     //storeSchedule.setWalmart();
 

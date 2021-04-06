@@ -67,7 +67,7 @@ class StoreScheduleController {
 
     bool available;
     String key;
-    String full;
+    String room;
 
     String mins;
     String hours;
@@ -97,12 +97,12 @@ class StoreScheduleController {
 
       key = startTime + " - " + hours + ":" + mins;
 
-      full = time.split(":").last;
-      if (full == "true") {
-        available = false;
+      room = time.split(":").last;
+      if (room == "true") {
+        available = true;
       }
       else {
-        available = true;
+        available = false;
       }
 
       timeSlots[i] = key;

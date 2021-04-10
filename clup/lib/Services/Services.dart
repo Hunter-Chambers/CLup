@@ -1,6 +1,6 @@
 // ignore: avoid_web_libraries_in_flutter
-import 'dart:io';
 import 'dart:html' show window;
+import 'dart:io';
 
 import 'dart:async';
 import 'package:clup/CustomerProfile/CustomerSignup.dart';
@@ -14,10 +14,10 @@ class Services {
   //static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
   //static const _GET_REC_ACTION = "GET_REC";
 
-  static const _ADD_REC_ACTION = "ADD_REC";
+  //static const _ADD_REC_ACTION = "ADD_REC";
   static const _GET_ALL_ACTION = "GET_ALL";
-  static const _UPDATE_REC_ACTION = "UPDATE_REC";
-  static const _DELETE_REC_ACTION = "DELETE_REC";
+  //static const _UPDATE_REC_ACTION = "UPDATE_REC";
+  //static const _DELETE_REC_ACTION = "DELETE_REC";
 
   static const _ADD_PROFILE_ACTION = "ADD_PROFILE";
   static const _ATTEMPT_LOGIN_ACTION = "ATTEMPT_LOGIN";

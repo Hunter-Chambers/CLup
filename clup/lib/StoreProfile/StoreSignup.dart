@@ -1,5 +1,5 @@
 import 'package:clup/StoreProfile/StoreProfileController.dart';
-import 'package:clup/testing/Services.dart';
+import 'package:clup/Services/Services.dart';
 import 'package:flutter/material.dart';
 
 class StoreSignup extends StatefulWidget {

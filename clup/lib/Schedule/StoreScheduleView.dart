@@ -1,12 +1,11 @@
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/CustomerProfile/QR.dart';
-import 'package:clup/Schedule/ScheduleVisit.dart';
 import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'DisplayTimeSlots.dart';
 import "package:clup/Schedule/LoadingScreen.dart";
-import "package:clup/testing/Services.dart";
+import "package:clup/Services/Services.dart";
 
 class StoreScheduleView extends StatelessWidget {
   final StoreScheduleController storeSchedule;
@@ -20,8 +19,8 @@ class StoreScheduleView extends StatelessWidget {
       );}
 }
 class MyStoreScheduleView extends StatefulWidget {
-  StoreScheduleController storeSchedule;
-  CustomerProfileController customerProfile;
+  final StoreScheduleController storeSchedule;
+  final CustomerProfileController customerProfile;
   MyStoreScheduleView({StoreScheduleController scheduleController, CustomerProfileController customerController})
   : this.storeSchedule = scheduleController, this.customerProfile = customerController;
 
@@ -33,8 +32,8 @@ class MyStoreScheduleView extends StatefulWidget {
 
 class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   List<String> data;
-  StoreScheduleController storeSchedule;
-  CustomerProfileController customerProfile;
+  final StoreScheduleController storeSchedule;
+  final CustomerProfileController customerProfile;
   _MyStoreScheduleViewState({StoreScheduleController scheduleController, CustomerProfileController customerController})
   : this.storeSchedule = scheduleController, this.customerProfile = customerController;
 
@@ -45,7 +44,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
     _loadData().then((data) {
       setState(() {
         this.data = data;
-    });
+      });
     });
   }
 

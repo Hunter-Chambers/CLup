@@ -1,4 +1,4 @@
-import 'package:clup/testing/Services.dart';
+import 'package:clup/Services/Services.dart';
 
 class ServicesMock implements Services {
   ServicesMock(

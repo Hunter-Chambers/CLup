@@ -4,7 +4,7 @@ import 'dart:html' show window;
 import 'dart:convert';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import 'package:clup/StoreProfile/StoreLogin.dart';
-import 'package:clup/testing/Services.dart';
+import 'package:clup/Services/Services.dart';
 import 'package:flutter/material.dart';
 //import 'package:dart_code_metrics/metrics_analyzer.dart';
 //import 'package:dart_code_metrics/reporters.dart';

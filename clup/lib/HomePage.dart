@@ -9,7 +9,7 @@ import 'CustomerProfile/CustomerLogin.dart';
 import 'CustomerProfile/CustomerSignup.dart';
 import 'StoreProfile/StoreLogin.dart';
 import 'StoreProfile/StoreSignup.dart';
-import 'testing/Services.dart';
+import 'Services/Services.dart';
 
 class HomePage extends StatefulWidget {
   final String title;

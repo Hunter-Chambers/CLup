@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -9,34 +8,57 @@ import 'package:flutter/rendering.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 
 class ScheduleVisit extends StatelessWidget{
+
+
   final CustomerProfileController customerProfile;
-  ScheduleVisit({Key key, CustomerProfileController customerController, }) 
-      : this.customerProfile = customerController, super(key: key);
-    final _scrollController = ScrollController();
-    final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
+  ScheduleVisit({CustomerProfileController customerController, }) 
+                 : this.customerProfile = customerController;
+
+  final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
+
+
   Widget build(BuildContext context) {
     return
     MaterialApp(
-      home: MyScheduleVisitView(scheduleController: storeSchedule, customerController: customerProfile),
+      home: MyScheduleVisitView(scheduleController: storeSchedule,
+                              customerController: customerProfile),
       );}
 }
+
+
 class MyScheduleVisitView extends StatefulWidget {
-  StoreScheduleController storeSchedule;
-  CustomerProfileController customerProfile;
-  MyScheduleVisitView({StoreScheduleController scheduleController, CustomerProfileController customerController})
-  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+  final StoreScheduleController storeSchedule;
+  final CustomerProfileController customerProfile;
+  final GlobalKey<FormState> _partySizeKey = new GlobalKey<FormState>();
+  MyScheduleVisitView({StoreScheduleController scheduleController, 
+                      CustomerProfileController customerController,
+                      })
+                      : this.storeSchedule = scheduleController,
+                      this.customerProfile = customerController;
 
   @override
   _MyScheduleVisitViewState createState() => 
-    _MyScheduleVisitViewState(scheduleController: storeSchedule, customerController: customerProfile);
+    _MyScheduleVisitViewState(scheduleController: storeSchedule,
+                             customerController: customerProfile,
+                             partySizeKey: _partySizeKey,
+                             );
 }
 
 class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
+
+
   StoreScheduleController storeSchedule;
   CustomerProfileController customerProfile;
-  _MyScheduleVisitViewState({StoreScheduleController scheduleController, CustomerProfileController customerController})
-  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+  GlobalKey<FormState> _partySizeKey;
+  _MyScheduleVisitViewState({StoreScheduleController scheduleController,
+                              CustomerProfileController customerController, 
+                              GlobalKey<FormState> partySizeKey})
+                              : this.storeSchedule = scheduleController,
+                               this.customerProfile = customerController,
+                                this._partySizeKey = partySizeKey;
+
   String _selectedStore, _selectedAddress;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -165,36 +187,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
                             ]
                             ),
-                            
                        
-           /*****************************************************************  store tiles */
-                            /*
-                            Scrollbar( 
-                              controller: _scrollController,
-                              isAlwaysShown: true,
-                              child: ListView.separated(
-                                controller: _scrollController,
-                                itemCount: entries.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Container (
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black)),
-                                    child: ListTile(
-                                    key: Key('storeTile'),
-                                    tileColor: Colors.white,
-                                    title: Text(
-                                      "${entries[index].split(',').first}",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontWeight: FontWeight.bold)
-                                      ),
-                                    onTap: () => _onTapped(entries[index]),
-                                  )
-                                  );
-                                },
-                                separatorBuilder: (BuildContext context, int index) => const Divider(),
-                              )
-                            )
-                            */
                             Container(
                               padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
                               child: FloatingActionButton.extended(
@@ -229,24 +222,25 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
                               child: TextFormField(
                                 controller: customerProfile.getTextController("party_size"),
-                                /*
                                 validator: (String value) {
 
-                                  if (value.contains(new RegExp(r"[a-zA-Z'-]")) || int.parse(value) > 6) {
+                                  print(value);
+                                  if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                                    print(value);
                                     return "Must be a number.";
                                   }
                                   else {
                                     if (int.parse(value) > 6 || int.parse(value) < 1) {
+                                      print(value);
                                       return "Must be greater than one and less than 6";
                                     }
                                   }
                                   
                                   return null;
                                 },
-                                */
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
-                                  labelText: "Party Size",
+                                  labelText: "Enter Party Size",
                                 ),
                               ),
                             ),
@@ -254,31 +248,6 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
                           ),
                         ),
-                        /*
-                        Expanded(child: 
-                          Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-
-                            /*
-                            Container(
-                              // Have to define this field or it throws a render error
-                              width: 500,
-                              color: Colors.white,
-                              child: TextField(
-                                key: Key('selectedStore'),
-                                textAlign: TextAlign.center,
-                                readOnly: true,
-                                controller: storeSchedule.getTextController('Store'),
-                                ),
-                            ),
-                            */
-
-                            
-                          ] 
-                          ),
-                        ),
-                        */
                         
                         Expanded(child: 
                           Column(
@@ -300,6 +269,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              padding: EdgeInsets.only(top: 20),
                               child: FloatingActionButton.extended(
                                 key: Key('strLookBtn'),
                                 heroTag: "LookupBtn",
@@ -310,6 +280,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               ),
                             ),
                             Container(
+                              padding: EdgeInsets.only(top: 40),
                               child: FloatingActionButton.extended(
                                 key: Key('rtnProfBtn'),
                                 heroTag: "Back to Profile",
@@ -361,14 +332,17 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
   
   _onButtonPressed(BuildContext context, int option){
-
+    if (_partySizeKey.currentState == null) {
+      print("currentState is null");
+    }
+    else if(_partySizeKey.currentState.validate()) {
       switch(option){
         case 1: {
             Navigator.push(context, MaterialPageRoute(
               builder: (context) => StoreSearch(customerController: customerProfile,),
               )
             );
-          
+
         }
         break;
         case 2: {
@@ -412,7 +386,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
               );
 
             }
-           
+
           }
         }
         break;
@@ -425,13 +399,15 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
         }
         break;
-        
-      }
+    }
 
-
-    
-    
     return null;
+      
+    }
+
+
+    
+    
   } 
 
 

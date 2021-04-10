@@ -1,8 +1,4 @@
-import 'package:clup/StoreSearch/UpdateStoreSearchJsons.dart';
 import 'package:flutter/material.dart';
-import 'UpdateStoreSearchJsons.dart';
-import '../testing/Services.dart';
-import 'dart:io';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'SearchStoresController.dart';
@@ -23,8 +19,8 @@ class StoreSearch extends StatelessWidget {
   //final String _title = 'Select a State';
   //final String _label = 'States';
 
-  CustomerProfileController customerProfile;
-  SearchStoresController menuItems = SearchStoresController();
+  final CustomerProfileController customerProfile;
+  final SearchStoresController menuItems = SearchStoresController();
   StoreSearch ({Key key, CustomerProfileController customerController}) : this.customerProfile = customerController, super(key: key);
 
   Widget build(BuildContext context) {
@@ -35,8 +31,8 @@ class StoreSearch extends StatelessWidget {
 }
 
 class MyStatesView extends StatefulWidget{
-  SearchStoresController menuItems;
-  CustomerProfileController customerProfile;
+  final SearchStoresController menuItems;
+  final CustomerProfileController customerProfile;
   MyStatesView({SearchStoresController searchController, CustomerProfileController customerController })
   : this.menuItems = searchController, this.customerProfile = customerController;
   

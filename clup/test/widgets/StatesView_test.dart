@@ -1,9 +1,11 @@
+// *********************************************
+// *********************************************
+//  NEEDS UPDATING FOR NEW DROP DOWN SETUP
+// *********************************************
+// *********************************************
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
-import 'package:clup/Schedule/DisplayTimeSlots.dart';
-import 'package:clup/StoreSearch/StoreSearch.dart';
 import 'package:clup/Schedule/ScheduleVisit.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:clup/Schedule/StoreScheduleController.dart';
 import 'package:flutter/material.dart';
 
 void main() {

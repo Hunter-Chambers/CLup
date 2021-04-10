@@ -1,7 +1,5 @@
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import '../testing/Services.dart';
-import 'dart:convert';
+import '../Services/Services.dart';
 
 class SearchStoresController {
   int _cityID, _storeID;

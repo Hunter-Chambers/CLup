@@ -5,8 +5,8 @@ import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 
 class DisplayTimeSlots extends StatelessWidget{
   final _scrollController = ScrollController();
-  StoreScheduleController storeSchedule;
-  CustomerProfileController customerProfile;
+  final StoreScheduleController storeSchedule;
+  final CustomerProfileController customerProfile;
   DisplayTimeSlots({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController})
       : this.storeSchedule = scheduleController, customerProfile = customerController,  super(key: key);
 
@@ -36,9 +36,9 @@ class DisplayTimeSlots extends StatelessWidget{
 
 
  class StatefulListTile extends StatefulWidget {
-   int index;
-   StoreScheduleController storeSchedule;
-   CustomerProfileController customerProfile;
+   final int index;
+   final StoreScheduleController storeSchedule;
+   final CustomerProfileController customerProfile;
    StatefulListTile({Key key, int passIndex, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
       : this.index = passIndex, this.storeSchedule = scheduleController, customerProfile = customerController, super(key: key);
 

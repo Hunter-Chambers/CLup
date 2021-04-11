@@ -20,7 +20,7 @@ for root, dNames, fNames in os.walk(os.getcwd()):
 
         if (".p" in f):
             os.chmod(filePath, 0o744)
-        elif (".json" in f):
+        elif (".json" in f or ".txt" in f):
             os.chmod(filePath, 0o666)
         # end if
     # end for

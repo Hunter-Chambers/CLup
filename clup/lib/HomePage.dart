@@ -451,7 +451,7 @@ class _HomePageState extends State<HomePage> {
                   Map<String, dynamic> payload = json.decode(ascii.decode(
                       base64.decode(base64.normalize(result.split(".")[1]))));
                   Map<String, dynamic> recordValues = json.decode(
-                      '{"username":"store","store_name":"Rando Store","open_time":"7:00AM","close_time":"11:00PM","capacity":"1500","address":"1234 Random Street","city":"Amarillo","state":"TX","zipcode":"79124"}');
+                      '{"username":"store_345","store_name":"Rando Mart","open_time":"0700","close_time":"2300","capacity":"100","address":"3 Lancaster Road","city":"Amarillo","state":"TX","zipcode":"79124"}');
 
                   storeProfile.getTextController("username").text =
                       recordValues["username"];

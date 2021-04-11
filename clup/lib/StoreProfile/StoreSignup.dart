@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:clup/testing/Services.dart';
 import 'package:flutter/material.dart';
@@ -496,6 +498,43 @@ class _StoreSignupState extends State<StoreSignup> {
                                   "An unexpected error occurred",
                                   context);
                             } else {
+                              Services.showLoadingIndicator(context);
+
+                              String state = json.encode(widget.storeProfile
+                                  .getTextController("state")
+                                  .text);
+                              String city = json.encode(widget.storeProfile
+                                  .getTextController("city")
+                                  .text);
+                              String store = json.encode(widget.storeProfile
+                                  .getTextController("store_name")
+                                  .text);
+                              String address = json.encode(widget.storeProfile
+                                  .getTextController("address")
+                                  .text);
+                              String storeUsername = json.encode(widget
+                                  .storeProfile
+                                  .getTextController("username")
+                                  .text);
+                              String startTime = json.encode(widget.storeProfile
+                                  .getTextController("open_time")
+                                  .text);
+                              String endTime = json.encode(widget.storeProfile
+                                  .getTextController("close_time")
+                                  .text);
+                              String result = await Services.createFiles(
+                                  state,
+                                  city,
+                                  store,
+                                  address,
+                                  storeUsername,
+                                  startTime,
+                                  endTime);
+
+                              print(result);
+
+                              Services.hideLoadingIndicator(context);
+
                               _onButtonPressed(context, 1);
                             }
                           }

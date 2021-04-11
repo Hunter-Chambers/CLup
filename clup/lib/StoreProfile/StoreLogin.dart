@@ -1,7 +1,8 @@
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
+import 'package:jsqr/scanner.dart';
+import 'dart:convert';
 import 'StoreEdit.dart';
-import 'ScanQR.dart';
 import 'package:clup/Services/Services.dart';
 
 class StoreLogin extends StatefulWidget {
@@ -104,7 +105,7 @@ class _StoreLoginState extends State<StoreLogin> {
                 padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
                 child: FloatingActionButton.extended(
                   heroTag: "S_QRBtn",
-                  onPressed: () => _onButtonPressed(context, 2),
+                  onPressed: () => _openScan(),
                   label: Text(
                     "Scan QR Code",
                     style: TextStyle(
@@ -154,6 +155,86 @@ class _StoreLoginState extends State<StoreLogin> {
     );
   }
 
+  void _openScan() async {
+    var code = await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            insetPadding: EdgeInsets.all(5),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10.0))),
+            title: const Text('Scan QR Code'),
+            content: Container(width: 640, height: 480, child: Scanner()),
+          );
+        });
+
+    List<String> info = code.split(";");
+    String customer = json.encode({
+      info[0]: {
+        'contact_info': info[1],
+        'party_size': int.parse(info[2]),
+        'type': info[3],
+        'visit_length': int.parse(info[4])
+      }
+    }).replaceAll("\"", "\\\"");
+
+    String state = json.encode(storeController.getTextController('state').text);
+    String city = json.encode(storeController.getTextController('city').text);
+    String store =
+        json.encode(storeController.getTextController('store_name').text);
+    String address =
+        json.encode(storeController.getTextController('address').text);
+    String storeUsername = storeController.getTextController('username').text;
+
+    Services.showLoadingIndicator(context);
+
+    String isShopping = await Services.customerIsShopping(
+        state, city, store, address, storeUsername, customer);
+
+    Services.hideLoadingIndicator(context);
+
+    if (isShopping == "NOT SHOPPING\n") {
+      String isInTemp = await Services.checkTempStorage(
+          state, city, store, address, storeUsername, customer);
+
+      if (isInTemp == "FOUND\n") {
+        DateTime currentTime = DateTime.now();
+
+        String currentHour = currentTime.hour.toString().padLeft(2, '0');
+        String currentMinute = currentTime.minute.toString().padLeft(2, '0');
+
+        String visitStartBlock = currentHour + currentMinute;
+        String trueAdmittance = "True";
+
+        String result = await Services.admitCustomer(state, city, store,
+            address, storeUsername, customer, visitStartBlock, trueAdmittance);
+        Services.showAlertMessage(info[0] + " Admitted!", result, context);
+      } else {
+        Services.showAlertMessage(info[0] + " Not Found",
+            info[0] + " is not in the schedule.", context);
+      }
+    } else if (isShopping == "timed out") {
+      Services.showAlertMessage(
+          "Connection Error", "An error occurred, please try again.", context);
+    } else {
+      String storeCloseTime =
+          storeController.getTextController("close_time").text;
+      String maxCapacity = storeController.getTextController("capacity").text;
+
+      String result = await Services.releaseCustomer(
+          state,
+          city,
+          store,
+          address,
+          storeUsername,
+          customer,
+          isShopping,
+          storeCloseTime,
+          maxCapacity);
+      Services.showAlertMessage(info[0] + " Released!", result, context);
+    }
+  }
+
   _onButtonPressed(BuildContext context, int option) async {
     ScaffoldMessenger.of(context).removeCurrentSnackBar();
     switch (option) {
@@ -175,20 +256,7 @@ class _StoreLoginState extends State<StoreLogin> {
           }
         }
         break;
-      case 2:
-        {
-          return Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ScanQR(),
-              ));
-        }
-        break;
-        case 3:
-        {
-          List<String> temp = ['1', '2', '3', '4'];
-          Services.addStore(temp);
-        }
+
     }
   }
 }

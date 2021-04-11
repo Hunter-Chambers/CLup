@@ -9,6 +9,8 @@ import 'package:http/http.dart' as http;
 
 class Services {
   static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
+  static const ROOT_FILE_MANAGEMENT =
+      "http://10.0.6.1/cs4391/hc998658/Schedule/ScheduleFileManager.php";
   static const ROOT_layt = "http://10.0.6.1/cs4391/le1010274/";
 
   //static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
@@ -28,6 +30,7 @@ class Services {
   static const _MAKE_CHOICE = "MAKE_CHOICE";
   static const _CHECK_FOR_SHOPPING_CUSTOMER = "CHECK_FOR_SHOPPING_CUSTOMER";
   static const _RELEASE_CUSTOMER = "RELEASE_CUSTOMER";
+  static const _CHECK_TEMP_STORAGE = "CHECK_TEMP_STORAGE";
 
   /*
   static Future<String> createTable(String tableName) async {
@@ -466,6 +469,8 @@ class Services {
       }
 
       return "failure";
+    } on TimeoutException catch (_) {
+      return "timed out";
     } catch (e) {
       print(e);
       return "failure";
@@ -497,6 +502,70 @@ class Services {
 
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> checkTempStorage(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String customer) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['action'] = _CHECK_TEMP_STORAGE;
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['customer'] = customer;
+
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+
+  static Future<String> createFiles(
+      String state,
+      String city,
+      String store,
+      String address,
+      String storeUsername,
+      String startTime,
+      String endTime) async {
+    try {
+      var map = Map<String, dynamic>();
+      map['state'] = state;
+      map['city'] = city;
+      map['store'] = store;
+      map['address'] = address;
+      map['storeUsername'] = storeUsername;
+      map['startTime'] = startTime;
+      map['endTime'] = endTime;
+
+      final response = await http
+          .post(ROOT_FILE_MANAGEMENT, body: map)
+          .timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

@@ -24,13 +24,19 @@ class StoreProfileController {
   }
 
   void formatFields(String openAmPm, String closeAmPm) {
-    String time = getTextController("open_time").text;
-    time += openAmPm;
-    getTextController("open_time").text = time;
+    List<String> time = getTextController("open_time").text.split(":");
+    int hour = int.parse(time[0]);
+    if (openAmPm == "PM") hour += 12;
 
-    time = getTextController("close_time").text;
-    time += closeAmPm;
-    getTextController("close_time").text = time;
+    getTextController("open_time").text =
+        hour.toString().padLeft(2, '0') + time[1];
+
+    time = getTextController("close_time").text.split(":");
+    hour = int.parse(time[0]);
+    if (closeAmPm == "PM") hour += 12;
+
+    getTextController("close_time").text =
+        hour.toString().padLeft(2, '0') + time[1];
 
     getTextController("state").text =
         getTextController("state").text.toUpperCase();

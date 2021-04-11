@@ -73,6 +73,79 @@ class Services {
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
   }
   */
+  static Future<String> addStore(List<String> storeInfo) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['state'] = storeInfo[0];
+      map['city'] = storeInfo[1];
+      map['store'] = storeInfo[2];
+      map['address'] = storeInfo[3];
+
+      String path = ROOT_layt + "StoreSearch/AddStore.py";
+      print(path);
+      
+
+      final response = await http.post(path, body: map);
+      print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+  static Future<String> getFavoriteStores(String username) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['username'] = username;
+
+
+      String path = ROOT_layt + "CustomerFavorites/GetFavorites.php";
+      
+
+      final response = await http.post(path, body: map);
+      //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+ static Future<String> addFavoriteStore(String username, String storeInfo) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['username'] = username;
+      map['storeInfo'] = storeInfo;
+
+
+      String path = ROOT_layt + "CustomerFavorites/AddFavorite.php";
+      
+
+      final response = await http.post(path, body: map);
+      //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
 
   static Future<String> getMenuItems(String fileName, String menu, String needID) async {
     try {
@@ -128,6 +201,7 @@ class Services {
       return "failure";
     }
   }
+  /*
   static Future<String> updateSchedule(String state, String city, String store, String address, String times, String partySize ) async {
     try {
       var map = Map<String, dynamic>();
@@ -165,6 +239,7 @@ class Services {
       return "failure";
     }
   }
+  */
 
 
   static Future<String> getALLRecs(String tablename) async {

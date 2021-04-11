@@ -518,10 +518,19 @@ class _StoreSignupState extends State<StoreSignup> {
     );
   }
 
-  _onButtonPressed(BuildContext context, int option) {
+  _onButtonPressed(BuildContext context, int option) async{
     switch (option) {
       case 1:
         {
+          String state = widget.storeProfile.getTextController("state").text;
+          String city = widget.storeProfile.getTextController("city").text;
+          String store = widget.storeProfile.getTextController("store_name").text;
+          String address = widget.storeProfile.getTextController("address").text;
+
+          List<String> storeInfo = [state, city, store, address];
+                                    
+
+          await Services.addStore(storeInfo);
           widget.storeProfile.reset();
           Navigator.pop(context);
           return Services.showAlertMessage("Profile Successfully Created",

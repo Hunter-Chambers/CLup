@@ -101,8 +101,8 @@ class SearchStoresController {
     // otherwise concatenate and return store info
     else {
 
-      String storeSelection = store + ', ' +
-        address + ', ' + city + ', ' +  state;
+      String storeSelection = store + ',' +
+        address + ',' + city + ',' +  state;
 
       return storeSelection;
 

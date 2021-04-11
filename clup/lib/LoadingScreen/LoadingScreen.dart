@@ -21,7 +21,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   : storeSchedule = scheduleController, customerProfile = customerController;
 
   Widget build(BuildContext context) {
-    print("made it to the loading screen");
     return 
     Center(child:
       Container(

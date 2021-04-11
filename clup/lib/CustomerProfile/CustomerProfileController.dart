@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:clup/Services/Services.dart';
 
 class CustomerProfileController {
   Map<String, TextEditingController> fieldsMap;
@@ -13,12 +14,9 @@ class CustomerProfileController {
       fieldsMap[field] = new TextEditingController();
     }
 
-    favoriteStores = ['Walmart', 'Albertsons', 'Walgreens'];
+    favoriteStores = [];
     favoriteStoresAddresses = { 
-      "Walmart": ["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
-      "HEB": ["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
-      "Albertsons":["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"],
-      "Walgreens":["111 somePlace", "222 someOtherPlace", "333 thatOtherPlace"]
+      
     };
     visits = [
       'visit_time;customer_username;customer_contact;store_name;address;city;state;zipcode',
@@ -28,6 +26,44 @@ class CustomerProfileController {
 // WILL NEED UPDATING
 // *************************************************************************
 // *************************************************************************
+// 
+  
+  getFavoriteStores() async{
+    String customerUsername = getTextController("username").text;
+    String stores = await Services.getFavoriteStores(customerUsername);
+
+    if (stores != 'no favorites\n') {
+
+      stores = stores.replaceAll("[", "");
+      stores = stores.replaceAll("]", "");
+
+      List<String> storesSplit = stores.split(",");
+
+      for( int i=0; i<storesSplit.length; i++) {
+        storesSplit[i] = storesSplit[i].replaceFirst("u", "");
+        storesSplit[i] = storesSplit[i].replaceAll(";", ",");
+        storesSplit[i] = storesSplit[i].replaceAll("'", "");
+        storesSplit[i] = storesSplit[i].replaceAll("-", " ");
+        favoriteStores.add(storesSplit[i]);
+        addStoreAddress(storesSplit[i].split(",")[0], storesSplit[i].split(",")[1]);
+      }
+
+    }
+
+    if (favoriteStores.isEmpty) {
+      favoriteStores = ["No Favorites yet."];
+    }
+
+    return favoriteStores;
+    
+
+  }
+
+  addFavoriteStore(String store) async{
+    String customerUsername = getTextController("username").text;
+    await Services.addFavoriteStore(customerUsername, store);
+  }
+
   List<String> getFavoriteStoreNames() {
     // ignore: deprecated_member_use
     List<String> temp = List<String>(favoriteStores.length);
@@ -77,9 +113,7 @@ class CustomerProfileController {
     return fieldsMap[key];
   }
 
-  addFavoriteStore(String store) {
-    favoriteStores.add(store);
-  }
+  
 
   disposeTextController(String key) {
     fieldsMap[key].dispose();

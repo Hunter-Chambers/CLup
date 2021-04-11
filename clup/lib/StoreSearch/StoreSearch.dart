@@ -469,13 +469,7 @@ class _MyStatesViewState extends State<MyStatesView>{
         // Prompt the user store was added
         else {
           customerProfile.addFavoriteStore(storeInfo);
-
-
-          /* TEMP */
-          List<String> storeSplit = storeInfo.split(",");
-          String store = storeSplit[0];
-          String address = storeSplit[1];
-          customerProfile.addStoreAddress(store, address);
+          print(storeInfo);
 
           String msg = storeInfo + ' was added to Favorites';
     

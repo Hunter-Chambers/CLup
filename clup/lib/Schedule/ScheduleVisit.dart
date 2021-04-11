@@ -6,6 +6,7 @@ import 'StoreScheduleView.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/rendering.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
+import 'package:clup/LoadingScreen/LoadingScreen.dart';
 
 class ScheduleVisit extends StatelessWidget{
 
@@ -58,11 +59,28 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                 this._partySizeKey = partySizeKey;
 
   String _selectedStore, _selectedAddress;
+  List<String> data;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData().then((data) {
+      setState(() {
+        this.data = data;
+      });
+    });
+  }
+
   
 
   @override
   Widget build(BuildContext context) {
     storeSchedule.getTextController('Store').text = '';
+    
+    if( data == null ) {
+      return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
+    }
+
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Profile Page")),
@@ -313,6 +331,10 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
     );
   }
 
+  Future _loadData() async{
+    await customerProfile.getFavoriteStores();
+    return this.data = customerProfile.favoriteStores;
+  }
 
   _onTapped(String label, int option){
     setState(() {

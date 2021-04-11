@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'DisplayTimeSlots.dart';
-import "package:clup/Schedule/LoadingScreen.dart";
+import 'package:clup/LoadingScreen/LoadingScreen.dart';
 import "package:clup/Services/Services.dart";
 
 class StoreScheduleView extends StatelessWidget {
@@ -51,29 +51,9 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   Widget build(BuildContext context) {
     String storeName = storeSchedule.getTextController('Store').text.split(', ').first; 
 
-    /*
-    if (storeName == 'Walmart') 
-      storeSchedule.setWalmart();
-    else if(storeName == 'HEB'){
-      storeSchedule.setHEB();
-    }
-    else if(storeName == 'United Supermarkets'){
-      storeSchedule.setUnited();
-    }
-    else if (storeName == 'Albertsons'){
-      storeSchedule.setAlbertsons();
-    }
-    */
     if( data == null ) {
       return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
     }
-    //print("Printing data: ");
-    //print(data);
-
-
-
-    //storeSchedule.setAlbertsons();
-    //storeSchedule.setWalmart();
 
     return Scaffold(
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
@@ -178,7 +158,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
       String store = "something";
       String address = "something";
       String partySize = customerProfile.getTextController("party_size").text;
-      Services.updateSchedule(state, city, store, address, selectedTimes, partySize);
+      //Services.updateSchedule(state, city, store, address, selectedTimes, partySize);
       
       Fluttertoast.showToast(
         msg:  'Scheduled a visit for: ' + selectedTimes,

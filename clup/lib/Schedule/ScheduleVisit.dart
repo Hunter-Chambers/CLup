@@ -12,8 +12,8 @@ class ScheduleVisit extends StatelessWidget{
 
 
   final CustomerProfileController customerProfile;
-  ScheduleVisit({CustomerProfileController customerController, }) 
-                 : this.customerProfile = customerController;
+  ScheduleVisit({Key key, CustomerProfileController customerController, }) 
+                 : this.customerProfile = customerController, super(key: key);
 
   final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
 
@@ -22,7 +22,8 @@ class ScheduleVisit extends StatelessWidget{
     return
     MaterialApp(
       home: MyScheduleVisitView(scheduleController: storeSchedule,
-                              customerController: customerProfile),
+                              customerController: customerProfile,
+      )
       );}
 }
 
@@ -30,9 +31,9 @@ class ScheduleVisit extends StatelessWidget{
 class MyScheduleVisitView extends StatefulWidget {
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  final GlobalKey<FormState> _partySizeKey = new GlobalKey<FormState>();
   MyScheduleVisitView({StoreScheduleController scheduleController, 
                       CustomerProfileController customerController,
+                      GlobalKey<FormState> partySizeKey,
                       })
                       : this.storeSchedule = scheduleController,
                       this.customerProfile = customerController;
@@ -41,7 +42,6 @@ class MyScheduleVisitView extends StatefulWidget {
   _MyScheduleVisitViewState createState() => 
     _MyScheduleVisitViewState(scheduleController: storeSchedule,
                              customerController: customerProfile,
-                             partySizeKey: _partySizeKey,
                              );
 }
 
@@ -50,13 +50,13 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
   StoreScheduleController storeSchedule;
   CustomerProfileController customerProfile;
-  GlobalKey<FormState> _partySizeKey;
-  _MyScheduleVisitViewState({StoreScheduleController scheduleController,
+  final _partySizeKey = GlobalKey<FormState>();
+  _MyScheduleVisitViewState({
+                             StoreScheduleController scheduleController,
                               CustomerProfileController customerController, 
-                              GlobalKey<FormState> partySizeKey})
+                              })
                               : this.storeSchedule = scheduleController,
-                               this.customerProfile = customerController,
-                                this._partySizeKey = partySizeKey;
+                               this.customerProfile = customerController;
 
   String _selectedStore, _selectedAddress;
   List<String> data;
@@ -67,9 +67,12 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
     _loadData().then((data) {
       setState(() {
         this.data = data;
+        //_partySizeKey = new GlobalKey<FormState>();
       });
     });
   }
+
+  
 
   
 
@@ -238,29 +241,33 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                             ),
                             Container(
                               margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
-                              child: TextFormField(
-                                controller: customerProfile.getTextController("party_size"),
-                                validator: (String value) {
+                              child: Form(
+                                key: _partySizeKey,
+                                child: TextFormField(
+                                  controller: customerProfile.getTextController("party_size"),
+                                  validator: (String value) {
 
-                                  print(value);
-                                  if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
                                     print(value);
-                                    return "Must be a number.";
-                                  }
-                                  else {
-                                    if (int.parse(value) > 6 || int.parse(value) < 1) {
+                                    if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
                                       print(value);
-                                      return "Must be greater than one and less than 6";
+                                      return "Must be a number.";
                                     }
-                                  }
-                                  
-                                  return null;
-                                },
-                                decoration: const InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: "Enter Party Size",
+                                    else {
+                                      if (int.parse(value) > 5 || int.parse(value) < 1) {
+                                        print(value);
+                                        return "Must be greater than one and less than 6";
+                                      }
+                                    }
+
+                                    return null;
+                                  },
+                                  decoration: const InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: "Enter Party Size",
+                                  ),
                                 ),
                               ),
+                              
                             ),
                           ]
 
@@ -355,6 +362,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   
   _onButtonPressed(BuildContext context, int option){
     if (_partySizeKey.currentState == null) {
+      print(_partySizeKey.toString());
       print("currentState is null");
     }
     else if(_partySizeKey.currentState.validate()) {
@@ -371,14 +379,12 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
           int partySize;
           if ( customerProfile.getTextController("party_size").text != null) {
             partySize = int.parse(customerProfile.getTextController("party_size").text);
-            print(partySize);
           }
           else {
             partySize = -1;
-            print(partySize);
           }
           if ( !(_selectedStore == null || _selectedAddress == null) &&
-                (partySize > 1 && partySize < 6) ) {
+                (partySize > 0 && partySize < 6) ) {
 
             storeSchedule.getTextController("Store").text = 
               customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
@@ -433,6 +439,25 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   } 
 
 
-  
-
 }
+
+/*
+class SubmitButton extends StatelessWidget {
+  final VoidCallback onClick;
+
+  final GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
+
+  SubmitButton({Key key, this.onClick}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    _formKey.currentState.validate();
+    return GestureDetector(
+      onTap: onClick,
+      child:Container(
+
+        //your button
+    ),
+    );
+  }
+}
+*/

@@ -82,8 +82,7 @@ class Services {
       map['store'] = storeInfo[2];
       map['address'] = storeInfo[3];
 
-      String path = ROOT_layt + "StoreSearch/AddStore.py";
-      print(path);
+      String path = ROOT_layt + "StoreSearch/AddStore.php";
       
 
       final response = await http.post(path, body: map);

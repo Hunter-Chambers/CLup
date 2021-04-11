@@ -2,6 +2,7 @@ import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
 import 'StoreEdit.dart';
 import 'ScanQR.dart';
+import 'package:clup/Services/Services.dart';
 
 class StoreLogin extends StatefulWidget {
   final StoreProfileController storeController;
@@ -112,6 +113,20 @@ class _StoreLoginState extends State<StoreLogin> {
                   ),
                 ),
               ),
+              // testing button
+              Container(
+                padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
+                child: FloatingActionButton.extended(
+                  heroTag: "testBtn",
+                  onPressed: () => _onButtonPressed(context, 3),
+                  label: Text(
+                    "Test",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -169,6 +184,11 @@ class _StoreLoginState extends State<StoreLogin> {
               ));
         }
         break;
+        case 3:
+        {
+          List<String> temp = ['1', '2', '3', '4'];
+          Services.addStore(temp);
+        }
     }
   }
 }

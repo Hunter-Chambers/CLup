@@ -1,6 +1,7 @@
 import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:clup/Services/Services.dart';
 import 'package:flutter/material.dart';
+import 'package:us_states/us_states.dart';
 
 class StoreSignup extends StatefulWidget {
   final Services services;
@@ -214,6 +215,9 @@ class _StoreSignupState extends State<StoreSignup> {
                                 if (!value.contains(
                                     new RegExp(r"^([a-zA-Z]){2,2}$"))) {
                                   return "Must be\nin the\nform XX.";
+                                }
+                                if (USStates.getName(value) == ""){
+                                  return "Invalid\nabbreviation.";
                                 }
 
                                 return null;
@@ -522,7 +526,8 @@ class _StoreSignupState extends State<StoreSignup> {
     switch (option) {
       case 1:
         {
-          String state = widget.storeProfile.getTextController("state").text;
+          String stateAbbr = widget.storeProfile.getTextController("state").text;
+          String state = USStates.getName(stateAbbr);
           String city = widget.storeProfile.getTextController("city").text;
           String store = widget.storeProfile.getTextController("store_name").text;
           String address = widget.storeProfile.getTextController("address").text;

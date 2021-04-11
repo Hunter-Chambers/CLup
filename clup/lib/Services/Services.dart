@@ -146,7 +146,8 @@ class Services {
     }
   }
 
-  static Future<String> getMenuItems(String fileName, String menu, String needID) async {
+  static Future<String> getMenuItems(
+      String fileName, String menu, String needID) async {
     try {
       var map = Map<String, dynamic>();
       map['menu'] = menu;
@@ -154,7 +155,6 @@ class Services {
       map['needID'] = needID;
 
       String path = ROOT_layt + "StoreSearch/GetStore.php";
-      
 
       final response = await http.post(path, body: map);
       //print(response.body);
@@ -170,7 +170,8 @@ class Services {
     }
   }
 
-  static Future<String> getSchedule(String state, String city, String store, String address ) async {
+  static Future<String> getSchedule(
+      String state, String city, String store, String address) async {
     try {
       var map = Map<String, dynamic>();
       //map['state'] = state;
@@ -185,7 +186,6 @@ class Services {
       map['fileName'] = "sunday.json";
 
       String path = ROOT_layt + "Schedule/GetSchedule.php";
-      
 
       final response = await http.post(path, body: map);
       print(response.body);
@@ -201,7 +201,8 @@ class Services {
     }
   }
   /*
-  static Future<String> updateSchedule(String state, String city, String store, String address, String times, String partySize ) async {
+  static Future<String> updateSchedule(String state, String city, String store,
+      String address, String times, String partySize) async {
     try {
       var map = Map<String, dynamic>();
       //map['state'] = state;
@@ -219,11 +220,8 @@ class Services {
       String endTime = times.split(" - ").last;
       map['startTime'] = startTime;
       map['endTime'] = endTime;
-      
-
 
       String path = ROOT_layt + "Schedule/UpdateSchedule.php";
-      
 
       final response = await http.post(path, body: map);
       print(response.body);
@@ -239,7 +237,6 @@ class Services {
     }
   }
   */
-
 
   static Future<String> getALLRecs(String tablename) async {
     try {

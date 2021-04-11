@@ -174,14 +174,14 @@ class Services {
       String state, String city, String store, String address) async {
     try {
       var map = Map<String, dynamic>();
-      //map['state'] = state;
-      map['state'] = "TX";
-      //map['city'] = city;
-      map['city'] = "Amarillo";
-      //map['store'] = store;
-      map['store'] = "Rando Mart";
-      //map['address'] = address;
-      map['address'] = "3 Lancaster Road";
+      map['state'] = state;
+      //map['state'] = "TX";
+      map['city'] = city;
+      //map['city'] = "Amarillo";
+      map['store'] = store;
+      //map['store'] = "Rando Mart";
+      map['address'] = address;
+      //map['address'] = "3 Lancaster Road";
       map['storeUsername'] = "store_345";
       map['fileName'] = "sunday.json";
 

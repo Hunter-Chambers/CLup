@@ -58,16 +58,16 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               : this.storeSchedule = scheduleController,
                                this.customerProfile = customerController;
 
-  String _selectedStore, _selectedAddress;
+  String _selectedStore, _selectedAddress, _selectedDay;
   List<String> data;
 
   @override
   void initState() {
     super.initState();
+    storeSchedule.setDays();
     _loadData().then((data) {
       setState(() {
         this.data = data;
-        //_partySizeKey = new GlobalKey<FormState>();
       });
     });
   }
@@ -79,6 +79,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   @override
   Widget build(BuildContext context) {
     storeSchedule.getTextController('Store').text = '';
+    _selectedDay = storeSchedule.days[0];
     
     if( data == null ) {
       return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
@@ -99,7 +100,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
              controller: new ScrollController(),
              children: [
               Column(
-               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                children: [
                  Container(
                    padding: EdgeInsets.only(top: 20),
@@ -120,8 +121,8 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
 
-                        Expanded(
-                        child: 
+                        //Expanded(
+                        //child: 
                           Column( 
                           children:  [ 
                             Container(
@@ -136,20 +137,20 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                 textAlign: TextAlign.center,
                               )
                             ),
-
-
-                            Row( children: [                              
+                            Container(
+                              width: 800,
+                              child:
+                              Row( 
+                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [                              
             /*****************************************************************  store drop down */
                               Expanded(child: 
                                 Container(
-                                  // Need both height and width or it won't render correctly
-                                  //height: 200,
-                                  //width: 200,
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                                     child:
                                     DropdownButton<String>(
-                                      key: Key('FavoritesDrpDwn'),
+                                      key: Key('FavStrDrpDwn'),
                                       hint: Text("Choose a Store"),
                                       value: _selectedStore,
                                       icon: Icon(Icons.arrow_drop_down),
@@ -175,14 +176,11 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
             /*****************************************************************  address drop down */
                               Expanded(child: 
                                 Container(
-                                  // Need both height and width or it won't render correctly
-                                  //height: 200,
-                                  //width: 200,
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 20),
                                     child:
                                     DropdownButton<String>(
-                                      key: Key('FavoritesDrpDwn'),
+                                      key: Key('FavAddrDrpDwn'),
                                       hint: Text("Choose an Address"),
                                       value: _selectedAddress,
                                       icon: Icon(Icons.arrow_drop_down),
@@ -204,10 +202,43 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                   ),
                                 ),
                               ),
+
+            /*****************************************************************  days drop down */
+                              Expanded(child: 
+                                Container(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 20),
+                                    child:
+                                    DropdownButton<String>(
+                                      key: Key('DaysDrpDwn'),
+                                      hint: Text("Choose a Day"),
+                                      value: _selectedDay,
+                                      icon: Icon(Icons.arrow_drop_down),
+                                      iconSize: 24,
+                                      elevation: 16,
+                                      style: TextStyle(color: Colors.black),
+                                      underline: Container(
+                                        height: 2,
+                                        color: Colors.blue,
+                                      ),
+                                      onChanged: (String newValue) {
+                                        setState(() {
+                                          _onTapped(newValue, 3);
+                                        });
+                                      },
+                                      items: 
+                                        storeSchedule.convertMenu(storeSchedule.days),
+                                    ),
+                                  ),
+                                ),
+                              ),
                               
 
                             ]
                             ),
+                            ),
+
+                            
                        
                             Container(
                               padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
@@ -222,59 +253,64 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                             ),
                         ]
                         ),
-                        ),
-                        Expanded(
-                        child: 
-                          Column( 
-                          children:  [ 
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 100, 0, 20),
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Party Size',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                        //),
+                        Container(
+                          width: 200,
+                          child:
+                          Expanded(
+                            child: 
+                              Column( 
+                              children:  [ 
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 100, 0, 20),
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Party Size',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  )
                                 ),
-                                textAlign: TextAlign.center,
-                              )
-                            ),
-                            Container(
-                              margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
-                              child: Form(
-                                key: _partySizeKey,
-                                child: TextFormField(
-                                  controller: customerProfile.getTextController("party_size"),
-                                  validator: (String value) {
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                                  child: Form(
+                                    key: _partySizeKey,
+                                    child: TextFormField(
+                                      controller: customerProfile.getTextController("party_size"),
+                                      validator: (String value) {
 
-                                    print(value);
-                                    if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
-                                      print(value);
-                                      return "Must be a number.";
-                                    }
-                                    else {
-                                      if (int.parse(value) > 5 || int.parse(value) < 1) {
                                         print(value);
-                                        return "Must be greater than one and less than 6";
-                                      }
-                                    }
+                                        if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
+                                          print(value);
+                                          return "Must be a number.";
+                                        }
+                                        else {
+                                          if (int.parse(value) > 5 || int.parse(value) < 1) {
+                                            print(value);
+                                            return "Must be greater than one and less than 6";
+                                          }
+                                        }
 
-                                    return null;
-                                  },
-                                  decoration: const InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: "Enter Party Size",
+                                        return null;
+                                      },
+                                      decoration: const InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        labelText: "Enter Party Size",
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              
-                            ),
-                          ]
 
+                                ),
+                              ]
+
+                              ),
+                            ),
                           ),
-                        ),
                         
-                        Expanded(child: 
+                        
+                        //Expanded(child: 
                           Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -287,9 +323,9 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                             )
                           ]
                           ),
-                        ),
+                        //),
                         
-                        Expanded(child: 
+                        //Expanded(child: 
                           Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -317,7 +353,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                             ),
                           ],
                         ),
-                        ),
+                        //),
 
                       ], 
                     ),
@@ -355,17 +391,20 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
           _selectedAddress = label;
         }
         break;
+        case 3: {
+          _selectedDay = label;
+        }
+        break;
       }
     });
   }
 
   
   _onButtonPressed(BuildContext context, int option){
-    if (_partySizeKey.currentState == null) {
-      print(_partySizeKey.toString());
-      print("currentState is null");
-    }
-    else if(_partySizeKey.currentState.validate()) {
+
+    storeSchedule.setDays();
+
+    if(_partySizeKey.currentState.validate()) {
       switch(option){
         case 1: {
             Navigator.push(context, MaterialPageRoute(

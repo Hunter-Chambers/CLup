@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../Services/Services.dart';
+import 'package:intl/intl.dart';
+
+
+
 
 class StoreScheduleController {
   Map <String, TextEditingController> fieldsMap;
 
   List <String> timeSlots;
+  List <String> days;
   Map <String, bool> timesAvailable;
   Map <String, String> reserved;
   Map <int, String> selectedTimes;
 
   StoreScheduleController(List<String> fields,) {
     timeSlots = [];
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     timesAvailable = {};
     reserved = {};
 
@@ -40,6 +46,32 @@ class StoreScheduleController {
 
     fieldsMap = {};
   }
+
+  setDays() {
+    DateTime now = DateTime.now();
+    String today = (DateFormat.E().format(DateTime.now()));
+
+    bool done = false;
+    int i = 0;
+    while (!done && i < days.length) {
+      if( days[i].contains(today)) {
+        done = true;
+      }
+      else {
+        i++;
+      }
+    }
+
+    if (done) {
+      days[i] = "Today - " + days[i];
+      String temp = days[0];
+      days[0] = days[i];
+      days[i] = temp;
+    }
+
+
+  }
+
   setTempSchedule() {
     List<String> tempList = ["1", "2", "3"];
     timeSlots = tempList;

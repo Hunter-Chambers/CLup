@@ -29,6 +29,8 @@ class CustomerProfileController {
 // 
   
   getFavoriteStores() async{
+    favoriteStores = [];
+    favoriteStoresAddresses = {};
     String customerUsername = getTextController("username").text;
     String stores = await Services.getFavoriteStores(customerUsername);
 

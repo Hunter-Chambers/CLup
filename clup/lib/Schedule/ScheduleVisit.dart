@@ -15,7 +15,7 @@ class ScheduleVisit extends StatelessWidget{
   ScheduleVisit({Key key, CustomerProfileController customerController, }) 
                  : this.customerProfile = customerController, super(key: key);
 
-  final StoreScheduleController storeSchedule = new StoreScheduleController(['Store']);
+  final StoreScheduleController storeSchedule = new StoreScheduleController(['Store', 'day']);
 
 
   Widget build(BuildContext context) {
@@ -65,6 +65,8 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   void initState() {
     super.initState();
     storeSchedule.setDays();
+    _selectedDay = storeSchedule.days[0];
+    storeSchedule.getTextController('day').text = _selectedDay.replaceAll("Today - ", "");
     _loadData().then((data) {
       setState(() {
         this.data = data;
@@ -79,7 +81,6 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   @override
   Widget build(BuildContext context) {
     storeSchedule.getTextController('Store').text = '';
-    _selectedDay = storeSchedule.days[0];
     
     if( data == null ) {
       return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
@@ -141,10 +142,10 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               width: 800,
                               child:
                               Row( 
-                              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [                              
             /*****************************************************************  store drop down */
-                              Expanded(child: 
+                              //Expanded(child: 
                                 Container(
                                   child: Padding(
                                     padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -170,11 +171,11 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                     ),
                                   ),
                                   ),
-                                ),
+                                //),
                               
 
             /*****************************************************************  address drop down */
-                              Expanded(child: 
+                              //Expanded(child: 
                                 Container(
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 20),
@@ -201,10 +202,10 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                     ),
                                   ),
                                 ),
-                              ),
+                              //),
 
             /*****************************************************************  days drop down */
-                              Expanded(child: 
+                              //Expanded(child: 
                                 Container(
                                   child: Padding(
                                     padding: EdgeInsets.only(right: 20),
@@ -231,7 +232,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                     ),
                                   ),
                                 ),
-                              ),
+                              //),
                               
 
                             ]
@@ -257,8 +258,8 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                         Container(
                           width: 200,
                           child:
-                          Expanded(
-                            child: 
+                          //Expanded(
+                            //child: 
                               Column( 
                               children:  [ 
                                 Container(
@@ -307,7 +308,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
                               ),
                             ),
-                          ),
+                          //),
                         
                         
                         //Expanded(child: 
@@ -393,6 +394,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
         break;
         case 3: {
           _selectedDay = label;
+          storeSchedule.getTextController('day').text = _selectedDay.replaceAll("Today - ", "");
         }
         break;
       }

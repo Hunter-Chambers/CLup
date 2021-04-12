@@ -3,17 +3,37 @@ import 'StoreScheduleController.dart';
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 
 
-class DisplayTimeSlots extends StatelessWidget{
-  final _scrollController = ScrollController();
+class DisplayTimeSlots extends StatefulWidget{
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
   DisplayTimeSlots({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController})
       : this.storeSchedule = scheduleController, customerProfile = customerController,  super(key: key);
 
+  @override _DisplayTimeSlotsState createState() =>
+    _DisplayTimeSlotsState(scheduleController: storeSchedule,
+                           customerController: customerProfile);
+
+}
+class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
+  StoreScheduleController storeSchedule;
+  CustomerProfileController customerProfile;
+  final _scrollController = ScrollController();
+  //Color _color;
+
+  _DisplayTimeSlotsState ({StoreScheduleController scheduleController,
+                            CustomerProfileController customerController}) :
+                            storeSchedule = scheduleController,
+                            customerProfile = customerController;
+
   @override
   Widget build(BuildContext context) {
+    //_scrollController.addIListener(() { })
 
     return Container (
+            decoration: new BoxDecoration(
+              border: Border.all(color: Colors.black),
+              //color: Colors.white,//_color,
+            ),
             // Need height parameter to render correctly
             height: 550,
             width: 900,
@@ -55,13 +75,27 @@ class DisplayTimeSlots extends StatelessWidget{
    CustomerProfileController customerProfile;
    _StatefulListTileState({int passIndex, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
       : this.index = passIndex, this.storeSchedule = scheduleController, customerProfile = customerController;
-   bool _isSelected = false; 
+   bool _isSelected; 
    Color _color;
 
-   void _updateSelection(bool timesUpdated){
+   @override
+  void initState() {
+    if ( storeSchedule.selectedTimes[index] != null){
+      _isSelected = true;
+
+    }
+    else {
+      _isSelected = false;
+
+    }
+    super.initState();
+  }
+  void _updateSelection(bool timesUpdated){
      setState(() {
-       if (timesUpdated) _isSelected = !_isSelected;
-       });
+       if (timesUpdated) {
+        _isSelected = !_isSelected;
+       } 
+      });
    }
    @override
    Widget build(BuildContext context) {
@@ -73,7 +107,7 @@ class DisplayTimeSlots extends StatelessWidget{
                ListTile(
                    key: Key('timeTile'),
                    selectedTileColor: Colors.blue,
-                   hoverColor: Colors.purple,
+                   hoverColor: Color.fromARGB(100, 107, 255, 245),
                    enabled: storeSchedule.getAvailable(time),
                    tileColor: _setColor(),
                    selected: _isSelected,
@@ -125,6 +159,7 @@ class DisplayTimeSlots extends StatelessWidget{
     bool room = numReserved + partySize <= 60; 
     bool timesUpdated = storeSchedule.updateSelectedTimes(index, time, room);
     _updateSelection(timesUpdated);
+
   }
 
 

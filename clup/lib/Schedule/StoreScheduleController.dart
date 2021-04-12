@@ -90,12 +90,14 @@ class StoreScheduleController {
     String storeInfo = getTextController("Store").text;
     List<String> storeInfoSplit = storeInfo.split(",");
 
-    String state = storeInfoSplit[0];
-    String city = storeInfoSplit[1];
-    String store = storeInfoSplit[2];
-    String address = storeInfoSplit[3];
+    String store = storeInfoSplit[0];
+    String address = storeInfoSplit[1];
+    String city = storeInfoSplit[2];
+    String state = storeInfoSplit[3];
+    state = state.replaceAll("\n", "");
+    String day = getTextController("day").text.toLowerCase();
 
-    String temp = await Services.getSchedule(state, city, store, address);
+    String temp = await Services.getSchedule(state, city, store, address, day);
     timeSlots = temp.split(",");
     timeSlots = timeSlots.sublist(0, timeSlots.length - 1);
 

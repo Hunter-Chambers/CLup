@@ -404,75 +404,75 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   
   _onButtonPressed(BuildContext context, int option){
 
-    storeSchedule.setDays();
 
-    if(_partySizeKey.currentState.validate()) {
-      switch(option){
-        case 1: {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (context) => StoreSearch(customerController: customerProfile,),
-              )
-            );
-
-        }
-        break;
-        case 2: {
-          int partySize;
-          if ( customerProfile.getTextController("party_size").text != null) {
-            partySize = int.parse(customerProfile.getTextController("party_size").text);
-          }
-          else {
-            partySize = -1;
-          }
-          if ( !(_selectedStore == null || _selectedAddress == null) &&
-                (partySize > 0 && partySize < 6) ) {
-
-            storeSchedule.getTextController("Store").text = 
-              customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
-
-
-            return Navigator.push(context, MaterialPageRoute(
-              builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile,),
-              )
-            );
-          }
-          else {
-
-            if (_selectedStore == null || _selectedAddress == null) {
-              Fluttertoast.showToast(
-                msg: 'Please select a store and an address.',
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                webPosition: 'center',
-              );
-            }
-            else {
-              Fluttertoast.showToast(
-                msg: 'Party size must be between 1 and 5',
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                webPosition: 'center',
-              );
-
-            }
-
-          }
-        }
-        break;
-        case 3: {
-
-          return Navigator.push(context, MaterialPageRoute(
-            builder: (context) => CustomerLogin(scheduleController: storeSchedule, customerController: customerProfile,),
+    if ( customerProfile.getTextController("party_size").text != "") {
+      _partySizeKey.currentState.validate();
+    }
+    switch(option){
+      case 1: {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => StoreSearch(customerController: customerProfile,),
             )
           );
 
+      }
+      break;
+      case 2: {
+        int partySize;
+        if ( customerProfile.getTextController("party_size").text != "") {
+          partySize = int.parse(customerProfile.getTextController("party_size").text);
         }
-        break;
+        else {
+          partySize = -1;
+        }
+        if ( !(_selectedStore == null || _selectedAddress == null) &&
+              (partySize > 0 && partySize < 6) ) {
+
+          storeSchedule.getTextController("Store").text = 
+            customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
+
+
+          return Navigator.push(context, MaterialPageRoute(
+            builder: (context) => StoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile,),
+            )
+          );
+        }
+        else {
+
+          if (_selectedStore == null || _selectedAddress == null) {
+            Fluttertoast.showToast(
+              msg: 'Please select a store and an address.',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              webPosition: 'center',
+            );
+          }
+          else {
+            Fluttertoast.showToast(
+              msg: 'Party size must be between 1 and 5',
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+              webPosition: 'center',
+            );
+
+          }
+
+        }
+      }
+      break;
+      case 3: {
+
+        return Navigator.push(context, MaterialPageRoute(
+          builder: (context) => CustomerLogin(scheduleController: storeSchedule, customerController: customerProfile,),
+          )
+        );
+
+      }
+      break;
     }
 
     return null;
       
-    }
 
 
     

@@ -48,8 +48,8 @@ class StoreScheduleController {
   }
 
   setDays() {
-    DateTime now = DateTime.now();
     String today = (DateFormat.E().format(DateTime.now()));
+    today = "Wed";
 
     bool done = false;
     int i = 0;
@@ -62,11 +62,21 @@ class StoreScheduleController {
       }
     }
 
+    List<String> temp = [];
+
     if (done) {
+
       days[i] = "Today - " + days[i];
-      String temp = days[0];
-      days[0] = days[i];
-      days[i] = temp;
+      int k = i;
+      for (int j = 0; j<days.length; j++) {
+        temp.add(days[k]);
+        k++;
+        if( k >= 6 ) {
+          k = 0;
+        }
+      }
+      days = temp;
+
     }
 
 

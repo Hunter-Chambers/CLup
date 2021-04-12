@@ -48,8 +48,8 @@ class StoreScheduleController {
   }
 
   setDays() {
-    DateTime now = DateTime.now();
     String today = (DateFormat.E().format(DateTime.now()));
+    today = "Wed";
 
     bool done = false;
     int i = 0;
@@ -62,11 +62,21 @@ class StoreScheduleController {
       }
     }
 
+    List<String> temp = [];
+
     if (done) {
+
       days[i] = "Today - " + days[i];
-      String temp = days[0];
-      days[0] = days[i];
-      days[i] = temp;
+      int k = i;
+      for (int j = 0; j<days.length; j++) {
+        temp.add(days[k]);
+        k++;
+        if( k >= 6 ) {
+          k = 0;
+        }
+      }
+      days = temp;
+
     }
 
 
@@ -90,12 +100,14 @@ class StoreScheduleController {
     String storeInfo = getTextController("Store").text;
     List<String> storeInfoSplit = storeInfo.split(",");
 
-    String state = storeInfoSplit[0];
-    String city = storeInfoSplit[1];
-    String store = storeInfoSplit[2];
-    String address = storeInfoSplit[3];
+    String store = storeInfoSplit[0];
+    String address = storeInfoSplit[1];
+    String city = storeInfoSplit[2];
+    String state = storeInfoSplit[3];
+    state = state.replaceAll("\n", "");
+    String day = getTextController("day").text.toLowerCase();
 
-    String temp = await Services.getSchedule(state, city, store, address);
+    String temp = await Services.getSchedule(state, city, store, address, day);
     timeSlots = temp.split(",");
     timeSlots = timeSlots.sublist(0, timeSlots.length - 1);
 

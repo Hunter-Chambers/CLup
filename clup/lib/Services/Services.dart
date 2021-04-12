@@ -174,24 +174,19 @@ class Services {
   }
 
   static Future<String> getSchedule(
-      String state, String city, String store, String address) async {
+      String state, String city, String store, String address, String day) async {
     try {
       var map = Map<String, dynamic>();
       map['state'] = state;
-      //map['state'] = "TX";
       map['city'] = city;
-      //map['city'] = "Amarillo";
       map['store'] = store;
-      //map['store'] = "Rando Mart";
       map['address'] = address;
-      //map['address'] = "3 Lancaster Road";
-      map['storeUsername'] = "store_345";
-      map['fileName'] = "sunday.json";
+      map['fileName'] = day+".json";
 
       String path = ROOT_layt + "Schedule/GetSchedule.php";
 
       final response = await http.post(path, body: map);
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -563,6 +558,8 @@ class Services {
       map['startTime'] = startTime;
       map['endTime'] = endTime;
 
+      String path = ROOT_layt + "Schedule/ScheduleFileManager.php";
+
       final response = await http
           .post(ROOT_FILE_MANAGEMENT, body: map)
           .timeout(Duration(seconds: 5));
@@ -578,6 +575,7 @@ class Services {
     }
   }
 
+/*
   static void updateJson(List<String> storeInfo) async {
     //String state = storeInfo[0];
     //String city = storeInfo[1];
@@ -586,6 +584,7 @@ class Services {
 
     await Process.run('python', ['--version'], runInShell: true);
   }
+  */
 
   // method for showing a popup message. Similar to
   // a toast or snackbar, except the message will not

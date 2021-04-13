@@ -17,7 +17,7 @@ class _QRState extends State<QR> {
   final CustomerProfileController customerProfile;
   _QRState({this.customerProfile});
 
-  final List<String> dropDownItems = [];
+  List<String> dropDownItems = [];
   String dropDownValue = "";
   int qrIndex = 0;
 
@@ -37,13 +37,19 @@ class _QRState extends State<QR> {
         */
 
     // fill dropDownItems correctly
-    for (String visit in customerProfile.visits) {
-      List<String> info = visit.split(';');
-      dropDownItems.add(info[0] + "\n" + info[3]);
-    }
+    if (!customerProfile.visits.isEmpty) {
+      for (String visit in customerProfile.visits) {
+        List<String> info = visit.split(';');
+        dropDownItems.add(
+            info[5] + " - " + info[6] + "\n" + info[7] + "\n on " + info[8]);
+      }
 
-    // correctly initialize dropDownValue
-    dropDownValue = dropDownItems[qrIndex];
+      // correctly initialize dropDownValue
+      dropDownValue = dropDownItems[qrIndex];
+    } else {
+      dropDownItems = [];
+      dropDownValue = null;
+    }
   }
 
   @override
@@ -72,38 +78,37 @@ class _QRState extends State<QR> {
               bottom: 20,
             ),
           ),
-          DropdownButton(
-            itemHeight: 75,
-            value: dropDownValue,
-            //icon
-            onChanged: (String newValue) {
-              setState(() {
-                dropDownValue = newValue;
-                qrIndex = dropDownItems.indexOf(newValue);
-              });
-            }, // onChanged
+          DropdownButton<String>(
+              itemHeight: 75,
+              value: dropDownValue,
+              //icon
+              onChanged: (String newValue) {
+                setState(() {
+                  dropDownValue = newValue;
+                  qrIndex = dropDownItems.indexOf(newValue);
+                });
+              }, // onChanged
+              /*
             items: dropDownItems.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
               );
             }).toList(), // items
-          ),
-          Expanded(
-            child: Center(
-              child: RepaintBoundary(
-                child: QrImage(
-                  key: Key('QRcode'),
-                  data: customerProfile.visits[qrIndex],
-                  size: 0.5 * bodyHeight,
-                  errorStateBuilder: (context, err) {
-                    return Container(
-                      child: Center(
-                        child: Text("An error occured."),
-                      ),
-                    );
-                  }, // errorStateBuilder
-                ),
+            */
+              items:
+                  dropDownItems?.map<DropdownMenuItem<String>>((dynamic value) {
+                        return new DropdownMenuItem<String>(
+                          value: value,
+                          child: new Text(value),
+                        );
+                      })?.toList() ??
+                      []),
+          Center(
+            child: RepaintBoundary(
+              child: Padding(
+                padding: EdgeInsets.only(top: 50, bottom: 50),
+                child: _generateQR(bodyHeight),
               ),
             ),
           ),
@@ -119,6 +124,25 @@ class _QRState extends State<QR> {
           )
         ],
       ),
+    );
+  }
+
+  Widget _generateQR(double bodyHeight) {
+    if (dropDownItems.isEmpty) {
+      return Text("No Scheduled Visits");
+    }
+
+    return QrImage(
+      key: Key('QRcode'),
+      data: customerProfile.visits[qrIndex],
+      size: 0.5 * bodyHeight,
+      errorStateBuilder: (context, err) {
+        return Container(
+          child: Center(
+            child: Text("An error occured."),
+          ),
+        );
+      }, // errorStateBuilder
     );
   }
 

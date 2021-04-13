@@ -15,42 +15,39 @@ class CustomerProfileController {
     }
 
     favoriteStores = [];
-    favoriteStoresAddresses = { 
-      
-    };
+    favoriteStoresAddresses = {};
     visits = [
-      'visit_time;customer_username;customer_contact;store_name;address;city;state;zipcode',
+      //'visit_time;customer_username;customer_contact;store_name;address;city;state;zipcode',
     ];
   }
 
 // WILL NEED UPDATING
 // *************************************************************************
 // *************************************************************************
-// 
-  
-  getFavoriteStores() async{
+//
+
+  getFavoriteStores() async {
     favoriteStores = [];
     favoriteStoresAddresses = {};
     String customerUsername = getTextController("username").text;
     String stores = await Services.getFavoriteStores(customerUsername);
 
     if (stores != 'no favorites\n') {
-
       stores = stores.replaceAll("[", "");
       stores = stores.replaceAll("]", "");
 
       List<String> storesSplit = stores.split(",");
 
-      for( int i=0; i<storesSplit.length; i++) {
+      for (int i = 0; i < storesSplit.length; i++) {
         storesSplit[i] = storesSplit[i].replaceFirst("u", "");
         storesSplit[i] = storesSplit[i].replaceAll(";", ",");
         storesSplit[i] = storesSplit[i].replaceAll("'", "");
         storesSplit[i] = storesSplit[i].replaceAll(" ", "");
         storesSplit[i] = storesSplit[i].replaceAll("-", " ");
         favoriteStores.add(storesSplit[i]);
-        addStoreAddress(storesSplit[i].split(",")[0], storesSplit[i].split(",")[1]);
+        addStoreAddress(
+            storesSplit[i].split(",")[0], storesSplit[i].split(",")[1]);
       }
-
     }
 
     if (favoriteStores.isEmpty) {
@@ -58,11 +55,9 @@ class CustomerProfileController {
     }
 
     return favoriteStores;
-    
-
   }
 
-  addFavoriteStore(String store) async{
+  addFavoriteStore(String store) async {
     String customerUsername = getTextController("username").text;
     await Services.addFavoriteStore(customerUsername, store);
   }
@@ -70,24 +65,22 @@ class CustomerProfileController {
   List<String> getFavoriteStoreNames() {
     // ignore: deprecated_member_use
     List<String> temp = List<String>(favoriteStores.length);
-    for (int i=0; i<favoriteStores.length; i++) {
+    for (int i = 0; i < favoriteStores.length; i++) {
       temp[i] = favoriteStores[i].split(",").first;
     }
     return temp;
-
   }
 
   addStoreAddress(String storeName, String address) {
     if (favoriteStoresAddresses.containsKey(storeName)) {
-        favoriteStoresAddresses[storeName].add(address);
-    }
-    else {
+      favoriteStoresAddresses[storeName].add(address);
+    } else {
       favoriteStoresAddresses[storeName] = [address];
     }
   }
 
   List<String> getFavoriteStoreAddresses(String storeName) {
-    if( storeName == null) {
+    if (storeName == null) {
       return null;
     }
     return favoriteStoresAddresses[storeName];
@@ -96,11 +89,11 @@ class CustomerProfileController {
   String getFullStoreInfo(String store, String address) {
     int i = 0;
     bool done = false;
-    while ( !done && i < favoriteStores.length) {
-      if ( favoriteStores[i].contains(store) && favoriteStores[i].contains(address)) {
+    while (!done && i < favoriteStores.length) {
+      if (favoriteStores[i].contains(store) &&
+          favoriteStores[i].contains(address)) {
         done = true;
-      }
-      else {
+      } else {
         i++;
       }
     }
@@ -115,8 +108,6 @@ class CustomerProfileController {
   TextEditingController getTextController(String key) {
     return fieldsMap[key];
   }
-
-  
 
   disposeTextController(String key) {
     fieldsMap[key].dispose();

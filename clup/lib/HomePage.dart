@@ -528,17 +528,18 @@ class _HomePageState extends State<HomePage> {
                   String storeCloseTime = "2300";
                   String maxCapacity = "100";
 
+                  /*
                   String result = await Services.makeReservation(
                       state,
                       city,
                       store,
                       address,
-                      storeUsername,
                       customer,
                       visitStartBlock,
                       storeCloseTime,
                       maxCapacity);
                   print(result);
+                      */
                 },
               ),
 

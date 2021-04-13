@@ -45,6 +45,7 @@ class CustomerProfileController {
         storesSplit[i] = storesSplit[i].replaceFirst("u", "");
         storesSplit[i] = storesSplit[i].replaceAll(";", ",");
         storesSplit[i] = storesSplit[i].replaceAll("'", "");
+        storesSplit[i] = storesSplit[i].replaceAll(" ", "");
         storesSplit[i] = storesSplit[i].replaceAll("-", " ");
         favoriteStores.add(storesSplit[i]);
         addStoreAddress(storesSplit[i].split(",")[0], storesSplit[i].split(",")[1]);

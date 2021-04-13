@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:clup/CustomerProfile/CustomerSignup.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:us_states/us_states.dart';
 
 class Services {
   static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
@@ -186,42 +187,6 @@ class Services {
       String path = ROOT_layt + "Schedule/GetSchedule.php";
 
       final response = await http.post(path, body: map);
-      //print(response.body);
-
-      if (response.statusCode == 200 && response.body != "error") {
-        return response.body;
-      }
-
-      return "failure";
-    } catch (e) {
-      print(e);
-      return "failure";
-    }
-  }
-  /*
-  static Future<String> updateSchedule(String state, String city, String store,
-      String address, String times, String partySize) async {
-    try {
-      var map = Map<String, dynamic>();
-      //map['state'] = state;
-      map['state'] = "TX";
-      //map['city'] = city;
-      map['city'] = "Amarillo";
-      //map['store'] = store;
-      map['store'] = "Rando Mart";
-      //map['address'] = address;
-      map['address'] = "3 Lancaster Road";
-      map['storeUsername'] = "store_345";
-      map['fileName'] = "sunday.json";
-      map['partySize'] = partySize;
-      String startTime = times.split(" - ").first;
-      String endTime = times.split(" - ").last;
-      map['startTime'] = startTime;
-      map['endTime'] = endTime;
-
-      String path = ROOT_layt + "Schedule/UpdateSchedule.php";
-
-      final response = await http.post(path, body: map);
       print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
@@ -234,7 +199,6 @@ class Services {
       return "failure";
     }
   }
-  */
 
   static Future<String> getALLRecs(String tablename) async {
     try {
@@ -368,11 +332,11 @@ class Services {
       String city,
       String store,
       String address,
-      String storeUsername,
       String customer,
       String visitStartBlock,
       String storeCloseTime,
-      String maxCapacity) async {
+      String maxCapacity,
+      String day) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _MAKE_RESERVATION;
@@ -380,14 +344,17 @@ class Services {
       map['city'] = city;
       map['store'] = store;
       map['address'] = address;
-      map['storeUsername'] = storeUsername;
       map['customer'] = customer;
       map['visitStartBlock'] = visitStartBlock;
       map['storeCloseTime'] = storeCloseTime;
       map['maxCapacity'] = maxCapacity;
+      map['day'] = day;
+
+      String path = ROOT_layt + "backend.php";
 
       final response =
-          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+          await http.post(path, body: map).timeout(Duration(seconds: 5));
+          print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -545,23 +512,24 @@ class Services {
       String city,
       String store,
       String address,
-      String storeUsername,
       String startTime,
       String endTime) async {
     try {
       var map = Map<String, dynamic>();
+
+      state = state.replaceAll('"', '');
+      state = USStates.getName(state);
       map['state'] = state;
       map['city'] = city;
       map['store'] = store;
       map['address'] = address;
-      map['storeUsername'] = storeUsername;
       map['startTime'] = startTime;
       map['endTime'] = endTime;
 
       String path = ROOT_layt + "Schedule/ScheduleFileManager.php";
 
       final response = await http
-          .post(ROOT_FILE_MANAGEMENT, body: map)
+          .post(path, body: map)
           .timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
@@ -575,16 +543,6 @@ class Services {
     }
   }
 
-/*
-  static void updateJson(List<String> storeInfo) async {
-    //String state = storeInfo[0];
-    //String city = storeInfo[1];
-    //String store = storeInfo[2];
-    //String address = storeInfo[3];
-
-    await Process.run('python', ['--version'], runInShell: true);
-  }
-  */
 
   // method for showing a popup message. Similar to
   // a toast or snackbar, except the message will not

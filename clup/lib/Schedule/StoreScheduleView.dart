@@ -1,5 +1,6 @@
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/CustomerProfile/QR.dart';
+import 'package:clup/StoreProfile/StoreProfileController.dart';
 import 'package:flutter/material.dart';
 import 'StoreScheduleController.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,6 +9,7 @@ import 'package:clup/LoadingScreen/LoadingScreen.dart';
 import "package:clup/Services/Services.dart";
 import 'package:clup/Schedule/ScheduleVisit.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
+import 'dart:convert';
 
 class StoreScheduleView extends StatelessWidget {
   final StoreScheduleController storeSchedule;
@@ -204,26 +206,75 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   }
 
   _buildVisit(String selectedTimes) {
-    String visit = selectedTimes + ';';
+    //String visit = selectedTimes + ';';
+    String visit = '';
     String storeInfo = storeSchedule.getTextController('Store').text;
-
     List<String> storeInfoSplit = storeInfo.split(', ');
+    String store = storeInfoSplit.first.split(',')[0];
+    String address = storeInfoSplit.first.split(',')[1];
+    String city = storeInfoSplit.first.split(',')[2];
+    String state = storeInfoSplit.first.split(',')[3].replaceAll("\n", '');
+    String visitStartTime = selectedTimes.split(' - ').first;
+    String visitEndTime = selectedTimes.split(' - ').last;
+    String visitStartBlock = visitStartTime.replaceAll(":", "");
+    //String visitEndBlock = visitEndTime.replaceAll(":", "");
+    String storeCloseTime = 
+      storeSchedule.timeSlots[storeSchedule.timeSlots.length-1].split(' - ').last.replaceAll(":", "");
+    //String maxcapacity = storeProfile.getTextController("max_capacity");
+    String maxCapacity = '100';
+    String username = customerProfile.getTextController("username").text;
+    String contact = customerProfile.getTextController("email").text;
+    String partySize = customerProfile.getTextController("party_size").text;
+    String visitLength = storeSchedule.selectedTimes.keys.length.toString();
+    String type = 'scheduled';
+    String day = storeSchedule.getTextController('day').text.toLowerCase();
+    print(day);
 
-    visit += customerProfile.getTextController("username").text +
-        ';' +
-        customerProfile.getTextController("email").text + ';';
+
     
-    for (String info in storeInfoSplit){
-      visit += info + ';';
-    }
-    /*
-    Fluttertoast.showToast(
-      msg:  visit,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      webPosition: 'center',
-    );
-    */
+    String customer = json.encode({
+      username: {
+        'contact_info': contact,
+        'party_size': int.parse(partySize),
+        'type':type, 
+        'visit_length': int.parse(visitLength)
+      }
+    }).replaceAll("\"", "\\\"");
+    
+    //print(state);
+    //print(city);
+    //print(store);
+    //print(address);
+    //print(customer);
+    //print(visitStartBlock);
+    //print(storeCloseTime);
+    //print(maxCapacity);
+
+    visit += username + ';' + 
+        contact + ';' + 
+        partySize + ';' + 
+        type + ';' +
+        visitLength + ';' +
+        visitStartTime + ";" +
+        visitEndTime + ';' +
+        store + ';' +
+        day;
+    
+    //print("visit: " +  visit);
+
+
+
+    Services.makeReservation(state,
+                             city,
+                             store,
+                             address,
+                             customer,
+                             visitStartBlock,
+                             storeCloseTime,
+                             maxCapacity,
+                             day
+                             );
+    
     customerProfile.addvisit(visit);
   }
 
@@ -251,9 +302,11 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
                 gravity: ToastGravity.TOP,
                 webPosition: 'center',
               );     
+              /*
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) => QR(customerProfile: customerProfile)
               ));
+              */
             }
       }
       break;

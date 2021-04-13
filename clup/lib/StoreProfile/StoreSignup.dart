@@ -531,7 +531,6 @@ class _StoreSignupState extends State<StoreSignup> {
                                   city,
                                   store,
                                   address,
-                                  storeUsername,
                                   startTime,
                                   endTime);
 

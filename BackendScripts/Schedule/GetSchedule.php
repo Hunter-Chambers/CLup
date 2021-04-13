@@ -7,7 +7,6 @@
    $city = $_POST['city'];
    $store = $_POST['store'];
    $address = $_POST['address'];
-   $storeUsername = $_POST['storeUsername'];
 
    $state = str_replace(" ", ":", $state);
    $city = str_replace(" ", ":", $city);
@@ -20,7 +19,9 @@
    $command = $command." ".$city;
    $command = $command." ".$store;
    $command = $command." ".$address;
-   $command = $command." ".$storeUsername;
+
+   //echo $command;
+
 
    $output = shell_exec($command);
    echo $output;

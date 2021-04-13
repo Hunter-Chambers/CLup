@@ -5,18 +5,21 @@ import sys
 
 
 os.umask(0)
+for item in sys.argv:
+    print(item)
 
 # store info
 state = sys.argv[1]
 city = sys.argv[2]
 store = sys.argv[3]
 address = sys.argv[4]
-storeUsername = sys.argv[5]
-startTime = sys.argv[6]
-endTime = sys.argv[7]
+startTime = sys.argv[5]
+endTime = sys.argv[6]
+
+
 
 # USE THIS FILEPATH ON THOR
-filePath = '/var/www/html/cs4391/hc998658/Schedule'
+filePath = '/var/www/html/cs4391/le1010274/Schedule'
 os.chdir(filePath)
 days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday" ]
 
@@ -112,6 +115,7 @@ os.chdir(filePath)
 os.chmod(filePath, 0o777)
 
 ##################### storeUsername directory ######################
+'''
 try:
     if not os.path.exists(storeUsername):
         os.makedirs(storeUsername, 0o777)
@@ -123,7 +127,9 @@ except:
 filePath += "/" + storeUsername
 os.chdir(filePath)
 os.chmod(filePath, 0o777)
+'''
 
+#################### Create schedule jsons ####################
 path = filePath
 for day in days:
     path += "/" + day + ".json"
@@ -137,8 +143,8 @@ for day in days:
 # end for
 
 
-path = filePath + "/shoppingCustomers.json"
 '''
+path = filePath + "/shoppingCustomers.json"
 with open(path, 'w+') as f:
         json.dump(data, f, indent=2)
 '''

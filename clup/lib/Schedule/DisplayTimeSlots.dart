@@ -176,8 +176,8 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
     String reserved = storeSchedule.reserved[time];
     int numReserved = int.parse(reserved);
 
-    if ( numReserved < 60 ) {
-      int numRemaining = 60 - numReserved;
+    if ( numReserved < storeSchedule.limit ) {
+      int numRemaining = storeSchedule.limit - numReserved;
       String output = "Spots remaining: " + numRemaining.toString();
       return output;
     }

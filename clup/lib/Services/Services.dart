@@ -9,9 +9,12 @@ import 'package:http/http.dart' as http;
 import 'package:us_states/us_states.dart';
 
 class Services {
-  static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
+  //static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
+  static const ROOT = "http://10.0.6.1/cs4391/le1010274/backend.php";
+  //static const ROOT_FILE_MANAGEMENT =
+      //"http://10.0.6.1/cs4391/hc998658/Schedule/ScheduleFileManager.php";
   static const ROOT_FILE_MANAGEMENT =
-      "http://10.0.6.1/cs4391/hc998658/Schedule/ScheduleFileManager.php";
+      "http://10.0.6.1/cs4391/le1010274/Schedule/ScheduleFileManager.php";
   static const ROOT_layt = "http://10.0.6.1/cs4391/le1010274/";
 
   //static const _CREATE_TABLE_ACTION = "CREATE_TABLE";
@@ -513,7 +516,8 @@ class Services {
       String store,
       String address,
       String startTime,
-      String endTime) async {
+      String endTime, 
+      String capacity) async {
     try {
       var map = Map<String, dynamic>();
 
@@ -525,6 +529,7 @@ class Services {
       map['address'] = address;
       map['startTime'] = startTime;
       map['endTime'] = endTime;
+      map['capacity'] = capacity;
 
       String path = ROOT_layt + "Schedule/ScheduleFileManager.php";
 

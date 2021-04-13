@@ -7,6 +7,9 @@ import '../CustomerProfile/CustomerProfileController.dart';
 import 'package:flutter/rendering.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import 'package:clup/LoadingScreen/LoadingScreen.dart';
+import 'ASAP.dart';
+import 'package:clup/Services/Services.dart';
+import 'dart:convert';
 
 class ScheduleVisit extends StatelessWidget{
 
@@ -60,10 +63,12 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
   String _selectedStore, _selectedAddress, _selectedDay;
   List<String> data;
+  bool _isChecked;
 
   @override
   void initState() {
     super.initState();
+    _isChecked = false;
     storeSchedule.setDays();
     _selectedDay = storeSchedule.days[0];
     storeSchedule.getTextController('day').text = _selectedDay.replaceAll("Today - ", "");
@@ -304,6 +309,18 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                   ),
 
                                 ),
+                                /*
+                                Container(
+                                  child: Checkbox(
+                                    value: _isChecked,
+                                    onChanged: (value) => setState( () {
+                                      print(value);
+
+                                      _isChecked = value;
+                                    }),
+                                  )
+                                ),
+                                */
                               ]
 
                               ),
@@ -402,8 +419,8 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
   }
 
   
-  _onButtonPressed(BuildContext context, int option){
-
+  _onButtonPressed(BuildContext context, int option ) async{
+    _isChecked;
 
     if ( customerProfile.getTextController("party_size").text != "") {
       _partySizeKey.currentState.validate();
@@ -430,6 +447,59 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
           storeSchedule.getTextController("Store").text = 
             customerProfile.getFullStoreInfo(_selectedStore, _selectedAddress);
+
+          if (_isChecked) {
+            /*
+            String storeInfo = storeSchedule.getTextController('Store').text;
+            List<String> storeInfoSplit = storeInfo.split(', ');
+            String store = storeInfoSplit.first.split(',')[0];
+            String address = storeInfoSplit.first.split(',')[1];
+            String city = storeInfoSplit.first.split(',')[2];
+            String state = storeInfoSplit.first.split(',')[3].replaceAll("\n", '');
+            String day = storeSchedule.getTextController('day').text.toLowerCase();
+            await Services.getSchedule(state, city, store, address, day);
+
+            String visitStartBlock = 'ASAP';
+            //String visitEndBlock = visitEndTime.replaceAll(":", "");
+            print(storeSchedule.timeSlots.length);
+            String storeCloseTime = 
+              storeSchedule.timeSlots[storeSchedule.timeSlots.length-1].split(' - ').last.replaceAll(":", "");
+            //String maxcapacity = storeProfile.getTextController("max_capacity");
+            String maxCapacity = '100';
+            String username = customerProfile.getTextController("username").text;
+            String contact = customerProfile.getTextController("email").text;
+            String partySize = customerProfile.getTextController("party_size").text;
+            String visitLength = storeSchedule.selectedTimes.keys.length.toString();
+            String type = 'scheduled';
+
+            String customer = json.encode({
+              username: {
+                'contact_info': contact,
+                'party_size': int.parse(partySize),
+                'type':type, 
+                'visit_length': int.parse(visitLength)
+              }
+            }).replaceAll("\"", "\\\"");
+
+            String temp = await Services.makeReservation(state,
+                             city,
+                             store,
+                             address,
+                             customer,
+                             visitStartBlock,
+                             storeCloseTime,
+                             maxCapacity,
+                             day
+                             );
+
+            */
+
+            return Navigator.push(context, MaterialPageRoute(
+              builder: (context) => ASAP(scheduleController: storeSchedule, customerController: customerProfile, ),
+              )
+            );
+
+          }
 
 
           return Navigator.push(context, MaterialPageRoute(

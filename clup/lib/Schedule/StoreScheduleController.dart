@@ -14,8 +14,10 @@ class StoreScheduleController {
   Map <String, bool> timesAvailable;
   Map <String, String> reserved;
   Map <int, String> selectedTimes;
+  int limit;
 
   StoreScheduleController(List<String> fields,) {
+    limit = 0;
     timeSlots = [];
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
     timesAvailable = {};
@@ -31,6 +33,7 @@ class StoreScheduleController {
     }
 
   }
+
 
   // clear schedule
   clear(){
@@ -50,7 +53,7 @@ class StoreScheduleController {
   setDays() {
     String today = (DateFormat.E().format(DateTime.now()));
 
-    today = "Wed";
+    //today = "Wed";
 
     bool done = false;
     int i = 0;
@@ -105,53 +108,71 @@ class StoreScheduleController {
 
     String mins;
     String hours;
+    int capacity = 0;
+    print('length: '+ timeSlots.length.toString());
 
     for(int i =0; i<timeSlots.length; i++) {
-      String time = timeSlots[i];
-      key = time.split(":").first;
-      hours = key.substring(0,2);
-      mins = key.substring(2);
-      String startTime = hours + ":" + mins;
+      if (timeSlots[i].contains('capacity')) {
+        print(timeSlots[i]);
+        capacity = int.parse(timeSlots[i].split(':').last);
+        //print('found capacity: ' + capacity.toString());
+      };
+    }
+
+    int limit = (capacity * .6) as int;
+    this.limit = limit;
+    print(limit);
+
+    for(int i =0; i<timeSlots.length; i++) {
+      if ( !timeSlots[i].contains('capacity')){
+
+        String time = timeSlots[i];
+        key = time.split(":").first;
+        hours = key.substring(0,2);
+        mins = key.substring(2);
+        String startTime = hours + ":" + mins;
 
 
-      int minsNum = int.parse(mins);
-      minsNum += 15;
-      mins = minsNum.toString();
-      if (minsNum == 60) {
-        int hoursNum = int.parse(hours);
-        hoursNum += 1;
-        hours = hoursNum.toString();
+        int minsNum = int.parse(mins);
+        minsNum += 15;
+        mins = minsNum.toString();
+        if (minsNum == 60) {
+          int hoursNum = int.parse(hours);
+          hoursNum += 1;
+          hours = hoursNum.toString();
 
-        mins = "00";
+          mins = "00";
 
-        if (hours.length < 2) {
-          hours = "0" + hours;
+          if (hours.length < 2) {
+            hours = "0" + hours;
+          }
+
         }
 
-      }
+        key = startTime + " - " + hours + ":" + mins;
 
-      key = startTime + " - " + hours + ":" + mins;
+        numReserved = int.parse(time.split(":").last);
+        if (numReserved < limit) {
+          available = true;
+        }
+        else {
+          available = false;
+        }
 
-      numReserved = int.parse(time.split(":").last);
-      if (numReserved < 60) {
-        available = true;
-      }
-      else {
-        available = false;
-      }
-
-      reserved[key] = numReserved.toString();
-      timeSlots[i] = key;
-      timesAvailable[key] = available;
+        reserved[key] = numReserved.toString();
+        timeSlots[i] = key;
+        timesAvailable[key] = available;
 
 
-      
+        
     }
+    /*
     print("\n");
     print("\n");
     print(timeSlots);
     print("\n");
     print("\n");
+    */
 
     /*
     print(timesAvailable);
@@ -159,6 +180,10 @@ class StoreScheduleController {
     print("\n");
     */
 
+      }
+      timeSlots = timeSlots.sublist(0, timeSlots.length-1);
+      //print(timeSlots);
+      
   }
 
 

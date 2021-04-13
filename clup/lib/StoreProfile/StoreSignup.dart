@@ -526,13 +526,18 @@ class _StoreSignupState extends State<StoreSignup> {
                               String endTime = json.encode(widget.storeProfile
                                   .getTextController("close_time")
                                   .text);
+                              String capacity = json.encode(widget.storeProfile
+                                  .getTextController("capacity")
+                                  .text);
+                                  print("capacity: " + capacity);
                               String result = await Services.createFiles(
                                   state,
                                   city,
                                   store,
                                   address,
                                   startTime,
-                                  endTime);
+                                  endTime, 
+                                  capacity);
 
                               print(result);
 

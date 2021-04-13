@@ -115,6 +115,7 @@ class _StoreLoginState extends State<StoreLogin> {
                 ),
               ),
               // testing button
+              /*
               Container(
                 padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
                 child: FloatingActionButton.extended(
@@ -128,6 +129,7 @@ class _StoreLoginState extends State<StoreLogin> {
                   ),
                 ),
               ),
+              */
             ],
           ),
         ),

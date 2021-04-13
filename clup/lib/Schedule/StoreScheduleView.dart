@@ -302,11 +302,9 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
                 gravity: ToastGravity.TOP,
                 webPosition: 'center',
               );     
-              /*
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) => QR(customerProfile: customerProfile)
               ));
-              */
             }
       }
       break;

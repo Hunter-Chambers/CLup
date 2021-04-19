@@ -39,8 +39,6 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
   @override
   void initState() {
     super.initState();
-    //_scrollController.attach(_scrollController.position);
-    //_scrollController.jumpTo(2);
     if (scrollOffset == null) {
       scrollOffset = 0.0;
     }

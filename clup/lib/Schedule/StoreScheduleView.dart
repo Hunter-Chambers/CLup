@@ -14,23 +14,40 @@ import 'dart:convert';
 class StoreScheduleView extends StatelessWidget {
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  StoreScheduleView({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController}) 
-      : this.storeSchedule = scheduleController, this.customerProfile = customerController,  super(key: key);
+  final double scrollOffset;
+  StoreScheduleView({Key key,
+                     StoreScheduleController scheduleController,
+                     CustomerProfileController customerController,
+                     double scrollOffset}) 
+                     : this.storeSchedule = scheduleController,
+                     this.customerProfile = customerController, 
+                     this.scrollOffset = scrollOffset,
+                     super(key: key);
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyStoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile),
+      home: 
+        MyStoreScheduleView(scheduleController: storeSchedule,
+                            customerController: customerProfile,
+                            scrollOffset: scrollOffset),
       );}
 }
 class MyStoreScheduleView extends StatefulWidget {
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  MyStoreScheduleView({StoreScheduleController scheduleController, CustomerProfileController customerController})
-  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+  final double scrollOffset;
+  MyStoreScheduleView({StoreScheduleController scheduleController,
+                       CustomerProfileController customerController,
+                       double scrollOffset})
+                       : this.storeSchedule = scheduleController,
+                       this.customerProfile = customerController,
+                       this.scrollOffset = scrollOffset;
 
   @override
   _MyStoreScheduleViewState createState() => 
-    _MyStoreScheduleViewState(scheduleController: storeSchedule, customerController: customerProfile);
+    _MyStoreScheduleViewState(scheduleController: storeSchedule,
+                               customerController: customerProfile,
+                               scrollOffset: scrollOffset);
     
 }
 
@@ -38,8 +55,13 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   List<String> data;
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  _MyStoreScheduleViewState({StoreScheduleController scheduleController, CustomerProfileController customerController})
-  : this.storeSchedule = scheduleController, this.customerProfile = customerController;
+  final double scrollOffset;
+  _MyStoreScheduleViewState({StoreScheduleController scheduleController,
+                             CustomerProfileController customerController,
+                             double scrollOffset})
+                             : this.storeSchedule = scheduleController,
+                             this.customerProfile = customerController,
+                             this.scrollOffset = scrollOffset;
 
   @override
   void initState() {
@@ -104,7 +126,9 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
                   ),
                 ),
 
-                DisplayTimeSlots(scheduleController: storeSchedule, customerController: customerProfile),
+                DisplayTimeSlots(scheduleController: storeSchedule,
+                                 customerController: customerProfile,
+                                 scrollOffset: scrollOffset,),
 
                 Expanded(child: 
                   Container(

@@ -93,7 +93,7 @@ class Services {
       
 
       final response = await http.post(path, body: map);
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -190,7 +190,7 @@ class Services {
       String path = ROOT_layt + "Schedule/GetSchedule.php";
 
       final response = await http.post(path, body: map);
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -210,9 +210,7 @@ class Services {
       map['tablename'] = tablename;
 
       final response = await http.post(ROOT, body: map);
-      print('We are here.');
-      print(response.body);
-      print('Made it past.');
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -357,7 +355,7 @@ class Services {
 
       final response =
           await http.post(path, body: map).timeout(Duration(seconds: 5));
-          print(response.body);
+          //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

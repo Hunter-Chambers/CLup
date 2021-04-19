@@ -6,28 +6,48 @@ import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 class DisplayTimeSlots extends StatefulWidget{
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  DisplayTimeSlots({Key key, StoreScheduleController scheduleController, CustomerProfileController customerController})
-      : this.storeSchedule = scheduleController, customerProfile = customerController,  super(key: key);
+  final double scrollOffset;
+  DisplayTimeSlots({Key key,
+                    StoreScheduleController scheduleController,
+                    CustomerProfileController customerController,
+                    double scrollOffset})
+                    : this.storeSchedule = scheduleController,
+                    customerProfile = customerController,
+                    this.scrollOffset = scrollOffset,
+                    super(key: key);
 
   @override _DisplayTimeSlotsState createState() =>
     _DisplayTimeSlotsState(scheduleController: storeSchedule,
-                           customerController: customerProfile);
+                           customerController: customerProfile,
+                           scrollOffset: scrollOffset);
 
 }
 class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
   StoreScheduleController storeSchedule;
   CustomerProfileController customerProfile;
-  final _scrollController = ScrollController();
+  double scrollOffset;
+  ScrollController _scrollController;
   //Color _color;
 
   _DisplayTimeSlotsState ({StoreScheduleController scheduleController,
-                            CustomerProfileController customerController}) :
+                            CustomerProfileController customerController,
+                            double scrollOffset}) :
                             storeSchedule = scheduleController,
-                            customerProfile = customerController;
+                            customerProfile = customerController,
+                            this.scrollOffset = scrollOffset;
 
   @override
+  void initState() {
+    super.initState();
+    //_scrollController.attach(_scrollController.position);
+    //_scrollController.jumpTo(2);
+    if (scrollOffset == null) {
+      scrollOffset = 0.0;
+    }
+    _scrollController = ScrollController(initialScrollOffset: scrollOffset);
+  }
+  @override
   Widget build(BuildContext context) {
-    //_scrollController.addIListener(() { })
 
     return Container (
             decoration: new BoxDecoration(

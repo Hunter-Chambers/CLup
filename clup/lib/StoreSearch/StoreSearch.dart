@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'SearchStoresController.dart';
 import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import '../CustomerProfile/CustomerProfileController.dart';
+import 'package:clup/LoadingScreen/LoadingScreen.dart';
 
 // ================================================================
 /* This view displays 4 dynamic, dependent dropdown boxes
@@ -445,7 +446,7 @@ class _MyStatesViewState extends State<MyStatesView>{
 
   // helper function that controls what happens
   // when either button is pressed
-  _onButtonPressed(BuildContext context, int option) {
+  _onButtonPressed(BuildContext context, int option) async {
 
     // the 'Add to favorites' button was pressed
     switch (option) {
@@ -468,10 +469,15 @@ class _MyStatesViewState extends State<MyStatesView>{
         // add the store info to user's favorites.
         // Prompt the user store was added
         else {
-          customerProfile.addFavoriteStore(storeInfo);
-          print(storeInfo);
+          String output = await customerProfile.addFavoriteStore(storeInfo);
+          String msg = '';
 
-          String msg = storeInfo + ' was added to Favorites';
+          if (output.contains('success')) {
+            msg += storeInfo + ' was added to Favorites.';
+          }
+          else {
+            msg += storeInfo + ' already in Favorites.';
+          }
     
           final snackBar = SnackBar(content: Text(msg));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);

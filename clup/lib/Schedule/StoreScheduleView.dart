@@ -59,141 +59,154 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
 
 
     if( data == null ) {
-      return LoadingScreen(scheduleController: storeSchedule, customerController: customerProfile,);
+      return LoadingScreen();
     }
 
     return Scaffold(
       //backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
-      body: Row(
-        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Expanded(child:
-            Column ( children: <Widget>[
-              Expanded(child: 
-                Container (
-                  color: Color.fromARGB(100, 107, 255, 245),
+      body: SingleChildScrollView( 
+        controller: new ScrollController(),
+        child:
+        Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child:
+            Row(
+            //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(child:
+                Column ( children: <Widget>[
+                  Expanded(child: 
+                    Container (
+                      color: Color.fromARGB(100, 107, 255, 245),
+                    ),
+                  ),
+                ],
                 ),
               ),
-            ],
-            ),
-          ),
-           // left column
-          Column(children: [
-            Expanded(child: 
-              Container(
-                width: 900,
-                color: Colors.white,
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
-                child: Center(child: 
-                  Text(
-                    storeName,
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ) ,
+               // left column
+              Column(children: [
+                Expanded(child: 
+                  Container(
+                    width: 900,
+                    color: Colors.white,
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                    child: Center(child: 
+                      Text(
+                        storeName,
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                        ) ,
+                      ),
+                    )
                   ),
+                ),
+
+                DisplayTimeSlots(scheduleController: storeSchedule, customerController: customerProfile),
+
+                Expanded(child: 
+                  Container(
+                    width: 900,
+                    color: Colors.white,
+                    //padding: EdgeInsets.fromLTRB(110, 70, 110, 70),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                      FloatingActionButton.extended(
+                        heroTag: 'SchedTimesBtn',
+                        key: Key('subSchedBtn'),
+                        onPressed: () => _onButtonPressed(context, 1),
+                        label: Text(
+                          '            Schedule Times            ',
+                        ),
+                      ),
+
+                      Row(
+                        //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                        
+                        Container(
+                          padding: EdgeInsets.fromLTRB(150, 0, 0, 0),
+                          child: 
+                          FloatingActionButton.extended(
+                            heroTag: 'schedToVisit',
+                            key: Key('schedToVisit'),
+                            onPressed: () => _onButtonPressed(context, 2),
+                            label: Text(
+                              '    Return to Previous Page    ',
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(100, 0, 0, 0),
+                          child: 
+                          FloatingActionButton.extended(
+                            heroTag: 'schedToProf',
+                            key: Key('schedToProf'),
+                            onPressed: () => _onButtonPressed(context, 3),
+                            label: Text(
+                              '    Return to Profile Page    ',
+                            ),
+                          ),
+                        ),
+
+
+                      ],),
+
+                    ],),
+
+
+                 )
+                ),
+
+              ]),
+              /*
+              Center(
+                child: Container (
+                  color: Color.fromARGB(100, 107, 255, 245),
+                  alignment: Alignment.center,
+                  height: 800,
+                  width: 1000,
+                  child: SingleChildScrollView(
+                    child: Column(
+                    textDirection: TextDirection.ltr,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+
+
+
+                      //Expanded(child: 
+                      //),
+
+                    //
+                    //
+                    ],
+                  )
+                ,)
                 )
               ),
-            ),
-
-            DisplayTimeSlots(scheduleController: storeSchedule, customerController: customerProfile),
-
-            Expanded(child: 
-              Container(
-                width: 900,
-                color: Colors.white,
-                //padding: EdgeInsets.fromLTRB(110, 70, 110, 70),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                  FloatingActionButton.extended(
-                    heroTag: 'SchedTimesBtn',
-                    key: Key('subSchedBtn'),
-                    onPressed: () => _onButtonPressed(context, 1),
-                    label: Text(
-                      '            Schedule Times            ',
+              */
+              Expanded(child: 
+                Column (children: <Widget>[
+                  Expanded(child: 
+                    Container (
+                      color: Color.fromARGB(100, 107, 255, 245),
                     ),
                   ),
-
-                  Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                    
-                    Container(
-                      padding: EdgeInsets.fromLTRB(150, 0, 0, 0),
-                      child: 
-                      FloatingActionButton.extended(
-                        heroTag: 'schedToVisit',
-                        key: Key('schedToVisit'),
-                        onPressed: () => _onButtonPressed(context, 2),
-                        label: Text(
-                          '    Return to Previous Page    ',
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(100, 0, 0, 0),
-                      child: 
-                      FloatingActionButton.extended(
-                        heroTag: 'schedToProf',
-                        key: Key('schedToProf'),
-                        onPressed: () => _onButtonPressed(context, 3),
-                        label: Text(
-                          '    Return to Profile Page    ',
-                        ),
-                      ),
-                    ),
-
-
-                  ],),
-
-                ],),
-                
-                
-             )
-            ),
-
-          ]),
-          /*
-          Center(
-            child: Container (
-              color: Color.fromARGB(100, 107, 255, 245),
-              alignment: Alignment.center,
-              height: 800,
-              width: 1000,
-              child: SingleChildScrollView(
-                child: Column(
-                textDirection: TextDirection.ltr,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  
-                  
-
-                  //Expanded(child: 
-                  //),
-
-                  
-                  
                 ],
-              )
-            ,)
-            )
-          ),
-          */
-          Expanded(child: 
-            Column (children: <Widget>[
-              Expanded(child: 
-                Container (
-                  color: Color.fromARGB(100, 107, 255, 245),
                 ),
-              ),
+              ), // right column
             ],
-            ),
-          ), // right column
-        ],
-      ), // outermost row
+          ),
+          ),
+        
+
+      ),
+
+         // outermost row
       
         
     );
@@ -205,7 +218,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
     return this.data = storeSchedule.timeSlots;
   }
 
-  _buildVisit(String selectedTimes) {
+  bool _buildVisit(String selectedTimes) {
     //String visit = selectedTimes + ';';
     String visit = '';
     String storeInfo = storeSchedule.getTextController('Store').text;
@@ -228,7 +241,6 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
     String visitLength = storeSchedule.selectedTimes.keys.length.toString();
     String type = 'scheduled';
     String day = storeSchedule.getTextController('day').text.toLowerCase();
-    print(day);
 
 
     
@@ -261,21 +273,31 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
         day;
     
     //print("visit: " +  visit);
-
-
-
-    Services.makeReservation(state,
-                             city,
-                             store,
-                             address,
-                             customer,
-                             visitStartBlock,
-                             storeCloseTime,
-                             maxCapacity,
-                             day
-                             );
     
-    customerProfile.addvisit(visit);
+
+    if ( customerProfile.visits.contains(visit) ) {
+      return false;
+    }
+    else {
+      Services.makeReservation(state,
+                                   city,
+                                   store,
+                                   address,
+                                   customer,
+                                   visitStartBlock,
+                                   storeCloseTime,
+                                   maxCapacity,
+                                   day
+                                   );
+
+      customerProfile.addvisit(visit);
+
+      return true;
+
+    }
+
+
+    
   }
 
   _onButtonPressed(BuildContext context, int option) {
@@ -294,18 +316,34 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
             }
 
             else{
-              _buildVisit(selectedTimes);
+              bool newVisit = _buildVisit(selectedTimes);
 
-              Fluttertoast.showToast(
-                msg:  'Scheduled a visit for: ' + selectedTimes,
-                toastLength: Toast.LENGTH_LONG,
-                gravity: ToastGravity.TOP,
-                webPosition: 'center',
-              );     
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) => QR(customerProfile: customerProfile)
-              ));
-            }
+              if (newVisit) {
+
+                Fluttertoast.showToast(
+                  msg:  'Scheduled a visit for: ' + selectedTimes,
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.TOP,
+                  webPosition: 'center',
+                );     
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => QR(customerProfile: customerProfile)
+                ));
+
+              }
+
+              else {
+
+                Fluttertoast.showToast(
+                  msg:  'Visit already exists.',
+                  toastLength: Toast.LENGTH_LONG,
+                  gravity: ToastGravity.TOP,
+                  webPosition: 'center',
+                );     
+
+              }
+
+           }
       }
       break;
 

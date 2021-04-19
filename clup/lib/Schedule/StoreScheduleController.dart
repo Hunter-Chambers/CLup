@@ -9,13 +9,18 @@ import 'package:intl/intl.dart';
 class StoreScheduleController {
   Map <String, TextEditingController> fieldsMap;
 
+  // ***********************************************
+  //      Instance Variables
   List <String> timeSlots;
   List <String> days;
   Map <String, bool> timesAvailable;
   Map <String, String> reserved;
   Map <int, String> selectedTimes;
   int limit;
+  // ***********************************************
 
+
+  // Constructor
   StoreScheduleController(List<String> fields,) {
     limit = 0;
     timeSlots = [];
@@ -24,14 +29,11 @@ class StoreScheduleController {
     reserved = {};
 
     selectedTimes = new Map<int, String>();
-
     fieldsMap = new Map<String, TextEditingController>();
 
     for ( String field in fields) {
-
       fieldsMap[field] = new TextEditingController();
     }
-
   }
 
 
@@ -50,13 +52,17 @@ class StoreScheduleController {
     fieldsMap = {};
   }
 
+  /* Sets the ordering of the 'Select a Day' dropdown
+  /  in Schedule Visit 
+  */
   setDays() {
+    // Get the current day
     String today = (DateFormat.E().format(DateTime.now()));
-
-    //today = "Wed";
-
     bool done = false;
     int i = 0;
+
+    // Match the current day in days[]
+    // Saving the index
     while (!done && i < days.length) {
       if( days[i].contains(today)) {
         done = true;
@@ -66,12 +72,15 @@ class StoreScheduleController {
       }
     }
 
+    // Temp array used for reording days
     List<String> temp = [];
-
     if (done) {
 
+      // Mark which day is today
       days[i] = "Today - " + days[i];
       int k = i;
+
+      // Reorder days
       for (int j = 0; j<days.length; j++) {
         temp.add(days[k]);
         k++;
@@ -79,26 +88,33 @@ class StoreScheduleController {
           k = 0;
         }
       }
+
+      // Reassign days[] with reordered days
       days = temp;
-
     }
-
-
   }
 
+
+
+  // 
   setSchedule() async {
 
+    // Get store info
     String storeInfo = getTextController("Store").text;
     List<String> storeInfoSplit = storeInfo.split(",");
-
     String store = storeInfoSplit[0];
     String address = storeInfoSplit[1];
     String city = storeInfoSplit[2];
     String state = storeInfoSplit[3];
     state = state.replaceAll("\n", "");
+
+    // Get the current day
     String day = getTextController("day").text.toLowerCase();
 
+    // Pull schedule info from backend
     String temp = await Services.getSchedule(state, city, store, address, day);
+
+    // Parse start times from string into list
     timeSlots = temp.split(",");
     timeSlots = timeSlots.sublist(0, timeSlots.length - 1);
 
@@ -109,23 +125,25 @@ class StoreScheduleController {
     String mins;
     String hours;
     int capacity = 0;
-    print('length: '+ timeSlots.length.toString());
 
+
+    // Get store capacity
     for(int i =0; i<timeSlots.length; i++) {
       if (timeSlots[i].contains('capacity')) {
-        print(timeSlots[i]);
         capacity = int.parse(timeSlots[i].split(':').last);
-        //print('found capacity: ' + capacity.toString());
       };
     }
 
+    // Set limit for reservations based on capacity
     int limit = (capacity * .6) as int;
     this.limit = limit;
-    print(limit);
 
+    // For each start time, generate a time slot string
+    // and a matching times available entry
     for(int i =0; i<timeSlots.length; i++) {
       if ( !timeSlots[i].contains('capacity')){
 
+        // Get start time
         String time = timeSlots[i];
         key = time.split(":").first;
         hours = key.substring(0,2);
@@ -133,6 +151,7 @@ class StoreScheduleController {
         String startTime = hours + ":" + mins;
 
 
+        // Derive end time from start time
         int minsNum = int.parse(mins);
         minsNum += 15;
         mins = minsNum.toString();
@@ -149,9 +168,14 @@ class StoreScheduleController {
 
         }
 
+        // Reformat start time
         key = startTime + " - " + hours + ":" + mins;
 
+        // Get number of reservations
         numReserved = int.parse(time.split(":").last);
+
+        // Determine if time slot has
+        // remaining capacity
         if (numReserved < limit) {
           available = true;
         }
@@ -159,34 +183,19 @@ class StoreScheduleController {
           available = false;
         }
 
+        // Set attributes with schedule info
         reserved[key] = numReserved.toString();
         timeSlots[i] = key;
         timesAvailable[key] = available;
-
-
-        
-    }
-    /*
-    print("\n");
-    print("\n");
-    print(timeSlots);
-    print("\n");
-    print("\n");
-    */
-
-    /*
-    print(timesAvailable);
-    print("\n");
-    print("\n");
-    */
-
       }
+    }
+      // NOTE: consider reworking.
+      // Currently removes last key -> 'capacity:x'
       timeSlots = timeSlots.sublist(0, timeSlots.length-1);
-      //print(timeSlots);
-      
   }
 
-
+  // Returns text editing controller matching
+  // specified key
   TextEditingController getTextController(String key) {
     if ( fieldsMap.containsKey(key) ) {
       return fieldsMap[key]; 
@@ -194,15 +203,24 @@ class StoreScheduleController {
     throw Exception("Key not found.");
   }
 
+  // Returns whether or not there is any
+  // remaining capacity for the
+  // specified time slot
   bool getAvailable(String key) {
       return timesAvailable[key]; 
   }
 
+
+  // Converts a list to a list of dropdown items
   List<DropdownMenuItem<String>> convertMenu(List<dynamic> items){
+
+    // Removes duplicate entries
     if ( items != null) {
       items = items.toSet().toList();
     }
 
+    // NOTE: the '?' invokes null safety
+    // Returning an empty list if null
     return (
          items?.map<DropdownMenuItem<String>>((dynamic value) {
            return new DropdownMenuItem<String>(
@@ -214,6 +232,8 @@ class StoreScheduleController {
    }
 
 
+  // Function to provide the logic as to whether or not
+  // a clicked time slot is valid to be selected
   bool updateSelectedTimes(int index, String time, bool room){
     bool timesUpdated;
     if (room) {
@@ -269,6 +289,9 @@ class StoreScheduleController {
 
   }
   else{
+    // Notify user selected time slot does not
+    // have enough remaining capacity to
+    // accomodate customer's party size
     timesUpdated = false;
     Fluttertoast.showToast(
             msg: 'Party size exceeds remaining spots',
@@ -282,6 +305,7 @@ class StoreScheduleController {
     return timesUpdated;
   }
 
+  // Format and return the selected times -> 'xx:xx - yy:yy'
   String getSelectedTimes() {
     String output = '';
       

@@ -244,19 +244,39 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                             ),
                             ),
 
-                            
-                       
-                            Container(
-                              padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                              child: FloatingActionButton.extended(
-                                key: Key('selStrButton'),
-                                heroTag: 'SelFavBtn',
-                                onPressed: () => _onButtonPressed(context, 2),
-                                label: Text(
-                                  'Select Store' ,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                                  child: FloatingActionButton.extended(
+                                    key: Key('selStrButton'),
+                                    heroTag: 'SelFavBtn',
+                                    onPressed: () => _onButtonPressed(context, 2),
+                                    label: Text(
+                                      'Select Store' ,
+                                    ),
+                                  )
                                 ),
-                              )
+                                Container (
+                                  padding: EdgeInsets.fromLTRB(40, 20, 0, 0),
+                                  child: Text("Enter store as soon as possible")
+                                  ),
+                                Container(
+                                  padding: EdgeInsets.only(top:20),
+                                  child: Checkbox(
+                                    value: _isChecked,
+                                    onChanged: (value) => setState( () {
+                                      print(value);
+
+                                      _isChecked = value;
+                                     }),
+                                   )
+                                 ),
+                            ],
                             ),
+                       
+                            
                         ]
                         ),
                         //),
@@ -280,22 +300,19 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                   )
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                                  //margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
                                   child: Form(
                                     key: _partySizeKey,
                                     child: TextFormField(
                                       controller: customerProfile.getTextController("party_size"),
                                       validator: (String value) {
 
-                                        print(value);
                                         if (value.contains(new RegExp(r"[a-zA-Z'-]"))) {
-                                          print(value);
                                           return "Must be a number.";
                                         }
                                         else {
                                           if (int.parse(value) > 5 || int.parse(value) < 1) {
-                                            print(value);
-                                            return "Must be greater than one and less than 6";
+                                            return "Must be greater\nthan 1 and less\nthan 6";
                                           }
                                         }
 
@@ -309,18 +326,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                   ),
 
                                 ),
-                                /*
-                                Container(
-                                  child: Checkbox(
-                                    value: _isChecked,
-                                    onChanged: (value) => setState( () {
-                                      print(value);
-
-                                      _isChecked = value;
-                                    }),
-                                  )
-                                ),
-                                */
+                                
                               ]
 
                               ),

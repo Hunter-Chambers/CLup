@@ -57,9 +57,9 @@ class CustomerProfileController {
     return favoriteStores;
   }
 
-  addFavoriteStore(String store) async {
+  Future<String> addFavoriteStore(String store) async {
     String customerUsername = getTextController("username").text;
-    await Services.addFavoriteStore(customerUsername, store);
+    return await Services.addFavoriteStore(customerUsername, store);
   }
 
   List<String> getFavoriteStoreNames() {

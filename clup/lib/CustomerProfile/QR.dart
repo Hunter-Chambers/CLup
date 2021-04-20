@@ -4,6 +4,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
 import 'CustomerLogin.dart';
+import 'package:clup/LoadingScreen/LoadingScreen.dart';
 
 class QR extends StatefulWidget {
   final CustomerProfileController customerProfile;
@@ -17,6 +18,7 @@ class _QRState extends State<QR> {
   final CustomerProfileController customerProfile;
   _QRState({this.customerProfile});
 
+  List<String> data;
   List<String> dropDownItems = [];
   String dropDownValue = "";
   int qrIndex = 0;
@@ -26,6 +28,14 @@ class _QRState extends State<QR> {
   @override
   void initState() {
     super.initState();
+
+    _loadVisits().then((data) {
+      setState(() {
+        this.data = data;
+
+        _loadData();
+      });
+    });
 
     // adding a visit for testing
     /*
@@ -37,6 +47,31 @@ class _QRState extends State<QR> {
         */
 
     // fill dropDownItems correctly
+    
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    if( data == null ) {
+      return LoadingScreen();
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("This is the QR page"),
+      ),
+      body: _contentWidget(),
+    );
+  }
+
+  Future _loadVisits() async{
+    await customerProfile.getVisits();
+    return this.data = customerProfile.visits;
+  }
+  _loadData() {
     if (!customerProfile.visits.isEmpty) {
       for (String visit in customerProfile.visits) {
         List<String> info = visit.split(';');
@@ -50,18 +85,8 @@ class _QRState extends State<QR> {
       dropDownItems = [];
       dropDownValue = null;
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("This is the QR page"),
-      ),
-      body: _contentWidget(),
-    );
   }
-
   // holds everything in the page
   _contentWidget() {
     final bodyHeight = MediaQuery.of(context).size.height -

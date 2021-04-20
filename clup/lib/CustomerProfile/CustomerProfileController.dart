@@ -21,10 +21,27 @@ class CustomerProfileController {
     ];
   }
 
-// WILL NEED UPDATING
-// *************************************************************************
-// *************************************************************************
-//
+  getVisits() async {
+    visits = [];
+    String customerUsername = getTextController("username").text;
+    String visitsStr = await Services.getVisits(customerUsername);
+
+    print(visitsStr);
+    List<String> visitsStrSplit = visitsStr.split(',');
+
+    for (int i=0;i<visitsStrSplit.length;i++) {
+      visitsStrSplit[i] = visitsStrSplit[i].replaceAll("[", "");
+      visitsStrSplit[i] = visitsStrSplit[i].replaceAll("]", "");
+      visitsStrSplit[i] = visitsStrSplit[i].replaceAll("'", "");
+      visitsStrSplit[i] = visitsStrSplit[i].replaceFirst("u", "");
+
+      visits.add(visitsStrSplit[i]);
+
+    }
+    print(visits);
+
+  }
+
 
   getFavoriteStores() async {
     favoriteStores = [];
@@ -102,8 +119,6 @@ class CustomerProfileController {
     }
     return "Something went wrong.";
   }
-// *************************************************************************
-// *************************************************************************
 
   TextEditingController getTextController(String key) {
     return fieldsMap[key];

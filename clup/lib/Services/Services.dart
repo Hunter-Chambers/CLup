@@ -163,7 +163,7 @@ class Services {
       
 
       final response = await http.post(path, body: map);
-      //print(response.body);
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -187,7 +187,7 @@ class Services {
       
 
       final response = await http.post(path, body: map);
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

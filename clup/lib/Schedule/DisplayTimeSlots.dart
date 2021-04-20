@@ -27,7 +27,6 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
   CustomerProfileController customerProfile;
   double scrollOffset;
   ScrollController _scrollController;
-  //Color _color;
 
   _DisplayTimeSlotsState ({StoreScheduleController scheduleController,
                             CustomerProfileController customerController,

@@ -373,7 +373,7 @@ class Services {
       String city,
       String store,
       String address,
-      String storeUsername,
+      String day,
       String customer,
       String option,
       String fullOrScheduledVisitStart,
@@ -386,7 +386,7 @@ class Services {
       map['city'] = city;
       map['store'] = store;
       map['address'] = address;
-      map['storeUsername'] = storeUsername;
+      map['day'] = day;
       map['customer'] = customer;
       map['option'] = option;
       map['fullOrScheduledVisitStart'] = fullOrScheduledVisitStart;

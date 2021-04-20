@@ -40,6 +40,8 @@ class _ASAPState extends State<ASAP> {
   List<String> schedule;
   String _value;
   String _earliestSched;
+  String _walkinStart;
+  String _walkinEnd;
 
   _ASAPState({StoreScheduleController scheduleController,
               CustomerProfileController customerController,
@@ -115,7 +117,7 @@ class _ASAPState extends State<ASAP> {
       );
   }
 
-_onButtonPressed() {
+_onButtonPressed() async {
 
   switch (_value) {
     case 'A': {
@@ -140,13 +142,59 @@ _onButtonPressed() {
 
       return Navigator.push(context, MaterialPageRoute(
         builder: (context) => 
-          StoreScheduleView(scheduleController: storeSchedule, customerController: customerProfile, scrollOffset: offset ),
+          StoreScheduleView(scheduleController: storeSchedule, 
+                            customerController: customerProfile, 
+                            scrollOffset: offset ),
         )
       );
 
     }
     break;
     case 'B': {
+      String storeInfo = storeSchedule.getTextController('Store').text;
+    List<String> storeInfoSplit = storeInfo.split(', ');
+    String store = storeInfoSplit.first.split(',')[0];
+    String address = storeInfoSplit.first.split(',')[1];
+    String city = storeInfoSplit.first.split(',')[2];
+    String state = storeInfoSplit.first.split(',')[3].replaceAll("\n", '');
+    String day = storeSchedule.getTextController('day').text.toLowerCase();
+    /*
+    String storeCloseTime = 
+      storeSchedule.timeSlots[storeSchedule.timeSlots.length-1].split(' - ').last.replaceAll(":", "");
+    */
+    //String maxCapacity = '100';
+    String username = customerProfile.getTextController("username").text;
+    String contact = customerProfile.getTextController("email").text;
+    String partySize = customerProfile.getTextController("party_size").text;
+    String visitLength = storeSchedule.selectedTimes.keys.length.toString();
+    String type = 'scheduled';
+    String option = 'B';
+    String fullOrScheduledVisitStart = 'false';
+    String nextTimeBlock = _walkinStart;
+    String endTime = _walkinEnd;
+
+    String customer = json.encode({
+      username: {
+        'contact_info': contact,
+        'party_size': int.parse(partySize),
+        'type':type, 
+        'visit_length': int.parse(visitLength)
+      }
+    }).replaceAll("\"", "\\\"");
+
+      String result = await Services.makeChoice(
+          state,
+          city,
+          store,
+          address,
+          day,
+          customer,
+          option,
+          fullOrScheduledVisitStart,
+          nextTimeBlock,
+          endTime);
+      
+      print(result);
 
     }
     break;
@@ -190,23 +238,31 @@ Future _loadData() async{
     }).replaceAll("\"", "\\\"");
 
   
-  // Shave off extra output
-  String temp = await Services.makeReservation(state, city, store, address, customer, visitStartBlock, storeCloseTime, maxCapacity, day);
+  String temp = await Services.makeReservation(state,
+                                               city,
+                                               store,
+                                               address,
+                                               customer, 
+                                               visitStartBlock, 
+                                               storeCloseTime, 
+                                               maxCapacity, 
+                                               day);
+
+  // Adding extra newline for readability
   List<String> tempList = temp.split('\n');
   String newTemp = '';
 
-  for (int i = 3; i<tempList.length; i++) {
+  for (int i = 0; i<tempList.length; i++) {
 
     newTemp += tempList[i] +  "\n\n";
 
   }
-
   temp = newTemp;
 
   /************** Get Times  **************************/
 
   // Earliest Reservation Time
-  String tempTime = tempList[3].split(":").last.replaceAll(" ", "");
+  String tempTime = tempList[0].split(":").last.replaceAll(" ", "");
   String hour = tempTime.substring(0,2);
   String min = tempTime.substring(2);
   String startTime =  hour + ':' + min;
@@ -231,9 +287,20 @@ Future _loadData() async{
 
   // Build time slot for earliest reservation
   _earliestSched = startTime + ' - ' + endTime;
-  print(_earliestSched);
+  //print(_earliestSched);
 
+  /*
+  int i = 0;
+  for ( String item in tempList) {
+    print('number: ' + i.toString());
+    print(item);
+    i++;
+  }
+  */
+  List<String> walkinInfo = tempList[tempList.length - 2].split(':');
 
+  _walkinStart = walkinInfo[1].split(' and ').first.replaceAll(" ", "");
+  _walkinEnd = walkinInfo[2].replaceAll(' ', '');
 
 
   return this.data = temp;

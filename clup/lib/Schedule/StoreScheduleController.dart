@@ -101,8 +101,6 @@ class StoreScheduleController {
     // Get the current day
     String day = getTextController("day").text.toLowerCase();
     String today = (DateFormat.E().format(DateTime.now()));
-    print("day: " + day);
-    print("Today: " + today);
     bool isToday = false;
     int currentTimeNum;
 
@@ -204,8 +202,6 @@ class StoreScheduleController {
           }
           int tempTime = int.parse(hoursNum.toString() + minsNumString);
           if ( tempTime < currentTimeNum) {
-            print(tempTime);
-            print(currentTimeNum);
             pastTime = true;
           }
         }

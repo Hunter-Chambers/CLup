@@ -98,6 +98,48 @@ class StoreScheduleController {
 
   // 
   setSchedule() async {
+    // Get the current day
+    String day = getTextController("day").text.toLowerCase();
+    String today = (DateFormat.E().format(DateTime.now()));
+    print("day: " + day);
+    print("Today: " + today);
+    bool isToday = false;
+    int currentTimeNum;
+
+    // Only need to do if attempting to schedule visit
+    // for 'today'
+    if ( day.contains(today.toLowerCase()) ) {
+
+      isToday = true;
+
+      DateTime currentTimeInfo = DateTime.now();
+      String currentTime =  currentTimeInfo.toString().split(' ').last;
+
+      int currentTimeHr = int.parse(currentTime.split(':')[0]);
+      int currentTimeMin = int.parse(currentTime.split(':')[1]);
+
+      currentTimeHr += 1;
+      if ( currentTimeMin <= 15 ) {
+        currentTimeMin = 15;
+      }
+      else if ( currentTimeMin <= 30 ) {
+        currentTimeMin = 30;
+      }
+      else if ( currentTimeMin <= 45 ) {
+        currentTimeMin = 45;
+      }
+      else {
+        currentTimeMin = 0;
+        currentTimeHr += 1;
+      }
+
+      String currentTimeMinString = currentTimeMin.toString();
+      if ( currentTimeMinString.length < 2 ) {
+        currentTimeMinString += '0';
+      }
+      currentTimeNum = int.parse(currentTimeHr.toString() + currentTimeMinString);
+
+    }
 
     // Get store info
     String storeInfo = getTextController("Store").text;
@@ -108,8 +150,6 @@ class StoreScheduleController {
     String state = storeInfoSplit[3];
     state = state.replaceAll("\n", "");
 
-    // Get the current day
-    String day = getTextController("day").text.toLowerCase();
 
     // Pull schedule info from backend
     String temp = await Services.getSchedule(state, city, store, address, day);
@@ -125,6 +165,7 @@ class StoreScheduleController {
     String mins;
     String hours;
     int capacity = 0;
+    bool pastTime;
 
 
     // Get store capacity
@@ -142,6 +183,7 @@ class StoreScheduleController {
     // and a matching times available entry
     for(int i =0; i<timeSlots.length; i++) {
       if ( !timeSlots[i].contains('capacity')){
+        pastTime = false;
 
         // Get start time
         String time = timeSlots[i];
@@ -153,10 +195,24 @@ class StoreScheduleController {
 
         // Derive end time from start time
         int minsNum = int.parse(mins);
+        int hoursNum = int.parse(hours);
+
+        if (isToday) {            
+          String minsNumString = minsNum.toString();
+          if ( minsNumString.length < 2 ) {
+            minsNumString += '0';
+          }
+          int tempTime = int.parse(hoursNum.toString() + minsNumString);
+          if ( tempTime < currentTimeNum) {
+            print(tempTime);
+            print(currentTimeNum);
+            pastTime = true;
+          }
+        }
+
         minsNum += 15;
         mins = minsNum.toString();
         if (minsNum == 60) {
-          int hoursNum = int.parse(hours);
           hoursNum += 1;
           hours = hoursNum.toString();
 
@@ -172,17 +228,25 @@ class StoreScheduleController {
         key = startTime + " - " + hours + ":" + mins;
 
         // Get number of reservations
-        numReserved = int.parse(time.split(":").last);
+        numReserved = int.parse(time.split(":").last);          
 
-        // Determine if time slot has
-        // remaining capacity
-        if (numReserved < limit) {
-          available = true;
-        }
-        else {
+        // If it's past the time allowed
+        // for scheduling, don't let the
+        // customer schedule that time
+        if (pastTime) {
           available = false;
         }
+        else {
+          // Determine if time slot has
+          // remaining capacity
+          if (numReserved < limit) {
+            available = true;
+          }
+          else {
+            available = false;
+          }
 
+        }
         // Set attributes with schedule info
         reserved[key] = numReserved.toString();
         timeSlots[i] = key;

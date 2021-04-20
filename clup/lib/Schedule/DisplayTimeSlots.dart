@@ -186,7 +186,12 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
     if (storeSchedule.getAvailable(time)) {
       return time;
     }
-    return 'Full';
+    else {
+      if (int.parse(storeSchedule.reserved[time]) < 60) {
+        return 'Past Time';
+      }
+      return 'Full';
+    }
   }
 
   String _displayReserved() {

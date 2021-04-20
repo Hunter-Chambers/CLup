@@ -242,7 +242,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
     return this.data = storeSchedule.timeSlots;
   }
 
-  bool _buildVisit(String selectedTimes) {
+  Future<bool> _buildVisit(String selectedTimes) async{
     //String visit = selectedTimes + ';';
     String visit = '';
     String storeInfo = storeSchedule.getTextController('Store').text;
@@ -286,7 +286,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
     //print(storeCloseTime);
     //print(maxCapacity);
 
-    visit += username + ';' + 
+    visit += '"' + username + ';' + 
         contact + ';' + 
         partySize + ';' + 
         type + ';' +
@@ -294,37 +294,46 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
         visitStartTime + ";" +
         visitEndTime + ';' +
         store + ';' +
-        day;
+        day + '"';
     
     //print("visit: " +  visit);
     
 
-    if ( customerProfile.visits.contains(visit) ) {
+    Services.makeReservation(state,
+                                 city,
+                                 store,
+                                 address,
+                                 customer,
+                                 visitStartBlock,
+                                 storeCloseTime,
+                                 maxCapacity,
+                                 day
+                                 );
+    String output = await _saveVisit(username, visit);
+    if ( output.contains('success') ) {
+      customerProfile.addvisit(visit);
+      return true;
+    }
+    else if ( output.contains('already')) {
       return false;
     }
     else {
-      Services.makeReservation(state,
-                                   city,
-                                   store,
-                                   address,
-                                   customer,
-                                   visitStartBlock,
-                                   storeCloseTime,
-                                   maxCapacity,
-                                   day
-                                   );
-
-      customerProfile.addvisit(visit);
-
-      return true;
-
+      print('Something happened');
+      return false;
     }
+
+
 
 
     
   }
 
-  _onButtonPressed(BuildContext context, int option) {
+  Future<String> _saveVisit(String username, String visit) async{
+      return await Services.addVisit(username, visit);
+
+  }
+
+  _onButtonPressed(BuildContext context, int option) async{
     String selectedTimes = storeSchedule.getSelectedTimes();
 
     switch (option) {
@@ -340,7 +349,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
             }
 
             else{
-              bool newVisit = _buildVisit(selectedTimes);
+              bool newVisit = await _buildVisit(selectedTimes);
 
               if (newVisit) {
 

@@ -152,6 +152,53 @@ class Services {
       return "failure";
     }
   }
+  static Future<String> getVisits(String username) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['username'] = username;
+
+
+      String path = ROOT_layt + "CustomerVisits/GetVisits.php";
+      
+
+      final response = await http.post(path, body: map);
+      //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+  static Future<String> addVisit(String username, String visitInfo) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['username'] = username;
+      map['visitInfo'] = visitInfo;
+
+
+      String path = ROOT_layt + "CustomerVisits/AddVisit.php";
+      
+
+      final response = await http.post(path, body: map);
+      print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
 
   static Future<String> getMenuItems(
       String fileName, String menu, String needID) async {

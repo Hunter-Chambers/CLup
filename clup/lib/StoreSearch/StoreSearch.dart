@@ -66,6 +66,10 @@ class _MyStatesViewState extends State<MyStatesView>{
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       body: SingleChildScrollView(
         child:
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child:
           Center(
             child: Container(
               color: Colors.white,
@@ -125,7 +129,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                               items: _displayMenu(0),
                             )   ,
                           ), 
-                           
+
 
                           /* ================================================================= Cities Drop Down */
 
@@ -156,7 +160,7 @@ class _MyStatesViewState extends State<MyStatesView>{
                             ),
                           ), 
 
-                           
+
 
                           /* ================================================================= Stores Drop Down */
 
@@ -214,11 +218,11 @@ class _MyStatesViewState extends State<MyStatesView>{
                               items:  _displayMenu(3),
                             ),
                           ),
-                           
+
                           ],
                         ),
                       ),
-                      
+
                       Container(
                         color: Color.fromARGB(255, 224, 224, 224),
                         width: 3,
@@ -277,6 +281,8 @@ class _MyStatesViewState extends State<MyStatesView>{
               ),
             ),
           ),
+        ),
+          
 
          ),
       

@@ -17,6 +17,10 @@ class CustomerEdit extends StatelessWidget {
 
       body: SingleChildScrollView(
         child:
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child:
           Center(
             // center white column
             child: Container(
@@ -187,6 +191,8 @@ class CustomerEdit extends StatelessWidget {
               ),
             ),
           ),
+           ),
+          
          ),
       
     );

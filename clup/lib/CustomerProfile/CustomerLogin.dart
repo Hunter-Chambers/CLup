@@ -48,9 +48,12 @@ class _CustomerLoginState extends State<CustomerLogin> {
         appBar: AppBar(title: Text("To Previous Page")),
 
         body: SingleChildScrollView(
-          child:
-            Center(
-              // center white box
+          child: 
+            Container(
+              height:MediaQuery.of(context).size.height,
+              width:MediaQuery.of(context).size.width,
+              child:
+              Center(
               child: Container(
                 color: Colors.white,
                 height: 500,
@@ -161,6 +164,9 @@ class _CustomerLoginState extends State<CustomerLogin> {
                 ),
               ),
             ),
+
+            ),
+            
           ),
         
       ),

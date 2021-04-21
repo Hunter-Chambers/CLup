@@ -65,8 +65,13 @@ class _QRState extends State<QR> {
       ),
       body: SingleChildScrollView(
         child:
-          _contentWidget(),
-         ),
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child: 
+            _contentWidget(),
+        ),
+      ),
     );
   }
 

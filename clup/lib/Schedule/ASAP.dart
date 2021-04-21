@@ -11,6 +11,7 @@ import 'dart:convert';
 import 'package:clup/Schedule/StoreScheduleView.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:clup/Services/Services.dart';
+import 'package:clup/CustomerProfile/QR.dart';
 
 class ASAP extends StatefulWidget {
 
@@ -82,70 +83,74 @@ class _ASAPState extends State<ASAP> {
         backgroundColor: Color.fromARGB(100, 107, 255, 245),
         appBar: AppBar(title: Text("To Previous Page")),
 
-        body: Center(
-          // center white box
-          child: Container(
-            color: Colors.white,
-            height: 500,
-            width: 700,
-            child: 
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    'Earliest Times Available',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Container(
-                    width: 700,
-                    padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
-                    decoration: new BoxDecoration(
-                      border: Border.all(color: Colors.black),
-                    ),
-                    child: 
-                      Text( 
-                        this.data,
-                        style: TextStyle(fontSize: 20),
-                         ),
-                  ),
-                  
-                  Row(
+        body: SingleChildScrollView(
+          child:
+            Center(
+              // center white box
+              child: Container(
+                color: Colors.white,
+                height: 500,
+                width: 700,
+                child: 
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                    Column( 
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                      DropdownButton(
-                        hint: Text("Select option"),
-                        value: _value,
-                        onChanged: (value) => setState(() {
-                          _value = value;
-                        }),
-                        items: storeSchedule.convertMenu(items)),
-                      Container( 
-                        padding: EdgeInsets.only(top: 20),
-                        child:
-                        FloatingActionButton.extended(
-                          label: Text('Submit choice'),
-                          onPressed: () => _onButtonPressed(1) ),
-                          ),
-
-                    ],),
-                    
-                    Container(child: 
-                      FloatingActionButton.extended(
-                        label: Text('Return to Previous Page'),
-                        onPressed: () => _onButtonPressed(2) ),
+                      Text(
+                        'Earliest Times Available',
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
                         ),
-                  ],),
-                  
-                ],
+                      ),
+                      Container(
+                        width: 700,
+                        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                        decoration: new BoxDecoration(
+                          border: Border.all(color: Colors.black),
+                        ),
+                        child: 
+                          Text( 
+                            this.data,
+                            style: TextStyle(fontSize: 20),
+                             ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                        Column( 
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                          DropdownButton(
+                            hint: Text("Select option"),
+                            value: _value,
+                            onChanged: (value) => setState(() {
+                              _value = value;
+                            }),
+                            items: storeSchedule.convertMenu(items)),
+                          Container( 
+                            padding: EdgeInsets.only(top: 20),
+                            child:
+                            FloatingActionButton.extended(
+                              label: Text('Submit choice'),
+                              onPressed: () => _onButtonPressed(1) ),
+                              ),
+
+                        ],),
+
+                        Container(child: 
+                          FloatingActionButton.extended(
+                            label: Text('Return to Previous Page'),
+                            onPressed: () => _onButtonPressed(2) ),
+                            ),
+                      ],),
+
+                    ],
+                  ),
               ),
-          ),
-        ),
+            ),
+           ),
+        
       );
   }
 
@@ -256,6 +261,12 @@ _onButtonPressed(int option) async {
             
             
             await Services.addVisit(username, visit);
+
+            return Navigator.push(context, MaterialPageRoute(
+              builder: (context) => 
+                QR( customerProfile: customerProfile, ),
+              )
+            );
           }
           break;
 
@@ -268,6 +279,12 @@ _onButtonPressed(int option) async {
     }
     break;
     case 2: {
+      return Navigator.push(context, MaterialPageRoute(
+        builder: (context) => 
+          CustomerLogin( customerController: customerProfile,
+                         scheduleController: storeSchedule, ),
+        )
+      );
 
     }
   }

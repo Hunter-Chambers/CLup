@@ -106,7 +106,10 @@ class _ASAPState extends State<ASAP> {
                       border: Border.all(color: Colors.black),
                     ),
                     child: 
-                      Text( this.data ),
+                      Text( 
+                        this.data,
+                        style: TextStyle(fontSize: 20),
+                         ),
                   ),
                   
                   Row(
@@ -322,7 +325,7 @@ Future _loadData() async{
   List<String> tempList = temp.split('\n');
   String newTemp = '';
 
-  for (int i = 0; i<tempList.length; i++) {
+  for (int i = 0; i<tempList.length-1; i++) {
 
     newTemp += tempList[i] +  "\n\n";
 

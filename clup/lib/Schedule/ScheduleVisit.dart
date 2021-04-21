@@ -96,13 +96,17 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
       appBar: AppBar(title: Text("To Profile Page")),
       body: SingleChildScrollView(
         child:
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child:
           Center(
             child: Container(
               color: Colors.white,
               height:450,
               width: 1400,
                child: 
-              
+
                /*****************************************************************  Left Column */
                ListView( 
                  controller: new ScrollController(),
@@ -121,7 +125,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               )
                          ),
                      ),
-                  
+
                       Container(
                         height: 400,
                         child: Row(
@@ -277,8 +281,8 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                      ),
                                 ],
                                 ),
-                           
-                                
+
+
                             ]
                             ),
                             //),
@@ -328,7 +332,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                       ),
 
                                     ),
-                                    
+
                                   ]
 
                                   ),
@@ -385,7 +389,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                         ),
                     ),
                    ]
-                   
+
                 ),
 
 
@@ -393,10 +397,12 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
 
                )
 
-               
+
                )
-               
+
           )
+        ),
+          
          ),
       
     );

@@ -85,6 +85,10 @@ class _ASAPState extends State<ASAP> {
 
         body: SingleChildScrollView(
           child:
+          Container(
+            height:MediaQuery.of(context).size.height,
+            width:MediaQuery.of(context).size.width,
+            child:
             Center(
               // center white box
               child: Container(
@@ -149,6 +153,8 @@ class _ASAPState extends State<ASAP> {
                   ),
               ),
             ),
+          ),
+            
            ),
         
       );

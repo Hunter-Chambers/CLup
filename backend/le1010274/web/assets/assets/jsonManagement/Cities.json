@@ -1,0 +1,20 @@
+{
+		"New Mexico" : {
+
+				"id" : 1,
+				"cities" : ["Albuquerque", "Angel Fire", "Santa Fe"]
+
+		},
+		"Oklahoma" : {
+				
+				"id" : 2,
+				"cities" : ["Norman", "Oklahoma City", "Stillwater"]
+
+		},
+		"Texas" : {
+
+				"id" : 3,
+				"cities" : ["Amarillo",	"Dallas", "Lubbock"]
+
+		}
+}

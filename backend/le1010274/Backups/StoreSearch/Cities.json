@@ -1,0 +1,50 @@
+{
+  "Idaho": {
+    "cities": [
+      "Boise"
+    ], 
+    "id": 7
+  }, 
+  "Oklahoma": {
+    "cities": [
+      "Norman", 
+      "Oklahoma City", 
+      "Stillwater"
+    ], 
+    "id": 2
+  }, 
+  "Illinois": {
+    "cities": [
+      "Chicago"
+    ], 
+    "id": 6
+  }, 
+  "California": {
+    "cities": [
+      "Sacramento"
+    ], 
+    "id": 4
+  }, 
+  "New Mexico": {
+    "cities": [
+      "Albuquerque", 
+      "Angel Fire", 
+      "Santa Fe"
+    ], 
+    "id": 1
+  }, 
+  "Ohio": {
+    "cities": [
+      "Cleveland"
+    ], 
+    "id": 5
+  }, 
+  "Texas": {
+    "cities": [
+      "Amarillo", 
+      "Dallas", 
+      "Lubbock"
+    ], 
+    "id": 3
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "My Store Boi-2": {
+    "addresses": [
+      "123 What Lane"
+    ]
+  }, 
+  "United Supermarket-5": {
+    "addresses": [
+      "1234 This Way"
+    ]
+  }, 
+  "Testers-2": {
+    "addresses": [
+      "15071 Anna Kate"
+    ]
+  }, 
+  "Rando Mart-2": {
+    "addresses": [
+      "33 Somewhere"
+    ]
+  }, 
+  "Storetastic-3": {
+    "addresses": [
+      "1222 SomeAddress"
+    ]
+  }
+}

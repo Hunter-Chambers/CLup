@@ -1,0 +1,12 @@
+{
+  "visits": [
+    "customer;some_email@place.com;3;scheduled;1;14:00;14:15;Rando-Mart;tuesday", 
+    "customer;some_email@place.com;3;scheduled;2;15:15;15:45;Rando-Mart;tuesday", 
+    "customer;some_email@place.com;4;scheduled;3;17:15;18:00;Storetastic;tuesday", 
+    "customer;some_email@place.com;2;scheduled;3;23:15;24:00;Storetastic;tuesday", 
+    "customer;some_email@place.com;3;scheduled;3;07:15;08:00;Rando-Mart;thursday", 
+    "customer;some_email@place.com;3;scheduled;0;1345;1445;Rando-Mart;wednesday", 
+    "customer;some_email@place.com;3;scheduled;0;1415;1515;United-Supermarket;wednesday", 
+    "customer;some_email@place.com;3;scheduled;0;1800;1900;Rando-Mart;wednesday"
+  ]
+}

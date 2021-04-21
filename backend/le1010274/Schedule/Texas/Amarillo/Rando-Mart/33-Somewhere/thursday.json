@@ -1,0 +1,201 @@
+{
+  "0700": {
+    "num_reservations": 0
+  },
+  "0715": {
+    "customer": {
+      "contact_info": "some_email@place.com",
+      "party_size": 3,
+      "type": "scheduled",
+      "visit_length": 3
+    },
+    "num_reservations": 3
+  },
+  "0730": {
+    "num_reservations": 3
+  },
+  "0745": {
+    "num_reservations": 3
+  },
+  "0800": {
+    "num_reservations": 0
+  },
+  "0815": {
+    "num_reservations": 0
+  },
+  "0830": {
+    "num_reservations": 0
+  },
+  "0845": {
+    "num_reservations": 0
+  },
+  "0900": {
+    "num_reservations": 0
+  },
+  "0915": {
+    "num_reservations": 0
+  },
+  "0930": {
+    "num_reservations": 0
+  },
+  "0945": {
+    "num_reservations": 0
+  },
+  "1000": {
+    "num_reservations": 0
+  },
+  "1015": {
+    "num_reservations": 0
+  },
+  "1030": {
+    "num_reservations": 0
+  },
+  "1045": {
+    "num_reservations": 0
+  },
+  "1100": {
+    "num_reservations": 0
+  },
+  "1115": {
+    "num_reservations": 0
+  },
+  "1130": {
+    "num_reservations": 0
+  },
+  "1145": {
+    "num_reservations": 0
+  },
+  "1200": {
+    "num_reservations": 0
+  },
+  "1215": {
+    "num_reservations": 0
+  },
+  "1230": {
+    "num_reservations": 0
+  },
+  "1245": {
+    "num_reservations": 0
+  },
+  "1300": {
+    "num_reservations": 0
+  },
+  "1315": {
+    "num_reservations": 0
+  },
+  "1330": {
+    "num_reservations": 0
+  },
+  "1345": {
+    "num_reservations": 0
+  },
+  "1400": {
+    "num_reservations": 0
+  },
+  "1415": {
+    "num_reservations": 0
+  },
+  "1430": {
+    "num_reservations": 0
+  },
+  "1445": {
+    "num_reservations": 0
+  },
+  "1500": {
+    "num_reservations": 0
+  },
+  "1515": {
+    "num_reservations": 0
+  },
+  "1530": {
+    "num_reservations": 0
+  },
+  "1545": {
+    "num_reservations": 0
+  },
+  "1600": {
+    "num_reservations": 0
+  },
+  "1615": {
+    "num_reservations": 0
+  },
+  "1630": {
+    "num_reservations": 0
+  },
+  "1645": {
+    "num_reservations": 0
+  },
+  "1700": {
+    "num_reservations": 0
+  },
+  "1715": {
+    "num_reservations": 0
+  },
+  "1730": {
+    "num_reservations": 0
+  },
+  "1745": {
+    "num_reservations": 0
+  },
+  "1800": {
+    "num_reservations": 0
+  },
+  "1815": {
+    "num_reservations": 0
+  },
+  "1830": {
+    "num_reservations": 0
+  },
+  "1845": {
+    "num_reservations": 0
+  },
+  "1900": {
+    "num_reservations": 0
+  },
+  "1915": {
+    "num_reservations": 0
+  },
+  "1930": {
+    "num_reservations": 0
+  },
+  "1945": {
+    "num_reservations": 0
+  },
+  "2000": {
+    "num_reservations": 0
+  },
+  "2015": {
+    "num_reservations": 0
+  },
+  "2030": {
+    "num_reservations": 0
+  },
+  "2045": {
+    "num_reservations": 0
+  },
+  "2100": {
+    "num_reservations": 0
+  },
+  "2115": {
+    "num_reservations": 0
+  },
+  "2130": {
+    "num_reservations": 0
+  },
+  "2145": {
+    "num_reservations": 0
+  },
+  "2200": {
+    "num_reservations": 0
+  },
+  "2215": {
+    "num_reservations": 0
+  },
+  "2230": {
+    "num_reservations": 0
+  },
+  "2245": {
+    "num_reservations": 0
+  },
+  "capacity": "100"
+}

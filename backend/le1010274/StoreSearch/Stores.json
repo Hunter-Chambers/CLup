@@ -1,0 +1,22 @@
+{
+  "Amarillo-2": {
+    "stores": [
+      "Rando Mart", 
+      "Testers", 
+      "My Store Boi"
+    ], 
+    "id": 2
+  }, 
+  "Santa Fe-3": {
+    "stores": [
+      "Storetastic"
+    ], 
+    "id": 3
+  }, 
+  "Chicago-4": {
+    "stores": [
+      "United Supermarket"
+    ], 
+    "id": 5
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "New Mexico": {
+    "cities": [
+      "Santa Fe"
+    ], 
+    "id": 3
+  }, 
+  "Texas": {
+    "cities": [
+      "Amarillo"
+    ], 
+    "id": 2
+  }, 
+  "Illinois": {
+    "cities": [
+      "Chicago"
+    ], 
+    "id": 4
+  }
+}

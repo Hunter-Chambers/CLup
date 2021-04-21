@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:clup/Schedule/StoreScheduleView.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:clup/Services/Services.dart';
 
 class ASAP extends StatefulWidget {
 
@@ -239,8 +240,19 @@ _onButtonPressed(int option) async {
                 nextTimeBlock,
                 endTime);
 
-            print(result);
-
+            String visit = '';
+            visit += '"' + username + ';' + 
+                contact + ';' + 
+                partySize + ';' + 
+                type + ';' +
+                visitLength + ';' +
+                nextTimeBlock + ";" +
+                endTime + ';' +
+                store + ';' +
+                day + '"';
+            
+            
+            await Services.addVisit(username, visit);
           }
           break;
 

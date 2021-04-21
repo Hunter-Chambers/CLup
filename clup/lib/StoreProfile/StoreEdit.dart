@@ -66,6 +66,10 @@ class _StoreEditState extends State<StoreEdit> {
 
         body: SingleChildScrollView(
           child:
+          Container(
+            height:MediaQuery.of(context).size.height,
+            width:MediaQuery.of(context).size.width,
+            child:
             Center(
               // center white column
               child: Container(
@@ -416,6 +420,8 @@ class _StoreEditState extends State<StoreEdit> {
                 ),
               ),
             ),
+          ),
+            
            ),
         
       ),

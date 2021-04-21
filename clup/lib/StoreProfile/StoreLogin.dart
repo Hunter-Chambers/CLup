@@ -34,106 +34,110 @@ class _StoreLoginState extends State<StoreLogin> {
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
       appBar: AppBar(title: Text("To Previous Page")),
 
-      body: Center(
-        // center white box
-        child: Container(
-          color: Colors.white,
-          height: 500,
-          width: 700,
+      body: SingleChildScrollView(
+        child:
+          Center(
+            // center white box
+            child: Container(
+              color: Colors.white,
+              height: 500,
+              width: 700,
 
-          // holds all the info on the page
-          child: ListView(
-            children: <Widget>[
-              // page title
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
-                child: Text(
-                  'Store Profile Page',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-
-              // profile info listed
-              Container(
-                alignment: Alignment.center,
-                child: Text(
-                  "Username: " +
-                      storeController.getTextController("username").text +
-                      "\n" +
-                      "Open Hours: " +
-                      storeController.getTextController("open_time").text +
-                      " - " +
-                      storeController.getTextController("close_time").text +
-                      "\n" +
-                      "Capacity: " +
-                      storeController.getTextController("capacity").text +
-                      "\n",
-                ),
-              ),
-
-              // horizontal divider
-              Container(
-                alignment: Alignment.center,
-                child: Divider(
-                  thickness: 3,
-                  indent: 30,
-                  endIndent: 30,
-                ),
-              ),
-
-              // edit info button
-              Container(
-                padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
-                child: FloatingActionButton.extended(
-                  heroTag: "S_EditBtn",
-                  onPressed: () => _onButtonPressed(context, 1),
-                  label: Text(
-                    "Edit Profile",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+              // holds all the info on the page
+              child: ListView(
+                children: <Widget>[
+                  // page title
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
+                    child: Text(
+                      'Store Profile Page',
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ),
 
-              // scan QR code button
-              Container(
-                padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
-                child: FloatingActionButton.extended(
-                  heroTag: "S_QRBtn",
-                  onPressed: () => _openScan(),
-                  label: Text(
-                    "Scan QR Code",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  // profile info listed
+                  Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Username: " +
+                          storeController.getTextController("username").text +
+                          "\n" +
+                          "Open Hours: " +
+                          storeController.getTextController("open_time").text +
+                          " - " +
+                          storeController.getTextController("close_time").text +
+                          "\n" +
+                          "Capacity: " +
+                          storeController.getTextController("capacity").text +
+                          "\n",
                     ),
                   ),
-                ),
-              ),
-              // testing button
-              /*
-              Container(
-                padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
-                child: FloatingActionButton.extended(
-                  heroTag: "testBtn",
-                  onPressed: () => _onButtonPressed(context, 3),
-                  label: Text(
-                    "Test",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+
+                  // horizontal divider
+                  Container(
+                    alignment: Alignment.center,
+                    child: Divider(
+                      thickness: 3,
+                      indent: 30,
+                      endIndent: 30,
                     ),
                   ),
-                ),
+
+                  // edit info button
+                  Container(
+                    padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: "S_EditBtn",
+                      onPressed: () => _onButtonPressed(context, 1),
+                      label: Text(
+                        "Edit Profile",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  // scan QR code button
+                  Container(
+                    padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: "S_QRBtn",
+                      onPressed: () => _openScan(),
+                      label: Text(
+                        "Scan QR Code",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // testing button
+                  /*
+                  Container(
+                    padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: "testBtn",
+                      onPressed: () => _onButtonPressed(context, 3),
+                      label: Text(
+                        "Test",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  */
+                ],
               ),
-              */
-            ],
+            ),
           ),
-        ),
-      ),
+         ),
+      
     );
   }
 

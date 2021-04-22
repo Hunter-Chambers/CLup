@@ -4,6 +4,7 @@ import 'package:jsqr/scanner.dart';
 import 'dart:convert';
 import 'StoreEdit.dart';
 import 'package:clup/Services/Services.dart';
+import 'package:us_states/us_states.dart';
 
 class StoreLogin extends StatefulWidget {
   final StoreProfileController storeController;
@@ -191,6 +192,7 @@ class _StoreLoginState extends State<StoreLogin> {
     }).replaceAll("\"", "\\\"");
 
     String state = json.encode(storeController.getTextController('state').text);
+    state = USStates.getName(state.replaceAll("\"", ""));
     String city = json.encode(storeController.getTextController('city').text);
     String store =
         json.encode(storeController.getTextController('store_name').text);
@@ -205,7 +207,7 @@ class _StoreLoginState extends State<StoreLogin> {
 
     Services.hideLoadingIndicator(context);
 
-    if (isShopping == "NOT SHOPPING\n") {
+    if (isShopping.contains("NOT SHOPPING")) {
       String isInTemp = await Services.checkTempStorage(
           state, city, store, address, storeUsername, customer);
 
@@ -223,7 +225,7 @@ class _StoreLoginState extends State<StoreLogin> {
         Services.showAlertMessage(info[0] + " Admitted!", result, context);
       } else {
         Services.showAlertMessage(info[0] + " Not Found",
-            info[0] + " is not in the schedule.", context);
+            info[0] + " is not scheduled to shop here at this time.", context);
       }
     } else if (isShopping == "timed out") {
       Services.showAlertMessage(
@@ -271,7 +273,6 @@ class _StoreLoginState extends State<StoreLogin> {
           }
         }
         break;
-
     }
   }
 }

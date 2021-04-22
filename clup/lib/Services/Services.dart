@@ -12,7 +12,7 @@ class Services {
   //static const ROOT = "http://10.0.6.1/cs4391/hc998658/backend.php";
   static const ROOT = "http://10.0.6.1/cs4391/le1010274/backend.php";
   //static const ROOT_FILE_MANAGEMENT =
-      //"http://10.0.6.1/cs4391/hc998658/Schedule/ScheduleFileManager.php";
+  //"http://10.0.6.1/cs4391/hc998658/Schedule/ScheduleFileManager.php";
   static const ROOT_FILE_MANAGEMENT =
       "http://10.0.6.1/cs4391/le1010274/Schedule/ScheduleFileManager.php";
   static const ROOT_layt = "http://10.0.6.1/cs4391/le1010274/";
@@ -82,7 +82,6 @@ class Services {
   */
   static Future<String> addStore(List<String> storeInfo) async {
     try {
-
       var map = Map<String, dynamic>();
       map['state'] = storeInfo[0];
       map['city'] = storeInfo[1];
@@ -90,7 +89,6 @@ class Services {
       map['address'] = storeInfo[3];
 
       String path = ROOT_layt + "StoreSearch/AddStore.php";
-      
 
       final response = await http.post(path, body: map);
       //print(response.body);
@@ -105,15 +103,13 @@ class Services {
       return "failure";
     }
   }
+
   static Future<String> getFavoriteStores(String username) async {
     try {
-
       var map = Map<String, dynamic>();
       map['username'] = username;
 
-
       String path = ROOT_layt + "CustomerFavorites/GetFavorites.php";
-      
 
       final response = await http.post(path, body: map);
       //print(response.body);
@@ -128,16 +124,15 @@ class Services {
       return "failure";
     }
   }
- static Future<String> addFavoriteStore(String username, String storeInfo) async {
-    try {
 
+  static Future<String> addFavoriteStore(
+      String username, String storeInfo) async {
+    try {
       var map = Map<String, dynamic>();
       map['username'] = username;
       map['storeInfo'] = storeInfo;
 
-
       String path = ROOT_layt + "CustomerFavorites/AddFavorite.php";
-      
 
       final response = await http.post(path, body: map);
       //print(response.body);
@@ -152,15 +147,13 @@ class Services {
       return "failure";
     }
   }
+
   static Future<String> getVisits(String username) async {
     try {
-
       var map = Map<String, dynamic>();
       map['username'] = username;
 
-
       String path = ROOT_layt + "CustomerVisits/GetVisits.php";
-      
 
       final response = await http.post(path, body: map);
       print(response.body);
@@ -175,16 +168,14 @@ class Services {
       return "failure";
     }
   }
+
   static Future<String> addVisit(String username, String visitInfo) async {
     try {
-
       var map = Map<String, dynamic>();
       map['username'] = username;
       map['visitInfo'] = visitInfo;
 
-
       String path = ROOT_layt + "CustomerVisits/AddVisit.php";
-      
 
       final response = await http.post(path, body: map);
       //print(response.body);
@@ -248,15 +239,15 @@ class Services {
     }
   }
 
-  static Future<String> getSchedule(
-      String state, String city, String store, String address, String day) async {
+  static Future<String> getSchedule(String state, String city, String store,
+      String address, String day) async {
     try {
       var map = Map<String, dynamic>();
       map['state'] = state;
       map['city'] = city;
       map['store'] = store;
       map['address'] = address;
-      map['fileName'] = day+".json";
+      map['fileName'] = day + ".json";
 
       String path = ROOT_layt + "Schedule/GetSchedule.php";
 
@@ -426,7 +417,7 @@ class Services {
 
       final response =
           await http.post(path, body: map).timeout(Duration(seconds: 5));
-          //print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -498,6 +489,8 @@ class Services {
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
+      print(response.body);
+
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
       }
@@ -568,6 +561,8 @@ class Services {
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
+      print(response.body);
+
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
       }
@@ -579,14 +574,8 @@ class Services {
     }
   }
 
-  static Future<String> createFiles(
-      String state,
-      String city,
-      String store,
-      String address,
-      String startTime,
-      String endTime, 
-      String capacity) async {
+  static Future<String> createFiles(String state, String city, String store,
+      String address, String startTime, String endTime, String capacity) async {
     try {
       var map = Map<String, dynamic>();
 
@@ -602,9 +591,8 @@ class Services {
 
       String path = ROOT_layt + "Schedule/ScheduleFileManager.php";
 
-      final response = await http
-          .post(path, body: map)
-          .timeout(Duration(seconds: 5));
+      final response =
+          await http.post(path, body: map).timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -616,7 +604,6 @@ class Services {
       return "failure";
     }
   }
-
 
   // method for showing a popup message. Similar to
   // a toast or snackbar, except the message will not

@@ -64,217 +64,228 @@ class _MyStatesViewState extends State<MyStatesView>{
       return Scaffold(
       appBar: AppBar(title: Text('To Login Page')),
       backgroundColor: Color.fromARGB(100, 107, 255, 245),
-      body: Center(
-        child: Container(
-          color: Colors.white,
-          height: 500,
-          width: 1000,
-          child: ListView(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
-                child: Text(
-                  'Search for a Store',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+        child:
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child:
+          Center(
+            child: Container(
+              color: Colors.white,
+              height: 500,
+              width: 1000,
+              child: ListView(
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
-                    height: 50,
                     alignment: Alignment.center,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.only(right: 50),
-                      shrinkWrap: true,
-                      children: [
-
-
-                      /* ================================================================= States Drop Down */
-                      Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child:
-                        DropdownButton<String>(
-                          key: Key('StateDrpDwn'),
-                          hint: Text(menuItems.labels[0]),
-                          value: _statesValue,
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
-                          elevation: 16,
-                          style: TextStyle(color: Colors.black),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.blue,
-                          ),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              _statesChanged = true;
-                              _statesValue = newValue;
-                              menuItems.setSelection(menuItems.labels[0], _statesValue);
-                              _setNextDropDown(0);
-                            });
-                          },
-                          items: _displayMenu(0),
-                        )   ,
-                      ), 
-                       
-
-                      /* ================================================================= Cities Drop Down */
-
-                      Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child: 
-                        DropdownButton<String>(
-                          key: Key('CityDrpDwn'),
-                          hint: Text(menuItems.labels[1]),
-                          value: _citiesValue,
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
-                          elevation: 16,
-                          style: TextStyle(color: Colors.black),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.blue,
-                          ),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              _citiesChanged = true;
-                              _citiesValue = newValue;
-                              menuItems.setSelection(menuItems.labels[1], _citiesValue);
-                              _setNextDropDown(1);
-                            });
-                          },
-                          items: _displayMenu(1),
-                        ),
-                      ), 
-
-                       
-
-                      /* ================================================================= Stores Drop Down */
-
-                      Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child:
-                        DropdownButton<String>(
-                          key: Key('StoreDrpDwn'),
-                          hint: Text(menuItems.labels[2]),
-                          value: _storesValue,
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
-                          elevation: 16,
-                          style: TextStyle(color: Colors.black),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.blue,
-                          ),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              _storesChanged = true;
-                              _storesValue = newValue;
-                              menuItems.setSelection(menuItems.labels[2], _storesValue);
-                              _setNextDropDown(2);
-                            });
-                          },
-                          items: _displayMenu(2),
-                        ),
+                    padding: EdgeInsets.fromLTRB(0, 20, 0, 40),
+                    child: Text(
+                      'Search for a Store',
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
                       ),
-
-                      /* ================================================================= Addresses Drop Down */
-
-                      Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child:
-                        DropdownButton<String>(
-                          key: Key('AddressDrpDwn'),
-                          hint: Text(menuItems.labels[3]),
-                          value: _addressesValue,
-                          icon: Icon(Icons.arrow_drop_down),
-                          iconSize: 24,
-                          elevation: 16,
-                          style: TextStyle(color: Colors.black),
-                          underline: Container(
-                            height: 2,
-                            color: Colors.blue,
-                          ),
-                          onChanged: (String newValue) {
-                            setState(() {
-                              _addressesValue = newValue;
-                              menuItems.setSelection(menuItems.labels[3], _addressesValue);
-                              _setNextDropDown(3);
-                            });
-                          },
-                          items:  _displayMenu(3),
-                        ),
-                      ),
-                       
-                      ],
                     ),
                   ),
-                  
-                  Container(
-                    color: Color.fromARGB(255, 224, 224, 224),
-                    width: 3,
-                    height: 100,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
+                        height: 50,
+                        alignment: Alignment.center,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.only(right: 50),
+                          shrinkWrap: true,
+                          children: [
+
+
+                          /* ================================================================= States Drop Down */
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child:
+                            DropdownButton<String>(
+                              key: Key('StateDrpDwn'),
+                              hint: Text(menuItems.labels[0]),
+                              value: _statesValue,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.black),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.blue,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  _statesChanged = true;
+                                  _statesValue = newValue;
+                                  menuItems.setSelection(menuItems.labels[0], _statesValue);
+                                  _setNextDropDown(0);
+                                });
+                              },
+                              items: _displayMenu(0),
+                            )   ,
+                          ), 
+
+
+                          /* ================================================================= Cities Drop Down */
+
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child: 
+                            DropdownButton<String>(
+                              key: Key('CityDrpDwn'),
+                              hint: Text(menuItems.labels[1]),
+                              value: _citiesValue,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.black),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.blue,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  _citiesChanged = true;
+                                  _citiesValue = newValue;
+                                  menuItems.setSelection(menuItems.labels[1], _citiesValue);
+                                  _setNextDropDown(1);
+                                });
+                              },
+                              items: _displayMenu(1),
+                            ),
+                          ), 
+
+
+
+                          /* ================================================================= Stores Drop Down */
+
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child:
+                            DropdownButton<String>(
+                              key: Key('StoreDrpDwn'),
+                              hint: Text(menuItems.labels[2]),
+                              value: _storesValue,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.black),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.blue,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  _storesChanged = true;
+                                  _storesValue = newValue;
+                                  menuItems.setSelection(menuItems.labels[2], _storesValue);
+                                  _setNextDropDown(2);
+                                });
+                              },
+                              items: _displayMenu(2),
+                            ),
+                          ),
+
+                          /* ================================================================= Addresses Drop Down */
+
+                          Padding(
+                            padding: EdgeInsets.only(right: 20),
+                            child:
+                            DropdownButton<String>(
+                              key: Key('AddressDrpDwn'),
+                              hint: Text(menuItems.labels[3]),
+                              value: _addressesValue,
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 16,
+                              style: TextStyle(color: Colors.black),
+                              underline: Container(
+                                height: 2,
+                                color: Colors.blue,
+                              ),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  _addressesValue = newValue;
+                                  menuItems.setSelection(menuItems.labels[3], _addressesValue);
+                                  _setNextDropDown(3);
+                                });
+                              },
+                              items:  _displayMenu(3),
+                            ),
+                          ),
+
+                          ],
+                        ),
+                      ),
+
+                      Container(
+                        color: Color.fromARGB(255, 224, 224, 224),
+                        width: 3,
+                        height: 100,
+                      ),
+                      // ================================================== Add to favorites button
+                      Container(
+                        padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+                        child: FloatingActionButton.extended(
+                          heroTag: "StateBtn",
+                          onPressed: () => _onButtonPressed(context, 1),
+                          label: Text(
+                            "Add to favorites",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  // ================================================== Add to favorites button
+
                   Container(
-                    padding: EdgeInsets.fromLTRB(45, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
+                    child: Divider(
+                      thickness: 3,
+                      indent: 30,
+                      endIndent: 30,
+                    ),
+                  ),
+
+                      // ================================================== Return to profile page button
+                  Container(
+                    padding: EdgeInsets.fromLTRB(300,20,300,0),
                     child: FloatingActionButton.extended(
-                      heroTag: "StateBtn",
-                      onPressed: () => _onButtonPressed(context, 1),
-                      label: Text(
-                        "Add to favorites",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
+                      onPressed:() => _onButtonPressed(context, 2), 
+                      heroTag: 'strToProfBtn',
+                      label: Text('Return to Profile Page'),
+                      )
+                  ),
+                  /*
+                  Container(
+                    padding: EdgeInsets.fromLTRB(300,20,300,0),
+                    child: FloatingActionButton.extended(
+                      onPressed:() => _onButtonPressed(context, 3), 
+                      heroTag: 'testBtn',
+                      label: Text('Add entry to the json'),
+                      )
+                  ),
+                  */
+
+                  Container(
+                    padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
                   ),
                 ],
               ),
-
-              Container(
-                padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
-                child: Divider(
-                  thickness: 3,
-                  indent: 30,
-                  endIndent: 30,
-                ),
-              ),
-
-                  // ================================================== Return to profile page button
-              Container(
-                padding: EdgeInsets.fromLTRB(300,20,300,0),
-                child: FloatingActionButton.extended(
-                  onPressed:() => _onButtonPressed(context, 2), 
-                  heroTag: 'strToProfBtn',
-                  label: Text('Return to Profile Page'),
-                  )
-              ),
-              /*
-              Container(
-                padding: EdgeInsets.fromLTRB(300,20,300,0),
-                child: FloatingActionButton.extended(
-                  onPressed:() => _onButtonPressed(context, 3), 
-                  heroTag: 'testBtn',
-                  label: Text('Add entry to the json'),
-                  )
-              ),
-              */
-
-              Container(
-                padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
+          
+
+         ),
+      
     );
    }
 

@@ -63,7 +63,15 @@ class _QRState extends State<QR> {
       appBar: AppBar(
         title: Text("This is the QR page"),
       ),
-      body: _contentWidget(),
+      body: SingleChildScrollView(
+        child:
+        Container(
+          height:MediaQuery.of(context).size.height,
+          width:MediaQuery.of(context).size.width,
+          child: 
+            _contentWidget(),
+        ),
+      ),
     );
   }
 

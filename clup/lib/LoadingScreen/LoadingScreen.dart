@@ -14,20 +14,34 @@ class LoadingScreen extends StatefulWidget{
     _LoadingScreenState(scheduleController: storeSchedule, customerController: customerProfile);
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProviderStateMixin {
   StoreScheduleController storeSchedule;
   CustomerProfileController customerProfile;
   _LoadingScreenState({StoreScheduleController scheduleController, CustomerProfileController customerController})
   : storeSchedule = scheduleController, customerProfile = customerController;
 
   Widget build(BuildContext context) {
-    print("this is the loading screen.");
     return 
     Center(child:
-      Container(
-        child: Text("Loading...")
-      ),
-    );
+      CircularProgressIndicator(
+        strokeWidth: 5.0,
+        valueColor: ColorTween(
+          begin: Colors.black, 
+          end: Colors.black,
+          ).animate(
+            CurvedAnimation(
+              parent: new AnimationController(
+                vsync:  this, 
+                duration: Duration(milliseconds: 100)
+                ),
+              curve: Curves.linear
+            )
+            ),
+      //Container(
+        //child: Text("Loading...")
+      //),
+        ),
+      );
   }
   
 }

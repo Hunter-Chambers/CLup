@@ -270,7 +270,8 @@ class Services {
       else
         map["tablename"] = "StoreProfiles";
 
-      final response = await http.post(ROOT, body: map);
+      final response =
+          await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
       if (response.statusCode == 200 && response.body != "error")
         return response.body;

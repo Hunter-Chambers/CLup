@@ -38,12 +38,10 @@ class _StoreSignupState extends State<StoreSignup> {
         appBar: AppBar(title: Text("This is the Store signup page")),
 
         body: SingleChildScrollView(
-          child:
-          Container(
-            height:MediaQuery.of(context).size.height,
-            width:MediaQuery.of(context).size.width,
-            child:
-            Center(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Center(
               // center white column
               child: Container(
                 color: Colors.white,
@@ -62,15 +60,15 @@ class _StoreSignupState extends State<StoreSignup> {
                             margin: EdgeInsets.only(bottom: 20),
                             child: TextFormField(
                               key: Key("usernameField"),
-                              controller:
-                                  widget.storeProfile.getTextController("username"),
+                              controller: widget.storeProfile
+                                  .getTextController("username"),
                               validator: (String value) {
                                 if (value.length < 5 || value.length > 15) {
                                   return "Must be 5-15 characters";
                                 }
 
-                                if (value.contains(
-                                    new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
+                                if (value.contains(new RegExp(
+                                    r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
                                   return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
                                 }
 
@@ -94,8 +92,8 @@ class _StoreSignupState extends State<StoreSignup> {
                                 if (value.length < 10) {
                                   return "Must be at least 10 characters";
                                 }
-                                if (value.contains(
-                                    new RegExp(r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
+                                if (value.contains(new RegExp(
+                                    r'[\\/%&*()=\[\]{}":;\.,<>? ]'))) {
                                   return "Must not contain \\/%&*()=[]{}\":;.,<>? or spaces";
                                 }
                                 if (value.contains(widget.storeProfile
@@ -146,8 +144,8 @@ class _StoreSignupState extends State<StoreSignup> {
                                   return "Please remove all leading spaces";
                                 }
 
-                                if (!value
-                                    .contains(new RegExp(r"^([ a-zA-Z'-])+$"))) {
+                                if (!value.contains(
+                                    new RegExp(r"^([ a-zA-Z'-])+$"))) {
                                   return "Must only contain ' - and letters.";
                                 }
 
@@ -190,8 +188,8 @@ class _StoreSignupState extends State<StoreSignup> {
                                 margin: EdgeInsets.only(right: 25, bottom: 20),
                                 child: TextFormField(
                                   key: Key("cityField"),
-                                  controller:
-                                      widget.storeProfile.getTextController("city"),
+                                  controller: widget.storeProfile
+                                      .getTextController("city"),
                                   validator: (String value) {
                                     if (value.contains(new RegExp(r"^ +"))) {
                                       return "Please remove all leading spaces";
@@ -224,7 +222,7 @@ class _StoreSignupState extends State<StoreSignup> {
                                         new RegExp(r"^([a-zA-Z]){2,2}$"))) {
                                       return "Must be\nin the\nform XX.";
                                     }
-                                    if (USStates.getName(value) == ""){
+                                    if (USStates.getName(value) == "") {
                                       return "Invalid\nabbreviation.";
                                     }
 
@@ -246,8 +244,8 @@ class _StoreSignupState extends State<StoreSignup> {
                                   controller: widget.storeProfile
                                       .getTextController("zipcode"),
                                   validator: (String value) {
-                                    if (!value
-                                        .contains(new RegExp(r"^([0-9]){5,5}$"))) {
+                                    if (!value.contains(
+                                        new RegExp(r"^([0-9]){5,5}$"))) {
                                       return "Must be a\nvalid zip code.";
                                     }
                                     return null;
@@ -273,12 +271,14 @@ class _StoreSignupState extends State<StoreSignup> {
                                   controller: widget.storeProfile
                                       .getTextController("open_time"),
                                   validator: (String value) {
-                                    if (!(value.contains(
-                                            new RegExp(r'^1[0-2]:[0-5][0-9]$')) ||
-                                        value.contains(
-                                            new RegExp(r'^0[1-9]:[0-5][0-9]$')) ||
-                                        value.contains(
-                                            new RegExp(r'^[1-9]:[0-5][0-9]$')))) {
+                                    if (!(value.contains(new RegExp(
+                                            r'^1[0-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'^0[0-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'^[1-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'2[0-3]:[0-5][0-9]^$')))) {
                                       return "Please input as XX:XX\ne.g. 1:00";
                                     }
                                     return null;
@@ -348,12 +348,14 @@ class _StoreSignupState extends State<StoreSignup> {
                                   controller: widget.storeProfile
                                       .getTextController("close_time"),
                                   validator: (String value) {
-                                    if (!(value.contains(
-                                            new RegExp(r'^1[0-2]:[0-5][0-9]$')) ||
-                                        value.contains(
-                                            new RegExp(r'^0[1-9]:[0-5][0-9]$')) ||
-                                        value.contains(
-                                            new RegExp(r'^[1-9]:[0-5][0-9]$')))) {
+                                    if (!(value.contains(new RegExp(
+                                            r'^1[0-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'^0[0-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'^[1-9]:[0-5][0-9]$')) ||
+                                        value.contains(new RegExp(
+                                            r'^2[0-3]:[0-5][0-9]$')))) {
                                       return "Please input as XX:XX\ne.g. 1:00";
                                     }
                                     return null;
@@ -420,8 +422,8 @@ class _StoreSignupState extends State<StoreSignup> {
                             margin: EdgeInsets.only(bottom: 20),
                             child: TextFormField(
                               key: Key("capacityField"),
-                              controller:
-                                  widget.storeProfile.getTextController("capacity"),
+                              controller: widget.storeProfile
+                                  .getTextController("capacity"),
                               validator: (String value) {
                                 if (value.contains(new RegExp(r'[^0-9$]')) ||
                                     value.contains(new RegExp(r"^0+")) ||
@@ -493,16 +495,19 @@ class _StoreSignupState extends State<StoreSignup> {
                                 Services.hideLoadingIndicator(context);
 
                                 if (result == "failure") {
+                                  widget.storeProfile.insertColons();
                                   Services.showAlertMessage(
                                       "Failed to Create Profile",
                                       "That username already exists",
                                       context);
                                 } else if (result == "timed out") {
+                                  widget.storeProfile.insertColons();
                                   Services.showAlertMessage(
                                       "Failed to Create Profile",
                                       "Connection timed out",
                                       context);
                                 } else if (result == "unexpected error") {
+                                  widget.storeProfile.insertColons();
                                   Services.showAlertMessage(
                                       "Failed to Create Profile",
                                       "An unexpected error occurred",
@@ -519,30 +524,36 @@ class _StoreSignupState extends State<StoreSignup> {
                                   String store = json.encode(widget.storeProfile
                                       .getTextController("store_name")
                                       .text);
-                                  String address = json.encode(widget.storeProfile
+                                  String address = json.encode(widget
+                                      .storeProfile
                                       .getTextController("address")
                                       .text);
                                   String storeUsername = json.encode(widget
                                       .storeProfile
                                       .getTextController("username")
                                       .text);
-                                  String startTime = json.encode(widget.storeProfile
+
+                                  String startTime = json.encode(widget
+                                      .storeProfile
                                       .getTextController("open_time")
                                       .text);
-                                  String endTime = json.encode(widget.storeProfile
+                                  String endTime = json.encode(widget
+                                      .storeProfile
                                       .getTextController("close_time")
                                       .text);
-                                  String capacity = json.encode(widget.storeProfile
+
+                                  String capacity = json.encode(widget
+                                      .storeProfile
                                       .getTextController("capacity")
                                       .text);
-                                      print("capacity: " + capacity);
+                                  print("capacity: " + capacity);
                                   String result = await Services.createFiles(
                                       state,
                                       city,
                                       store,
                                       address,
                                       startTime,
-                                      endTime, 
+                                      endTime,
                                       capacity);
 
                                   print(result);
@@ -568,25 +579,25 @@ class _StoreSignupState extends State<StoreSignup> {
               ),
             ),
           ),
-            
-           ),
-        
+        ),
       ),
     );
   }
 
-  _onButtonPressed(BuildContext context, int option) async{
+  _onButtonPressed(BuildContext context, int option) async {
     switch (option) {
       case 1:
         {
-          String stateAbbr = widget.storeProfile.getTextController("state").text;
+          String stateAbbr =
+              widget.storeProfile.getTextController("state").text;
           String state = USStates.getName(stateAbbr);
           String city = widget.storeProfile.getTextController("city").text;
-          String store = widget.storeProfile.getTextController("store_name").text;
-          String address = widget.storeProfile.getTextController("address").text;
+          String store =
+              widget.storeProfile.getTextController("store_name").text;
+          String address =
+              widget.storeProfile.getTextController("address").text;
 
           List<String> storeInfo = [state, city, store, address];
-                                    
 
           await Services.addStore(storeInfo);
           widget.storeProfile.reset();

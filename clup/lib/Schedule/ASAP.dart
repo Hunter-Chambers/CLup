@@ -226,7 +226,8 @@ _onButtonPressed(int option) async {
           String username = customerProfile.getTextController("username").text;
           String contact = customerProfile.getTextController("email").text;
           String partySize = customerProfile.getTextController("party_size").text;
-          String visitLength = storeSchedule.selectedTimes.keys.length.toString();
+          String visitLength = '4';
+          //String visitLength = storeSchedule.selectedTimes.keys.length.toString();
           String type = 'scheduled';
           String option = 'B';
           String fullOrScheduledVisitStart = 'false';

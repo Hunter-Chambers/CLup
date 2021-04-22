@@ -1,5 +1,6 @@
 //import 'package:clup/SearchStoresView_Backup.dart';
 
+import 'package:clup/HomePage.dart';
 import 'package:clup/StoreSearch/StoreSearch.dart';
 import 'CustomerProfileController.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import '../Schedule/ScheduleVisit.dart';
 import '../Schedule/StoreScheduleController.dart';
 import 'QR.dart';
 import 'package:clup/Schedule/ScheduleVisit.dart';
+import 'package:clup/main.dart';
 
 class CustomerLogin extends StatefulWidget {
   final StoreScheduleController scheduleController;
@@ -56,7 +58,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
               Center(
               child: Container(
                 color: Colors.white,
-                height: 500,
+                height: 600,
                 width: 700,
 
                 // holds all the info on the page
@@ -103,7 +105,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
 
                     // edit info button
                     Container(
-                      padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
                       child: FloatingActionButton.extended(
                         heroTag: "EditBtn",
                         onPressed: () => _onButtonPressed(context, 1),
@@ -118,7 +120,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
 
                     // favorite a store button
                     Container(
-                      padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
                       child: FloatingActionButton.extended(
                         heroTag: "FavoriteBtn",
                         onPressed: () => _onButtonPressed(context, 2),
@@ -133,7 +135,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
 
                     // schedule a visit button
                     Container(
-                      padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
                       child: FloatingActionButton.extended(
                         heroTag: "ScheduleBtn",
                         onPressed: () => _onButtonPressed(context, 3),
@@ -148,12 +150,27 @@ class _CustomerLoginState extends State<CustomerLogin> {
 
                     // QR code button
                     Container(
-                      padding: EdgeInsets.fromLTRB(150, 15, 150, 0),
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
                       child: FloatingActionButton.extended(
                         heroTag: "QRBtn",
                         onPressed: () => _onButtonPressed(context, 4),
                         label: Text(
                           "QR Code",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // Signout button
+                    Container(
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
+                      child: FloatingActionButton.extended(
+                        heroTag: "CusSignOutBtn",
+                        onPressed: () => _onButtonPressed(context, 5),
+                        label: Text(
+                          "Sign Out",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -244,6 +261,15 @@ class _CustomerLoginState extends State<CustomerLogin> {
                 builder: (context) => QR(
                   customerProfile: customerController,
                 ),
+              ));
+        }
+        break;       
+      case 5:
+        {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WebApp(),
               ));
         }
         break;

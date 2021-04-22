@@ -246,6 +246,9 @@ class _StoreLoginState extends State<StoreLogin> {
           storeCloseTime,
           maxCapacity);
       Services.showAlertMessage(info[0] + " Released!", result, context);
+      if ( result.contains('released') ) {
+        Services.removeVisit(info[0], code);
+      }
     }
   }
 

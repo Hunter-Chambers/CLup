@@ -63,6 +63,7 @@ class _QRState extends State<QR> {
       appBar: AppBar(
         title: Text("This is the QR page"),
       ),
+      //backgroundColor: Colors.grey,
       body: SingleChildScrollView(
         child:
         Container(
@@ -80,7 +81,7 @@ class _QRState extends State<QR> {
     return this.data = customerProfile.visits;
   }
   _loadData() {
-    if (!customerProfile.visits.isEmpty) {
+    if (customerProfile.visits.first != 'no visits\n') {
       for (String visit in customerProfile.visits) {
         List<String> info = visit.split(';');
         dropDownItems.add(

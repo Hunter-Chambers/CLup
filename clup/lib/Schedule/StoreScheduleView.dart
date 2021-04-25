@@ -25,12 +25,11 @@ class StoreScheduleView extends StatelessWidget {
                      super(key: key);
 
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: 
+    return 
         MyStoreScheduleView(scheduleController: storeSchedule,
                             customerController: customerProfile,
-                            scrollOffset: scrollOffset),
-      );}
+                            scrollOffset: scrollOffset);
+      }
 }
 class MyStoreScheduleView extends StatefulWidget {
   final StoreScheduleController storeSchedule;
@@ -243,6 +242,7 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
   }
 
   Future<bool> _buildVisit(String selectedTimes) async{
+    print(storeSchedule.selectedTimes);
     //String visit = selectedTimes + ';';
     String visit = '';
     String storeInfo = storeSchedule.getTextController('Store').text;
@@ -294,7 +294,11 @@ class _MyStoreScheduleViewState extends State<MyStoreScheduleView> {
         visitStartTime + ";" +
         visitEndTime + ';' +
         store + ';' +
-        day + '"';
+        day + ';' + 
+        state + ';' + 
+        city + ';' +
+        store + ';' +
+        address + '"';
     
     //print("visit: " +  visit);
     

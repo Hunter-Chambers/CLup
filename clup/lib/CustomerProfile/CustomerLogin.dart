@@ -1,5 +1,7 @@
 //import 'package:clup/SearchStoresView_Backup.dart';
 
+import 'dart:html';
+
 import 'package:clup/HomePage.dart';
 import 'package:clup/StoreSearch/StoreSearch.dart';
 import 'CustomerProfileController.dart';
@@ -10,6 +12,7 @@ import '../Schedule/StoreScheduleController.dart';
 import 'QR.dart';
 import 'package:clup/Schedule/ScheduleVisit.dart';
 import 'package:clup/main.dart';
+import 'package:clup/CustomerProfile/CancelVisit.dart';
 
 class CustomerLogin extends StatefulWidget {
   final StoreScheduleController scheduleController;
@@ -38,16 +41,16 @@ class _CustomerLoginState extends State<CustomerLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return /* WillPopScope(
       onWillPop: () async {
         customerController.reset();
         Navigator.pop(context);
         return false;
       },
-      child: Scaffold(
+      child: */ Scaffold(
         // color for the whole page
         backgroundColor: Color.fromARGB(100, 107, 255, 245),
-        appBar: AppBar(title: Text("To Previous Page")),
+        //appBar: AppBar(title: Text("To Previous Page")),
 
         body: SingleChildScrollView(
           child: 
@@ -58,7 +61,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
               Center(
               child: Container(
                 color: Colors.white,
-                height: 600,
+                height: 700,
                 width: 700,
 
                 // holds all the info on the page
@@ -90,6 +93,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
                             'Phone Number: ' +
                             customerController.getTextController('phone').text +
                             '\n',
+                        style: TextStyle(fontSize: 20),
                       ),
                     ),
 
@@ -163,12 +167,27 @@ class _CustomerLoginState extends State<CustomerLogin> {
                       ),
                     ),
 
+                    // Cancel a visit
+                    Container(
+                      padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
+                      child: FloatingActionButton.extended(
+                        heroTag: "canclBtn",
+                        onPressed: () => _onButtonPressed(context, 5),
+                        label: Text(
+                          "Cancel a Visit",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+
                     // Signout button
                     Container(
                       padding: EdgeInsets.fromLTRB(150, 20, 150, 0),
                       child: FloatingActionButton.extended(
                         heroTag: "CusSignOutBtn",
-                        onPressed: () => _onButtonPressed(context, 5),
+                        onPressed: () => _onButtonPressed(context, 6),
                         label: Text(
                           "Sign Out",
                           style: TextStyle(
@@ -186,7 +205,7 @@ class _CustomerLoginState extends State<CustomerLogin> {
             
           ),
         
-      ),
+      //),
     );
   }
 
@@ -269,8 +288,30 @@ class _CustomerLoginState extends State<CustomerLogin> {
           Navigator.push(
               context,
               MaterialPageRoute(
+                builder: (context) => CancelVisit(customerProfile: customerController,),
+              ));
+        }
+        break;       
+      case 6:
+        {
+          /*
+          Navigator.push(
+              context,
+              MaterialPageRoute(
                 builder: (context) => WebApp(),
               ));
+          
+          Navigator.popUntil(context, ModalRoute.withName('/'));
+
+          return Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WebApp(),
+            )
+          );
+          */
+          window.localStorage.remove('csrf');
+          Navigator.pushNamedAndRemoveUntil(context, "/home", (r) => false);
+
         }
         break;
         return null;

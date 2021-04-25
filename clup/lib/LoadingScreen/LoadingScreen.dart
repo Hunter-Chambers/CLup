@@ -21,6 +21,7 @@ class _LoadingScreenState extends State<LoadingScreen> with SingleTickerProvider
   : storeSchedule = scheduleController, customerProfile = customerController;
 
   Widget build(BuildContext context) {
+    print('made it to the loading screen');
     return 
     Center(child:
       CircularProgressIndicator(

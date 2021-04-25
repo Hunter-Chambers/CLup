@@ -26,7 +26,7 @@ class CustomerProfileController {
     String customerUsername = getTextController("username").text;
     String visitsStr = await Services.getVisits(customerUsername);
 
-    print(visitsStr);
+    //print(visitsStr);
     List<String> visitsStrSplit = visitsStr.split(',');
 
     for (int i=0;i<visitsStrSplit.length;i++) {
@@ -38,8 +38,16 @@ class CustomerProfileController {
       visits.add(visitsStrSplit[i]);
 
     }
-    print(visits);
+    //print(visits);
 
+  }
+
+  String toString() {
+    String output = '';
+    for (String field in fieldsMap.keys) {
+      print(field);
+      output += fieldsMap[field].text;
+    }
   }
 
 

@@ -156,7 +156,7 @@ class Services {
       String path = ROOT_layt + "CustomerVisits/GetVisits.php";
 
       final response = await http.post(path, body: map);
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -203,6 +203,29 @@ class Services {
 
       final response = await http.post(path, body: map);
       //print(response.body);
+
+      if (response.statusCode == 200 && response.body != "error") {
+        return response.body;
+      }
+
+      return "failure";
+    } catch (e) {
+      print(e);
+      return "failure";
+    }
+  }
+  static Future<String> cancelVisit(String visitInfo) async {
+    try {
+
+      var map = Map<String, dynamic>();
+      map['visitInfo'] = visitInfo;
+
+
+      String path = ROOT_layt + "Schedule/CancelVisit.php";
+      
+
+      final response = await http.post(path, body: map);
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -417,7 +440,7 @@ class Services {
 
       final response =
           await http.post(path, body: map).timeout(Duration(seconds: 5));
-      //print(response.body);
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -457,6 +480,7 @@ class Services {
 
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -489,7 +513,7 @@ class Services {
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -529,6 +553,7 @@ class Services {
 
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
+      print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;
@@ -561,7 +586,7 @@ class Services {
       final response =
           await http.post(ROOT, body: map).timeout(Duration(seconds: 5));
 
-      print(response.body);
+      //print(response.body);
 
       if (response.statusCode == 200 && response.body != "error") {
         return response.body;

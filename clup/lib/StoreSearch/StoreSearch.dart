@@ -26,9 +26,8 @@ class StoreSearch extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return 
-    MaterialApp(
-      home: MyStatesView(searchController: menuItems, customerController: customerProfile,),
-    );}
+      MyStatesView(searchController: menuItems, customerController: customerProfile,)
+    ;}
 }
 
 class MyStatesView extends StatefulWidget{
@@ -500,10 +499,13 @@ class _MyStatesViewState extends State<MyStatesView>{
 
       // 'Return to Profile Page' button was pressed
       case 2: {
+        Navigator.pop(context);
+        /*
         return Navigator.push(context, MaterialPageRoute(
           builder: (context) => CustomerLogin(customerController: customerProfile,),
           )
         );
+        */
       }
       break;
     }

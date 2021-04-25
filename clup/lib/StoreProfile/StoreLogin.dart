@@ -204,6 +204,7 @@ class _StoreLoginState extends State<StoreLogin> {
 
     String isShopping = await Services.customerIsShopping(
         state, city, store, address, storeUsername, customer);
+    isShopping = isShopping.replaceAll("\n", "");
 
     Services.hideLoadingIndicator(context);
 
@@ -246,6 +247,9 @@ class _StoreLoginState extends State<StoreLogin> {
           storeCloseTime,
           maxCapacity);
       Services.showAlertMessage(info[0] + " Released!", result, context);
+      //print('---------');
+      //print(result);
+      //print('---------');
       if ( result.contains('released') ) {
         Services.removeVisit(info[0], code);
       }

@@ -214,6 +214,9 @@ class _HomePageState extends State<HomePage> {
                                             .getTextController("phone")
                                             .text = recordValues["phone"];
 
+                                        print('----------');
+                                        print(customerProfile);
+                                        print('----------');
                                         return Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -430,6 +433,8 @@ class _HomePageState extends State<HomePage> {
                           recordValues["email"];
                       customerProfile.getTextController("phone").text =
                           recordValues["phone"];
+
+                      print(customerProfile);
 
                       return Navigator.push(
                         context,

@@ -6,8 +6,8 @@ import 'package:clup/CustomerProfile/CustomerLogin.dart';
 import 'package:clup/StoreProfile/StoreLogin.dart';
 import 'package:clup/Services/Services.dart';
 import 'package:flutter/material.dart';
-//import 'package:dart_code_metrics/metrics_analyzer.dart';
-//import 'package:dart_code_metrics/reporters.dart';
+import 'package:dart_code_metrics/metrics_analyzer.dart';
+import 'package:dart_code_metrics/reporters.dart';
 import 'package:clup/HomePage.dart';
 import 'package:clup/CustomerProfile/CustomerProfileController.dart';
 import 'package:clup/StoreProfile/StoreProfileController.dart';
@@ -51,6 +51,14 @@ class WebApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/home': (context) => HomePage(
+              key: Key("homePage"),
+              title: "CLup Home Page",
+              services: services,
+        ),
+      },
       home: FutureBuilder(
           future: userOrNone,
           builder: (context, snapshot) {
@@ -68,6 +76,7 @@ class WebApp extends StatelessWidget {
                   "lname",
                   "email",
                   "phone",
+                  "party_size",
                 ]);
 
                 customerController.getTextController("username").text =
@@ -81,6 +90,9 @@ class WebApp extends StatelessWidget {
                 customerController.getTextController("phone").text =
                     userInfo["phone"];
 
+                print('----------');
+                print(customerController);
+                print('----------');
                 return CustomerLogin(
                   key: Key("customerLoginPage"),
                   jwt: window.localStorage["csrf"],

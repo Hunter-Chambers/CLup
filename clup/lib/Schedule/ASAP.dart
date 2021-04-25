@@ -36,15 +36,15 @@ class _ASAPState extends State<ASAP> {
 
   final StoreScheduleController storeSchedule;
   final CustomerProfileController customerProfile;
-  final String temp;
+  String temp;
 
   String data = "Temp val";
-  List<String> items = ["A", "B"];
+  List<String> items = ["B"];
   List<String> schedule;
   String _value;
   String _earliestSched;
-  String _walkinStart;
-  String _walkinEnd;
+  String _walkinStart = '';
+  String _walkinEnd = '';
 
   _ASAPState({StoreScheduleController scheduleController,
               CustomerProfileController customerController,
@@ -136,6 +136,7 @@ class _ASAPState extends State<ASAP> {
                             padding: EdgeInsets.only(top: 20),
                             child:
                             FloatingActionButton.extended(
+                              heroTag: 'AsapSub',
                               label: Text('Submit choice'),
                               onPressed: () => _onButtonPressed(1) ),
                               ),
@@ -144,6 +145,7 @@ class _ASAPState extends State<ASAP> {
 
                         Container(child: 
                           FloatingActionButton.extended(
+                            heroTag: 'AsapToProf',
                             label: Text('Return to Previous Page'),
                             onPressed: () => _onButtonPressed(2) ),
                             ),
@@ -183,20 +185,32 @@ _onButtonPressed(int option) async {
           case 'A': {
             // use this for testing
             // ---------
-            //_earliestSched = '11:00 - 11:15';
+            //print(storeSchedule.timeSlots);
+            //_earliestSched = '20:00 - 20:15';
             // ---------
+            print(_earliestSched);
             int index = storeSchedule.timeSlots.indexOf(_earliestSched);
-            storeSchedule.updateSelectedTimes(index, _earliestSched, true);
-            double offset;
-
-            if ( index > 19 && index <= 39 ) {
-              offset = 320;
+            int stop = index + 4;
+            while (index < storeSchedule.timeSlots.length && index < stop) {
+              print(index);
+              storeSchedule.updateSelectedTimes(index, storeSchedule.timeSlots[index], true);
+              index += 1;
             }
-            else if ( index > 39 && index <= 59 ) {
-              offset = 640;
+            double offset;
+            if (index <= 20) {
+              offset = 0;
+            }
+            else if ( index > 20 && index <= 40 ) {
+              offset = 160;
+            }
+            else if ( index > 40 && index <= 60 ) {
+              offset = 420;
+            }
+            else if ( index > 60 && index <= 81 ) {
+              offset = 750;
             }
             else {
-              offset = 960;
+              offset = 900;
             }
 
 
@@ -228,9 +242,13 @@ _onButtonPressed(int option) async {
           String partySize = customerProfile.getTextController("party_size").text;
           String visitLength = '4';
           //String visitLength = storeSchedule.selectedTimes.keys.length.toString();
-          String type = 'scheduled';
+          String type = 'walk_ins';
           String option = 'B';
-          String fullOrScheduledVisitStart = 'false';
+          String fullOrScheduledVisitStart = _walkinStart;
+          if (temp.contains('queue')) {
+            fullOrScheduledVisitStart = 'true';
+          }
+          print(fullOrScheduledVisitStart);
           String nextTimeBlock = _walkinStart;
           String endTime = _walkinEnd;
 
@@ -255,8 +273,10 @@ _onButtonPressed(int option) async {
                 nextTimeBlock,
                 endTime);
 
-            String visit = '';
-            visit += '"' + username + ';' + 
+            if (!fullOrScheduledVisitStart.contains('true')) {
+
+              String visit = '';
+                visit += '"' + username + ';' + 
                 contact + ';' + 
                 partySize + ';' + 
                 type + ';' +
@@ -264,16 +284,30 @@ _onButtonPressed(int option) async {
                 nextTimeBlock + ";" +
                 endTime + ';' +
                 store + ';' +
-                day + '"';
+                day + ';' +
+                state + ';' +
+                city + ';' +
+                store + ';' +
+                address + '"';
             
             
-            await Services.addVisit(username, visit);
+              await Services.addVisit(username, visit);
 
+              return Navigator.push(context, MaterialPageRoute(
+                builder: (context) => 
+                  QR( customerProfile: customerProfile, ),
+                )
+              );
+
+            }
             return Navigator.push(context, MaterialPageRoute(
               builder: (context) => 
-                QR( customerProfile: customerProfile, ),
+                CustomerLogin( customerController: customerProfile,
+                               scheduleController: storeSchedule, ),
               )
             );
+
+                        
           }
           break;
 
@@ -318,11 +352,11 @@ Future _loadData() async{
     String visitStartBlock = 'ASAP';
     String storeCloseTime = 
       storeSchedule.timeSlots[storeSchedule.timeSlots.length-1].split(' - ').last.replaceAll(":", "");
-    String maxCapacity = '100';
+    String maxCapacity = '350';
     String username = customerProfile.getTextController("username").text;
     String contact = customerProfile.getTextController("email").text;
     String partySize = customerProfile.getTextController("party_size").text;
-    String visitLength = storeSchedule.selectedTimes.keys.length.toString();
+    String visitLength = '4';
     String type = 'scheduled';
 
     String customer = json.encode({
@@ -335,7 +369,7 @@ Future _loadData() async{
     }).replaceAll("\"", "\\\"");
 
   
-  String temp = await Services.makeReservation(state,
+  temp = await Services.makeReservation(state,
                                                city,
                                                store,
                                                address,
@@ -344,7 +378,10 @@ Future _loadData() async{
                                                storeCloseTime, 
                                                maxCapacity, 
                                                day);
-
+  
+  print('wtf');
+  print(temp);
+  print('wtf');
   // Adding extra newline for readability
   List<String> tempList = temp.split('\n');
   String newTemp = '';
@@ -358,48 +395,55 @@ Future _loadData() async{
 
   /************** Get Times  **************************/
 
-  // Earliest Reservation Time
-  String tempTime = tempList[0].split(":").last.replaceAll(" ", "");
-  String hour = tempTime.substring(0,2);
-  String min = tempTime.substring(2);
-  String startTime =  hour + ':' + min;
+  if ( !temp.contains('queue') ) {
+    if (tempList.length > 4 ) {
+      print('HEEEEEEEEEEEERRRRRRRRRRRRE');
+      setState(() {
+        items = ['A', 'B'];
+      });
+        // Earliest Reservation Time
+        String tempTime = tempList[0].split(":").last.replaceAll(" ", "");
+        String hour = tempTime.substring(0,2);
+        String min = tempTime.substring(2);
+        String startTime =  hour + ':' + min;
 
-  // Calculate end time
-  int minNum = int.parse(min);
-  int hourNum = int.parse(hour);
-  minNum += 15;
+        // Calculate end time
+        int minNum = int.parse(min);
+        int hourNum = int.parse(hour);
+        minNum += 15;
 
-  if (minNum == 60) {
-    min = '00';
-    hourNum += 1;
+        if (minNum == 60) {
+          min = '00';
+          hourNum += 1;
+        }
+        else {
+          min = minNum.toString();
+        }
+
+        hour = hourNum.toString();
+        if (hour.length < 2) {
+          hour = '0' + hour;
+        }
+
+        String endTime = hour + ":" + min;
+
+        // Build time slot for earliest reservation
+        _earliestSched = startTime + ' - ' + endTime;
+ 
+
+    }
+    print(tempList.length);
+    List<String> walkinInfo = tempList[tempList.length - 2].split(':');
+    print(tempList.length);
+
+    _walkinStart = walkinInfo[1].split(' and ').first.replaceAll(" ", "");
+    _walkinEnd = walkinInfo[2].replaceAll(' ', '');
+
+
+
   }
 
-  min = minNum.toString();
-  hour = hourNum.toString();
-  if (hour.length < 2) {
-    hour = '0' + hour;
-  }
-
-  String endTime = hour + ":" + min;
-
-  // Build time slot for earliest reservation
-  _earliestSched = startTime + ' - ' + endTime;
-  //print(_earliestSched);
-
-  /*
-  int i = 0;
-  for ( String item in tempList) {
-    print('number: ' + i.toString());
-    print(item);
-    i++;
-  }
-  */
-  List<String> walkinInfo = tempList[tempList.length - 2].split(':');
-
-  _walkinStart = walkinInfo[1].split(' and ').first.replaceAll(" ", "");
-  _walkinEnd = walkinInfo[2].replaceAll(' ', '');
-
-
+  
   return this.data = temp;
 }
 

@@ -23,10 +23,8 @@ class ScheduleVisit extends StatelessWidget{
 
   Widget build(BuildContext context) {
     return
-    MaterialApp(
-      home: MyScheduleVisitView(scheduleController: storeSchedule,
+      MyScheduleVisitView(scheduleController: storeSchedule,
                               customerController: customerProfile,
-      )
       );}
 }
 
@@ -273,8 +271,6 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                       child: Checkbox(
                                         value: _isChecked,
                                         onChanged: (value) => setState( () {
-                                          print(value);
-
                                           _isChecked = value;
                                          }),
                                        )
@@ -318,7 +314,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                             }
                                             else {
                                               if (int.parse(value) > 5 || int.parse(value) < 1) {
-                                                return "Must be greater\nthan 1 and less\nthan 6";
+                                                return "Must be between\n1 and 5";
                                               }
                                             }
 
@@ -370,6 +366,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                     )
                                   ),
                                 ),
+                                /*
                                 Container(
                                   padding: EdgeInsets.only(top: 40),
                                   child: FloatingActionButton.extended(
@@ -381,6 +378,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                                     )
                                   ),
                                 ),
+                                */
                               ],
                             ),
                             //),
@@ -511,11 +509,14 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
       }
       break;
       case 3: {
-
+        
+        Navigator.pop(context);
+        /*
         return Navigator.push(context, MaterialPageRoute(
           builder: (context) => CustomerLogin(scheduleController: storeSchedule, customerController: customerProfile,),
           )
         );
+        */
 
       }
       break;

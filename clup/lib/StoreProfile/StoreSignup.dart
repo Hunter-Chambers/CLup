@@ -522,10 +522,6 @@ class _StoreSignupState extends State<StoreSignup> {
                                   String address = json.encode(widget.storeProfile
                                       .getTextController("address")
                                       .text);
-                                  String storeUsername = json.encode(widget
-                                      .storeProfile
-                                      .getTextController("username")
-                                      .text);
                                   String startTime = json.encode(widget.storeProfile
                                       .getTextController("open_time")
                                       .text);

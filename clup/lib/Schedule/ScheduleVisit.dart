@@ -356,7 +356,7 @@ class _MyScheduleVisitViewState extends State<MyScheduleVisitView> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
-                                  padding: EdgeInsets.only(top: 20),
+                                  //padding: EdgeInsets.only(top: 20),
                                   child: FloatingActionButton.extended(
                                     key: Key('strLookBtn'),
                                     heroTag: "LookupBtn",

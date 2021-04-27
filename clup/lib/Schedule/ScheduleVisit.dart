@@ -18,7 +18,7 @@ class ScheduleVisit extends StatelessWidget{
   ScheduleVisit({Key key, CustomerProfileController customerController, }) 
                  : this.customerProfile = customerController, super(key: key);
 
-  final StoreScheduleController storeSchedule = new StoreScheduleController(['Store', 'day']);
+  final StoreScheduleController storeSchedule = new StoreScheduleController(['Store', 'day', 'capacity']);
 
 
   Widget build(BuildContext context) {

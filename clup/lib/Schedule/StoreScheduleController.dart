@@ -170,6 +170,7 @@ class StoreScheduleController {
     for(int i =0; i<timeSlots.length; i++) {
       if (timeSlots[i].contains('capacity')) {
         capacity = int.parse(timeSlots[i].split(':').last);
+        getTextController('capacity').text = capacity.toString();
       };
     }
 

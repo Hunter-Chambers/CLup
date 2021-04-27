@@ -352,7 +352,8 @@ Future _loadData() async{
     String visitStartBlock = 'ASAP';
     String storeCloseTime = 
       storeSchedule.timeSlots[storeSchedule.timeSlots.length-1].split(' - ').last.replaceAll(":", "");
-    String maxCapacity = '350';
+    String maxCapacity = storeSchedule.getTextController('capacity').text;
+
     String username = customerProfile.getTextController("username").text;
     String contact = customerProfile.getTextController("email").text;
     String partySize = customerProfile.getTextController("party_size").text;

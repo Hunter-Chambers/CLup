@@ -173,7 +173,10 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
   _onTapped(String time){
     int numReserved = int.parse(storeSchedule.reserved[time]);
     int partySize = int.parse(customerProfile.getTextController("party_size").text);
-    bool room = numReserved + partySize <= 60; 
+    int capacity = int.parse(storeSchedule.getTextController('capacity').text);
+    int limit = int.parse((capacity * .6).toString());
+    //print();
+    bool room = numReserved + partySize <= limit;//60; 
     bool timesUpdated = storeSchedule.updateSelectedTimes(index, time, room);
     _updateSelection(timesUpdated);
 
@@ -181,12 +184,14 @@ class _DisplayTimeSlotsState extends State<DisplayTimeSlots> {
 
 
   String _displayTime() {
+    int capacity = int.parse(storeSchedule.getTextController('capacity').text);
     String time = storeSchedule.timeSlots[index];
+    int limit = int.parse((capacity * .6).toString());
     if (storeSchedule.getAvailable(time)) {
       return time;
     }
     else {
-      if (int.parse(storeSchedule.reserved[time]) < 60) {
+      if (int.parse(storeSchedule.reserved[time]) < limit) { //60) {
         return 'Past Time';
       }
       return 'Full';

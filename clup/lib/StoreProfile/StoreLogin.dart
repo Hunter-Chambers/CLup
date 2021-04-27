@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'StoreEdit.dart';
 import 'package:clup/Services/Services.dart';
 import 'package:us_states/us_states.dart';
+import 'dart:html';
 
 class StoreLogin extends StatefulWidget {
   final StoreProfileController storeController;
@@ -115,6 +116,19 @@ class _StoreLoginState extends State<StoreLogin> {
                       onPressed: () => _openScan(),
                       label: Text(
                         "Scan QR Code",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(150, 30, 150, 0),
+                    child: FloatingActionButton.extended(
+                      heroTag: "storeSignout",
+                      onPressed: () => _onButtonPressed(context, 2),
+                      label: Text(
+                        "Sign Out",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -275,6 +289,12 @@ class _StoreLoginState extends State<StoreLogin> {
               _showSnackBar();
             });
           }
+        }
+        break;
+        case 2: {
+
+          window.localStorage.remove('csrf');
+          Navigator.pushNamedAndRemoveUntil(context, "/home", (r) => false);
         }
         break;
     }

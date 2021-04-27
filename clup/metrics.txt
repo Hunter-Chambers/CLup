@@ -1,0 +1,67 @@
+lib\CustomerProfile\CancelVisit.dart:
+WARNING _CancelVisitState.build - lines of executable code: 91, maintainability index: 35
+WARNING _CancelVisitState._onButtonPressed - lines of executable code: 49, nesting level: 6
+
+lib\CustomerProfile\CustomerEdit.dart:
+ALARM   CustomerEdit.build - lines of executable code: 166, maintainability index: 27
+WARNING CustomerEdit._onButtonPressed - lines of executable code: 53
+
+lib\CustomerProfile\CustomerLogin.dart:
+ALARM   _CustomerLoginState.build - lines of executable code: 135, maintainability index: 31
+WARNING _CustomerLoginState._onButtonPressed - lines of executable code: 69
+
+lib\CustomerProfile\CustomerProfileController.dart:
+WARNING CustomerProfileController - number of methods: 15
+
+lib\CustomerProfile\CustomerSignup.dart:
+ALARM   CustomerSignup.build - cyclomatic complexity: 21, lines of executable code: 252, maintainability index: 20
+
+lib\CustomerProfile\QR.dart:
+WARNING _QRState._contentWidget - lines of executable code: 52
+
+lib\HomePage.dart:
+ALARM   _HomePageState.build - lines of executable code: 485, maintainability index: 11
+
+lib\main.dart:
+WARNING WebApp.build - lines of executable code: 90, maintainability index: 34
+
+lib\Schedule\ASAP.dart:
+WARNING _ASAPState.build - lines of executable code: 79, maintainability index: 38
+ALARM   _ASAPState._onButtonPressed - cyclomatic complexity: 17, lines of executable code: 129, maintainability index: 28
+WARNING _ASAPState._loadData - lines of executable code: 76, maintainability index: 35
+
+lib\Schedule\ScheduleVisit.dart:
+ALARM   _MyScheduleVisitViewState.build - lines of executable code: 254, maintainability index: 22
+WARNING _MyScheduleVisitViewState._onButtonPressed - lines of executable code: 67, maintainability index: 37, nesting level: 5
+
+lib\Schedule\StoreScheduleController.dart:
+ALARM   StoreScheduleController.setSchedule - cyclomatic complexity: 17, lines of executable code: 103, maintainability index: 30
+
+lib\Schedule\StoreScheduleView.dart:
+ALARM   _MyStoreScheduleViewState.build - lines of executable code: 109, maintainability index: 34
+WARNING _MyStoreScheduleViewState._buildVisit - lines of executable code: 63, maintainability index: 39
+
+lib\Services\Services.dart:
+ALARM   Services - number of methods: 23
+WARNING Services.getSchedule - number of arguments: 5
+WARNING Services.admitCustomer - number of arguments: 8
+ALARM   Services.makeReservation - number of arguments: 9
+ALARM   Services.makeChoice - number of arguments: 10
+WARNING Services.customerIsShopping - number of arguments: 6
+ALARM   Services.releaseCustomer - number of arguments: 9
+WARNING Services.checkTempStorage - number of arguments: 6
+WARNING Services.createFiles - number of arguments: 7
+
+lib\StoreProfile\StoreEdit.dart:
+ALARM   _StoreEditState.build - cyclomatic complexity: 25, lines of executable code: 326, maintainability index: 16
+
+lib\StoreProfile\StoreLogin.dart:
+WARNING _StoreLoginState.build - lines of executable code: 84, maintainability index: 37
+WARNING _StoreLoginState._openScan - lines of executable code: 71, maintainability index: 36
+
+lib\StoreProfile\StoreSignup.dart:
+ALARM   _StoreSignupState.build - cyclomatic complexity: 38, lines of executable code: 477, maintainability index: 9
+
+lib\StoreSearch\StoreSearch.dart:
+ALARM   _MyStatesViewState.build - lines of executable code: 191, maintainability index: 25
+

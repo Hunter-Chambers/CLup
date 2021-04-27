@@ -228,6 +228,18 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         );
+                                        /*
+                                        return Navigator.pushNamed(
+                                          context,
+                                          '/customerLogin',
+                                          arguments: 
+                                              //Key("customerLoginPage"),
+                                              CustomerLogin.jwt:
+                                              CustomerLogin.result,
+                                              payload,
+                                              customerProfile,
+                                        );
+                                        */
                                       } else {
                                         storeProfile
                                             .getTextController("username")
@@ -401,13 +413,25 @@ class _HomePageState extends State<HomePage> {
 
                   // description text
                   Container(
-                    padding: EdgeInsets.fromLTRB(50, 35, 50, 52),
-                    child: Text(
-                      "A brief description about CLup will go here, along "
-                      "with why CLup was developed.",
+                    color: Color.fromARGB(50, 100, 100, 100),
+                    margin: EdgeInsets.fromLTRB(100, 35, 100, 52),
+                    padding: EdgeInsets.fromLTRB(0, 35, 0, 35),
+                    child: Center(
+                      child:Text(
+                                "Customer’s Line-up allows stores and customers\n"
+                                "to sign-up and create profiles with the app. Customers\n"
+                                "can then schedule visits at the stores and virtually\n"
+                                "line-up to wait if stores are at maximum allowable capacity.",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  ),
+                    ),
+
                     ),
                   ),
 
+                  /*
                   // ***********************************************************
                   // ***********************************************************
                   // ***********************************************************
@@ -631,6 +655,7 @@ class _HomePageState extends State<HomePage> {
                   // ***********************************************************
                   // ***********************************************************
                   // ***********************************************************
+                  // */
                 ],
               ),
             ),

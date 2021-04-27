@@ -58,6 +58,7 @@ class WebApp extends StatelessWidget {
               title: "CLup Home Page",
               services: services,
         ),
+        '/customerLogin': (context) => CustomerLogin()
       },
       home: FutureBuilder(
           future: userOrNone,

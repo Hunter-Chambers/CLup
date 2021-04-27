@@ -499,7 +499,7 @@ class _MyStatesViewState extends State<MyStatesView>{
 
       // 'Return to Profile Page' button was pressed
       case 2: {
-        Navigator.pop(context);
+        Navigator.popUntil(context, ModalRoute.withName('/') );
         /*
         return Navigator.push(context, MaterialPageRoute(
           builder: (context) => CustomerLogin(customerController: customerProfile,),
